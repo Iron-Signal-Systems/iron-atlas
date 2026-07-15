@@ -1,0 +1,13 @@
+{
+  "listen_address": "127.0.0.1:8080",
+  "site_id": "SITE-001",
+  "data_directory": "/var/lib/iron-atlas",
+  "evidence_store": {
+    "path": "/var/lib/iron-atlas/evidence"
+  },
+  "zabbix": {
+    "enabled": false,
+    "address": "127.0.0.1:10051",
+    "host": "Iron Atlas"
+  }
+}

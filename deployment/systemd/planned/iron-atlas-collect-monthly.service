@@ -1,0 +1,18 @@
+[Unit]
+Description=Iron Atlas monthly comprehensive Cisco evidence collection
+After=network-online.target
+
+[Service]
+Type=oneshot
+User=iron-atlas-collector
+Group=iron-atlas-collector
+ExecStart=/usr/local/bin/atlasctl collect --profile monthly-comprehensive
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=yes
+ReadWritePaths=/var/lib/iron-atlas/evidence
+UMask=0077
+
+# The executable collection command is a planned phase and is intentionally not
+# implemented by the Phase 0 candidate.

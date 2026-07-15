@@ -1,0 +1,27 @@
+{{define "content"}}
+<h1>Infrastructure operations dashboard</h1>
+<p class="lead">A role-aware view of evidence, health, governed changes, and modular collection capabilities.</p>
+<section class="cards" aria-label="Summary">
+  <article><span class="metric">{{len .Modules}}</span><h2>Registered modules</h2><p>Vendor adapters and replaceable integrations.</p></article>
+  <article><span class="metric">{{len .Changes}}</span><h2>Tracked changes</h2><p>Requests retain approval and acceptance context.</p></article>
+  <article><span class="metric">30d</span><h2>Cisco full evidence</h2><p>Planned comprehensive preventive-health interval.</p></article>
+</section>
+<section>
+<h2>Current changes</h2>
+<table>
+<thead><tr><th>ID</th><th>Title</th><th>Risk</th><th>Status</th><th>Requester</th></tr></thead>
+<tbody>{{range .Changes}}<tr><td>{{.ID}}</td><td>{{.Title}}</td><td>{{.Risk}}</td><td><span class="status">{{.Status}}</span></td><td>{{.Requester}}</td></tr>{{else}}<tr><td colspan="5">No changes are recorded.</td></tr>{{end}}</tbody>
+</table>
+</section>
+<section>
+<h2>Design boundaries</h2>
+<ul class="principles">
+<li>Raw evidence stays outside Git.</li>
+<li>Authentication does not imply authorization.</li>
+<li>The requester cannot approve their own governed change.</li>
+<li>Zabbix and other monitoring systems remain replaceable consumers.</li>
+<li>Trunks are deeply analyzed but excluded from local endpoint attribution.</li>
+</ul>
+</section>
+{{end}}
+{{template "base" .}}

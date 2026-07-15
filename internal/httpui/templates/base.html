@@ -1,0 +1,37 @@
+{{define "base"}}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>{{.Title}} · Iron Atlas</title>
+  <link rel="stylesheet" href="/static/site.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="topbar">
+  <div>
+    <strong>Iron Atlas</strong>
+    <span class="muted">Infrastructure knowledge and governed change</span>
+  </div>
+  <div class="identity">
+    <span>{{.Actor.ID}}</span>
+    {{range .Actor.RoleNames}}<span class="role">{{.}}</span>{{end}}
+  </div>
+</header>
+<div class="layout">
+  <nav aria-label="Primary">
+    <a href="/">Dashboard</a>
+    <a href="/changes">Changes</a>
+    <a href="/modules">Modules</a>
+    <a href="/api/v1/status">API status</a>
+  </nav>
+  <main id="main">
+    {{if .DevelopmentIdentity}}<div class="notice">Development identity mode is active. This is not a production authentication boundary.</div>{{end}}
+    {{template "content" .}}
+  </main>
+</div>
+<footer>Built on purpose. Backed by discipline. Engineered to endure.</footer>
+</body>
+</html>
+{{end}}

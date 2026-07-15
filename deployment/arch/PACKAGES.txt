@@ -1,0 +1,21 @@
+# Production runtime baseline
+base
+linux
+linux-firmware
+systemd
+ca-certificates
+openssh
+postgresql
+
+# Build and administration workstation packages
+go
+python
+git
+vim
+tmux
+
+# Not initially required
+# rust
+# nodejs
+# npm
+# zabbix-sender (Iron Atlas includes a native Go sender-protocol adapter)

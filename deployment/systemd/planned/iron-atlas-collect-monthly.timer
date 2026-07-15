@@ -1,0 +1,11 @@
+[Unit]
+Description=Schedule Iron Atlas monthly comprehensive Cisco collection
+
+[Timer]
+OnCalendar=monthly
+RandomizedDelaySec=12h
+Persistent=true
+Unit=iron-atlas-collect-monthly.service
+
+[Install]
+WantedBy=timers.target

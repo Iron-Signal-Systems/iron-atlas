@@ -1,0 +1,5 @@
+PASS checks: 4
+FAIL checks: 0
+Correctness result: PASS
+Resource observation: NOT_RECORDED
+Performance thresholds: NOT_EVALUATED

@@ -1,0 +1,25 @@
+<mxfile host="app.diagrams.net" modified="2026-07-14T23:00:00.000Z" agent="Iron Atlas" version="24.7.17">
+  <diagram id="ARCH-001" name="Iron Atlas Context">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="users" value="Network technicians, administrators, security, teams" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1"><mxGeometry x="40" y="80" width="220" height="70" as="geometry"/></mxCell>
+        <mxCell id="api" value="Go HTML5 + API services" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1"><mxGeometry x="340" y="80" width="220" height="70" as="geometry"/></mxCell>
+        <mxCell id="core" value="Inventory · topology · projects · changes · approvals · findings" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1"><mxGeometry x="640" y="80" width="260" height="70" as="geometry"/></mxCell>
+        <mxCell id="ingest" value="Authenticated ingestion and worker services" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1"><mxGeometry x="340" y="250" width="220" height="70" as="geometry"/></mxCell>
+        <mxCell id="db" value="PostgreSQL canonical records" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;" vertex="1" parent="1"><mxGeometry x="650" y="230" width="180" height="90" as="geometry"/></mxCell>
+        <mxCell id="evidence" value="Protected encrypted evidence store" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;" vertex="1" parent="1"><mxGeometry x="650" y="370" width="180" height="90" as="geometry"/></mxCell>
+        <mxCell id="devices" value="Firewalls · switches · WLCs · imported backups" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1"><mxGeometry x="40" y="250" width="220" height="70" as="geometry"/></mxCell>
+        <mxCell id="monitoring" value="Zabbix and replaceable monitoring consumers" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1"><mxGeometry x="940" y="80" width="210" height="70" as="geometry"/></mxCell>
+        <mxCell id="e1" edge="1" parent="1" source="users" target="api"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e2" edge="1" parent="1" source="api" target="core"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e3" edge="1" parent="1" source="devices" target="ingest"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e4" edge="1" parent="1" source="ingest" target="db"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e5" edge="1" parent="1" source="ingest" target="evidence"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e6" edge="1" parent="1" source="core" target="monitoring"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e7" edge="1" parent="1" source="core" target="db"><mxGeometry relative="1" as="geometry"/></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,8 @@
+{{define "content"}}
+<h1>Module registry</h1>
+<p class="lead">Vendor-specific adapters translate evidence into a common, vendor-neutral model.</p>
+<div class="module-grid">
+{{range .Modules}}<article><div class="eyebrow">{{.Category}} · {{.State}}</div><h2>{{.Name}}</h2><code>{{.ID}}</code><p>{{.Description}}</p></article>{{end}}
+</div>
+{{end}}
+{{template "base" .}}

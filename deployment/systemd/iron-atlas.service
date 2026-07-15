@@ -1,0 +1,32 @@
+[Unit]
+Description=Iron Atlas infrastructure documentation and analysis service
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=iron-atlas
+Group=iron-atlas
+Environment=IRON_ATLAS_LISTEN=127.0.0.1:8080
+Environment=IRON_ATLAS_DEV_IDENTITY=false
+ExecStart=/usr/local/bin/iron-atlas
+Restart=on-failure
+RestartSec=5s
+NoNewPrivileges=yes
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectSystem=strict
+ProtectHome=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+RestrictSUIDSGID=yes
+LockPersonality=yes
+MemoryDenyWriteExecute=yes
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+ReadWritePaths=/var/lib/iron-atlas
+StateDirectory=iron-atlas
+UMask=0077
+
+[Install]
+WantedBy=multi-user.target

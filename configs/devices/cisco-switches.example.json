@@ -1,0 +1,16 @@
+{
+  "devices": [
+    {
+      "device_id": "SW-SITE1-ACCESS-01",
+      "display_name": "Site 1 Access Switch 01",
+      "platform": "cisco-ios",
+      "family": "catalyst-2960x",
+      "management_address": "192.0.2.21",
+      "management_port": 22,
+      "site_id": "SITE-001",
+      "credential_ref": "secret://iron-atlas/cisco-readonly",
+      "collection_profile": "cisco-access-switch-v1",
+      "host_key_ref": "hostkey://SW-SITE1-ACCESS-01"
+    }
+  ]
+}

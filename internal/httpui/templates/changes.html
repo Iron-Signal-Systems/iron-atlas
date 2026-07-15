@@ -1,0 +1,12 @@
+{{define "content"}}
+<h1>Change management</h1>
+<p class="lead">Governed infrastructure work with requester independence, approval evidence, validation, documentation reconciliation, and formal acceptance.</p>
+{{range .Changes}}
+<article class="record">
+  <div><span class="status">{{.Status}}</span> <span class="risk">{{.Risk}} risk</span></div>
+  <h2>{{.ID}} — {{.Title}}</h2>
+  <dl><dt>Requester</dt><dd>{{.Requester}}</dd><dt>Required approvals</dt><dd>{{.RequiredApprovals}}</dd><dt>Recorded approvals</dt><dd>{{len .Approvals}}</dd></dl>
+</article>
+{{else}}<p>No changes are recorded.</p>{{end}}
+{{end}}
+{{template "base" .}}
