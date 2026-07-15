@@ -1,1 +1,7 @@
-migrations/000_initial_atlas_schema.sql
+# Iron Atlas ordered migration manifest v1
+migrations/001_migration_control.sql
+migrations/002_governed_identity.sql
+migrations/003_roles_and_authority.sql
+migrations/004_governed_changes.sql
+migrations/005_change_approvals.sql
+migrations/006_append_only_history.sql

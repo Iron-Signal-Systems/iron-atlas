@@ -4,7 +4,7 @@
 >
 > Built on purpose. Backed by discipline. Engineered to endure.
 >
-> Development status: Phase 0 accepted as a non-production development baseline; Phase 1 not yet accepted
+> Development status: Phase 0 accepted as a non-production development baseline; Phase 1 Step 1 PostgreSQL foundation implementation candidate; not ready for production use
 
 Iron Atlas is an authoritative, version-controlled system for infrastructure documentation, diagrams, inventory, automated discovery, project tracking, change management, validation, preventive health analysis, and formal acceptance.
 
@@ -26,7 +26,7 @@ The project is designed for network technicians, network administrators, network
 
 ## Current Executable Boundary
 
-The Phase 0 candidate contains a compilable standard-library-only Go implementation that demonstrates:
+The accepted Phase 0 baseline contains a compilable standard-library-only Go implementation that demonstrates:
 
 - A responsive HTML5 dashboard and role-oriented navigation.
 - Health and readiness endpoints.
@@ -38,7 +38,7 @@ The Phase 0 candidate contains a compilable standard-library-only Go implementat
 - Cisco command-bundle parsing and trunk endpoint-attribution rules.
 - Repository validation and unit tests.
 
-The current executable does **not** claim production authentication, PostgreSQL persistence, live SSH collection, complete vendor semantic analysis, or production readiness. Those are deliberately staged work.
+Phase 1 Step 1 adds the manifest-driven PostgreSQL migration framework, ownership and role contracts, governed identity and authority persistence, independent approval enforcement, append-only history, and disposable database tests. It does **not** connect the HTML5 service to PostgreSQL or claim production authentication, live collection, complete vendor semantic analysis, or production readiness.
 
 ## Quick Start
 
@@ -90,6 +90,9 @@ Start with:
 - [External-system-independent telemetry](docs/architecture/EXTERNAL-SYSTEM-INDEPENDENT-TELEMETRY.md)
 - [Phased implementation roadmap](docs/roadmap/IMPLEMENTATION-ROADMAP.md)
 - [Phase 0 accepted baseline](docs/acceptance/PHASE-0-STEP-1-ACCEPTANCE-RECORD.md)
+- [Phase 0 acceptance errata](docs/acceptance/PHASE-0-STEP-1-ACCEPTANCE-ERRATA.md)
+- [PostgreSQL migration and ownership model](docs/architecture/POSTGRESQL-MIGRATION-AND-OWNERSHIP-MODEL.md)
+- [PostgreSQL database security boundary](docs/architecture/POSTGRESQL-DATABASE-SECURITY-BOUNDARY.md)
 
 ## Security Boundary
 

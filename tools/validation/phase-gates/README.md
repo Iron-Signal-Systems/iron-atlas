@@ -1,13 +1,9 @@
 # Phase Gates
 
-Phase gates are checkpoint-specific.
+Phase gates are checkpoint-specific. Historical gates are preserved and re-run at their exact accepted commit when later work may change repository assumptions.
 
-Do not weaken a historical gate merely so it passes against a later working
-tree. Revalidate historical boundaries at their exact accepted commit when
-absence of later artifacts is part of the gate.
+## Gates
 
-## Current Gates
-
-- `validate_phase0_step1.sh` validates the Phase 0 implementation candidate.
-- `validate_phase0_acceptance.sh` validates the synchronized Phase 0
-  non-production acceptance boundary.
+- `validate_phase0_step1.sh` — Phase 0 implementation candidate.
+- `validate_phase0_acceptance.sh` — accepted Phase 0 non-production boundary.
+- `validate_phase1_step1.sh` — Phase 1 Step 1 PostgreSQL migration and governed-identity candidate; revalidates the accepted Phase 0 tag in an isolated local clone.

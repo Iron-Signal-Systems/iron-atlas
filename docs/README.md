@@ -2,7 +2,7 @@
 
 > Owner: Iron Signal Systems
 >
-> Status: Phase 0 accepted as a non-production development baseline; Phase 1 not yet accepted
+> Status: Phase 0 accepted; Phase 1 Step 1 PostgreSQL foundation implementation candidate; not ready for production use
 
 ## Start Here
 
@@ -16,6 +16,8 @@
 - [Cisco collection profile catalog](architecture/CISCO-COLLECTION-PROFILE-CATALOG.md)
 - [Firewall traffic path and SD-WAN model](architecture/FIREWALL-TRAFFIC-PATH-AND-SDWAN-MODEL.md)
 - [Data and record model](architecture/DATA-AND-RECORD-MODEL.md)
+- [PostgreSQL migration and ownership model](architecture/POSTGRESQL-MIGRATION-AND-OWNERSHIP-MODEL.md)
+- [PostgreSQL database security boundary](architecture/POSTGRESQL-DATABASE-SECURITY-BOUNDARY.md)
 - [Zabbix integration contract](architecture/ZABBIX-INTEGRATION-CONTRACT.md)
 - [Project and portfolio tracking](architecture/PROJECT-AND-PORTFOLIO-TRACKING.md)
 - [Evidence ingestion and protection](architecture/EVIDENCE-INGESTION-AND-PROTECTION.md)
@@ -28,8 +30,9 @@
 - [Verification, validation, and acceptance](architecture/VERIFICATION-VALIDATION-AND-ACCEPTANCE.md)
 - [Requirements catalog](requirements/SYSTEM-REQUIREMENTS.md)
 - [Implementation roadmap](roadmap/IMPLEMENTATION-ROADMAP.md)
-- [Acceptance records](acceptance/README.md)
 - [Testing model](testing/TESTING-AND-ADVERSARIAL-VALIDATION-MODEL.md)
+- [Disposable PostgreSQL testing](testing/POSTGRESQL-DISPOSABLE-DATABASE-TESTING.md)
+- [Acceptance records](acceptance/README.md)
 - [Repository creation and first push](operations/REPOSITORY-CREATION-AND-FIRST-PUSH.md)
 
 ## Documentation Synchronization Rule

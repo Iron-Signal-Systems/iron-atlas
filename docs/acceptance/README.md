@@ -1,23 +1,19 @@
 # Iron Atlas Acceptance Records
 
-Acceptance records freeze explicitly tested repository boundaries, their
-evidence, limitations, security assumptions, approval context, accepted tag,
-and exact next work.
+Acceptance records freeze explicitly tested repository boundaries, evidence, limitations, security assumptions, approval context, accepted tags, and exact next work.
 
 ## Accepted Records
 
 - [Phase 0 Step 1 — Repository and executable baseline](PHASE-0-STEP-1-ACCEPTANCE-RECORD.md)
+- [Phase 0 Step 1 acceptance errata](PHASE-0-STEP-1-ACCEPTANCE-ERRATA.md)
 
-## Templates
+## Candidate Templates
 
 - [Phase 0 acceptance record template](PHASE-0-ACCEPTANCE-RECORD-TEMPLATE.md)
+- [Phase 1 Step 1 acceptance record template](PHASE-1-STEP-1-ACCEPTANCE-RECORD-TEMPLATE.md)
 
 ## Governing Rule
 
-Acceptance does not expand the proven boundary.
+Acceptance does not expand the proven boundary. Historical tags remain immutable; later-discovered record defects are corrected through explicit errata rather than by moving or rewriting an accepted tag.
 
-A passing repository or parser gate does not prove production readiness,
-correct live-network operation, device health, or security.
-
-Operational infrastructure changes remain subject to independent two-person
-approval according to the change-management architecture.
+Operational infrastructure changes remain subject to independent two-person approval according to the change-management architecture.

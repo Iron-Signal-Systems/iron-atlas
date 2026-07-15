@@ -2,7 +2,7 @@
 
 ## Phase 0 — Repository and Executable Baseline
 
-**Status:** Accepted as a non-production development baseline.
+**Status:** Accepted as a non-production development baseline under tag `phase-0-repository-and-executable-baseline-complete-v1`.
 
 - Mission, architecture, requirements, and boundaries
 - Go module and embedded HTML5 interface
@@ -12,16 +12,32 @@
 - Unit tests and repository phase gate
 - Minimal Arch deployment material
 
-**Acceptance does not claim production authentication, persistence, collection, or semantic completeness.**
+Acceptance does not claim production authentication, persistence, collection, or semantic completeness.
 
 ## Phase 1 — PostgreSQL Foundation and Governed Identity
 
+**Status:** Step 1 implementation candidate.
+
+### Step 1 — Migration and Database Governance Foundation
+
 - Manifest-driven migrations
 - Production role and ownership topology
-- Identity-provider integration boundary
-- Role binding, authority, approval, and decision records
-- Append-oriented history
+- Governed actors and external identities
+- Role binding and authority records
+- Change, approval, decision, and audit records
+- Database-enforced requester and approver independence
+- Append-only history
 - Disposable database tests and concurrency proofs
+
+Step 1 does not connect the Go service to PostgreSQL or establish production authentication.
+
+### Later Phase 1 Work
+
+- Go PostgreSQL runtime adapter
+- Transaction and connection-pool identity-context handling
+- Identity-provider integration boundary
+- Production credential delivery and rotation
+- Database backup and restoration test boundary
 
 ## Phase 2 — Evidence Intake and Storage
 
