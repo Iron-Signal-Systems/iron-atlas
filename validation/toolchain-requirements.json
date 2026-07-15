@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "project": "Iron Atlas",
+  "canonical_repository": "https://github.com/Iron-Signal-Systems/iron-atlas.git",
+  "canonical_branch": "dev",
+  "requirements": {
+    "bash": {
+      "minimum": "5.0"
+    },
+    "git": {
+      "minimum": "2.39"
+    },
+    "go": {
+      "minimum": "1.25",
+      "maximum_exclusive": "1.27"
+    },
+    "python": {
+      "minimum": "3.11"
+    },
+    "postgresql": {
+      "minimum": "14",
+      "commands": [
+        "postgres",
+        "initdb",
+        "pg_ctl",
+        "pg_isready",
+        "createdb",
+        "psql"
+      ]
+    },
+    "utilities": [
+      "awk",
+      "find",
+      "grep",
+      "mktemp",
+      "sed",
+      "sha256sum",
+      "tee",
+      "timeout"
+    ]
+  },
+  "dependency_verification": [
+    "go mod download",
+    "go mod verify"
+  ],
+  "disposable_test_environment": "test-framework/database/run_disposable_postgres.sh",
+  "repository_secrets": "prohibited",
+  "non_repository_secrets": []
+}

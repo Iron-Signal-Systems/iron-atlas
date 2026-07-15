@@ -42,7 +42,8 @@ started=true
 export PGHOST="$socket" PGPORT="$port" PGDATABASE=postgres PGUSER="$(id -un)"
 "$psql_bin" --no-psqlrc -X -v ON_ERROR_STOP=1 -f "$repo_root/sql/bootstrap/development-roles.sql" >/dev/null
 "$createdb_bin" --owner=atlas_database_owner iron_atlas_test
-"$psql_bin" --no-psqlrc -X -v ON_ERROR_STOP=1 -d postgres -c   "GRANT CONNECT ON DATABASE iron_atlas_test TO atlas_migrator, atlas_application, atlas_test_runner; GRANT CREATE ON DATABASE iron_atlas_test TO atlas_schema_owner;" >/dev/null
+"$psql_bin" --no-psqlrc -X -v ON_ERROR_STOP=1 -d postgres -c \
+  "GRANT CONNECT ON DATABASE iron_atlas_test TO atlas_migrator, atlas_application, atlas_test_runner; GRANT CREATE ON DATABASE iron_atlas_test TO atlas_schema_owner;" >/dev/null
 
 export PGDATABASE=iron_atlas_test PGUSER=atlas_migrator
 "$repo_root/tools/database/apply_migrations.sh" >/dev/null
@@ -54,6 +55,16 @@ export PGUSER="$(id -un)"
 export ATLAS_PSQL="$psql_bin"
 python3 "$repo_root/test-framework/database/test_database.py"
 
+export IRON_ATLAS_TEST_DATABASE_URL="host=$socket port=$port dbname=iron_atlas_test user=atlas_application sslmode=disable"
+(
+  cd "$repo_root"
+  go test -race -tags=integration \
+    ./internal/database/postgresql \
+    ./internal/change/postgresql
+)
+
+echo "PASS: Go PostgreSQL runtime integration tests"
+
 size="$($psql_bin --no-psqlrc -X -Atqc "SELECT pg_database_size(current_database());")"
 end_ns="$(date +%s%N)"
 elapsed_ms=$(((end_ns-start_ns)/1000000))
@@ -61,5 +72,7 @@ elapsed_ms=$(((end_ns-start_ns)/1000000))
 echo "PostgreSQL version: $($psql_bin --version)"
 echo "Disposable database bytes: $size"
 echo "Database test elapsed milliseconds: $elapsed_ms"
+echo "Sequential pooled identity checks: 500"
+echo "Concurrent pooled identity operations: 600"
 echo "Resource observation: RECORDED"
 echo "Performance thresholds: NOT_EVALUATED"

@@ -5,7 +5,7 @@
 <article class="record">
   <div><span class="status">{{.Status}}</span> <span class="risk">{{.Risk}} risk</span></div>
   <h2>{{.ID}} — {{.Title}}</h2>
-  <dl><dt>Requester</dt><dd>{{.Requester}}</dd><dt>Required approvals</dt><dd>{{.RequiredApprovals}}</dd><dt>Recorded approvals</dt><dd>{{len .Approvals}}</dd></dl>
+  <dl><dt>Requester</dt><dd>{{.Requester}}</dd><dt>Required approvals</dt><dd>{{.RequiredApprovals}}</dd><dt>Recorded approvals</dt><dd>{{.ApprovalCount}}</dd></dl>
 </article>
 {{else}}<p>No changes are recorded.</p>{{end}}
 {{end}}

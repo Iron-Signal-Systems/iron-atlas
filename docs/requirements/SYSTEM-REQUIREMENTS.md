@@ -24,6 +24,23 @@
 - `IA-CHG-004`: A change shall not be accepted before post-change validation and documentation reconciliation.
 - `IA-CHG-005`: Material history shall use correction and supersession rather than silent rewriting.
 
+## PostgreSQL Runtime
+
+- `IA-DB-001`: The Go runtime shall use a least-privileged application pool and shall not own or migrate database objects.
+- `IA-DB-002`: Governed mutations shall bind authenticated actor identity only within the database transaction.
+- `IA-DB-003`: Actor identity shall not leak between pooled connections, committed transactions, rolled-back transactions, or failed operations.
+- `IA-DB-004`: Database dependency failure shall make readiness fail closed without changing liveness behavior.
+- `IA-DB-005`: Database URLs, passwords, certificates, and tokens shall remain outside Git and application logs.
+
+## Validation Portability
+
+- Applicable validators, phase gates, helpers, and disposable test-environment scripts shall be version-controlled.
+- External validation toolchain requirements shall be declared in a machine-readable, verifiable repository artifact.
+- Pinned external dependencies shall include integrity records and shall be verified before validation.
+- Retained validation and acceptance evidence shall be sanitized, checksummed, validated, and committed.
+- No implementation step shall be accepted until its exact pushed commit passes applicable validation from a clean clone of the canonical GitHub repository.
+- Repository-external secrets shall be explicit, minimal, non-retained, and prohibited from logs and Git.
+
 ## Firewall
 
 - `IA-FW-001`: Support FortiGate, OPNsense, and pfSense adapter boundaries.

@@ -16,7 +16,7 @@ Acceptance does not claim production authentication, persistence, collection, or
 
 ## Phase 1 — PostgreSQL Foundation and Governed Identity
 
-**Status:** Step 1 accepted under tag `phase-1-step-1-postgresql-governance-foundation-complete-v1`; later Phase 1 work is not accepted.
+**Status:** Step 1 accepted under tag `phase-1-step-1-postgresql-governance-foundation-complete-v1`; Step 2 implementation candidate.
 
 ### Step 1 — Migration and Database Governance Foundation
 
@@ -29,15 +29,27 @@ Acceptance does not claim production authentication, persistence, collection, or
 - Append-only history
 - Disposable database tests and concurrency proofs
 
-Step 1 does not connect the Go service to PostgreSQL or establish production authentication.
+### Step 2 — Go PostgreSQL Runtime and Identity Context Boundary
+
+- Replaceable PostgreSQL implementation of the change-service interface
+- Bounded least-privileged `pgxpool` connection pool
+- Transaction-local authenticated actor context
+- No actor context at session scope
+- Persistent change creation and approval through accepted service functions
+- Rollback and failure isolation
+- Database-aware readiness behavior
+- Sequential and concurrent pooled-connection identity-leak tests
+- Disposable Go and PostgreSQL integration tests
+
+Step 2 does not establish production authentication, production credential delivery, database recovery, or production readiness. Step 2 cannot be accepted until its exact pushed commit passes the applicable phase gate from a clean clone of the canonical GitHub repository and the retained sanitized evidence is committed.
 
 ### Later Phase 1 Work
 
-- Go PostgreSQL runtime adapter
-- Transaction and connection-pool identity-context handling
 - Identity-provider integration boundary
 - Production credential delivery and rotation
+- Database TLS and certificate deployment
 - Database backup and restoration test boundary
+- Production connection and resource budgets
 
 ## Phase 2 — Evidence Intake and Storage
 

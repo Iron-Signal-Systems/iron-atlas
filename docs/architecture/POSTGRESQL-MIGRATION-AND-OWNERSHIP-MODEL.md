@@ -2,7 +2,7 @@
 
 ## Status
 
-Phase 1 Step 1 implementation candidate.
+Phase 1 Step 1 accepted under tag `phase-1-step-1-postgresql-governance-foundation-complete-v1`.
 
 ## Purpose
 

@@ -9,6 +9,8 @@ User=iron-atlas
 Group=iron-atlas
 Environment=IRON_ATLAS_LISTEN=127.0.0.1:8080
 Environment=IRON_ATLAS_DEV_IDENTITY=false
+Environment=IRON_ATLAS_CHANGE_STORE=memory
+EnvironmentFile=-/etc/iron-atlas/iron-atlas.env
 ExecStart=/usr/local/bin/iron-atlas
 Restart=on-failure
 RestartSec=5s

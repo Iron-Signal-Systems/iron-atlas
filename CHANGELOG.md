@@ -2,6 +2,36 @@
 
 ## Unreleased
 
+### Added
+
+- Canonical GitHub clean-clone validation as a mandatory acceptance invariant.
+- Machine-readable external toolchain requirements and verification.
+- Sanitized, checksummed, committed validation-evidence recording and validation.
+- Repository-provided canonical clone verifier and portability regression tests.
+
+- Phase 1 Step 2 replaceable Go PostgreSQL change-service adapter.
+- Bounded least-privileged `pgxpool` runtime configuration.
+- Transaction-local authenticated actor context for governed mutations.
+- Persistent change creation and approval through accepted PostgreSQL functions.
+- Database-aware health and readiness dependency behavior.
+- Sequential, concurrent, commit, rollback, and failed-transaction actor-isolation tests.
+- Go PostgreSQL runtime architecture, testing, acceptance-template, and phase-gate documentation.
+
+### Changed
+
+- Raised the Go module baseline to Go 1.25 for the accepted `pgx` v5 runtime dependency.
+- Made the change-service interface context-aware and persistence-neutral.
+- Kept memory mode as the default development store while adding explicit PostgreSQL mode.
+- Updated the HTML5 and API handlers to fail closed on persistence errors.
+- Updated CI and the disposable PostgreSQL runner to execute Go database integration tests.
+
+### Security
+
+- Corrected the Step 2 isolated-predecessor gate so cleanup cannot mask a failed or missing historical validator.
+- Database connection strings remain runtime-only secrets and are prohibited from committed configuration.
+- Acting identity is set only with transaction-local `set_config(..., true)` and never at pooled-session scope.
+- Governed PostgreSQL writes continue to use only accepted security-definer service functions.
+
 ### Accepted
 
 - Accepted the Phase 1 Step 1 PostgreSQL governance foundation as a non-production development boundary under annotated tag `phase-1-step-1-postgresql-governance-foundation-complete-v1`.
@@ -10,25 +40,7 @@
 ### Fixed
 
 - Removed ambiguous PL/pgSQL actor variable and column resolution from the governed change and approval functions.
-- Added disposable-database regression assertions proving the internal actor helper remains outside the application API while the governed change API resolves the intended active actor.
-
-### Added
-
-- Phase 1 Step 1 manifest-driven PostgreSQL migration framework.
-- Database owner, schema owner, migrator, application, read-only, auditor, and test-runner role contracts.
-- Governed actor, external identity, role, authority, change, approval, decision, and audit persistence.
-- Database-enforced requester and approver independence.
-- Append-only approval, status-history, decision, audit, and migration records.
-- Disposable PostgreSQL correctness, security, idempotency, and concurrency tests.
-- Phase 1 Step 1 validation gate with isolated revalidation of the accepted Phase 0 predecessor.
-- Phase 0 acceptance errata preserving the historical tag while correcting record-generation defects.
-
-### Changed
-
-- Archived the Phase 0 monolithic SQL design candidate outside the executable migration manifest.
-- Replaced the initial migration manifest with ordered Phase 1 migrations.
-- Updated CI, repository validation, documentation indexes, testing guidance, and the roadmap for Phase 1 Step 1.
-- Kept generated test results outside Git; formal acceptance evidence remains in immutable acceptance records.
+- Added a disposable-database regression assertion proving actor context resolves to the intended active actor.
 
 ## Phase 0
 

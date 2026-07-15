@@ -35,3 +35,9 @@
 ## Resource Observation
 
 Record CPU, memory, I/O, database, evidence size, parser duration, command duration, queue depth, external-delivery latency, and host fingerprints separately from correctness. Begin observation-only; do not create unsupported performance gates.
+
+## Portable Execution
+
+Applicable tests must run from a clean canonical repository clone. Test dependencies are either version-controlled, pinned and integrity-verifiable, or declared in `validation/toolchain-requirements.json`. Database tests create disposable clusters through repository scripts and do not depend on a workstation PostgreSQL service.
+
+Mutable local `latest` output is diagnostic. Any result deliberately retained for a phase or acceptance decision must be sanitized, checksummed, validated, and committed under `validation/evidence/`.

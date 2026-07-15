@@ -15,13 +15,19 @@ import (
 
 func main() {
 	logger := slog.New(slog.NewJSONHandler(os.Stdout, &slog.HandlerOptions{Level: slog.LevelInfo}))
-	cfg := app.ConfigFromEnvironment()
+	cfg, err := app.ConfigFromEnvironment()
+	if err != nil {
+		logger.Error("configuration failed", "error", err)
+		os.Exit(1)
+	}
 
 	application, err := app.New(cfg, logger)
 	if err != nil {
 		logger.Error("application initialization failed", "error", err)
 		os.Exit(1)
 	}
+
+	defer application.Close()
 
 	server := &http.Server{
 		Addr:              cfg.ListenAddress,
@@ -36,7 +42,7 @@ func main() {
 	defer stop()
 
 	go func() {
-		logger.Info("iron atlas starting", "listen", cfg.ListenAddress, "development_identity", cfg.DevelopmentIdentity)
+		logger.Info("iron atlas starting", "listen", cfg.ListenAddress, "development_identity", cfg.DevelopmentIdentity, "change_store", cfg.ChangeStore)
 		if err := server.ListenAndServe(); err != nil && !errors.Is(err, http.ErrServerClosed) {
 			logger.Error("http server failed", "error", err)
 			stop()

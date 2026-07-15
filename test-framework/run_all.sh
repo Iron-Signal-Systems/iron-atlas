@@ -20,10 +20,17 @@ run() {
 }
 
 run "go format check" bash -c 'test -z "$(gofmt -l cmd internal modules integrations)"'
+run "go module verification" go mod verify
 run "go vet" go vet ./...
 run "go test" go test -race ./...
 run "migration static validation" python3 tools/validation/validate_migrations.py
 run "database security static validation" python3 tools/validation/validate_sql_static.py
+run "Go PostgreSQL runtime static validation" python3 tools/validation/validate_go_postgresql_runtime.py
+run "phase-gate exit propagation" ./test-framework/phase-gates/test_isolated_gate_revalidation.sh
+run "external toolchain validation" python3 tools/validation/validate_toolchain.py
+run "portable acceptance static validation" python3 tools/validation/validate_portable_acceptance.py
+run "portable validation regression" ./test-framework/portability/test_portable_validation.sh
+run "committed validation evidence" python3 tools/validation/validate_committed_evidence.py
 run "disposable PostgreSQL tests" ./test-framework/database/run_disposable_postgres.sh
 run "repository validation" ./tools/validation/validate_repository.sh --skip-go --skip-database
 

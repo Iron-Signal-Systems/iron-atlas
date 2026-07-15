@@ -21,3 +21,7 @@
 *.jks
 *.config.backup
 config.xml
+
+# Sanitized, immutable validation and acceptance evidence is version-controlled.
+!/validation/evidence/
+!/validation/evidence/**

@@ -14,7 +14,8 @@ jobs:
           fetch-depth: 0
       - uses: actions/setup-go@v5
         with:
-          go-version: '1.23.x'
+          go-version: '1.25.x'
+          cache: true
       - uses: actions/setup-python@v5
         with:
           python-version: '3.x'
@@ -23,7 +24,12 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y postgresql
           echo "$(pg_config --bindir)" >> "$GITHUB_PATH"
+      - name: Download and verify Go modules
+        run: |
+          go mod download
+          go mod verify
       - name: Make validators executable
-        run: chmod +x tools/database/*.sh tools/validation/*.sh tools/validation/phase-gates/*.sh test-framework/*.sh test-framework/database/*
+        run: find tools test-framework -type f -name "*.sh" -exec chmod +x {} +
+      - run: python3 tools/validation/validate_toolchain.py
       - run: ./tools/validation/validate_repository.sh --skip-database
       - run: ./test-framework/run_all.sh

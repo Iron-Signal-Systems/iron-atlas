@@ -42,3 +42,9 @@ An acceptance record states:
 - Next work
 
 Correctness and performance observations remain separate until representative evidence establishes defensible budgets.
+
+## Reproducible Acceptance Invariant
+
+No implementation step may be accepted unless a clean clone from the canonical GitHub repository can execute its applicable validation using only version-controlled project artifacts, declared and verifiable external toolchain requirements, disposable test environments, and explicitly supplied non-repository secrets.
+
+Acceptance records identify the canonical commit, committed evidence path, evidence SHA-256 records, toolchain-requirements hash, and clean-clone result. Workstation-local paths and untracked scripts are not acceptance evidence.

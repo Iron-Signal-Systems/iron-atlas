@@ -4,7 +4,7 @@
 >
 > Built on purpose. Backed by discipline. Engineered to endure.
 >
-> Development status: Phase 1 Step 1 PostgreSQL governance foundation accepted as a non-production development boundary; later Phase 1 work is not accepted; not ready for production use
+> Development status: Phase 1 Step 1 PostgreSQL governance foundation accepted; Phase 1 Step 2 Go PostgreSQL runtime implementation candidate; not ready for production use
 
 Iron Atlas is an authoritative, version-controlled system for infrastructure documentation, diagrams, inventory, automated discovery, project tracking, change management, validation, preventive health analysis, and formal acceptance.
 
@@ -26,56 +26,72 @@ The project is designed for network technicians, network administrators, network
 
 ## Current Executable Boundary
 
-The accepted Phase 0 baseline contains a compilable standard-library-only Go implementation that demonstrates:
+The accepted Phase 0 baseline contains the embedded HTML5 interface, module registry, memory-backed change workflow, initial vendor parsers, native Go Zabbix sender adapter, and repository validation framework.
 
-- A responsive HTML5 dashboard and role-oriented navigation.
-- Health and readiness endpoints.
-- A module registry.
-- A memory-backed change workflow with requester/approver independence.
-- A native Go Zabbix sender-protocol adapter.
-- A FortiGate hierarchical configuration parser foundation.
-- OPNsense and pfSense XML import probes.
-- Cisco command-bundle parsing and trunk endpoint-attribution rules.
-- Repository validation and unit tests.
+Accepted Phase 1 Step 1 adds manifest-driven PostgreSQL migrations, database ownership and role contracts, governed identity and authority persistence, database-enforced independent approval, append-only history, and disposable PostgreSQL tests.
 
-Phase 1 Step 1 adds the manifest-driven PostgreSQL migration framework, ownership and role contracts, governed identity and authority persistence, independent approval enforcement, append-only history, and disposable database tests. It does **not** connect the HTML5 service to PostgreSQL or claim production authentication, live collection, complete vendor semantic analysis, or production readiness.
+The Phase 1 Step 2 candidate adds:
+
+- A replaceable PostgreSQL implementation of the Go change-service interface.
+- A bounded least-privileged `pgxpool` connection pool.
+- Transaction-local authenticated actor context.
+- Persistent change creation and approval through accepted PostgreSQL functions.
+- Rollback and pooled-connection identity-isolation tests.
+- PostgreSQL-aware readiness behavior.
+
+Step 2 does **not** establish production authentication, credential delivery, TLS provisioning, backup recovery, high availability, live collection, or production readiness.
 
 ## Quick Start
+
+Memory-backed development mode remains the default:
 
 ```bash
 go test ./...
 go run ./cmd/atlasd
 ```
 
-Open `http://127.0.0.1:8080`.
+PostgreSQL development mode requires the accepted migrations, runtime grants, and a protected runtime connection string:
 
-The initial server runs in development identity mode unless configured otherwise. Development identity headers are never an acceptable production authentication boundary.
+```bash
+export IRON_ATLAS_CHANGE_STORE=postgresql
+export IRON_ATLAS_DEV_IDENTITY=true # controlled local testing only
+export IRON_ATLAS_DATABASE_URL='postgres://atlas_application:REDACTED@localhost/iron_atlas?sslmode=verify-full'
+go run ./cmd/atlasd
+```
+
+Do not commit a real database URL or credentials. Open `http://127.0.0.1:8080` after startup.
+
+Memory mode defaults to development identity headers for the Phase 0 demonstration. PostgreSQL mode defaults them off and requires an explicit opt-in for controlled local testing. Development identity headers are never an acceptable production authentication boundary.
 
 ## Repository Layout
 
 ```text
 .
 ├── cmd/                     Go executables
-├── configs/                 Configuration examples
+├── configs/                 Non-secret configuration examples
 ├── deployment/              Arch Linux and systemd material
 ├── diagrams/                Draw.io sources and publication boundary
 ├── docs/                    Normative architecture and project documentation
 ├── integrations/            Replaceable external-system adapters
-├── internal/                Shared application implementation
+├── internal/                Shared application and PostgreSQL runtime implementation
 ├── modules/                 Vendor and capability modules
 ├── projects/                Project-governance templates and records
 ├── changes/                 Change-management templates and records
-├── sql/                     Planned PostgreSQL schema and migration manifest
-├── test-framework/          Test orchestration and retained results boundary
-└── tools/validation/        Repository checks and phase gates
+├── sql/                     Governed PostgreSQL schema and migration manifest
+├── test-framework/          Test orchestration and transient local results
+├── validation/              Toolchain contract and committed sanitized evidence
+└── tools/validation/        Repository checks, evidence tools, and phase gates
 ```
 
 ## Validation
 
 ```bash
-./tools/validation/validate_repository.sh
-./tools/validation/phase-gates/validate_phase0_step1.sh
+python3 tools/validation/validate_toolchain.py
+./test-framework/run_all.sh
+./tools/validation/phase-gates/validate_phase1_step2.sh
 ```
+
+Formal acceptance additionally requires the exact pushed commit to pass `tools/validation/verify_canonical_clone.sh` from a clean clone of the canonical GitHub repository. Retained validation evidence is sanitized and committed under `validation/evidence/`.
 
 ## Documentation
 
@@ -84,6 +100,13 @@ Start with:
 - [Documentation index](docs/README.md)
 - [Target architecture](docs/architecture/TARGET-ARCHITECTURE.md)
 - [Change management and two-person control](docs/architecture/CHANGE-MANAGEMENT-AND-TWO-PERSON-CONTROL.md)
+- [PostgreSQL migration and ownership model](docs/architecture/POSTGRESQL-MIGRATION-AND-OWNERSHIP-MODEL.md)
+- [PostgreSQL database security boundary](docs/architecture/POSTGRESQL-DATABASE-SECURITY-BOUNDARY.md)
+- [Go PostgreSQL runtime and identity context](docs/architecture/GO-POSTGRESQL-RUNTIME-AND-IDENTITY-CONTEXT.md)
+- [ADR-0004 — pgx PostgreSQL runtime driver](docs/decisions/ADR-0004-PGX-POSTGRESQL-RUNTIME-DRIVER.md)
+- [Go PostgreSQL runtime integration testing](docs/testing/GO-POSTGRESQL-RUNTIME-INTEGRATION-TESTING.md)
+- [Portable validation and canonical repository acceptance](docs/architecture/PORTABLE-VALIDATION-AND-CANONICAL-REPOSITORY-ACCEPTANCE.md)
+- [Canonical clean-clone validation workflow](docs/operations/CANONICAL-CLEAN-CLONE-VALIDATION.md)
 - [Firewall semantic analysis](docs/architecture/FIREWALL-CONFIGURATION-SEMANTIC-ANALYSIS.md)
 - [Cisco evidence collection](docs/architecture/CISCO-EVIDENCE-COLLECTION-AND-PREVENTIVE-HEALTH.md)
 - [Cisco trunk analysis](docs/architecture/CISCO-TRUNK-AND-ENDPOINT-ATTRIBUTION.md)
@@ -92,12 +115,10 @@ Start with:
 - [Phase 0 accepted baseline](docs/acceptance/PHASE-0-STEP-1-ACCEPTANCE-RECORD.md)
 - [Phase 0 acceptance errata](docs/acceptance/PHASE-0-STEP-1-ACCEPTANCE-ERRATA.md)
 - [Phase 1 Step 1 accepted PostgreSQL governance foundation](docs/acceptance/PHASE-1-STEP-1-ACCEPTANCE-RECORD.md)
-- [PostgreSQL migration and ownership model](docs/architecture/POSTGRESQL-MIGRATION-AND-OWNERSHIP-MODEL.md)
-- [PostgreSQL database security boundary](docs/architecture/POSTGRESQL-DATABASE-SECURITY-BOUNDARY.md)
 
 ## Security Boundary
 
-Raw firewall backups, technical-support output, credentials, SSH private keys, shared secrets, certificates, and unredacted evidence are prohibited from Git. The repository contains contracts, code, schemas, fixtures, redacted examples, and accepted documentation only.
+Raw firewall backups, technical-support output, credentials, database URLs, SSH private keys, shared secrets, certificates, and unredacted evidence are prohibited from Git. The repository contains contracts, code, schemas, fixtures, redacted examples, and accepted documentation only.
 
 ## License
 

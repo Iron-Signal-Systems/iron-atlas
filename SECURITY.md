@@ -10,6 +10,11 @@ Iron Atlas is pre-alpha and is not ready for production use.
 - Passwords, tokens, shared secrets, private keys, or certificate private material
 - Production IP inventories that are not approved for repository storage
 - NPS, TACACS+, SNMP, RADIUS, VPN, or API credentials
+- Unsanitized validation transcripts or environment dumps
+
+## Validation Evidence
+
+Only sanitized, checksummed validation evidence may be committed under `validation/evidence/`. Validators must not enumerate ambient environment variables or persist repository-external secrets.
 
 ## Reporting
 

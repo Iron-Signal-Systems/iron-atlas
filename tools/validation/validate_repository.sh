@@ -25,18 +25,44 @@ required=(
   docs/architecture/CHANGE-MANAGEMENT-AND-TWO-PERSON-CONTROL.md
   docs/architecture/POSTGRESQL-MIGRATION-AND-OWNERSHIP-MODEL.md
   docs/architecture/POSTGRESQL-DATABASE-SECURITY-BOUNDARY.md
+  docs/architecture/GO-POSTGRESQL-RUNTIME-AND-IDENTITY-CONTEXT.md
+  docs/architecture/PORTABLE-VALIDATION-AND-CANONICAL-REPOSITORY-ACCEPTANCE.md
+  docs/decisions/ADR-0004-PGX-POSTGRESQL-RUNTIME-DRIVER.md
+  docs/decisions/ADR-0005-CANONICAL-REPOSITORY-REPRODUCIBILITY.md
   docs/testing/POSTGRESQL-DISPOSABLE-DATABASE-TESTING.md
-  cmd/atlasd/main.go internal/change/change.go integrations/zabbix/sender.go
+  docs/testing/GO-POSTGRESQL-RUNTIME-INTEGRATION-TESTING.md
+  docs/operations/CANONICAL-CLEAN-CLONE-VALIDATION.md
+  validation/toolchain-requirements.json
+  validation/evidence/README.md
+  cmd/atlasd/main.go internal/change/change.go
+  internal/database/postgresql/pool.go
+  internal/change/postgresql/service.go
+  internal/health/health.go
+  integrations/zabbix/sender.go
   sql/schema/manifests/atlas.manifest
   sql/bootstrap/production-role-contract.sql
   tools/database/apply_migrations.sh
+  tools/validation/validate_go_postgresql_runtime.py
+  tools/validation/validate_portable_acceptance.py
+  tools/validation/validate_committed_evidence.py
+  tools/validation/validate_toolchain.py
+  tools/validation/record_validation_evidence.sh
+  tools/validation/verify_canonical_clone.sh
+  tools/validation/lib/isolated_gate_revalidation.sh
+  tools/validation/phase-gates/validate_phase1_step2.sh
+  test-framework/phase-gates/test_isolated_gate_revalidation.sh
+  test-framework/portability/test_portable_validation.sh
 )
 for file in "${required[@]}"; do check "required file $file" test -f "$file"; done
 
 check "no raw evidence directories tracked" bash -c 'for d in ./raw-evidence ./evidence; do [[ ! -d "$d" ]] || ! find "$d" -type f -print -quit | grep -q .; done'
+check "no committed database secrets" bash -c '! git grep -nEI "postgres(ql)?://[^[:space:]:\"'"'"']+:[^@[:space:]]+@" -- ":(exclude)SOURCE-SHA256SUMS.txt" ":(exclude)FILE-MANIFEST.txt" | grep -v REDACTED'
 check "Markdown links" python3 tools/validation/validate_docs.py
 check "migration contract" python3 tools/validation/validate_migrations.py
 check "database security static contract" python3 tools/validation/validate_sql_static.py
+check "Go PostgreSQL runtime static contract" python3 tools/validation/validate_go_postgresql_runtime.py
+check "portable acceptance static contract" python3 tools/validation/validate_portable_acceptance.py
+check "committed validation evidence" python3 tools/validation/validate_committed_evidence.py
 check "Draw.io XML" python3 -c 'import xml.etree.ElementTree as ET; ET.parse("diagrams/source/curated/architecture/ARCH-001-iron-atlas-context.drawio")'
 check "source SHA-256 records" python3 tools/validation/validate_source_checksums.py
 check "file manifest synchronized" python3 - <<'PY'
@@ -50,6 +76,7 @@ PY
 
 if ! $skip_go; then
   check "Go format" bash -c 'test -z "$(gofmt -l cmd internal modules integrations)"'
+  check "Go module verification" go mod verify
   check "Go vet" go vet ./...
   check "Go tests" go test ./...
 fi

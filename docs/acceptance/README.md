@@ -12,8 +12,11 @@ Acceptance records freeze explicitly tested repository boundaries, evidence, lim
 
 - [Phase 0 acceptance record template](PHASE-0-ACCEPTANCE-RECORD-TEMPLATE.md)
 - [Phase 1 Step 1 acceptance record template](PHASE-1-STEP-1-ACCEPTANCE-RECORD-TEMPLATE.md)
+- [Phase 1 Step 2 acceptance record template](PHASE-1-STEP-2-ACCEPTANCE-RECORD-TEMPLATE.md)
 
 ## Governing Rule
+
+No implementation step may be accepted unless a clean clone from the canonical GitHub repository can execute its applicable validation using only version-controlled project artifacts, declared and verifiable external toolchain requirements, disposable test environments, and explicitly supplied non-repository secrets.
 
 Acceptance does not expand the proven boundary. Historical tags remain immutable; later-discovered record defects are corrected through explicit errata rather than by moving or rewriting an accepted tag.
 

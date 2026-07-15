@@ -2,7 +2,7 @@
 
 ## Status
 
-Normative target direction. The current executable is only a Phase 0 candidate.
+Normative target direction. Phase 1 Step 1 is accepted; the current executable includes a Phase 1 Step 2 PostgreSQL runtime candidate.
 
 ## Layers
 
@@ -45,7 +45,7 @@ The target deployment separates:
 - PostgreSQL: authoritative normalized state and governed records
 - Protected evidence store: encrypted raw evidence by content hash
 
-Phase 0 combines only the UI/API demonstration in one process. This is not the final trust boundary.
+The current candidate still combines the UI/API service in one process. Phase 1 Step 2 adds persistent change workflow through a least-privileged PostgreSQL pool, but it is not the final trust boundary.
 
 ## Non-Negotiable Boundaries
 
