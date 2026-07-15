@@ -1,0 +1,670 @@
+validated declared external toolchain requirements
+all modules verified
+== Iron Atlas Phase 1 Step 2 acceptance validation ==
+PASS: current branch is dev
+PASS: working tree is clean
+PASS: acceptance record exists
+PASS: acceptance index exists
+PASS: implementation commit is a full SHA
+PASS: implementation commit is exact
+PASS: evidence boundary is a full SHA
+PASS: evidence boundary is exact
+PASS: acceptance commit directly follows evidence boundary
+PASS: acceptance commit is contained in current history
+PASS: implementation directly follows accepted Step 1
+PASS: local evidence commit directly follows implementation
+PASS: evidence boundary directly follows local evidence
+f41d932beff01e3faf1aeb73d6386a22c95cdda8
+PASS: accepted predecessor tag exists
+PASS: accepted predecessor tag is unchanged
+PASS: acceptance record contains no placeholders
+PASS: acceptance decision is explicit
+PASS: accepted tag is declared
+PASS: candidate Git archive hash matches acceptance record
+PASS: toolchain requirements hash matches acceptance record
+PASS: local evidence metadata matches
+PASS: canonical evidence metadata matches
+metadata.json: OK
+environment.txt: OK
+validation.log: OK
+summary.txt: OK
+PASS: local evidence checksums pass
+metadata.json: OK
+environment.txt: OK
+validation.log: OK
+summary.txt: OK
+PASS: canonical evidence checksums pass
+PASS: local evidence proves the Step 2 contract
+PASS: canonical evidence proves the Step 2 contract
+PASS: canonical evidence declares clean-clone success
+validated 2 committed validation evidence run(s)
+PASS: committed evidence integrity validator passes
+PASS: portable acceptance invariant is recorded
+PASS: temporary exception preserves operational two-person control
+PASS: root README reflects accepted Step 2 status
+PASS: documentation index reflects accepted Step 2 status
+PASS: roadmap reflects accepted Step 2 status
+PASS: acceptance index links Step 2 record
+PASS: runtime architecture reflects acceptance
+PASS: pgx ADR reflects acceptance
+PASS: runtime testing reflects acceptance
+PASS: portable validation document records accepted application
+PASS: phase-gate index links acceptance validator
+== Iron Atlas Phase 1 Step 2 validation ==
+PASS: current branch is dev
+PASS: working tree is clean
+f41d932beff01e3faf1aeb73d6386a22c95cdda8
+PASS: accepted predecessor tag exists
+PASS: accepted predecessor tag is unchanged
+PASS: accepted predecessor is ancestor
+== Iron Atlas Phase 1 Step 1 acceptance validation ==
+PASS: current branch is dev
+PASS: working tree is clean
+PASS: acceptance record exists
+PASS: acceptance index exists
+PASS: candidate commit is a full SHA
+PASS: candidate commit exists
+PASS: acceptance commit directly follows candidate
+6b24494e1e443eb8175af204e5a2e8ff66b2a2c6
+PASS: accepted predecessor tag exists
+PASS: accepted predecessor tag is unchanged
+PASS: candidate descends from accepted predecessor
+PASS: acceptance record contains no placeholders
+PASS: acceptance decision is explicit
+PASS: accepted tag is declared
+PASS: candidate Git archive hash matches acceptance record
+PASS: temporary development exception preserves operational two-person control
+PASS: root README reflects accepted Phase 1 Step 1 status
+PASS: documentation index reflects accepted Phase 1 Step 1 status
+PASS: roadmap reflects accepted Phase 1 Step 1 status
+PASS: acceptance index links the accepted record
+== Iron Atlas Phase 1 Step 1 validation ==
+PASS: current branch is dev
+PASS: working tree is clean
+6b24494e1e443eb8175af204e5a2e8ff66b2a2c6
+PASS: accepted predecessor tag exists
+PASS: accepted predecessor tag is unchanged
+PASS: accepted predecessor is ancestor
+== Iron Atlas Phase 0 acceptance validation ==
+PASS: current branch is dev
+PASS: working tree is clean
+PASS: acceptance record exists
+PASS: acceptance index exists
+PASS: candidate commit is a full SHA
+PASS: candidate commit exists
+PASS: candidate commit is an ancestor of HEAD
+PASS: acceptance record contains no placeholders
+PASS: acceptance decision is explicit
+PASS: temporary exception does not waive two-person control
+PASS: production authentication remains excluded
+PASS: live SSH collection remains excluded
+PASS: accepted tag is declared
+PASS: root README reflects accepted Phase 0 status
+PASS: documentation index reflects accepted Phase 0 status
+PASS: roadmap reflects accepted Phase 0 status
+== Iron Atlas Phase 0 Step 1 validation ==
+PASS: required file README.md
+PASS: required file SECURITY.md
+PASS: required file docs/README.md
+PASS: required file docs/architecture/TARGET-ARCHITECTURE.md
+PASS: required file docs/architecture/CHANGE-MANAGEMENT-AND-TWO-PERSON-CONTROL.md
+PASS: required file docs/architecture/FIREWALL-CONFIGURATION-SEMANTIC-ANALYSIS.md
+PASS: required file docs/architecture/CISCO-EVIDENCE-COLLECTION-AND-PREVENTIVE-HEALTH.md
+PASS: required file docs/architecture/CISCO-TRUNK-AND-ENDPOINT-ATTRIBUTION.md
+PASS: required file docs/architecture/EXTERNAL-SYSTEM-INDEPENDENT-TELEMETRY.md
+PASS: required file docs/testing/TESTING-AND-ADVERSARIAL-VALIDATION-MODEL.md
+PASS: required file cmd/atlasd/main.go
+PASS: required file internal/change/change.go
+PASS: required file integrations/zabbix/sender.go
+PASS: required file sql/schema/manifests/atlas.manifest
+PASS: no raw evidence directories tracked
+validated Markdown links across 55 files
+PASS: Markdown links
+migration manifest and execution-safety headers validated
+PASS: migration contract
+PASS: Draw.io XML
+PASS: Go format
+PASS: Go vet
+?   	github.com/Iron-Signal-Systems/iron-atlas/cmd/atlasctl	[no test files]
+?   	github.com/Iron-Signal-Systems/iron-atlas/cmd/atlasd	[no test files]
+ok  	github.com/Iron-Signal-Systems/iron-atlas/integrations/zabbix	0.002s
+?   	github.com/Iron-Signal-Systems/iron-atlas/internal/app	[no test files]
+ok  	github.com/Iron-Signal-Systems/iron-atlas/internal/authz	0.001s
+ok  	github.com/Iron-Signal-Systems/iron-atlas/internal/change	0.001s
+?   	github.com/Iron-Signal-Systems/iron-atlas/internal/config	[no test files]
+?   	github.com/Iron-Signal-Systems/iron-atlas/internal/evidence	[no test files]
+ok  	github.com/Iron-Signal-Systems/iron-atlas/internal/httpui	0.003s
+?   	github.com/Iron-Signal-Systems/iron-atlas/internal/ingest	[no test files]
+?   	github.com/Iron-Signal-Systems/iron-atlas/internal/modules	[no test files]
+?   	github.com/Iron-Signal-Systems/iron-atlas/internal/telemetry	[no test files]
+?   	github.com/Iron-Signal-Systems/iron-atlas/modules/firewall/common	[no test files]
+ok  	github.com/Iron-Signal-Systems/iron-atlas/modules/firewall/fortigate	0.002s
+ok  	github.com/Iron-Signal-Systems/iron-atlas/modules/firewall/opnsense	0.001s
+ok  	github.com/Iron-Signal-Systems/iron-atlas/modules/firewall/pfsense	0.001s
+ok  	github.com/Iron-Signal-Systems/iron-atlas/modules/network/cisco/common	0.001s
+ok  	github.com/Iron-Signal-Systems/iron-atlas/modules/network/cisco/trunk	0.002s
+PASS: Go tests
+
+PASS checks: 21
+FAIL checks: 0
+
+== go format check ==
+PASS: go format check
+
+== go vet ==
+PASS: go vet
+
+== go test ==
+?   	github.com/Iron-Signal-Systems/iron-atlas/cmd/atlasctl	[no test files]
+?   	github.com/Iron-Signal-Systems/iron-atlas/cmd/atlasd	[no test files]
+ok  	github.com/Iron-Signal-Systems/iron-atlas/integrations/zabbix	1.010s
+?   	github.com/Iron-Signal-Systems/iron-atlas/internal/app	[no test files]
+ok  	github.com/Iron-Signal-Systems/iron-atlas/internal/authz	1.010s
+ok  	github.com/Iron-Signal-Systems/iron-atlas/internal/change	1.010s
+?   	github.com/Iron-Signal-Systems/iron-atlas/internal/config	[no test files]
+?   	github.com/Iron-Signal-Systems/iron-atlas/internal/evidence	[no test files]
+ok  	github.com/Iron-Signal-Systems/iron-atlas/internal/httpui	1.011s
+?   	github.com/Iron-Signal-Systems/iron-atlas/internal/ingest	[no test files]
+?   	github.com/Iron-Signal-Systems/iron-atlas/internal/modules	[no test files]
+?   	github.com/Iron-Signal-Systems/iron-atlas/internal/telemetry	[no test files]
+?   	github.com/Iron-Signal-Systems/iron-atlas/modules/firewall/common	[no test files]
+ok  	github.com/Iron-Signal-Systems/iron-atlas/modules/firewall/fortigate	1.010s
+ok  	github.com/Iron-Signal-Systems/iron-atlas/modules/firewall/opnsense	1.009s
+ok  	github.com/Iron-Signal-Systems/iron-atlas/modules/firewall/pfsense	1.010s
+ok  	github.com/Iron-Signal-Systems/iron-atlas/modules/network/cisco/common	1.010s
+ok  	github.com/Iron-Signal-Systems/iron-atlas/modules/network/cisco/trunk	1.009s
+PASS: go test
+
+== repository validation ==
+PASS: required file README.md
+PASS: required file SECURITY.md
+PASS: required file docs/README.md
+PASS: required file docs/architecture/TARGET-ARCHITECTURE.md
+PASS: required file docs/architecture/CHANGE-MANAGEMENT-AND-TWO-PERSON-CONTROL.md
+PASS: required file docs/architecture/FIREWALL-CONFIGURATION-SEMANTIC-ANALYSIS.md
+PASS: required file docs/architecture/CISCO-EVIDENCE-COLLECTION-AND-PREVENTIVE-HEALTH.md
+PASS: required file docs/architecture/CISCO-TRUNK-AND-ENDPOINT-ATTRIBUTION.md
+PASS: required file docs/architecture/EXTERNAL-SYSTEM-INDEPENDENT-TELEMETRY.md
+PASS: required file docs/testing/TESTING-AND-ADVERSARIAL-VALIDATION-MODEL.md
+PASS: required file cmd/atlasd/main.go
+PASS: required file internal/change/change.go
+PASS: required file integrations/zabbix/sender.go
+PASS: required file sql/schema/manifests/atlas.manifest
+PASS: no raw evidence directories tracked
+validated Markdown links across 55 files
+PASS: Markdown links
+migration manifest and execution-safety headers validated
+PASS: migration contract
+PASS: Draw.io XML
+
+PASS checks: 18
+FAIL checks: 0
+PASS: repository validation
+PASS checks: 4
+FAIL checks: 0
+Correctness result: PASS
+Resource observation: NOT_RECORDED
+Performance thresholds: NOT_EVALUATED
+
+Phase 0 Step 1 implementation candidate validation PASSED.
+This proves only the repository, documentation, current Go tests, and static contracts covered by this gate.
+It does not prove production authentication, PostgreSQL persistence, live collection, complete vendor analysis, or production readiness.
+PASS: Phase 0 implementation gate still passes
+
+PASS checks: 17
+FAIL checks: 0
+
+Phase 0 acceptance validation PASSED.
+
+This accepts only the documented non-production development baseline.
+It does not authorize production deployment, live collection, or an
+operational infrastructure change.
+PASS: accepted Phase 0 predecessor revalidates in isolation
+PASS: required file README.md
+PASS: required file SECURITY.md
+PASS: required file docs/README.md
+PASS: required file docs/architecture/TARGET-ARCHITECTURE.md
+PASS: required file docs/architecture/CHANGE-MANAGEMENT-AND-TWO-PERSON-CONTROL.md
+PASS: required file docs/architecture/POSTGRESQL-MIGRATION-AND-OWNERSHIP-MODEL.md
+PASS: required file docs/architecture/POSTGRESQL-DATABASE-SECURITY-BOUNDARY.md
+PASS: required file docs/testing/POSTGRESQL-DISPOSABLE-DATABASE-TESTING.md
+PASS: required file cmd/atlasd/main.go
+PASS: required file internal/change/change.go
+PASS: required file integrations/zabbix/sender.go
+PASS: required file sql/schema/manifests/atlas.manifest
+PASS: required file sql/bootstrap/production-role-contract.sql
+PASS: required file tools/database/apply_migrations.sh
+PASS: no raw evidence directories tracked
+validated Markdown links across 63 files
+PASS: Markdown links
+validated 6 ordered migrations and production role contract
+PASS: migration contract
+validated 6 database security static contracts
+PASS: database security static contract
+PASS: Draw.io XML
+source SHA-256 records validated
+PASS: source SHA-256 records
+PASS: file manifest synchronized
+PASS: Go format
+PASS: Go vet
+?   	github.com/Iron-Signal-Systems/iron-atlas/cmd/atlasctl	[no test files]
+?   	github.com/Iron-Signal-Systems/iron-atlas/cmd/atlasd	[no test files]
+ok  	github.com/Iron-Signal-Systems/iron-atlas/integrations/zabbix	0.002s
+?   	github.com/Iron-Signal-Systems/iron-atlas/internal/app	[no test files]
+ok  	github.com/Iron-Signal-Systems/iron-atlas/internal/authz	0.001s
+ok  	github.com/Iron-Signal-Systems/iron-atlas/internal/change	0.002s
+?   	github.com/Iron-Signal-Systems/iron-atlas/internal/config	[no test files]
+?   	github.com/Iron-Signal-Systems/iron-atlas/internal/evidence	[no test files]
+ok  	github.com/Iron-Signal-Systems/iron-atlas/internal/httpui	0.003s
+?   	github.com/Iron-Signal-Systems/iron-atlas/internal/ingest	[no test files]
+?   	github.com/Iron-Signal-Systems/iron-atlas/internal/modules	[no test files]
+?   	github.com/Iron-Signal-Systems/iron-atlas/internal/telemetry	[no test files]
+?   	github.com/Iron-Signal-Systems/iron-atlas/modules/firewall/common	[no test files]
+ok  	github.com/Iron-Signal-Systems/iron-atlas/modules/firewall/fortigate	0.001s
+ok  	github.com/Iron-Signal-Systems/iron-atlas/modules/firewall/opnsense	0.002s
+ok  	github.com/Iron-Signal-Systems/iron-atlas/modules/firewall/pfsense	0.002s
+ok  	github.com/Iron-Signal-Systems/iron-atlas/modules/network/cisco/common	0.001s
+ok  	github.com/Iron-Signal-Systems/iron-atlas/modules/network/cisco/trunk	0.002s
+PASS: Go tests
+
+PASS checks: 24
+FAIL checks: 0
+PASS: repository validation
+
+== go format check ==
+PASS: go format check
+
+== go vet ==
+PASS: go vet
+
+== go test ==
+?   	github.com/Iron-Signal-Systems/iron-atlas/cmd/atlasctl	[no test files]
+?   	github.com/Iron-Signal-Systems/iron-atlas/cmd/atlasd	[no test files]
+ok  	github.com/Iron-Signal-Systems/iron-atlas/integrations/zabbix	1.012s
+?   	github.com/Iron-Signal-Systems/iron-atlas/internal/app	[no test files]
+ok  	github.com/Iron-Signal-Systems/iron-atlas/internal/authz	1.012s
+ok  	github.com/Iron-Signal-Systems/iron-atlas/internal/change	1.011s
+?   	github.com/Iron-Signal-Systems/iron-atlas/internal/config	[no test files]
+?   	github.com/Iron-Signal-Systems/iron-atlas/internal/evidence	[no test files]
+ok  	github.com/Iron-Signal-Systems/iron-atlas/internal/httpui	1.014s
+?   	github.com/Iron-Signal-Systems/iron-atlas/internal/ingest	[no test files]
+?   	github.com/Iron-Signal-Systems/iron-atlas/internal/modules	[no test files]
+?   	github.com/Iron-Signal-Systems/iron-atlas/internal/telemetry	[no test files]
+?   	github.com/Iron-Signal-Systems/iron-atlas/modules/firewall/common	[no test files]
+ok  	github.com/Iron-Signal-Systems/iron-atlas/modules/firewall/fortigate	1.014s
+ok  	github.com/Iron-Signal-Systems/iron-atlas/modules/firewall/opnsense	1.013s
+ok  	github.com/Iron-Signal-Systems/iron-atlas/modules/firewall/pfsense	1.013s
+ok  	github.com/Iron-Signal-Systems/iron-atlas/modules/network/cisco/common	1.013s
+ok  	github.com/Iron-Signal-Systems/iron-atlas/modules/network/cisco/trunk	1.013s
+PASS: go test
+
+== migration static validation ==
+validated 6 ordered migrations and production role contract
+PASS: migration static validation
+
+== database security static validation ==
+validated 6 database security static contracts
+PASS: database security static validation
+
+== disposable PostgreSQL tests ==
+PASS: six migrations recorded
+PASS: internal actor helper is not directly executable by application role
+PASS: governed change API resolves actor context unambiguously
+PASS: requester self-approval rejected
+PASS: independent approval changes status
+PASS: unauthorized approval rejected
+PASS: application direct table write rejected
+PASS: two independent concurrent approvals accepted
+PASS: duplicate concurrent approval suppressed
+PASS: append-only approval action update rejected
+PASS: append-only status history delete rejected
+Database correctness result: PASS
+PostgreSQL version: psql (PostgreSQL) 18.4
+Disposable database bytes: 8697535
+Database test elapsed milliseconds: 811
+Resource observation: RECORDED
+Performance thresholds: NOT_EVALUATED
+PASS: disposable PostgreSQL tests
+
+== repository validation ==
+PASS: required file README.md
+PASS: required file SECURITY.md
+PASS: required file docs/README.md
+PASS: required file docs/architecture/TARGET-ARCHITECTURE.md
+PASS: required file docs/architecture/CHANGE-MANAGEMENT-AND-TWO-PERSON-CONTROL.md
+PASS: required file docs/architecture/POSTGRESQL-MIGRATION-AND-OWNERSHIP-MODEL.md
+PASS: required file docs/architecture/POSTGRESQL-DATABASE-SECURITY-BOUNDARY.md
+PASS: required file docs/testing/POSTGRESQL-DISPOSABLE-DATABASE-TESTING.md
+PASS: required file cmd/atlasd/main.go
+PASS: required file internal/change/change.go
+PASS: required file integrations/zabbix/sender.go
+PASS: required file sql/schema/manifests/atlas.manifest
+PASS: required file sql/bootstrap/production-role-contract.sql
+PASS: required file tools/database/apply_migrations.sh
+PASS: no raw evidence directories tracked
+validated Markdown links across 63 files
+PASS: Markdown links
+validated 6 ordered migrations and production role contract
+PASS: migration contract
+validated 6 database security static contracts
+PASS: database security static contract
+PASS: Draw.io XML
+source SHA-256 records validated
+PASS: source SHA-256 records
+PASS: file manifest synchronized
+
+PASS checks: 21
+FAIL checks: 0
+PASS: repository validation
+PASS checks: 7
+FAIL checks: 0
+Correctness result: PASS
+Resource observation: RECORDED_BY_DATABASE_TEST
+Performance thresholds: NOT_EVALUATED
+PASS: complete test framework
+
+PASS checks: 8
+FAIL checks: 0
+
+Phase 1 Step 1 validation PASSED.
+
+This proves the documented migration, ownership, governed-identity,
+approval, append-only history, and disposable PostgreSQL test boundary.
+It does not prove production authentication, application persistence,
+live collection, backup recovery, high availability, or production readiness.
+PASS: Phase 1 Step 1 implementation gate still passes
+
+PASS checks: 20
+FAIL checks: 0
+
+Phase 1 Step 1 acceptance validation PASSED.
+
+This accepts only the documented non-production PostgreSQL migration,
+ownership, governed-identity, approval, append-only history, and disposable
+validation boundary. It does not authorize production deployment, production
+credentials, live collection, or operational infrastructure changes.
+PASS: accepted Phase 1 Step 1 predecessor revalidates in isolation
+validated portable validation and canonical-repository acceptance contract
+PASS: portable canonical-repository validation contract
+PASS: required file README.md
+PASS: required file SECURITY.md
+PASS: required file docs/README.md
+PASS: required file docs/architecture/TARGET-ARCHITECTURE.md
+PASS: required file docs/architecture/CHANGE-MANAGEMENT-AND-TWO-PERSON-CONTROL.md
+PASS: required file docs/architecture/POSTGRESQL-MIGRATION-AND-OWNERSHIP-MODEL.md
+PASS: required file docs/architecture/POSTGRESQL-DATABASE-SECURITY-BOUNDARY.md
+PASS: required file docs/architecture/GO-POSTGRESQL-RUNTIME-AND-IDENTITY-CONTEXT.md
+PASS: required file docs/architecture/PORTABLE-VALIDATION-AND-CANONICAL-REPOSITORY-ACCEPTANCE.md
+PASS: required file docs/decisions/ADR-0004-PGX-POSTGRESQL-RUNTIME-DRIVER.md
+PASS: required file docs/decisions/ADR-0005-CANONICAL-REPOSITORY-REPRODUCIBILITY.md
+PASS: required file docs/testing/POSTGRESQL-DISPOSABLE-DATABASE-TESTING.md
+PASS: required file docs/testing/GO-POSTGRESQL-RUNTIME-INTEGRATION-TESTING.md
+PASS: required file docs/operations/CANONICAL-CLEAN-CLONE-VALIDATION.md
+PASS: required file validation/toolchain-requirements.json
+PASS: required file validation/evidence/README.md
+PASS: required file cmd/atlasd/main.go
+PASS: required file internal/change/change.go
+PASS: required file internal/database/postgresql/pool.go
+PASS: required file internal/change/postgresql/service.go
+PASS: required file internal/health/health.go
+PASS: required file integrations/zabbix/sender.go
+PASS: required file sql/schema/manifests/atlas.manifest
+PASS: required file sql/bootstrap/production-role-contract.sql
+PASS: required file tools/database/apply_migrations.sh
+PASS: required file tools/validation/validate_go_postgresql_runtime.py
+PASS: required file tools/validation/validate_portable_acceptance.py
+PASS: required file tools/validation/validate_committed_evidence.py
+PASS: required file tools/validation/validate_toolchain.py
+PASS: required file tools/validation/record_validation_evidence.sh
+PASS: required file tools/validation/verify_canonical_clone.sh
+PASS: required file tools/validation/lib/isolated_gate_revalidation.sh
+PASS: required file tools/validation/phase-gates/validate_phase1_step2.sh
+PASS: required file test-framework/phase-gates/test_isolated_gate_revalidation.sh
+PASS: required file test-framework/portability/test_portable_validation.sh
+PASS: no raw evidence directories tracked
+PASS: no committed database secrets
+validated Markdown links across 73 files
+PASS: Markdown links
+validated 6 ordered migrations and production role contract
+PASS: migration contract
+validated 6 database security static contracts
+PASS: database security static contract
+validated Go PostgreSQL runtime, transaction-local identity, and integration-test contracts
+PASS: Go PostgreSQL runtime static contract
+validated portable validation and canonical-repository acceptance contract
+PASS: portable acceptance static contract
+validated 2 committed validation evidence run(s)
+PASS: committed validation evidence
+PASS: Draw.io XML
+source SHA-256 records validated
+PASS: source SHA-256 records
+PASS: file manifest synchronized
+PASS: Go format
+all modules verified
+PASS: Go module verification
+PASS: Go vet
+?   	github.com/Iron-Signal-Systems/iron-atlas/cmd/atlasctl	[no test files]
+?   	github.com/Iron-Signal-Systems/iron-atlas/cmd/atlasd	[no test files]
+ok  	github.com/Iron-Signal-Systems/iron-atlas/integrations/zabbix	0.002s
+ok  	github.com/Iron-Signal-Systems/iron-atlas/internal/app	0.002s
+ok  	github.com/Iron-Signal-Systems/iron-atlas/internal/authz	0.002s
+ok  	github.com/Iron-Signal-Systems/iron-atlas/internal/change	0.002s
+?   	github.com/Iron-Signal-Systems/iron-atlas/internal/change/postgresql	[no test files]
+?   	github.com/Iron-Signal-Systems/iron-atlas/internal/config	[no test files]
+ok  	github.com/Iron-Signal-Systems/iron-atlas/internal/database/postgresql	0.003s
+?   	github.com/Iron-Signal-Systems/iron-atlas/internal/evidence	[no test files]
+?   	github.com/Iron-Signal-Systems/iron-atlas/internal/health	[no test files]
+ok  	github.com/Iron-Signal-Systems/iron-atlas/internal/httpui	0.004s
+?   	github.com/Iron-Signal-Systems/iron-atlas/internal/ingest	[no test files]
+?   	github.com/Iron-Signal-Systems/iron-atlas/internal/modules	[no test files]
+?   	github.com/Iron-Signal-Systems/iron-atlas/internal/telemetry	[no test files]
+?   	github.com/Iron-Signal-Systems/iron-atlas/modules/firewall/common	[no test files]
+ok  	github.com/Iron-Signal-Systems/iron-atlas/modules/firewall/fortigate	0.002s
+ok  	github.com/Iron-Signal-Systems/iron-atlas/modules/firewall/opnsense	0.003s
+ok  	github.com/Iron-Signal-Systems/iron-atlas/modules/firewall/pfsense	0.002s
+ok  	github.com/Iron-Signal-Systems/iron-atlas/modules/network/cisco/common	0.002s
+ok  	github.com/Iron-Signal-Systems/iron-atlas/modules/network/cisco/trunk	0.003s
+PASS: Go tests
+
+PASS checks: 50
+FAIL checks: 0
+PASS: repository validation
+
+== go format check ==
+PASS: go format check
+
+== go module verification ==
+all modules verified
+PASS: go module verification
+
+== go vet ==
+PASS: go vet
+
+== go test ==
+?   	github.com/Iron-Signal-Systems/iron-atlas/cmd/atlasctl	[no test files]
+?   	github.com/Iron-Signal-Systems/iron-atlas/cmd/atlasd	[no test files]
+ok  	github.com/Iron-Signal-Systems/iron-atlas/integrations/zabbix	1.010s
+ok  	github.com/Iron-Signal-Systems/iron-atlas/internal/app	1.016s
+ok  	github.com/Iron-Signal-Systems/iron-atlas/internal/authz	1.015s
+ok  	github.com/Iron-Signal-Systems/iron-atlas/internal/change	1.015s
+?   	github.com/Iron-Signal-Systems/iron-atlas/internal/change/postgresql	[no test files]
+?   	github.com/Iron-Signal-Systems/iron-atlas/internal/config	[no test files]
+ok  	github.com/Iron-Signal-Systems/iron-atlas/internal/database/postgresql	1.015s
+?   	github.com/Iron-Signal-Systems/iron-atlas/internal/evidence	[no test files]
+?   	github.com/Iron-Signal-Systems/iron-atlas/internal/health	[no test files]
+ok  	github.com/Iron-Signal-Systems/iron-atlas/internal/httpui	1.015s
+?   	github.com/Iron-Signal-Systems/iron-atlas/internal/ingest	[no test files]
+?   	github.com/Iron-Signal-Systems/iron-atlas/internal/modules	[no test files]
+?   	github.com/Iron-Signal-Systems/iron-atlas/internal/telemetry	[no test files]
+?   	github.com/Iron-Signal-Systems/iron-atlas/modules/firewall/common	[no test files]
+ok  	github.com/Iron-Signal-Systems/iron-atlas/modules/firewall/fortigate	1.015s
+ok  	github.com/Iron-Signal-Systems/iron-atlas/modules/firewall/opnsense	1.015s
+ok  	github.com/Iron-Signal-Systems/iron-atlas/modules/firewall/pfsense	1.015s
+ok  	github.com/Iron-Signal-Systems/iron-atlas/modules/network/cisco/common	1.015s
+ok  	github.com/Iron-Signal-Systems/iron-atlas/modules/network/cisco/trunk	1.015s
+PASS: go test
+
+== migration static validation ==
+validated 6 ordered migrations and production role contract
+PASS: migration static validation
+
+== database security static validation ==
+validated 6 database security static contracts
+PASS: database security static validation
+
+== Go PostgreSQL runtime static validation ==
+validated Go PostgreSQL runtime, transaction-local identity, and integration-test contracts
+PASS: Go PostgreSQL runtime static validation
+
+== phase-gate exit propagation ==
+PASS: successful isolated predecessor validator returns success
+PASS: failing isolated predecessor validator returns failure
+isolated validator is missing or not executable: tools/validation/phase-gates/missing.sh
+PASS: missing isolated predecessor validator returns failure
+
+PASS checks: 3
+FAIL checks: 0
+PASS: phase-gate exit propagation
+
+== external toolchain validation ==
+validated declared external toolchain requirements
+PASS: external toolchain validation
+
+== portable acceptance static validation ==
+validated portable validation and canonical-repository acceptance contract
+PASS: portable acceptance static validation
+
+== portable validation regression ==
+validated portable validation and canonical-repository acceptance contract
+PASS: portable acceptance static contract
+PASS: portable validation shell syntax
+PASS: validation transcript credential redaction
+validated 1 committed validation evidence run(s)
+PASS: committed evidence integrity validation
+PASS checks: 4
+FAIL checks: 0
+PASS: portable validation regression
+
+== committed validation evidence ==
+validated 2 committed validation evidence run(s)
+PASS: committed validation evidence
+
+== disposable PostgreSQL tests ==
+PASS: six migrations recorded
+PASS: internal actor helper is not directly executable by application role
+PASS: governed change API resolves actor context unambiguously
+PASS: requester self-approval rejected
+PASS: independent approval changes status
+PASS: unauthorized approval rejected
+PASS: application direct table write rejected
+PASS: two independent concurrent approvals accepted
+PASS: duplicate concurrent approval suppressed
+PASS: append-only approval action update rejected
+PASS: append-only status history delete rejected
+Database correctness result: PASS
+ok  	github.com/Iron-Signal-Systems/iron-atlas/internal/database/postgresql	1.213s
+ok  	github.com/Iron-Signal-Systems/iron-atlas/internal/change/postgresql	1.026s
+PASS: Go PostgreSQL runtime integration tests
+PostgreSQL version: psql (PostgreSQL) 18.4
+Disposable database bytes: 8697535
+Database test elapsed milliseconds: 2344
+Sequential pooled identity checks: 500
+Concurrent pooled identity operations: 600
+Resource observation: RECORDED
+Performance thresholds: NOT_EVALUATED
+PASS: disposable PostgreSQL tests
+
+== repository validation ==
+PASS: required file README.md
+PASS: required file SECURITY.md
+PASS: required file docs/README.md
+PASS: required file docs/architecture/TARGET-ARCHITECTURE.md
+PASS: required file docs/architecture/CHANGE-MANAGEMENT-AND-TWO-PERSON-CONTROL.md
+PASS: required file docs/architecture/POSTGRESQL-MIGRATION-AND-OWNERSHIP-MODEL.md
+PASS: required file docs/architecture/POSTGRESQL-DATABASE-SECURITY-BOUNDARY.md
+PASS: required file docs/architecture/GO-POSTGRESQL-RUNTIME-AND-IDENTITY-CONTEXT.md
+PASS: required file docs/architecture/PORTABLE-VALIDATION-AND-CANONICAL-REPOSITORY-ACCEPTANCE.md
+PASS: required file docs/decisions/ADR-0004-PGX-POSTGRESQL-RUNTIME-DRIVER.md
+PASS: required file docs/decisions/ADR-0005-CANONICAL-REPOSITORY-REPRODUCIBILITY.md
+PASS: required file docs/testing/POSTGRESQL-DISPOSABLE-DATABASE-TESTING.md
+PASS: required file docs/testing/GO-POSTGRESQL-RUNTIME-INTEGRATION-TESTING.md
+PASS: required file docs/operations/CANONICAL-CLEAN-CLONE-VALIDATION.md
+PASS: required file validation/toolchain-requirements.json
+PASS: required file validation/evidence/README.md
+PASS: required file cmd/atlasd/main.go
+PASS: required file internal/change/change.go
+PASS: required file internal/database/postgresql/pool.go
+PASS: required file internal/change/postgresql/service.go
+PASS: required file internal/health/health.go
+PASS: required file integrations/zabbix/sender.go
+PASS: required file sql/schema/manifests/atlas.manifest
+PASS: required file sql/bootstrap/production-role-contract.sql
+PASS: required file tools/database/apply_migrations.sh
+PASS: required file tools/validation/validate_go_postgresql_runtime.py
+PASS: required file tools/validation/validate_portable_acceptance.py
+PASS: required file tools/validation/validate_committed_evidence.py
+PASS: required file tools/validation/validate_toolchain.py
+PASS: required file tools/validation/record_validation_evidence.sh
+PASS: required file tools/validation/verify_canonical_clone.sh
+PASS: required file tools/validation/lib/isolated_gate_revalidation.sh
+PASS: required file tools/validation/phase-gates/validate_phase1_step2.sh
+PASS: required file test-framework/phase-gates/test_isolated_gate_revalidation.sh
+PASS: required file test-framework/portability/test_portable_validation.sh
+PASS: no raw evidence directories tracked
+PASS: no committed database secrets
+validated Markdown links across 73 files
+PASS: Markdown links
+validated 6 ordered migrations and production role contract
+PASS: migration contract
+validated 6 database security static contracts
+PASS: database security static contract
+validated Go PostgreSQL runtime, transaction-local identity, and integration-test contracts
+PASS: Go PostgreSQL runtime static contract
+validated portable validation and canonical-repository acceptance contract
+PASS: portable acceptance static contract
+validated 2 committed validation evidence run(s)
+PASS: committed validation evidence
+PASS: Draw.io XML
+source SHA-256 records validated
+PASS: source SHA-256 records
+PASS: file manifest synchronized
+
+PASS checks: 46
+FAIL checks: 0
+PASS: repository validation
+PASS checks: 14
+FAIL checks: 0
+Correctness result: PASS
+Resource observation: RECORDED_BY_DATABASE_TEST
+Performance thresholds: NOT_EVALUATED
+PASS: complete test framework
+
+PASS checks: 9
+FAIL checks: 0
+
+Phase 1 Step 2 validation PASSED.
+
+This proves the documented Go PostgreSQL adapter, bounded pool,
+transaction-local identity context, persistence, rollback, readiness,
+disposable integration-test boundary, and repository-portable validation contract. It does not prove production
+authentication, credential delivery, TLS provisioning, backup recovery,
+high availability, live collection, or production readiness. Canonical clean-clone acceptance is a separate post-push requirement.
+PASS: Phase 1 Step 2 implementation gate still passes
+
+PASS checks: 40
+FAIL checks: 0
+
+Phase 1 Step 2 acceptance validation PASSED.
+
+This accepts only the documented non-production Go PostgreSQL adapter,
+bounded pool, transaction-local identity context, governed persistence,
+rollback, readiness, disposable integration-test, and repository-portable
+validation boundary. It does not authorize production authentication,
+credentials, TLS deployment, live collection, backup recovery, high
+availability, or production use.
+
+Canonical clean-clone validation PASSED.
+Repository: https://github.com/Iron-Signal-Systems/iron-atlas.git
+Branch: dev
+Commit: 8070aa37098925929092ddeb7538ef6d10cfc239
+Validator: ./tools/validation/phase-gates/validate_phase1_step2_acceptance.sh
