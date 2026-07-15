@@ -1,0 +1,17 @@
+name: Network change
+description: Track work associated with a permanent governed change record
+title: "[CHANGE] "
+labels: [change]
+body:
+  - type: input
+    id: change_id
+    attributes: {label: Change record ID, placeholder: CHG-YYYY-NNNN}
+    validations: {required: true}
+  - type: textarea
+    id: purpose
+    attributes: {label: Purpose and expected result}
+    validations: {required: true}
+  - type: textarea
+    id: validation
+    attributes: {label: Validation and rollback summary}
+    validations: {required: true}

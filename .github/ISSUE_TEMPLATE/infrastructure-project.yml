@@ -1,0 +1,16 @@
+name: Infrastructure project
+description: Propose a governed Iron Atlas infrastructure project
+title: "[PROJECT] "
+labels: [project]
+body:
+  - type: textarea
+    id: purpose
+    attributes: {label: Purpose}
+    validations: {required: true}
+  - type: textarea
+    id: scope
+    attributes: {label: Scope and exclusions}
+    validations: {required: true}
+  - type: textarea
+    id: risks
+    attributes: {label: Risks and dependencies}
