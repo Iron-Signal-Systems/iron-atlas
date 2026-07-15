@@ -5,10 +5,12 @@
 .gitignore
 CHANGELOG.md
 CONTRIBUTING.md
+FILE-MANIFEST.txt
 LICENSE
 Makefile
 README.md
 SECURITY.md
+SOURCE-SHA256SUMS.txt
 changes/README.md
 changes/completed/.gitkeep
 changes/emergency/.gitkeep
@@ -112,8 +114,6 @@ sql/schema/migrations/000_initial_atlas_schema.sql
 test-framework/README.md
 test-framework/run_all.sh
 test-framework/test-results/.gitkeep
-test-framework/test-results/latest-summary.txt
-test-framework/test-results/latest.log
 tools/validation/phase-gates/README.md
 tools/validation/phase-gates/validate_phase0_step1.sh
 tools/validation/validate_docs.py
