@@ -33,6 +33,7 @@
 - [Portable validation and canonical repository acceptance](architecture/PORTABLE-VALIDATION-AND-CANONICAL-REPOSITORY-ACCEPTANCE.md)
 - [ADR-0005 — canonical repository reproducibility](decisions/ADR-0005-CANONICAL-REPOSITORY-REPRODUCIBILITY.md)
 - [Requirements catalog](requirements/SYSTEM-REQUIREMENTS.md)
+- [Atlas primary-focus execution plan](roadmap/ATLAS-PRIMARY-FOCUS-EXECUTION-PLAN.md)
 - [Implementation roadmap](roadmap/IMPLEMENTATION-ROADMAP.md)
 - [Testing model](testing/TESTING-AND-ADVERSARIAL-VALIDATION-MODEL.md)
 - [Disposable PostgreSQL testing](testing/POSTGRESQL-DISPOSABLE-DATABASE-TESTING.md)

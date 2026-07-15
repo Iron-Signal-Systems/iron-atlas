@@ -1,5 +1,15 @@
 # Implementation Roadmap
 
+## Current Primary Focus
+
+Iron Atlas is the primary active product-development effort.
+
+The current execution objective is to move the accepted Phase 1 Step 2 non-production boundary toward a bounded, read-only infrastructure-assessment and documentation product. Work must continue in the accepted phase order below and must preserve predecessor validation.
+
+Execution priority, capacity assumptions, representative-environment boundaries, quarterly milestones, focus controls, and first-product deferrals are governed by the [Atlas Primary-Focus Execution Plan](ATLAS-PRIMARY-FOCUS-EXECUTION-PLAN.md).
+
+The next formal work remains the later Phase 1 production foundation. Live infrastructure collection is not accepted until the applicable identity, credential, TLS, recovery, and resource-governance boundaries are complete.
+
 ## Phase 0 — Repository and Executable Baseline
 
 **Status:** Accepted as a non-production development baseline under tag `phase-0-repository-and-executable-baseline-complete-v1`.
