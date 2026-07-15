@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+### Accepted
+
+- Accepted the Phase 1 Step 1 PostgreSQL governance foundation as a non-production development boundary under annotated tag `phase-1-step-1-postgresql-governance-foundation-complete-v1`.
+- Recorded the exact candidate commit, deterministic Git archive hash, validation evidence, limitations, security assumptions, temporary single-maintainer development exception, and exact Phase 1 Step 2 work.
+
 ### Fixed
 
 - Removed ambiguous PL/pgSQL actor variable and column resolution from the governed change and approval functions.

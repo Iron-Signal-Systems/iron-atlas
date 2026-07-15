@@ -2,7 +2,7 @@
 
 > Owner: Iron Signal Systems
 >
-> Status: Phase 0 accepted; Phase 1 Step 1 PostgreSQL foundation implementation candidate; not ready for production use
+> Status: Phase 1 Step 1 PostgreSQL governance foundation accepted as a non-production development boundary; later Phase 1 work is not accepted; not ready for production use
 
 ## Start Here
 

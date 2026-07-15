@@ -16,7 +16,7 @@ Acceptance does not claim production authentication, persistence, collection, or
 
 ## Phase 1 — PostgreSQL Foundation and Governed Identity
 
-**Status:** Step 1 implementation candidate.
+**Status:** Step 1 accepted under tag `phase-1-step-1-postgresql-governance-foundation-complete-v1`; later Phase 1 work is not accepted.
 
 ### Step 1 — Migration and Database Governance Foundation
 

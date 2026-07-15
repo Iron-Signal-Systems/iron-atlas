@@ -4,7 +4,7 @@
 >
 > Built on purpose. Backed by discipline. Engineered to endure.
 >
-> Development status: Phase 0 accepted as a non-production development baseline; Phase 1 Step 1 PostgreSQL foundation implementation candidate; not ready for production use
+> Development status: Phase 1 Step 1 PostgreSQL governance foundation accepted as a non-production development boundary; later Phase 1 work is not accepted; not ready for production use
 
 Iron Atlas is an authoritative, version-controlled system for infrastructure documentation, diagrams, inventory, automated discovery, project tracking, change management, validation, preventive health analysis, and formal acceptance.
 
@@ -91,6 +91,7 @@ Start with:
 - [Phased implementation roadmap](docs/roadmap/IMPLEMENTATION-ROADMAP.md)
 - [Phase 0 accepted baseline](docs/acceptance/PHASE-0-STEP-1-ACCEPTANCE-RECORD.md)
 - [Phase 0 acceptance errata](docs/acceptance/PHASE-0-STEP-1-ACCEPTANCE-ERRATA.md)
+- [Phase 1 Step 1 accepted PostgreSQL governance foundation](docs/acceptance/PHASE-1-STEP-1-ACCEPTANCE-RECORD.md)
 - [PostgreSQL migration and ownership model](docs/architecture/POSTGRESQL-MIGRATION-AND-OWNERSHIP-MODEL.md)
 - [PostgreSQL database security boundary](docs/architecture/POSTGRESQL-DATABASE-SECURITY-BOUNDARY.md)
 
