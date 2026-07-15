@@ -177,6 +177,11 @@ tools/validation/validate_toolchain.py
 tools/validation/verify_canonical_clone.sh
 validation/README.md
 validation/evidence/README.md
+validation/evidence/phase-1-step-2/canonical-clean-clone/20260715T154723Z-777019f9a55b/environment.txt
+validation/evidence/phase-1-step-2/canonical-clean-clone/20260715T154723Z-777019f9a55b/metadata.json
+validation/evidence/phase-1-step-2/canonical-clean-clone/20260715T154723Z-777019f9a55b/sha256sums.txt
+validation/evidence/phase-1-step-2/canonical-clean-clone/20260715T154723Z-777019f9a55b/summary.txt
+validation/evidence/phase-1-step-2/canonical-clean-clone/20260715T154723Z-777019f9a55b/validation.log
 validation/evidence/phase-1-step-2/local-phase-gate/20260715T154526Z-a56de3f9a985/environment.txt
 validation/evidence/phase-1-step-2/local-phase-gate/20260715T154526Z-a56de3f9a985/metadata.json
 validation/evidence/phase-1-step-2/local-phase-gate/20260715T154526Z-a56de3f9a985/sha256sums.txt

@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "boundary": "phase-1-step-2/canonical-clean-clone",
+  "repository": "https://github.com/Iron-Signal-Systems/iron-atlas.git",
+  "commit": "777019f9a55b5cb2988a13496005a40c9789a47a",
+  "branch": "dev",
+  "timestamp_utc": "2026-07-15T15:47:23Z",
+  "exit_code": 0,
+  "source": "canonical-clean-clone",
+  "command": [
+    "./tools/validation/verify_canonical_clone.sh",
+    "777019f9a55b5cb2988a13496005a40c9789a47a",
+    "./tools/validation/phase-gates/validate_phase1_step2.sh"
+  ]
+}
