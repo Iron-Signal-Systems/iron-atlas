@@ -2,7 +2,7 @@
 
 > Owner: Iron Signal Systems
 >
-> Status: Phase 0 implementation candidate; not ready for production use
+> Status: Phase 0 accepted as a non-production development baseline; Phase 1 not yet accepted
 
 ## Start Here
 
@@ -28,6 +28,7 @@
 - [Verification, validation, and acceptance](architecture/VERIFICATION-VALIDATION-AND-ACCEPTANCE.md)
 - [Requirements catalog](requirements/SYSTEM-REQUIREMENTS.md)
 - [Implementation roadmap](roadmap/IMPLEMENTATION-ROADMAP.md)
+- [Acceptance records](acceptance/README.md)
 - [Testing model](testing/TESTING-AND-ADVERSARIAL-VALIDATION-MODEL.md)
 - [Repository creation and first push](operations/REPOSITORY-CREATION-AND-FIRST-PUSH.md)
 

@@ -33,6 +33,8 @@ diagrams/source/curated/architecture/ARCH-001-iron-atlas-context.md
 diagrams/source/generated/.gitkeep
 docs/README.md
 docs/acceptance/PHASE-0-ACCEPTANCE-RECORD-TEMPLATE.md
+docs/acceptance/PHASE-0-STEP-1-ACCEPTANCE-RECORD.md
+docs/acceptance/README.md
 docs/architecture/CHANGE-MANAGEMENT-AND-TWO-PERSON-CONTROL.md
 docs/architecture/CISCO-COLLECTION-PROFILE-CATALOG.md
 docs/architecture/CISCO-EVIDENCE-COLLECTION-AND-PREVENTIVE-HEALTH.md
@@ -115,6 +117,7 @@ test-framework/README.md
 test-framework/run_all.sh
 test-framework/test-results/.gitkeep
 tools/validation/phase-gates/README.md
+tools/validation/phase-gates/validate_phase0_acceptance.sh
 tools/validation/phase-gates/validate_phase0_step1.sh
 tools/validation/validate_docs.py
 tools/validation/validate_migrations.py

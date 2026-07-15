@@ -2,6 +2,8 @@
 
 ## Phase 0 — Repository and Executable Baseline
 
+**Status:** Accepted as a non-production development baseline.
+
 - Mission, architecture, requirements, and boundaries
 - Go module and embedded HTML5 interface
 - RBAC and requester-approval independence candidate

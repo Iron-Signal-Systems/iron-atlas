@@ -4,7 +4,7 @@
 >
 > Built on purpose. Backed by discipline. Engineered to endure.
 >
-> Development status: Phase 0 implementation candidate; not ready for production use
+> Development status: Phase 0 accepted as a non-production development baseline; Phase 1 not yet accepted
 
 Iron Atlas is an authoritative, version-controlled system for infrastructure documentation, diagrams, inventory, automated discovery, project tracking, change management, validation, preventive health analysis, and formal acceptance.
 
@@ -89,6 +89,7 @@ Start with:
 - [Cisco trunk analysis](docs/architecture/CISCO-TRUNK-AND-ENDPOINT-ATTRIBUTION.md)
 - [External-system-independent telemetry](docs/architecture/EXTERNAL-SYSTEM-INDEPENDENT-TELEMETRY.md)
 - [Phased implementation roadmap](docs/roadmap/IMPLEMENTATION-ROADMAP.md)
+- [Phase 0 accepted baseline](docs/acceptance/PHASE-0-STEP-1-ACCEPTANCE-RECORD.md)
 
 ## Security Boundary
 
