@@ -1,0 +1,367 @@
+1:== Iron Atlas Phase 1 Step 2 validation ==
+2:PASS: current branch is dev
+3:PASS: working tree is clean
+5:PASS: accepted predecessor tag exists
+6:PASS: accepted predecessor tag is unchanged
+7:PASS: accepted predecessor is ancestor
+8:== Iron Atlas Phase 1 Step 1 acceptance validation ==
+9:PASS: current branch is dev
+10:PASS: working tree is clean
+11:PASS: acceptance record exists
+12:PASS: acceptance index exists
+13:PASS: candidate commit is a full SHA
+14:PASS: candidate commit exists
+15:PASS: acceptance commit directly follows candidate
+17:PASS: accepted predecessor tag exists
+18:PASS: accepted predecessor tag is unchanged
+19:PASS: candidate descends from accepted predecessor
+20:PASS: acceptance record contains no placeholders
+21:PASS: acceptance decision is explicit
+22:PASS: accepted tag is declared
+23:PASS: candidate Git archive hash matches acceptance record
+24:PASS: temporary development exception preserves operational two-person control
+25:PASS: root README reflects accepted Phase 1 Step 1 status
+26:PASS: documentation index reflects accepted Phase 1 Step 1 status
+27:PASS: roadmap reflects accepted Phase 1 Step 1 status
+28:PASS: acceptance index links the accepted record
+29:== Iron Atlas Phase 1 Step 1 validation ==
+30:PASS: current branch is dev
+31:PASS: working tree is clean
+33:PASS: accepted predecessor tag exists
+34:PASS: accepted predecessor tag is unchanged
+35:PASS: accepted predecessor is ancestor
+36:== Iron Atlas Phase 0 acceptance validation ==
+37:PASS: current branch is dev
+38:PASS: working tree is clean
+39:PASS: acceptance record exists
+40:PASS: acceptance index exists
+41:PASS: candidate commit is a full SHA
+42:PASS: candidate commit exists
+43:PASS: candidate commit is an ancestor of HEAD
+44:PASS: acceptance record contains no placeholders
+45:PASS: acceptance decision is explicit
+46:PASS: temporary exception does not waive two-person control
+47:PASS: production authentication remains excluded
+48:PASS: live SSH collection remains excluded
+49:PASS: accepted tag is declared
+50:PASS: root README reflects accepted Phase 0 status
+51:PASS: documentation index reflects accepted Phase 0 status
+52:PASS: roadmap reflects accepted Phase 0 status
+53:== Iron Atlas Phase 0 Step 1 validation ==
+54:PASS: required file README.md
+55:PASS: required file SECURITY.md
+56:PASS: required file docs/README.md
+57:PASS: required file docs/architecture/TARGET-ARCHITECTURE.md
+58:PASS: required file docs/architecture/CHANGE-MANAGEMENT-AND-TWO-PERSON-CONTROL.md
+59:PASS: required file docs/architecture/FIREWALL-CONFIGURATION-SEMANTIC-ANALYSIS.md
+60:PASS: required file docs/architecture/CISCO-EVIDENCE-COLLECTION-AND-PREVENTIVE-HEALTH.md
+61:PASS: required file docs/architecture/CISCO-TRUNK-AND-ENDPOINT-ATTRIBUTION.md
+62:PASS: required file docs/architecture/EXTERNAL-SYSTEM-INDEPENDENT-TELEMETRY.md
+63:PASS: required file docs/testing/TESTING-AND-ADVERSARIAL-VALIDATION-MODEL.md
+64:PASS: required file cmd/atlasd/main.go
+65:PASS: required file internal/change/change.go
+66:PASS: required file integrations/zabbix/sender.go
+67:PASS: required file sql/schema/manifests/atlas.manifest
+68:PASS: no raw evidence directories tracked
+70:PASS: Markdown links
+72:PASS: migration contract
+73:PASS: Draw.io XML
+74:PASS: Go format
+75:PASS: Go vet
+94:PASS: Go tests
+96:PASS checks: 21
+97:FAIL checks: 0
+99:== go format check ==
+100:PASS: go format check
+102:== go vet ==
+103:PASS: go vet
+105:== go test ==
+124:PASS: go test
+126:== repository validation ==
+127:PASS: required file README.md
+128:PASS: required file SECURITY.md
+129:PASS: required file docs/README.md
+130:PASS: required file docs/architecture/TARGET-ARCHITECTURE.md
+131:PASS: required file docs/architecture/CHANGE-MANAGEMENT-AND-TWO-PERSON-CONTROL.md
+132:PASS: required file docs/architecture/FIREWALL-CONFIGURATION-SEMANTIC-ANALYSIS.md
+133:PASS: required file docs/architecture/CISCO-EVIDENCE-COLLECTION-AND-PREVENTIVE-HEALTH.md
+134:PASS: required file docs/architecture/CISCO-TRUNK-AND-ENDPOINT-ATTRIBUTION.md
+135:PASS: required file docs/architecture/EXTERNAL-SYSTEM-INDEPENDENT-TELEMETRY.md
+136:PASS: required file docs/testing/TESTING-AND-ADVERSARIAL-VALIDATION-MODEL.md
+137:PASS: required file cmd/atlasd/main.go
+138:PASS: required file internal/change/change.go
+139:PASS: required file integrations/zabbix/sender.go
+140:PASS: required file sql/schema/manifests/atlas.manifest
+141:PASS: no raw evidence directories tracked
+143:PASS: Markdown links
+145:PASS: migration contract
+146:PASS: Draw.io XML
+148:PASS checks: 18
+149:FAIL checks: 0
+150:PASS: repository validation
+151:PASS checks: 4
+152:FAIL checks: 0
+153:Correctness result: PASS
+154:Resource observation: NOT_RECORDED
+155:Performance thresholds: NOT_EVALUATED
+157:Phase 0 Step 1 implementation candidate validation PASSED.
+160:PASS: Phase 0 implementation gate still passes
+162:PASS checks: 17
+163:FAIL checks: 0
+165:Phase 0 acceptance validation PASSED.
+170:PASS: accepted Phase 0 predecessor revalidates in isolation
+171:PASS: required file README.md
+172:PASS: required file SECURITY.md
+173:PASS: required file docs/README.md
+174:PASS: required file docs/architecture/TARGET-ARCHITECTURE.md
+175:PASS: required file docs/architecture/CHANGE-MANAGEMENT-AND-TWO-PERSON-CONTROL.md
+176:PASS: required file docs/architecture/POSTGRESQL-MIGRATION-AND-OWNERSHIP-MODEL.md
+177:PASS: required file docs/architecture/POSTGRESQL-DATABASE-SECURITY-BOUNDARY.md
+178:PASS: required file docs/testing/POSTGRESQL-DISPOSABLE-DATABASE-TESTING.md
+179:PASS: required file cmd/atlasd/main.go
+180:PASS: required file internal/change/change.go
+181:PASS: required file integrations/zabbix/sender.go
+182:PASS: required file sql/schema/manifests/atlas.manifest
+183:PASS: required file sql/bootstrap/production-role-contract.sql
+184:PASS: required file tools/database/apply_migrations.sh
+185:PASS: no raw evidence directories tracked
+187:PASS: Markdown links
+189:PASS: migration contract
+191:PASS: database security static contract
+192:PASS: Draw.io XML
+194:PASS: source SHA-256 records
+195:PASS: file manifest synchronized
+196:PASS: Go format
+197:PASS: Go vet
+216:PASS: Go tests
+218:PASS checks: 24
+219:FAIL checks: 0
+220:PASS: repository validation
+222:== go format check ==
+223:PASS: go format check
+225:== go vet ==
+226:PASS: go vet
+228:== go test ==
+247:PASS: go test
+249:== migration static validation ==
+251:PASS: migration static validation
+253:== database security static validation ==
+255:PASS: database security static validation
+257:== disposable PostgreSQL tests ==
+258:PASS: six migrations recorded
+259:PASS: internal actor helper is not directly executable by application role
+260:PASS: governed change API resolves actor context unambiguously
+261:PASS: requester self-approval rejected
+262:PASS: independent approval changes status
+263:PASS: unauthorized approval rejected
+264:PASS: application direct table write rejected
+265:PASS: two independent concurrent approvals accepted
+266:PASS: duplicate concurrent approval suppressed
+267:PASS: append-only approval action update rejected
+268:PASS: append-only status history delete rejected
+273:Resource observation: RECORDED
+274:Performance thresholds: NOT_EVALUATED
+275:PASS: disposable PostgreSQL tests
+277:== repository validation ==
+278:PASS: required file README.md
+279:PASS: required file SECURITY.md
+280:PASS: required file docs/README.md
+281:PASS: required file docs/architecture/TARGET-ARCHITECTURE.md
+282:PASS: required file docs/architecture/CHANGE-MANAGEMENT-AND-TWO-PERSON-CONTROL.md
+283:PASS: required file docs/architecture/POSTGRESQL-MIGRATION-AND-OWNERSHIP-MODEL.md
+284:PASS: required file docs/architecture/POSTGRESQL-DATABASE-SECURITY-BOUNDARY.md
+285:PASS: required file docs/testing/POSTGRESQL-DISPOSABLE-DATABASE-TESTING.md
+286:PASS: required file cmd/atlasd/main.go
+287:PASS: required file internal/change/change.go
+288:PASS: required file integrations/zabbix/sender.go
+289:PASS: required file sql/schema/manifests/atlas.manifest
+290:PASS: required file sql/bootstrap/production-role-contract.sql
+291:PASS: required file tools/database/apply_migrations.sh
+292:PASS: no raw evidence directories tracked
+294:PASS: Markdown links
+296:PASS: migration contract
+298:PASS: database security static contract
+299:PASS: Draw.io XML
+301:PASS: source SHA-256 records
+302:PASS: file manifest synchronized
+304:PASS checks: 21
+305:FAIL checks: 0
+306:PASS: repository validation
+307:PASS checks: 7
+308:FAIL checks: 0
+309:Correctness result: PASS
+310:Resource observation: RECORDED_BY_DATABASE_TEST
+311:Performance thresholds: NOT_EVALUATED
+312:PASS: complete test framework
+314:PASS checks: 8
+315:FAIL checks: 0
+317:Phase 1 Step 1 validation PASSED.
+323:PASS: Phase 1 Step 1 implementation gate still passes
+325:PASS checks: 20
+326:FAIL checks: 0
+328:Phase 1 Step 1 acceptance validation PASSED.
+334:PASS: accepted Phase 1 Step 1 predecessor revalidates in isolation
+336:PASS: portable canonical-repository validation contract
+337:PASS: required file README.md
+338:PASS: required file SECURITY.md
+339:PASS: required file docs/README.md
+340:PASS: required file docs/architecture/TARGET-ARCHITECTURE.md
+341:PASS: required file docs/architecture/CHANGE-MANAGEMENT-AND-TWO-PERSON-CONTROL.md
+342:PASS: required file docs/architecture/POSTGRESQL-MIGRATION-AND-OWNERSHIP-MODEL.md
+343:PASS: required file docs/architecture/POSTGRESQL-DATABASE-SECURITY-BOUNDARY.md
+344:PASS: required file docs/architecture/GO-POSTGRESQL-RUNTIME-AND-IDENTITY-CONTEXT.md
+345:PASS: required file docs/architecture/PORTABLE-VALIDATION-AND-CANONICAL-REPOSITORY-ACCEPTANCE.md
+346:PASS: required file docs/decisions/ADR-0004-PGX-POSTGRESQL-RUNTIME-DRIVER.md
+347:PASS: required file docs/decisions/ADR-0005-CANONICAL-REPOSITORY-REPRODUCIBILITY.md
+348:PASS: required file docs/testing/POSTGRESQL-DISPOSABLE-DATABASE-TESTING.md
+349:PASS: required file docs/testing/GO-POSTGRESQL-RUNTIME-INTEGRATION-TESTING.md
+350:PASS: required file docs/operations/CANONICAL-CLEAN-CLONE-VALIDATION.md
+351:PASS: required file validation/toolchain-requirements.json
+352:PASS: required file validation/evidence/README.md
+353:PASS: required file cmd/atlasd/main.go
+354:PASS: required file internal/change/change.go
+355:PASS: required file internal/database/postgresql/pool.go
+356:PASS: required file internal/change/postgresql/service.go
+357:PASS: required file internal/health/health.go
+358:PASS: required file integrations/zabbix/sender.go
+359:PASS: required file sql/schema/manifests/atlas.manifest
+360:PASS: required file sql/bootstrap/production-role-contract.sql
+361:PASS: required file tools/database/apply_migrations.sh
+362:PASS: required file tools/validation/validate_go_postgresql_runtime.py
+363:PASS: required file tools/validation/validate_portable_acceptance.py
+364:PASS: required file tools/validation/validate_committed_evidence.py
+365:PASS: required file tools/validation/validate_toolchain.py
+366:PASS: required file tools/validation/record_validation_evidence.sh
+367:PASS: required file tools/validation/verify_canonical_clone.sh
+368:PASS: required file tools/validation/lib/isolated_gate_revalidation.sh
+369:PASS: required file tools/validation/phase-gates/validate_phase1_step2.sh
+370:PASS: required file test-framework/phase-gates/test_isolated_gate_revalidation.sh
+371:PASS: required file test-framework/portability/test_portable_validation.sh
+372:PASS: no raw evidence directories tracked
+373:PASS: no committed database secrets
+375:PASS: Markdown links
+377:PASS: migration contract
+379:PASS: database security static contract
+381:PASS: Go PostgreSQL runtime static contract
+383:PASS: portable acceptance static contract
+385:PASS: committed validation evidence
+386:PASS: Draw.io XML
+388:PASS: source SHA-256 records
+389:PASS: file manifest synchronized
+390:PASS: Go format
+392:PASS: Go module verification
+393:PASS: Go vet
+415:PASS: Go tests
+417:PASS checks: 50
+418:FAIL checks: 0
+419:PASS: repository validation
+421:== go format check ==
+422:PASS: go format check
+424:== go module verification ==
+426:PASS: go module verification
+428:== go vet ==
+429:PASS: go vet
+431:== go test ==
+453:PASS: go test
+455:== migration static validation ==
+457:PASS: migration static validation
+459:== database security static validation ==
+461:PASS: database security static validation
+463:== Go PostgreSQL runtime static validation ==
+465:PASS: Go PostgreSQL runtime static validation
+467:== phase-gate exit propagation ==
+468:PASS: successful isolated predecessor validator returns success
+469:PASS: failing isolated predecessor validator returns failure
+471:PASS: missing isolated predecessor validator returns failure
+473:PASS checks: 3
+474:FAIL checks: 0
+475:PASS: phase-gate exit propagation
+477:== external toolchain validation ==
+479:PASS: external toolchain validation
+481:== portable acceptance static validation ==
+483:PASS: portable acceptance static validation
+485:== portable validation regression ==
+487:PASS: portable acceptance static contract
+488:PASS: portable validation shell syntax
+489:PASS: validation transcript credential redaction
+491:PASS: committed evidence integrity validation
+492:PASS checks: 4
+493:FAIL checks: 0
+494:PASS: portable validation regression
+496:== committed validation evidence ==
+498:PASS: committed validation evidence
+500:== disposable PostgreSQL tests ==
+501:PASS: six migrations recorded
+502:PASS: internal actor helper is not directly executable by application role
+503:PASS: governed change API resolves actor context unambiguously
+504:PASS: requester self-approval rejected
+505:PASS: independent approval changes status
+506:PASS: unauthorized approval rejected
+507:PASS: application direct table write rejected
+508:PASS: two independent concurrent approvals accepted
+509:PASS: duplicate concurrent approval suppressed
+510:PASS: append-only approval action update rejected
+511:PASS: append-only status history delete rejected
+515:PASS: Go PostgreSQL runtime integration tests
+521:Resource observation: RECORDED
+522:Performance thresholds: NOT_EVALUATED
+523:PASS: disposable PostgreSQL tests
+525:== repository validation ==
+526:PASS: required file README.md
+527:PASS: required file SECURITY.md
+528:PASS: required file docs/README.md
+529:PASS: required file docs/architecture/TARGET-ARCHITECTURE.md
+530:PASS: required file docs/architecture/CHANGE-MANAGEMENT-AND-TWO-PERSON-CONTROL.md
+531:PASS: required file docs/architecture/POSTGRESQL-MIGRATION-AND-OWNERSHIP-MODEL.md
+532:PASS: required file docs/architecture/POSTGRESQL-DATABASE-SECURITY-BOUNDARY.md
+533:PASS: required file docs/architecture/GO-POSTGRESQL-RUNTIME-AND-IDENTITY-CONTEXT.md
+534:PASS: required file docs/architecture/PORTABLE-VALIDATION-AND-CANONICAL-REPOSITORY-ACCEPTANCE.md
+535:PASS: required file docs/decisions/ADR-0004-PGX-POSTGRESQL-RUNTIME-DRIVER.md
+536:PASS: required file docs/decisions/ADR-0005-CANONICAL-REPOSITORY-REPRODUCIBILITY.md
+537:PASS: required file docs/testing/POSTGRESQL-DISPOSABLE-DATABASE-TESTING.md
+538:PASS: required file docs/testing/GO-POSTGRESQL-RUNTIME-INTEGRATION-TESTING.md
+539:PASS: required file docs/operations/CANONICAL-CLEAN-CLONE-VALIDATION.md
+540:PASS: required file validation/toolchain-requirements.json
+541:PASS: required file validation/evidence/README.md
+542:PASS: required file cmd/atlasd/main.go
+543:PASS: required file internal/change/change.go
+544:PASS: required file internal/database/postgresql/pool.go
+545:PASS: required file internal/change/postgresql/service.go
+546:PASS: required file internal/health/health.go
+547:PASS: required file integrations/zabbix/sender.go
+548:PASS: required file sql/schema/manifests/atlas.manifest
+549:PASS: required file sql/bootstrap/production-role-contract.sql
+550:PASS: required file tools/database/apply_migrations.sh
+551:PASS: required file tools/validation/validate_go_postgresql_runtime.py
+552:PASS: required file tools/validation/validate_portable_acceptance.py
+553:PASS: required file tools/validation/validate_committed_evidence.py
+554:PASS: required file tools/validation/validate_toolchain.py
+555:PASS: required file tools/validation/record_validation_evidence.sh
+556:PASS: required file tools/validation/verify_canonical_clone.sh
+557:PASS: required file tools/validation/lib/isolated_gate_revalidation.sh
+558:PASS: required file tools/validation/phase-gates/validate_phase1_step2.sh
+559:PASS: required file test-framework/phase-gates/test_isolated_gate_revalidation.sh
+560:PASS: required file test-framework/portability/test_portable_validation.sh
+561:PASS: no raw evidence directories tracked
+562:PASS: no committed database secrets
+564:PASS: Markdown links
+566:PASS: migration contract
+568:PASS: database security static contract
+570:PASS: Go PostgreSQL runtime static contract
+572:PASS: portable acceptance static contract
+574:PASS: committed validation evidence
+575:PASS: Draw.io XML
+577:PASS: source SHA-256 records
+578:PASS: file manifest synchronized
+580:PASS checks: 46
+581:FAIL checks: 0
+582:PASS: repository validation
+583:PASS checks: 14
+584:FAIL checks: 0
+585:Correctness result: PASS
+586:Resource observation: RECORDED_BY_DATABASE_TEST
+587:Performance thresholds: NOT_EVALUATED
+588:PASS: complete test framework
+590:PASS checks: 9
+591:FAIL checks: 0
+593:Phase 1 Step 2 validation PASSED.

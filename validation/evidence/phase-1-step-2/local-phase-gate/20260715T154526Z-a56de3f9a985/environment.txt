@@ -1,0 +1,13 @@
+repository=https://github.com/Iron-Signal-Systems/iron-atlas.git
+commit=a56de3f9a9859f8daffea29b772091359dd3c3c9
+branch=dev
+timestamp_utc=2026-07-15T15:45:26Z
+operating_system=Arch Linux
+kernel=Linux 6.6.87.2-microsoft-standard-WSL2 x86_64 GNU/Linux
+cpu_count=28
+memory_kib=16223360
+git version 2.55.0
+go version go1.26.5-X:nodwarf5 linux/amd64
+Python 3.14.6
+postgres (PostgreSQL) 18.4
+psql (PostgreSQL) 18.4

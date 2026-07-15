@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "boundary": "phase-1-step-2/local-phase-gate",
+  "repository": "https://github.com/Iron-Signal-Systems/iron-atlas.git",
+  "commit": "a56de3f9a9859f8daffea29b772091359dd3c3c9",
+  "branch": "dev",
+  "timestamp_utc": "2026-07-15T15:45:26Z",
+  "exit_code": 0,
+  "source": "local-candidate",
+  "command": [
+    "./tools/validation/phase-gates/validate_phase1_step2.sh"
+  ]
+}
