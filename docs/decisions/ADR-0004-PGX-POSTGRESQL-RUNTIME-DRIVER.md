@@ -2,7 +2,7 @@
 
 ## Status
 
-Phase 1 Step 2 implementation candidate.
+Accepted for the non-production Phase 1 Step 2 boundary under tag `phase-1-step-2-go-postgresql-runtime-and-identity-context-complete-v1`.
 
 ## Context
 

@@ -2,7 +2,7 @@
 
 ## Status
 
-Phase 1 Step 2 implementation candidate.
+Accepted as the Phase 1 Step 2 disposable runtime-integration test boundary under tag `phase-1-step-2-go-postgresql-runtime-and-identity-context-complete-v1`.
 
 ## Disposable Boundary
 

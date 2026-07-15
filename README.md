@@ -4,7 +4,7 @@
 >
 > Built on purpose. Backed by discipline. Engineered to endure.
 >
-> Development status: Phase 1 Step 1 PostgreSQL governance foundation accepted; Phase 1 Step 2 Go PostgreSQL runtime implementation candidate; not ready for production use
+> Development status: Phase 1 Step 2 Go PostgreSQL runtime, identity-context, and portable-validation boundary accepted for non-production development; later Phase 1 work is not accepted; not ready for production use
 
 Iron Atlas is an authoritative, version-controlled system for infrastructure documentation, diagrams, inventory, automated discovery, project tracking, change management, validation, preventive health analysis, and formal acceptance.
 
@@ -30,7 +30,7 @@ The accepted Phase 0 baseline contains the embedded HTML5 interface, module regi
 
 Accepted Phase 1 Step 1 adds manifest-driven PostgreSQL migrations, database ownership and role contracts, governed identity and authority persistence, database-enforced independent approval, append-only history, and disposable PostgreSQL tests.
 
-The Phase 1 Step 2 candidate adds:
+Accepted Phase 1 Step 2 adds:
 
 - A replaceable PostgreSQL implementation of the Go change-service interface.
 - A bounded least-privileged `pgxpool` connection pool.
@@ -115,6 +115,7 @@ Start with:
 - [Phase 0 accepted baseline](docs/acceptance/PHASE-0-STEP-1-ACCEPTANCE-RECORD.md)
 - [Phase 0 acceptance errata](docs/acceptance/PHASE-0-STEP-1-ACCEPTANCE-ERRATA.md)
 - [Phase 1 Step 1 accepted PostgreSQL governance foundation](docs/acceptance/PHASE-1-STEP-1-ACCEPTANCE-RECORD.md)
+- [Phase 1 Step 2 accepted Go PostgreSQL runtime, identity-context, and portable-validation boundary](docs/acceptance/PHASE-1-STEP-2-ACCEPTANCE-RECORD.md)
 
 ## Security Boundary
 

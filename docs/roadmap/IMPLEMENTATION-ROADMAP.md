@@ -16,7 +16,7 @@ Acceptance does not claim production authentication, persistence, collection, or
 
 ## Phase 1 — PostgreSQL Foundation and Governed Identity
 
-**Status:** Step 1 accepted under tag `phase-1-step-1-postgresql-governance-foundation-complete-v1`; Step 2 implementation candidate.
+**Status:** Steps 1 and 2 accepted; Step 2 is frozen under tag `phase-1-step-2-go-postgresql-runtime-and-identity-context-complete-v1`. Later Phase 1 work is not accepted.
 
 ### Step 1 — Migration and Database Governance Foundation
 
@@ -41,7 +41,7 @@ Acceptance does not claim production authentication, persistence, collection, or
 - Sequential and concurrent pooled-connection identity-leak tests
 - Disposable Go and PostgreSQL integration tests
 
-Step 2 does not establish production authentication, production credential delivery, database recovery, or production readiness. Step 2 cannot be accepted until its exact pushed commit passes the applicable phase gate from a clean clone of the canonical GitHub repository and the retained sanitized evidence is committed.
+Step 2 is accepted as a non-production runtime and portable-validation boundary after its exact pushed commit passed the applicable phase gate from a clean canonical GitHub clone and the sanitized evidence was committed. It does not establish production authentication, production credential delivery, database recovery, or production readiness.
 
 ### Later Phase 1 Work
 

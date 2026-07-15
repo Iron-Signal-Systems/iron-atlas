@@ -7,8 +7,9 @@ Acceptance records freeze explicitly tested repository boundaries, evidence, lim
 - [Phase 0 Step 1 — Repository and executable baseline](PHASE-0-STEP-1-ACCEPTANCE-RECORD.md)
 - [Phase 0 Step 1 acceptance errata](PHASE-0-STEP-1-ACCEPTANCE-ERRATA.md)
 - [Phase 1 Step 1 — PostgreSQL governance foundation](PHASE-1-STEP-1-ACCEPTANCE-RECORD.md)
+- [Phase 1 Step 2 — Go PostgreSQL runtime, identity-context, and portable-validation boundary](PHASE-1-STEP-2-ACCEPTANCE-RECORD.md)
 
-## Candidate Templates
+## Templates
 
 - [Phase 0 acceptance record template](PHASE-0-ACCEPTANCE-RECORD-TEMPLATE.md)
 - [Phase 1 Step 1 acceptance record template](PHASE-1-STEP-1-ACCEPTANCE-RECORD-TEMPLATE.md)

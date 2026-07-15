@@ -34,6 +34,8 @@
 
 ### Accepted
 
+- Accepted the Phase 1 Step 2 Go PostgreSQL runtime, transaction-local identity-context, and portable-validation boundary under annotated tag `phase-1-step-2-go-postgresql-runtime-and-identity-context-complete-v1`.
+- Recorded the exact implementation and evidence commit chain, deterministic archive and toolchain hashes, committed local and canonical clean-clone evidence, limitations, temporary development exception, and exact Step 3 work.
 - Accepted the Phase 1 Step 1 PostgreSQL governance foundation as a non-production development boundary under annotated tag `phase-1-step-1-postgresql-governance-foundation-complete-v1`.
 - Recorded the exact candidate commit, deterministic Git archive hash, validation evidence, limitations, security assumptions, temporary single-maintainer development exception, and exact Phase 1 Step 2 work.
 

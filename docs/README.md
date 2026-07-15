@@ -2,7 +2,7 @@
 
 > Owner: Iron Signal Systems
 >
-> Status: Phase 1 Step 1 PostgreSQL governance foundation accepted; Phase 1 Step 2 Go PostgreSQL runtime implementation candidate; not ready for production use
+> Status: Phase 1 Step 2 Go PostgreSQL runtime, identity-context, and portable-validation boundary accepted for non-production development; later Phase 1 work is not accepted; not ready for production use
 
 ## Start Here
 

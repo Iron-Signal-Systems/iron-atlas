@@ -6,6 +6,10 @@ No implementation step may be accepted unless a clean clone from the canonical G
 
 The canonical repository is `https://github.com/Iron-Signal-Systems/iron-atlas.git`; the active development branch is `dev`.
 
+## Accepted Application
+
+Phase 1 Step 2 is the first accepted application of this invariant. Its local and canonical clean-clone evidence is committed under `validation/evidence/phase-1-step-2/`, and the accepted boundary is frozen under tag `phase-1-step-2-go-postgresql-runtime-and-identity-context-complete-v1`.
+
 ## Required Boundary
 
 Every implementation step must commit, in the same change set:
