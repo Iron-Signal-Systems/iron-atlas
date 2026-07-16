@@ -4,11 +4,11 @@
 
 Iron Atlas is the primary active product-development effort.
 
-The current execution objective is to move the accepted Phase 1 Step 2 non-production boundary toward a bounded, read-only infrastructure-assessment and documentation product. Work must continue in the accepted phase order below and must preserve predecessor validation.
+The current execution objective is to move the accepted Phase 1 Step 2 non-production boundary toward a bounded, read-only infrastructure-intelligence, documentation, reconciliation, and integration-assistance product. Work must continue in the accepted phase order below and must preserve predecessor validation.
 
 Execution priority, capacity assumptions, representative-environment boundaries, quarterly milestones, focus controls, and first-product deferrals are governed by the [Atlas Primary-Focus Execution Plan](ATLAS-PRIMARY-FOCUS-EXECUTION-PLAN.md).
 
-The active formal candidate is Phase 1 Step 3 — Trusted Authentication and Governed Actor Resolution. Live infrastructure collection is not accepted until the applicable identity, credential, TLS, recovery, and resource-governance boundaries are complete.
+The active formal candidate is Phase 1 Step 3 — Trusted Authentication and Governed Actor Resolution. The authentication foundation, governed actor resolver, and bounded OIDC discovery, JWKS, and ID-token verification checkpoints are integrated. Live infrastructure collection is not accepted until the applicable identity, credential, TLS, recovery, and resource-governance boundaries are complete.
 
 ## Phase 0 — Repository and Executable Baseline
 
@@ -55,7 +55,7 @@ Step 2 is accepted as a non-production runtime and portable-validation boundary 
 
 ### Step 3 — Trusted Authentication and Governed Actor Resolution
 
-**Status:** Contract integrated; authentication-mode and immutable request-identity foundation is the active implementation candidate. No external provider, session, CSRF, or trusted-proxy implementation is accepted.
+**Status:** Contract, authentication foundation, governed actor resolver, and bounded OIDC discovery, JWKS, and ID-token verification checkpoints are integrated. Authorization-code exchange, PKCE transaction persistence, sessions, CSRF, trusted-proxy enforcement, and production authentication are not accepted.
 
 - Pluggable trusted authentication adapter
 - Verified provider identity normalization
@@ -69,7 +69,7 @@ Step 2 is accepted as a non-production runtime and portable-validation boundary 
 - Spoofing, ambiguity, lifecycle, concurrency, and confused-deputy tests
 - Continued transaction-local PostgreSQL actor context
 
-**Current implementation checkpoint:** typed authentication modes, development-header isolation, production fail-closed middleware, private immutable request identity, and future authenticator/actor-resolver seams.
+**Current implementation checkpoint:** typed authentication modes, development-header isolation, production fail-closed middleware, private immutable request identity, least-privileged governed actor resolution, and bounded OIDC discovery, JWKS, and ID-token verification. Authorization-code and PKCE transaction handling, production authenticator wiring, sessions, cookies, logout, CSRF, trusted proxies, authentication audit, lifecycle invalidation, and formal acceptance remain.
 
 
 ### Remaining Phase 1 Work
@@ -88,32 +88,40 @@ Step 2 is accepted as a non-production runtime and portable-validation boundary 
 - Redaction and classification
 - Parser isolation and resource governance
 
-## Phase 3 — Firewall Ingestion
+## Phase 3 — Cisco Offline Evidence and Normalization Foundation
+
+- Sanitized versioned Cisco command-bundle format
+- Evidence receipt, digest, provenance, classification, and parser version
+- First-value Catalyst 9300L/9300 access-switch profiles
+- First-value Catalyst 9500 core and distribution profiles
+- First-value Catalyst 9800 controller and wireless profiles
+- Deterministic offline parsing before live collection
+- Device, stack, interface, VLAN, trunk, neighbor, port-channel, spanning-tree, and wireless normalization
+- Unsupported, malformed, truncated, conflicting, and partial-state handling
+- Golden fixtures, adversarial parsing, cancellation, and resource governance
+
+## Phase 4 — Cisco Semantic Analysis, Topology, and Complementary Integrations
+
+- Access, core/distribution, and wireless topology
+- Trunk, pruning, CDP/LLDP, STP, and port-channel analysis
+- Resource, environment, stack, software, and counter trends
+- Catalyst 9800 controller, AP, WLAN, profile, site, flex, tag, and selected client analysis
+- Zabbix host, interface, template, discovery, map, dashboard, and report reconciliation
+- Graylog lookup and enrichment context for syslog and SNMP traps
+- Reviewable Graylog queries, pipelines, streams, dashboards, and report definitions
+- Draw.io-compatible generated topology
+- Finding correlation and duplicate suppression
+- Device enrollment, host-key pinning, NPS/RADIUS service authentication, and restricted live collection only after offline acceptance
+- Compatibility profiles for Catalyst 9200 and 2960 families after the first-value slice
+
+## Phase 5 — Firewall Ingestion and Traffic-Boundary Analysis
 
 - FortiGate native parser and semantic normalization
 - FortiGate YAML adapter
 - OPNsense and pfSense XML normalization
 - Interface, route, gateway, SD-WAN, policy, object, NAT, and VPN graph
-- Traffic-path explanation
+- Policy order and traffic-boundary explanation correlated with Cisco-derived topology
 - Golden fixtures and adversarial parsing
-
-## Phase 4 — Cisco Collection Foundation
-
-- Device enrollment and host-key pinning
-- NPS/RADIUS service authentication
-- Restricted command profiles
-- 2960-family IOS collection
-- 9200/9300/9500 IOS XE collection
-- Command transcripts and protected evidence
-- Daily/weekly health and 30-day comprehensive schedule
-
-## Phase 5 — Cisco Semantic and Preventive Analysis
-
-- Access-port and endpoint attribution
-- Trunk, pruning, CDP/LLDP, STP, ACL, QoS, and port-channel analysis
-- Resource, environment, stack, software, and counter trends
-- Catalyst 9800 controller, AP, profile, tag, and client analysis
-- Finding correlation and duplicate suppression
 
 ## Phase 6 — Projects, Changes, and Acceptance
 
@@ -152,10 +160,12 @@ Step 2 is accepted as a non-production runtime and portable-validation boundary 
 ## Active Step 3 governed actor-resolution checkpoint
 
 The current bounded checkpoint implements the least-privileged PostgreSQL
-governed actor resolver. The subsequent Step 3 work remains provider protocol
-verification and the still-separated session, CSRF, and trusted-proxy
-boundaries. Formal Step 3 acceptance must not be recorded from this checkpoint
-alone.
+governed actor resolver. Bounded OIDC provider protocol and ID-token verification
+is now also integrated. The remaining Step 3 work includes authorization-code
+and PKCE transaction handling, production authenticator wiring, sessions,
+cookies, logout, CSRF, trusted proxies, authentication audit, lifecycle
+invalidation, and formal acceptance. Formal Step 3 acceptance must not be
+recorded from either checkpoint alone.
 
 ## Active Step 3 OIDC ID-token verification checkpoint
 

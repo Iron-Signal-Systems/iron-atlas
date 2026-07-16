@@ -7,6 +7,8 @@
 - `IA-FND-003`: Unsupported and uncertain parser results shall remain visible.
 - `IA-FND-004`: Raw evidence shall remain outside Git and receive integrity protection.
 - `IA-FND-005`: Collectors shall not connect directly to PostgreSQL.
+- `IA-FND-006`: Atlas shall complement established operational systems and shall not duplicate mature capabilities without a separately justified and accepted decision.
+- `IA-FND-007`: Imported external-system records shall retain source and confidence and shall not silently become authoritative Atlas state.
 
 ## Interface and Access
 
@@ -71,6 +73,20 @@
 - `IA-CSC-005`: Collect port description, VLAN, trunk, pruning, CDP/LLDP, spanning tree, ACL, port-channel, QoS, and error information.
 - `IA-CSC-006`: Exclude trunks from local endpoint attribution while retaining full trunk analysis.
 - `IA-CSC-007`: Use counter deltas and historical baselines.
+- `IA-CSC-008`: The first Cisco infrastructure-value slice shall prioritize Catalyst 9300L/9300, Catalyst 9500, and Catalyst 9800.
+- `IA-CSC-009`: Offline sanitized Cisco evidence shall be accepted before restricted live collection.
+- `IA-CSC-010`: Cisco evidence shall support normalized inventory, topology, Zabbix reconciliation, Graylog context, generated maps, and operational reports.
+
+## External-System Integration
+
+- `IA-INT-001`: External adapters shall be replaceable, versioned, least privileged, and isolated from canonical Atlas authority.
+- `IA-INT-002`: Atlas shall distinguish observed external state, imported metadata, generated recommendation, exported definition, approved provisioning request, applied state, and validated result.
+- `IA-INT-003`: Atlas may generate reviewable Zabbix maps, dashboards, template and discovery recommendations, reconciliation findings, and report context without representing them as applied.
+- `IA-INT-004`: Atlas may generate Graylog lookup data, enrichment context, queries, pipelines, streams, dashboards, and report definitions without representing them as applied.
+- `IA-INT-005`: External-system writes or provisioning shall require a separately accepted boundary with preview, attribution, authorization, bounded scope, idempotency where practical, reversal where practical, and post-application validation.
+- `IA-INT-006`: External-system delivery or provisioning failure shall not erase canonical evidence or block unrelated Atlas operations.
+- `IA-INT-007`: Security Onion and other security platforms shall remain responsible for detection and investigation; Atlas context shall not be represented as a detection verdict.
+- `IA-INT-008`: Generated Draw.io topology shall remain separate from curated diagram sources.
 
 ## Telemetry
 
