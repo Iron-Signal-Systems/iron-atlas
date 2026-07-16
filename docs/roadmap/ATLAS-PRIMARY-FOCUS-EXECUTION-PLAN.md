@@ -120,6 +120,8 @@ The public repository must not contain:
 
 The accepted predecessor is Phase 1 Step 2. Later work must preserve that accepted boundary and proceed in bounded steps.
 
+The active candidate is Phase 1 Step 3 — Trusted Authentication and Governed Actor Resolution. The current contract package does not establish executable production authentication.
+
 ### Stage 1 — Complete the Phase 1 production foundation
 
 Target outcomes:

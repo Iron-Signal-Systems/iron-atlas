@@ -4,6 +4,8 @@
 
 ### Added
 
+- Phase 1 Step 3 trusted-authentication and governed-actor-resolution architecture contract.
+- Phase 1 Step 3 requirements traceability, adversarial testing model, acceptance template, static validator, phase-entry gate, and regression test.
 - Canonical GitHub clean-clone validation as a mandatory acceptance invariant.
 - Machine-readable external toolchain requirements and verification.
 - Sanitized, checksummed, committed validation-evidence recording and validation.
@@ -27,6 +29,7 @@
 
 ### Security
 
+- Defined fail-closed external-identity resolution, Atlas-owned role authority, immutable request identity, bounded server-side sessions, CSRF, replay, trusted-proxy, and authentication-secret redaction requirements.
 - Corrected the Step 2 isolated-predecessor gate so cleanup cannot mask a failed or missing historical validator.
 - Database connection strings remain runtime-only secrets and are prohibited from committed configuration.
 - Acting identity is set only with transaction-local `set_config(..., true)` and never at pooled-session scope.

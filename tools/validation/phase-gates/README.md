@@ -10,6 +10,7 @@ Phase gates are checkpoint-specific. Historical gates are preserved and re-run a
 - `validate_phase1_step1_acceptance.sh` — accepted Phase 1 Step 1 PostgreSQL governance boundary.
 - `validate_phase1_step2.sh` — Phase 1 Step 2 Go PostgreSQL runtime and transaction-local identity-context candidate; revalidates accepted Step 1 in an isolated local clone.
 - `validate_phase1_step2_acceptance.sh` — formal Phase 1 Step 2 acceptance boundary; verifies the exact implementation/evidence chain, retained evidence integrity, synchronized documentation, and the still-passing implementation gate.
+- `validate_phase1_step3_contract.sh` — Phase 1 Step 3 phase-entry contract; verifies requirements, architecture, traceability, testing, acceptance-template, accepted predecessor, and repository synchronization. It is not the final executable Step 3 gate.
 
 Step 2 uses the tested `isolated_gate_revalidate` helper. The helper preserves the predecessor validator exit status after temporary-clone cleanup, so a failed historical gate cannot be reported as a passing revalidation.
 

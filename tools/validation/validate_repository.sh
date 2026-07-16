@@ -26,11 +26,15 @@ required=(
   docs/architecture/POSTGRESQL-MIGRATION-AND-OWNERSHIP-MODEL.md
   docs/architecture/POSTGRESQL-DATABASE-SECURITY-BOUNDARY.md
   docs/architecture/GO-POSTGRESQL-RUNTIME-AND-IDENTITY-CONTEXT.md
+  docs/architecture/TRUSTED-AUTHENTICATION-AND-GOVERNED-ACTOR-RESOLUTION.md
   docs/architecture/PORTABLE-VALIDATION-AND-CANONICAL-REPOSITORY-ACCEPTANCE.md
   docs/decisions/ADR-0004-PGX-POSTGRESQL-RUNTIME-DRIVER.md
   docs/decisions/ADR-0005-CANONICAL-REPOSITORY-REPRODUCIBILITY.md
   docs/testing/POSTGRESQL-DISPOSABLE-DATABASE-TESTING.md
   docs/testing/GO-POSTGRESQL-RUNTIME-INTEGRATION-TESTING.md
+  docs/testing/TRUSTED-AUTHENTICATION-AND-GOVERNED-ACTOR-RESOLUTION-TESTING.md
+  docs/requirements/PHASE-1-STEP-3-REQUIREMENTS-TRACEABILITY.md
+  docs/acceptance/PHASE-1-STEP-3-ACCEPTANCE-RECORD-TEMPLATE.md
   docs/operations/CANONICAL-CLEAN-CLONE-VALIDATION.md
   validation/toolchain-requirements.json
   validation/evidence/README.md
@@ -43,6 +47,7 @@ required=(
   sql/bootstrap/production-role-contract.sql
   tools/database/apply_migrations.sh
   tools/validation/validate_go_postgresql_runtime.py
+  tools/validation/validate_phase1_step3_contract.py
   tools/validation/validate_portable_acceptance.py
   tools/validation/validate_committed_evidence.py
   tools/validation/validate_toolchain.py
@@ -50,6 +55,8 @@ required=(
   tools/validation/verify_canonical_clone.sh
   tools/validation/lib/isolated_gate_revalidation.sh
   tools/validation/phase-gates/validate_phase1_step2.sh
+  tools/validation/phase-gates/validate_phase1_step3_contract.sh
+  test-framework/authentication/test_phase1_step3_contract.sh
   test-framework/phase-gates/test_isolated_gate_revalidation.sh
   test-framework/portability/test_portable_validation.sh
 )
@@ -61,6 +68,7 @@ check "Markdown links" python3 tools/validation/validate_docs.py
 check "migration contract" python3 tools/validation/validate_migrations.py
 check "database security static contract" python3 tools/validation/validate_sql_static.py
 check "Go PostgreSQL runtime static contract" python3 tools/validation/validate_go_postgresql_runtime.py
+check "Phase 1 Step 3 contract" python3 tools/validation/validate_phase1_step3_contract.py
 check "portable acceptance static contract" python3 tools/validation/validate_portable_acceptance.py
 check "committed validation evidence" python3 tools/validation/validate_committed_evidence.py
 check "Draw.io XML" python3 -c 'import xml.etree.ElementTree as ET; ET.parse("diagrams/source/curated/architecture/ARCH-001-iron-atlas-context.drawio")'

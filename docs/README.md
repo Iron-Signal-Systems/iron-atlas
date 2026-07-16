@@ -2,7 +2,7 @@
 
 > Owner: Iron Signal Systems
 >
-> Status: Phase 1 Step 2 Go PostgreSQL runtime, identity-context, and portable-validation boundary accepted for non-production development; later Phase 1 work is not accepted; not ready for production use
+> Status: Phase 1 Step 2 Go PostgreSQL runtime, identity-context, and portable-validation boundary accepted for non-production development; Phase 1 Step 3 trusted-authentication and governed-actor-resolution contract is the active candidate; no executable production authentication is accepted; not ready for production use
 
 ## Start Here
 
@@ -15,6 +15,7 @@
 - [PostgreSQL migration and ownership model](architecture/POSTGRESQL-MIGRATION-AND-OWNERSHIP-MODEL.md)
 - [PostgreSQL database security boundary](architecture/POSTGRESQL-DATABASE-SECURITY-BOUNDARY.md)
 - [Go PostgreSQL runtime and identity context](architecture/GO-POSTGRESQL-RUNTIME-AND-IDENTITY-CONTEXT.md)
+- [Trusted authentication and governed actor resolution](architecture/TRUSTED-AUTHENTICATION-AND-GOVERNED-ACTOR-RESOLUTION.md)
 - [ADR-0004 — pgx PostgreSQL runtime driver](decisions/ADR-0004-PGX-POSTGRESQL-RUNTIME-DRIVER.md)
 - [Cisco NPS/RADIUS service authentication](architecture/CISCO-NPS-RADIUS-SERVICE-AUTHENTICATION.md)
 - [Cisco collection profile catalog](architecture/CISCO-COLLECTION-PROFILE-CATALOG.md)
@@ -33,11 +34,13 @@
 - [Portable validation and canonical repository acceptance](architecture/PORTABLE-VALIDATION-AND-CANONICAL-REPOSITORY-ACCEPTANCE.md)
 - [ADR-0005 — canonical repository reproducibility](decisions/ADR-0005-CANONICAL-REPOSITORY-REPRODUCIBILITY.md)
 - [Requirements catalog](requirements/SYSTEM-REQUIREMENTS.md)
+- [Phase 1 Step 3 requirements traceability](requirements/PHASE-1-STEP-3-REQUIREMENTS-TRACEABILITY.md)
 - [Atlas primary-focus execution plan](roadmap/ATLAS-PRIMARY-FOCUS-EXECUTION-PLAN.md)
 - [Implementation roadmap](roadmap/IMPLEMENTATION-ROADMAP.md)
 - [Testing model](testing/TESTING-AND-ADVERSARIAL-VALIDATION-MODEL.md)
 - [Disposable PostgreSQL testing](testing/POSTGRESQL-DISPOSABLE-DATABASE-TESTING.md)
 - [Go PostgreSQL runtime integration testing](testing/GO-POSTGRESQL-RUNTIME-INTEGRATION-TESTING.md)
+- [Trusted authentication and governed actor resolution testing](testing/TRUSTED-AUTHENTICATION-AND-GOVERNED-ACTOR-RESOLUTION-TESTING.md)
 - [Acceptance records](acceptance/README.md)
 - [Repository creation and first push](operations/REPOSITORY-CREATION-AND-FIRST-PUSH.md)
 - [Canonical clean-clone validation](operations/CANONICAL-CLEAN-CLONE-VALIDATION.md)

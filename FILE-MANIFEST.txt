@@ -50,6 +50,7 @@ docs/acceptance/PHASE-1-STEP-1-ACCEPTANCE-RECORD-TEMPLATE.md
 docs/acceptance/PHASE-1-STEP-1-ACCEPTANCE-RECORD.md
 docs/acceptance/PHASE-1-STEP-2-ACCEPTANCE-RECORD-TEMPLATE.md
 docs/acceptance/PHASE-1-STEP-2-ACCEPTANCE-RECORD.md
+docs/acceptance/PHASE-1-STEP-3-ACCEPTANCE-RECORD-TEMPLATE.md
 docs/acceptance/README.md
 docs/acceptance/evidence/.gitkeep
 docs/architecture/CHANGE-MANAGEMENT-AND-TWO-PERSON-CONTROL.md
@@ -73,6 +74,7 @@ docs/architecture/PROJECT-AND-PORTFOLIO-TRACKING.md
 docs/architecture/RBAC-ROLE-AND-AUTHORITY-CATALOG.md
 docs/architecture/TARGET-ARCHITECTURE.md
 docs/architecture/TOPOLOGY-AND-DRAWIO-GOVERNANCE.md
+docs/architecture/TRUSTED-AUTHENTICATION-AND-GOVERNED-ACTOR-RESOLUTION.md
 docs/architecture/VERIFICATION-VALIDATION-AND-ACCEPTANCE.md
 docs/architecture/ZABBIX-INTEGRATION-CONTRACT.md
 docs/decisions/ADR-0001-GO-FIRST-STANDARD-LIBRARY-BASELINE.md
@@ -87,12 +89,14 @@ docs/engineering/validation-environment-model.md
 docs/goals/PROJECT-MISSION.md
 docs/operations/CANONICAL-CLEAN-CLONE-VALIDATION.md
 docs/operations/REPOSITORY-CREATION-AND-FIRST-PUSH.md
+docs/requirements/PHASE-1-STEP-3-REQUIREMENTS-TRACEABILITY.md
 docs/requirements/SYSTEM-REQUIREMENTS.md
 docs/roadmap/ATLAS-PRIMARY-FOCUS-EXECUTION-PLAN.md
 docs/roadmap/IMPLEMENTATION-ROADMAP.md
 docs/testing/GO-POSTGRESQL-RUNTIME-INTEGRATION-TESTING.md
 docs/testing/POSTGRESQL-DISPOSABLE-DATABASE-TESTING.md
 docs/testing/TESTING-AND-ADVERSARIAL-VALIDATION-MODEL.md
+docs/testing/TRUSTED-AUTHENTICATION-AND-GOVERNED-ACTOR-RESOLUTION-TESTING.md
 go.mod
 go.sum
 integrations/README.md
@@ -169,6 +173,7 @@ sql/schema/migrations/004_governed_changes.sql
 sql/schema/migrations/005_change_approvals.sql
 sql/schema/migrations/006_append_only_history.sql
 test-framework/README.md
+test-framework/authentication/test_phase1_step3_contract.sh
 test-framework/database/run_disposable_postgres.sh
 test-framework/database/test_database.py
 test-framework/phase-gates/test_isolated_gate_revalidation.sh
@@ -215,6 +220,7 @@ tools/validation/phase-gates/validate_phase1_step1.sh
 tools/validation/phase-gates/validate_phase1_step1_acceptance.sh
 tools/validation/phase-gates/validate_phase1_step2.sh
 tools/validation/phase-gates/validate_phase1_step2_acceptance.sh
+tools/validation/phase-gates/validate_phase1_step3_contract.sh
 tools/validation/record_validation_evidence.sh
 tools/validation/redact_validation_text.py
 tools/validation/regenerate_manifests.py
@@ -226,6 +232,7 @@ tools/validation/validate_docs.py
 tools/validation/validate_fresh_clone.sh
 tools/validation/validate_go_postgresql_runtime.py
 tools/validation/validate_migrations.py
+tools/validation/validate_phase1_step3_contract.py
 tools/validation/validate_portable.sh
 tools/validation/validate_portable_acceptance.py
 tools/validation/validate_repository.sh

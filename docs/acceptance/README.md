@@ -16,6 +16,7 @@ next work.
 - [Phase 0 acceptance record template](PHASE-0-ACCEPTANCE-RECORD-TEMPLATE.md)
 - [Phase 1 Step 1 acceptance record template](PHASE-1-STEP-1-ACCEPTANCE-RECORD-TEMPLATE.md)
 - [Phase 1 Step 2 acceptance record template](PHASE-1-STEP-2-ACCEPTANCE-RECORD-TEMPLATE.md)
+- [Phase 1 Step 3 acceptance record template](PHASE-1-STEP-3-ACCEPTANCE-RECORD-TEMPLATE.md)
 
 ## Evidence retention
 

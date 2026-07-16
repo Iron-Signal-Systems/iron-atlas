@@ -4,7 +4,7 @@
 >
 > Built on purpose. Backed by discipline. Engineered to endure.
 >
-> Development status: Phase 1 Step 2 Go PostgreSQL runtime, identity-context, and portable-validation boundary accepted for non-production development; later Phase 1 work is not accepted; not ready for production use
+> Development status: Phase 1 Step 2 Go PostgreSQL runtime, identity-context, and portable-validation boundary accepted for non-production development; Phase 1 Step 3 trusted-authentication and governed-actor-resolution contract is the active candidate; no executable production authentication is accepted; not ready for production use
 
 Iron Atlas is an authoritative, version-controlled system for infrastructure documentation, diagrams, inventory, automated discovery, project tracking, change management, validation, preventive health analysis, and formal acceptance.
 
@@ -103,6 +103,7 @@ Start with:
 - [PostgreSQL migration and ownership model](docs/architecture/POSTGRESQL-MIGRATION-AND-OWNERSHIP-MODEL.md)
 - [PostgreSQL database security boundary](docs/architecture/POSTGRESQL-DATABASE-SECURITY-BOUNDARY.md)
 - [Go PostgreSQL runtime and identity context](docs/architecture/GO-POSTGRESQL-RUNTIME-AND-IDENTITY-CONTEXT.md)
+- [Trusted authentication and governed actor resolution](docs/architecture/TRUSTED-AUTHENTICATION-AND-GOVERNED-ACTOR-RESOLUTION.md)
 - [ADR-0004 — pgx PostgreSQL runtime driver](docs/decisions/ADR-0004-PGX-POSTGRESQL-RUNTIME-DRIVER.md)
 - [Go PostgreSQL runtime integration testing](docs/testing/GO-POSTGRESQL-RUNTIME-INTEGRATION-TESTING.md)
 - [Portable validation and canonical repository acceptance](docs/architecture/PORTABLE-VALIDATION-AND-CANONICAL-REPOSITORY-ACCEPTANCE.md)

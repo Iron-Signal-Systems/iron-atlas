@@ -8,7 +8,7 @@ The current execution objective is to move the accepted Phase 1 Step 2 non-produ
 
 Execution priority, capacity assumptions, representative-environment boundaries, quarterly milestones, focus controls, and first-product deferrals are governed by the [Atlas Primary-Focus Execution Plan](ATLAS-PRIMARY-FOCUS-EXECUTION-PLAN.md).
 
-The next formal work remains the later Phase 1 production foundation. Live infrastructure collection is not accepted until the applicable identity, credential, TLS, recovery, and resource-governance boundaries are complete.
+The active formal candidate is Phase 1 Step 3 — Trusted Authentication and Governed Actor Resolution. Live infrastructure collection is not accepted until the applicable identity, credential, TLS, recovery, and resource-governance boundaries are complete.
 
 ## Phase 0 — Repository and Executable Baseline
 
@@ -53,9 +53,24 @@ Acceptance does not claim production authentication, persistence, collection, or
 
 Step 2 is accepted as a non-production runtime and portable-validation boundary after its exact pushed commit passed the applicable phase gate from a clean canonical GitHub clone and the sanitized evidence was committed. It does not establish production authentication, production credential delivery, database recovery, or production readiness.
 
-### Later Phase 1 Work
+### Step 3 — Trusted Authentication and Governed Actor Resolution
 
-- Identity-provider integration boundary
+**Status:** Active contract candidate; no executable production authentication is accepted.
+
+- Pluggable trusted authentication adapter
+- Verified provider identity normalization
+- Unique governed external-identity and active actor resolution
+- Atlas-owned current role-binding resolution
+- Immutable server-side request identity
+- Bounded server-side session lifecycle
+- Cookie, CSRF, replay, logout, and expiry controls
+- Explicit trusted-proxy boundary
+- Authentication audit and secret redaction
+- Spoofing, ambiguity, lifecycle, concurrency, and confused-deputy tests
+- Continued transaction-local PostgreSQL actor context
+
+### Remaining Phase 1 Work
+
 - Production credential delivery and rotation
 - Database TLS and certificate deployment
 - Database backup and restoration test boundary

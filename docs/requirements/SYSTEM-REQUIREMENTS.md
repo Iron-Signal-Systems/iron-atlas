@@ -15,6 +15,19 @@
 - `IA-AUTH-001`: UI visibility shall not grant authority.
 - `IA-AUTH-002`: Production authentication and authorization shall fail closed.
 - `IA-AUTH-003`: Platform administration shall not automatically grant change approval.
+- `IA-AUTH-004`: Production identities shall be accepted only from a configured, active, trusted authentication adapter.
+- `IA-AUTH-005`: A verified provider and stable provider subject shall resolve to exactly one governed external identity and Atlas actor.
+- `IA-AUTH-006`: Inactive providers and disabled or retired actors shall fail closed.
+- `IA-AUTH-007`: Atlas role bindings, not provider roles or groups, shall be authoritative for request authorization.
+- `IA-AUTH-008`: Request bodies, forms, query parameters, paths, and ordinary headers shall not select the production actor or roles.
+- `IA-AUTH-009`: Development identity and production authentication modes shall be mutually exclusive and production mode shall not fall back.
+- `IA-AUTH-010`: Browser sessions shall be server-side, opaque, bounded, rotated, revocable, and protected by secure cookie attributes.
+- `IA-AUTH-011`: State-changing browser requests shall receive an accepted CSRF defense in addition to authentication.
+- `IA-AUTH-012`: Trusted-proxy peers, headers, scheme, host, and bypass prevention shall be explicit and fail closed.
+- `IA-AUTH-013`: Authentication, token, session, CSRF, and provider secrets shall not appear in logs, responses, Git, or retained evidence.
+- `IA-AUTH-014`: Resolved actor identity shall remain immutable in server-side request context and transaction-local in PostgreSQL.
+- `IA-AUTH-015`: Provider, external-identity, actor, role-binding, and session changes shall have bounded invalidation behavior.
+- `IA-AUTH-016`: No adapter, provider claim, proxy, session, service, or administrator shall create an unrestricted execution context or propagate authority across boundaries.
 
 ## Change Management
 
