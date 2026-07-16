@@ -74,3 +74,19 @@
   static-validation, and phase-gate coverage.
 - Preserved the prohibition on broad application-role reads of governed
   identity and role tables.
+
+### Phase 1 Step 3 OIDC ID-token verification candidate
+
+- Added pinned `coreos/go-oidc` verification behind a stricter Atlas boundary.
+- Added exact HTTPS discovery and endpoint checks, asymmetric algorithm
+  allowlisting, bounded input and time policy, nonce and authorized-party
+  validation, duplicate sensitive-claim rejection, and access-token-hash
+  verification.
+- Added a disposable TLS provider emulator covering signature, issuer,
+  audience, nonce, time, malformed input, key rotation, outage, race, and
+  concurrency behavior.
+- Preserved explicit nonclaims for authorization-code exchange, PKCE state,
+  browser sessions, CSRF, logout, trusted proxies, and production readiness.
+- Synchronized the standard hosted `validate` workflow with the
+  repository-owned pinned tool bootstrap so `govulncheck` and future declared
+  Go validation tools are available before the complete test framework runs.

@@ -44,6 +44,18 @@ The repository-provided verifier:
 
 Acceptance is withheld until that process passes for the pushed commit.
 
+## Hosted Workflow Tool Bootstrap
+
+Every hosted workflow that executes the complete repository test framework must
+create the repository-owned pinned ISRAS tool environment before validation.
+The workflow must place `.isras-go-tools/bin` on `PATH` so declared tools such
+as `govulncheck` are available to nested phase regressions, not merely listed
+in the toolchain contract.
+
+The standard `validate` and `Portable validation` workflows use the same
+repository bootstrap boundary. A hosted runner's preinstalled software is not
+accepted as an undeclared substitute for the pinned project tool environment.
+
 ## Secrets
 
 Secrets are supplied only through an explicitly documented external channel. Validators must not enumerate the ambient environment or write secret values into transcripts. Evidence recording sanitizes common credential forms and then performs a separate committed-evidence secret scan.

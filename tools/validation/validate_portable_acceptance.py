@@ -55,6 +55,17 @@ for token in ["GOTOOLCHAIN: go1.26.5", '"go1.26.5"']:
     if token not in workflow:
         errors.append(f"portable workflow missing toolchain token: {token}")
 
+validate_workflow=(root/".github/workflows/validate.yml").read_text()
+for token in [
+    "GOTOOLCHAIN: go1.26.5",
+    "go-version: '1.26.5'",
+    "tools/environment/bootstrap_tools.sh",
+    ".isras-go-tools/bin",
+    '"$GITHUB_PATH"',
+]:
+    if token not in validate_workflow:
+        errors.append(f"validate workflow missing pinned-tool token: {token}")
+
 profile=json.loads(
     (root/"tools/environment/profiles/portable.json").read_text()
 )

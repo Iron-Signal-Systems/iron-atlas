@@ -27,3 +27,11 @@ A local phase gate is necessary but not sufficient for acceptance. The exact pus
   disposable database and race tests, accepted authentication-foundation
   predecessor, and complete repository validation. It is not Step 3
   acceptance.
+
+- `validate_phase1_step3_oidc_id_token_verification.sh` — third Phase 1
+  Step 3 implementation gate; verifies pinned OIDC dependencies, exact HTTPS
+  discovery, JWKS signature verification, issuer, audience, authorized party,
+  nonce, time, stable-subject, duplicate sensitive-field, key-rotation, outage,
+  race, concurrency, documentation, manifests, the accepted governed
+  actor-resolution predecessor, and complete repository validation. It is not
+  Step 3 acceptance.

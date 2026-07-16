@@ -157,3 +157,29 @@ The governed resolver checkpoint adds tests for:
 
 These tests do not exercise OIDC, browser sessions, CSRF, logout, replay
 defense, or trusted-proxy behavior.
+
+## OIDC ID-token verification implementation campaign
+
+The bounded provider-emulator campaign now covers:
+
+- exact TLS discovery and advertised protocol capabilities;
+- valid RS256 verification through a discovered remote JWKS;
+- wrong issuer, audience, authorized party, nonce, signature, and algorithm;
+- expired, future, and stale token time state;
+- future not-before state;
+- missing and unnormalized stable subjects;
+- duplicate security-sensitive claims;
+- malformed and oversized tokens;
+- remote key rotation and unknown-key refresh;
+- provider outage classification;
+- concurrent read-only verification under the race detector; and
+- insecure or unbounded verifier configuration.
+- valid, missing, and mismatched access-token hashes;
+- valid and future authentication-time claims;
+- duplicate protected JWT header fields;
+- unknown-key rejection while the provider remains responsive; and
+- non-success JWKS response classification.
+
+The campaign does not cover authorization-code replay, PKCE verifier
+persistence, browser sessions, cookies, CSRF, logout, or trusted-proxy
+behavior.

@@ -67,6 +67,7 @@ docs/architecture/GO-POSTGRESQL-RUNTIME-AND-IDENTITY-CONTEXT.md
 docs/architecture/HTML5-INTERFACE-AND-ROLE-WORKSPACES.md
 docs/architecture/MINIMAL-ARCH-LINUX-DEPLOYMENT.md
 docs/architecture/MODULARITY-AND-DEPENDENCY-DIRECTION.md
+docs/architecture/OIDC-ID-TOKEN-VERIFICATION-IMPLEMENTATION.md
 docs/architecture/PORTABLE-VALIDATION-AND-CANONICAL-REPOSITORY-ACCEPTANCE.md
 docs/architecture/POSTGRESQL-DATABASE-SECURITY-BOUNDARY.md
 docs/architecture/POSTGRESQL-GOVERNED-ACTOR-RESOLUTION-IMPLEMENTATION.md
@@ -83,6 +84,7 @@ docs/decisions/ADR-0002-ZABBIX-AS-REPLACEABLE-CONSUMER.md
 docs/decisions/ADR-0003-RAW-EVIDENCE-OUTSIDE-GIT.md
 docs/decisions/ADR-0004-PGX-POSTGRESQL-RUNTIME-DRIVER.md
 docs/decisions/ADR-0005-CANONICAL-REPOSITORY-REPRODUCIBILITY.md
+docs/decisions/ADR-0006-OIDC-ID-TOKEN-VERIFICATION-LIBRARIES.md
 docs/engineering/release-and-acceptance-model.md
 docs/engineering/repository-assurance-adoption.md
 docs/engineering/secure-development-lifecycle.md
@@ -108,6 +110,8 @@ internal/app/app.go
 internal/app/app_test.go
 internal/authentication/authentication.go
 internal/authentication/authentication_test.go
+internal/authentication/oidc/verifier.go
+internal/authentication/oidc/verifier_test.go
 internal/authentication/postgresql/resolver.go
 internal/authentication/postgresql/resolver_integration_test.go
 internal/authentication/postgresql/resolver_test.go
@@ -183,6 +187,7 @@ test-framework/README.md
 test-framework/authentication/test_phase1_step3_authentication_foundation.sh
 test-framework/authentication/test_phase1_step3_contract.sh
 test-framework/authentication/test_phase1_step3_governed_actor_resolution.sh
+test-framework/authentication/test_phase1_step3_oidc_id_token_verification.sh
 test-framework/database/run_disposable_postgres.sh
 test-framework/database/test_database.py
 test-framework/phase-gates/test_isolated_gate_revalidation.sh
@@ -232,6 +237,7 @@ tools/validation/phase-gates/validate_phase1_step2_acceptance.sh
 tools/validation/phase-gates/validate_phase1_step3_authentication_foundation.sh
 tools/validation/phase-gates/validate_phase1_step3_contract.sh
 tools/validation/phase-gates/validate_phase1_step3_governed_actor_resolution.sh
+tools/validation/phase-gates/validate_phase1_step3_oidc_id_token_verification.sh
 tools/validation/record_validation_evidence.sh
 tools/validation/redact_validation_text.py
 tools/validation/regenerate_manifests.py
@@ -246,6 +252,7 @@ tools/validation/validate_migrations.py
 tools/validation/validate_phase1_step3_authentication_foundation.py
 tools/validation/validate_phase1_step3_contract.py
 tools/validation/validate_phase1_step3_governed_actor_resolution.py
+tools/validation/validate_phase1_step3_oidc_id_token_verification.py
 tools/validation/validate_portable.sh
 tools/validation/validate_portable_acceptance.py
 tools/validation/validate_repository.sh
