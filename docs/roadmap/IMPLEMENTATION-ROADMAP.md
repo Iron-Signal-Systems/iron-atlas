@@ -55,7 +55,7 @@ Step 2 is accepted as a non-production runtime and portable-validation boundary 
 
 ### Step 3 — Trusted Authentication and Governed Actor Resolution
 
-**Status:** Active contract candidate; no executable production authentication is accepted.
+**Status:** Contract integrated; authentication-mode and immutable request-identity foundation is the active implementation candidate. No external provider, session, CSRF, or trusted-proxy implementation is accepted.
 
 - Pluggable trusted authentication adapter
 - Verified provider identity normalization
@@ -68,6 +68,9 @@ Step 2 is accepted as a non-production runtime and portable-validation boundary 
 - Authentication audit and secret redaction
 - Spoofing, ambiguity, lifecycle, concurrency, and confused-deputy tests
 - Continued transaction-local PostgreSQL actor context
+
+**Current implementation checkpoint:** typed authentication modes, development-header isolation, production fail-closed middleware, private immutable request identity, and future authenticator/actor-resolver seams.
+
 
 ### Remaining Phase 1 Work
 

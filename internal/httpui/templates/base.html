@@ -27,7 +27,7 @@
     <a href="/api/v1/status">API status</a>
   </nav>
   <main id="main">
-    {{if .DevelopmentIdentity}}<div class="notice">Development identity mode is active. This is not a production authentication boundary.</div>{{end}}
+    {{if .DevelopmentMode}}<div class="notice">Development authentication mode is active. Header-selected identities are allowed only in controlled non-production testing.</div>{{end}}
     {{template "content" .}}
   </main>
 </div>

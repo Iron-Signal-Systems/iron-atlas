@@ -2,7 +2,7 @@
 
 > Owner: Iron Signal Systems
 >
-> Status: Phase 1 Step 2 Go PostgreSQL runtime, identity-context, and portable-validation boundary accepted for non-production development; Phase 1 Step 3 trusted-authentication and governed-actor-resolution contract is the active candidate; no executable production authentication is accepted; not ready for production use
+> Status: Phase 1 Step 2 is accepted and the Phase 1 Step 3 trusted-authentication contract is integrated; the typed authentication-mode and immutable request-identity foundation is the active implementation candidate; no external provider, session, CSRF, or trusted-proxy implementation is accepted; not ready for production use
 
 ## Start Here
 

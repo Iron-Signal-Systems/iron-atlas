@@ -2,7 +2,7 @@
 
 ## Status
 
-Normative target direction. Phase 1 Steps 1 and 2 are accepted. Phase 1 Step 3 trusted authentication and governed actor resolution is the active contract candidate; no executable production authentication is accepted.
+Normative target direction. Phase 1 Steps 1 and 2 are accepted, and the Phase 1 Step 3 trusted-authentication contract is integrated. The typed authentication-mode and immutable request-identity foundation is the active implementation candidate; no external provider, session, CSRF, or trusted-proxy implementation is accepted.
 
 ## Layers
 

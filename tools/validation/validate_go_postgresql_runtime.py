@@ -13,6 +13,8 @@ required = [
     "internal/change/postgresql/service.go",
     "internal/change/postgresql/service_integration_test.go",
     "internal/health/health.go",
+    "internal/app/app.go",
+    "internal/app/app_test.go",
     "docs/architecture/GO-POSTGRESQL-RUNTIME-AND-IDENTITY-CONTEXT.md",
     "docs/decisions/ADR-0004-PGX-POSTGRESQL-RUNTIME-DRIVER.md",
     "docs/testing/GO-POSTGRESQL-RUNTIME-INTEGRATION-TESTING.md",
@@ -81,12 +83,40 @@ for token in [
     "IRON_ATLAS_CHANGE_STORE",
     "IRON_ATLAS_DATABASE_URL",
     "ChangeStorePostgreSQL",
-    "developmentIdentityFromEnvironment",
-    "return store == ChangeStoreMemory",
+    "AuthenticationMode authentication.Mode",
+    "authenticationModeFromEnvironment",
+    "IRON_ATLAS_AUTHENTICATION_MODE",
+    "IRON_ATLAS_DEV_IDENTITY is no longer supported",
+    "if store == ChangeStoreMemory",
+    "return authentication.ModeDevelopment, nil",
+    "return authentication.ModeProduction, nil",
     "StartupTimeout",
 ]:
     if token not in app:
-        errors.append(f"application runtime configuration missing token: {token}")
+        errors.append(
+            f"application runtime configuration missing token: {token}"
+        )
+for prohibited in [
+    "developmentIdentityFromEnvironment",
+    "DevelopmentIdentity bool",
+]:
+    if prohibited in app:
+        errors.append(
+            "application runtime configuration retains obsolete "
+            f"identity contract: {prohibited}"
+        )
+
+app_test = (root / "internal/app/app_test.go").read_text()
+for token in [
+    "TestPostgreSQLModeDefaultsToProductionAuthentication",
+    "TestDevelopmentModeCanBeExplicitlyEnabledForControlledTesting",
+    "TestLegacyDevelopmentIdentitySettingIsRejected",
+    "TestInvalidAuthenticationModeIsRejected",
+]:
+    if token not in app_test:
+        errors.append(
+            f"application authentication-mode test missing token: {token}"
+        )
 
 
 gate = (root / "tools/validation/phase-gates/validate_phase1_step2.sh").read_text()

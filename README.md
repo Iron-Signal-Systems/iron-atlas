@@ -4,7 +4,7 @@
 >
 > Built on purpose. Backed by discipline. Engineered to endure.
 >
-> Development status: Phase 1 Step 2 Go PostgreSQL runtime, identity-context, and portable-validation boundary accepted for non-production development; Phase 1 Step 3 trusted-authentication and governed-actor-resolution contract is the active candidate; no executable production authentication is accepted; not ready for production use
+> Development status: Phase 1 Step 2 is accepted and the Phase 1 Step 3 trusted-authentication contract is integrated; the typed authentication-mode and immutable request-identity foundation is the active implementation candidate; no external provider, session, CSRF, or trusted-proxy implementation is accepted; not ready for production use
 
 Iron Atlas is an authoritative, version-controlled system for infrastructure documentation, diagrams, inventory, automated discovery, project tracking, change management, validation, preventive health analysis, and formal acceptance.
 
@@ -41,6 +41,18 @@ Accepted Phase 1 Step 2 adds:
 
 Step 2 does **not** establish production authentication, credential delivery, TLS provisioning, backup recovery, high availability, live collection, or production readiness.
 
+
+The active Phase 1 Step 3 authentication-foundation candidate adds:
+
+- Typed `development` and `production` authentication modes.
+- A dedicated authentication middleware and private immutable request-context identity.
+- Future production authenticator and governed actor-resolver interfaces.
+- Explicit rejection of development identity headers in production mode.
+- Fail-closed protected routes when no production adapter is configured.
+- Public health, readiness, and static-asset routes that do not manufacture an actor.
+
+This candidate does not implement an external identity provider, sessions, CSRF protection, trusted-proxy enforcement, or production authentication.
+
 ## Quick Start
 
 Memory-backed development mode remains the default:
@@ -54,14 +66,14 @@ PostgreSQL development mode requires the accepted migrations, runtime grants, an
 
 ```bash
 export IRON_ATLAS_CHANGE_STORE=postgresql
-export IRON_ATLAS_DEV_IDENTITY=true # controlled local testing only
+export IRON_ATLAS_AUTHENTICATION_MODE=development # controlled local testing only
 export IRON_ATLAS_DATABASE_URL='postgres://atlas_application:REDACTED@localhost/iron_atlas?sslmode=verify-full'
 go run ./cmd/atlasd
 ```
 
 Do not commit a real database URL or credentials. Open `http://127.0.0.1:8080` after startup.
 
-Memory mode defaults to development identity headers for the Phase 0 demonstration. PostgreSQL mode defaults them off and requires an explicit opt-in for controlled local testing. Development identity headers are never an acceptable production authentication boundary.
+Memory mode defaults to `development` authentication for the Phase 0 demonstration. PostgreSQL mode defaults to `production`, where protected routes fail closed until a trusted production adapter and governed actor resolver are configured. Controlled PostgreSQL testing may explicitly set `IRON_ATLAS_AUTHENTICATION_MODE=development`. The legacy `IRON_ATLAS_DEV_IDENTITY` boolean is rejected, and development identity headers are never an acceptable production authentication boundary.
 
 ## Repository Layout
 
@@ -88,7 +100,7 @@ Memory mode defaults to development identity headers for the Phase 0 demonstrati
 ```bash
 python3 tools/validation/validate_toolchain.py
 ./test-framework/run_all.sh
-./tools/validation/phase-gates/validate_phase1_step2.sh
+./tools/validation/phase-gates/validate_phase1_step3_authentication_foundation.sh
 ```
 
 Formal acceptance additionally requires the exact pushed commit to pass `tools/validation/verify_canonical_clone.sh` from a clean clone of the canonical GitHub repository. Retained validation evidence is sanitized and committed under `validation/evidence/`.
