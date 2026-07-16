@@ -1,20 +1,50 @@
 ## Purpose
 
+Describe the bounded change and why it is needed.
+
 ## Scope
 
-## Security and Trust Boundary
+State what is included and explicitly prohibited.
 
-## Tests
+## Architecture, authority, and trust boundary
 
-## Reproducible Validation
+- [ ] Architecture and trust boundaries are unchanged, or exact changes are
+      documented.
+- [ ] New authority, identities, privileges, routes, migrations, or
+      dependencies are listed.
+- [ ] Prohibited work remains absent.
 
-- [ ] Applicable scripts and toolchain requirements are committed.
-- [ ] The complete framework and applicable phase gate pass.
-- [ ] Retained logs/results are sanitized and committed under `validation/evidence/`.
-- [ ] Acceptance-bound changes include or schedule exact canonical clean-clone verification.
+## Implementation and tests
 
-## Documentation Synchronization
+- [ ] Source changes are committed.
+- [ ] Tests, hostile cases, fixtures, and expected outcomes are committed.
+- [ ] Applicable toolchain and test-framework checks pass.
+- [ ] The applicable Iron Atlas phase gate is identified and passes.
 
-## Change and Approval Record
+## Reproducible validation
 
-## Known Limitations
+- [ ] `./tools/validation/validate_portable.sh` passes.
+- [ ] Applicable canonical or specialized validation is identified.
+- [ ] Historical predecessor handling is correct.
+- [ ] No untracked, ignored, workstation-only, or undeclared project input is
+      required.
+- [ ] Acceptance-bound work includes or schedules exact canonical clean-clone
+      verification.
+
+## Documentation and evidence
+
+- [ ] Documentation is synchronized in this change set.
+- [ ] Retained logs and results are sanitized and checksummed.
+- [ ] Warnings, limitations, non-claims, status, and next work are updated.
+- [ ] No credential, protected data, or unrestricted raw evidence is included.
+
+## Change and approval record
+
+State required approvals and separation-of-duties handling.
+
+## Acceptance impact
+
+State whether this change affects an accepted boundary, creates a candidate, or
+is ordinary post-acceptance development.
+
+## Known limitations

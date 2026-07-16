@@ -1,0 +1,21 @@
+{
+  "schema_version": "IRON-ATLAS-GO-TOOLS-V1",
+  "tools": [
+    {
+      "name": "govulncheck",
+      "binary": "govulncheck",
+      "package": "golang.org/x/vuln/cmd/govulncheck",
+      "module": "golang.org/x/vuln",
+      "version": "v1.6.0",
+      "module_sum": "h1:FeMO9Rm/HwyduOztbvKcOw+zvDEPr4I4aQNSfevFcKY=",
+      "go_mod_sum": "h1:bWlG2493/sjR7ksvicBgMrznH3eYQEyK8ifUYBrqUbg=",
+      "minimum_go_version": "1.25.0",
+      "source": {
+        "vcs": "git",
+        "url": "https://go.googlesource.com/vuln",
+        "ref": "refs/tags/v1.6.0",
+        "commit": "19b0bb6a272792b9afa8a6983c3e9b9a1816947f"
+      }
+    }
+  ]
+}
