@@ -96,3 +96,18 @@ actor enforcement, current Atlas role loading, explicit role-code translation,
 least-privileged database access, and fail-closed missing or unsupported state.
 Provider protocol verification, sessions, CSRF, trusted proxies, and formal
 Step 3 acceptance remain unimplemented.
+
+## OIDC ID-token verification implementation status
+
+The OIDC ID-token verification candidate partially implements `IA-AUTH-002`,
+`IA-AUTH-004`, `IA-AUTH-008`, `IA-AUTH-009`, `IA-AUTH-013`, and
+`IA-AUTH-016`.
+
+It proves exact HTTPS discovery, JWKS-backed asymmetric signature verification,
+issuer, audience, authorized party, expiry, issued-at, not-before, nonce,
+stable-subject, access-token-hash, duplicate sensitive-field, key-rotation,
+outage, malformed-input, race, and concurrency handling.
+
+Authorization-code exchange, PKCE transaction state, browser sessions, CSRF,
+logout, trusted proxies, authentication audit persistence, representative
+provider evidence, and formal Step 3 acceptance remain unimplemented.

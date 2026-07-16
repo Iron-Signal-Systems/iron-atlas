@@ -4,7 +4,7 @@
 >
 > Built on purpose. Backed by discipline. Engineered to endure.
 >
-> Development status: Phase 1 Step 2 is accepted; the Phase 1 Step 3 authentication foundation is merged; the least-privileged PostgreSQL governed actor resolver is the active implementation candidate; no external provider, session, CSRF, or trusted-proxy implementation is accepted; not ready for production use
+> Development status: Phase 1 Step 2 is accepted; the Phase 1 Step 3 authentication foundation and governed actor resolver are merged; bounded OIDC discovery, JWKS, and ID-token verification is the active implementation candidate; no authorization-code exchange, session, CSRF, or trusted-proxy implementation is accepted; not ready for production use
 
 Iron Atlas is an authoritative, version-controlled system for infrastructure documentation, diagrams, inventory, automated discovery, project tracking, change management, validation, preventive health analysis, and formal acceptance.
 
@@ -150,3 +150,15 @@ unsupported governed state fails closed.
 This checkpoint still does not implement an external identity-provider adapter,
 sessions, CSRF protection, trusted-proxy enforcement, or production
 authentication.
+
+## OIDC ID-Token Verification Candidate
+
+The active bounded Phase 1 Step 3 candidate verifies exact HTTPS provider
+discovery, remote JWKS signatures, issuer, audience, authorized party, permitted
+asymmetric algorithms, expiry, issued-at, not-before, nonce, stable subject,
+access-token hash when present, duplicate sensitive claims, key rotation, and
+provider outage behavior.
+
+It does not yet provide browser login routes, authorization-code exchange, PKCE
+transaction persistence, cookies, sessions, CSRF, logout, trusted-proxy
+enforcement, or production authentication.

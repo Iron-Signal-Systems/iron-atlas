@@ -156,3 +156,11 @@ governed actor resolver. The subsequent Step 3 work remains provider protocol
 verification and the still-separated session, CSRF, and trusted-proxy
 boundaries. Formal Step 3 acceptance must not be recorded from this checkpoint
 alone.
+
+## Active Step 3 OIDC ID-token verification checkpoint
+
+The current bounded checkpoint implements OIDC discovery, JWKS, and ID-token
+verification only. The subsequent Step 3 checkpoints remain authorization-code
+and PKCE transaction handling, durable server-side sessions, cookie and logout
+controls, CSRF, trusted proxies, authentication audit, lifecycle invalidation,
+and formal Step 3 acceptance.

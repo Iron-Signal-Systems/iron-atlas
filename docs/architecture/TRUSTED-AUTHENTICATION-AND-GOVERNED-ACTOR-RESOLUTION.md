@@ -331,3 +331,18 @@ database role codes fail closed in Go.
 
 This checkpoint does not implement a production authentication adapter,
 sessions, CSRF, trusted-proxy enforcement, or production readiness.
+
+## OIDC ID-token verification implementation checkpoint
+
+The active bounded implementation candidate adds provider-neutral OIDC
+discovery, remote JWKS signature verification, exact issuer and audience
+validation, authorized-party enforcement, explicit asymmetric algorithm
+allowlisting, expiry, issued-at, not-before, nonce, stable-subject,
+access-token-hash, duplicate sensitive-field, key-rotation, outage, race, and
+concurrency enforcement.
+
+This checkpoint deliberately stops before authorization-code exchange and
+preauthentication transaction persistence because those controls must be
+designed together with the later session, replay, cookie, CSRF, logout, and
+trusted-proxy boundaries. It does not yet implement a production
+`authentication.Authenticator`.

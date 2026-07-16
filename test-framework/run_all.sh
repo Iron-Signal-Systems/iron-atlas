@@ -32,6 +32,8 @@ run "Phase 1 Step 3 authentication foundation static validation" python3 tools/v
 run "Phase 1 Step 3 authentication foundation regression" ./test-framework/authentication/test_phase1_step3_authentication_foundation.sh
 run "Phase 1 Step 3 governed actor resolution static validation" python3 tools/validation/validate_phase1_step3_governed_actor_resolution.py
 run "Phase 1 Step 3 governed actor resolution regression" ./test-framework/authentication/test_phase1_step3_governed_actor_resolution.sh
+run "Phase 1 Step 3 OIDC ID-token verification static validation" python3 tools/validation/validate_phase1_step3_oidc_id_token_verification.py
+run "Phase 1 Step 3 OIDC ID-token verification regression" ./test-framework/authentication/test_phase1_step3_oidc_id_token_verification.sh
 run "phase-gate exit propagation" ./test-framework/phase-gates/test_isolated_gate_revalidation.sh
 run "external toolchain validation" python3 tools/validation/validate_toolchain.py
 run "portable acceptance static validation" python3 tools/validation/validate_portable_acceptance.py

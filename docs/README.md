@@ -51,3 +51,9 @@ A phase is not complete until the root README, documentation indexes, architectu
 
 - `architecture/POSTGRESQL-GOVERNED-ACTOR-RESOLUTION-IMPLEMENTATION.md`
   records the bounded Phase 1 Step 3 least-privileged governed actor resolver.
+
+- `architecture/OIDC-ID-TOKEN-VERIFICATION-IMPLEMENTATION.md` records the
+  bounded Phase 1 Step 3 OIDC discovery, JWKS, and ID-token verification
+  candidate.
+- `decisions/ADR-0006-OIDC-ID-TOKEN-VERIFICATION-LIBRARIES.md` records the
+  pinned protocol-library decision and retained Atlas enforcement boundary.
