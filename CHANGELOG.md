@@ -4,6 +4,7 @@
 
 ### Added
 
+- Phase 1 Step 3 typed authentication-mode middleware, immutable request identity, future authenticator and actor-resolver interfaces, and targeted hostile tests.
 - Phase 1 Step 3 trusted-authentication and governed-actor-resolution architecture contract.
 - Phase 1 Step 3 requirements traceability, adversarial testing model, acceptance template, static validator, phase-entry gate, and regression test.
 - Canonical GitHub clean-clone validation as a mandatory acceptance invariant.
@@ -21,6 +22,8 @@
 
 ### Changed
 
+- Replaced the legacy development-identity boolean with explicit `development` and `production` authentication modes.
+- Moved HTTP actor construction out of handlers and into the authentication boundary.
 - Raised the Go module baseline to Go 1.25 for the accepted `pgx` v5 runtime dependency.
 - Made the change-service interface context-aware and persistence-neutral.
 - Kept memory mode as the default development store while adding explicit PostgreSQL mode.
@@ -29,6 +32,7 @@
 
 ### Security
 
+- Production mode now rejects development identity headers and protected requests fail closed when no trusted adapter is configured.
 - Defined fail-closed external-identity resolution, Atlas-owned role authority, immutable request identity, bounded server-side sessions, CSRF, replay, trusted-proxy, and authentication-secret redaction requirements.
 - Corrected the Step 2 isolated-predecessor gate so cleanup cannot mask a failed or missing historical validator.
 - Database connection strings remain runtime-only secrets and are prohibited from committed configuration.
@@ -44,6 +48,7 @@
 
 ### Fixed
 
+- Synchronized the Go PostgreSQL runtime validator with the typed authentication-mode boundary while retaining explicit PostgreSQL production-default and controlled-development assertions.
 - Removed ambiguous PL/pgSQL actor variable and column resolution from the governed change and approval functions.
 - Added a disposable-database regression assertion proving actor context resolves to the intended active actor.
 

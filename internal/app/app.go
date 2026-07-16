@@ -11,6 +11,7 @@ import (
 	"strings"
 	"time"
 
+	"github.com/Iron-Signal-Systems/iron-atlas/internal/authentication"
 	"github.com/Iron-Signal-Systems/iron-atlas/internal/authz"
 	"github.com/Iron-Signal-Systems/iron-atlas/internal/change"
 	changepostgresql "github.com/Iron-Signal-Systems/iron-atlas/internal/change/postgresql"
@@ -26,11 +27,11 @@ const (
 )
 
 type Config struct {
-	ListenAddress       string
-	DevelopmentIdentity bool
-	ChangeStore         string
-	Database            database.Config
-	StartupTimeout      time.Duration
+	ListenAddress      string
+	AuthenticationMode authentication.Mode
+	ChangeStore        string
+	Database           database.Config
+	StartupTimeout     time.Duration
 }
 
 func ConfigFromEnvironment() (Config, error) {
@@ -46,7 +47,7 @@ func ConfigFromEnvironment() (Config, error) {
 		return Config{}, fmt.Errorf("unsupported change store %q", store)
 	}
 
-	devIdentity, err := developmentIdentityFromEnvironment(store)
+	authenticationMode, err := authenticationModeFromEnvironment(store)
 	if err != nil {
 		return Config{}, err
 	}
@@ -61,10 +62,10 @@ func ConfigFromEnvironment() (Config, error) {
 	}
 
 	cfg := Config{
-		ListenAddress:       listen,
-		DevelopmentIdentity: devIdentity,
-		ChangeStore:         store,
-		StartupTimeout:      10 * time.Second,
+		ListenAddress:      listen,
+		AuthenticationMode: authenticationMode,
+		ChangeStore:        store,
+		StartupTimeout:     10 * time.Second,
 		Database: database.Config{
 			URL:               strings.TrimSpace(os.Getenv("IRON_ATLAS_DATABASE_URL")),
 			ApplicationName:   "iron-atlas",
@@ -80,24 +81,43 @@ func ConfigFromEnvironment() (Config, error) {
 		},
 	}
 	if store == ChangeStorePostgreSQL && cfg.Database.URL == "" {
-		return Config{}, errors.New("IRON_ATLAS_DATABASE_URL is required when IRON_ATLAS_CHANGE_STORE=postgresql")
+		return Config{}, errors.New(
+			"IRON_ATLAS_DATABASE_URL is required when " +
+				"IRON_ATLAS_CHANGE_STORE=postgresql",
+		)
 	}
 	return cfg, nil
 }
 
-func developmentIdentityFromEnvironment(store string) (bool, error) {
-	raw := strings.TrimSpace(os.Getenv("IRON_ATLAS_DEV_IDENTITY"))
+func authenticationModeFromEnvironment(
+	store string,
+) (authentication.Mode, error) {
+	if legacy := strings.TrimSpace(
+		os.Getenv("IRON_ATLAS_DEV_IDENTITY"),
+	); legacy != "" {
+		return "", errors.New(
+			"IRON_ATLAS_DEV_IDENTITY is no longer supported; use " +
+				"IRON_ATLAS_AUTHENTICATION_MODE=development or production",
+		)
+	}
+
+	raw := strings.TrimSpace(
+		os.Getenv("IRON_ATLAS_AUTHENTICATION_MODE"),
+	)
 	if raw == "" {
-		// Preserve the simple Phase 0 memory-mode demonstration while making
-		// persistent mode fail closed unless development headers are explicitly
-		// enabled for a controlled test environment.
-		return store == ChangeStoreMemory, nil
+		if store == ChangeStoreMemory {
+			return authentication.ModeDevelopment, nil
+		}
+		return authentication.ModeProduction, nil
 	}
-	value, err := strconv.ParseBool(raw)
+	mode, err := authentication.ParseMode(raw)
 	if err != nil {
-		return false, fmt.Errorf("IRON_ATLAS_DEV_IDENTITY must be a boolean: %w", err)
+		return "", fmt.Errorf(
+			"IRON_ATLAS_AUTHENTICATION_MODE: %w",
+			err,
+		)
 	}
-	return value, nil
+	return mode, nil
 }
 
 func envInt32(name string, fallback int32) (int32, error) {
@@ -121,6 +141,13 @@ func New(cfg Config, logger *slog.Logger) (*Application, error) {
 	if logger == nil {
 		return nil, errors.New("logger is required")
 	}
+	authenticationMiddleware, err := authentication.New(
+		authentication.Options{Mode: cfg.AuthenticationMode},
+	)
+	if err != nil {
+		return nil, fmt.Errorf("initialize authentication boundary: %w", err)
+	}
+
 	policy := authz.DefaultPolicy()
 	var (
 		changes   change.Service
@@ -142,11 +169,17 @@ func New(cfg Config, logger *slog.Logger) (*Application, error) {
 		changes = memory
 		readiness = health.Static{DependencyName: ChangeStoreMemory}
 	case ChangeStorePostgreSQL:
-		startupCtx, cancel := context.WithTimeout(context.Background(), cfg.StartupTimeout)
+		startupCtx, cancel := context.WithTimeout(
+			context.Background(),
+			cfg.StartupTimeout,
+		)
 		defer cancel()
 		pool, err := database.Open(startupCtx, cfg.Database)
 		if err != nil {
-			return nil, fmt.Errorf("initialize PostgreSQL runtime: %w", err)
+			return nil, fmt.Errorf(
+				"initialize PostgreSQL runtime: %w",
+				err,
+			)
 		}
 		service, err := changepostgresql.New(pool)
 		if err != nil {
@@ -157,23 +190,29 @@ func New(cfg Config, logger *slog.Logger) (*Application, error) {
 		readiness = pool
 		closeFn = pool.Close
 	default:
-		return nil, fmt.Errorf("unsupported change store %q", cfg.ChangeStore)
+		return nil, fmt.Errorf(
+			"unsupported change store %q",
+			cfg.ChangeStore,
+		)
 	}
 
 	registry := modules.DefaultRegistry()
 	server, err := httpui.New(httpui.Dependencies{
-		Logger:              logger,
-		Policy:              policy,
-		Changes:             changes,
-		Modules:             registry,
-		Readiness:           readiness,
-		DevelopmentIdentity: cfg.DevelopmentIdentity,
+		Logger:         logger,
+		Policy:         policy,
+		Changes:        changes,
+		Modules:        registry,
+		Readiness:      readiness,
+		Authentication: authenticationMiddleware,
 	})
 	if err != nil {
 		closeFn()
 		return nil, err
 	}
-	return &Application{handler: server.Handler(), close: closeFn}, nil
+	return &Application{
+		handler: server.Handler(),
+		close:   closeFn,
+	}, nil
 }
 
 func (a *Application) Handler() http.Handler { return a.handler }

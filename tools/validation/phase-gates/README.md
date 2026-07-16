@@ -12,6 +12,9 @@ Phase gates are checkpoint-specific. Historical gates are preserved and re-run a
 - `validate_phase1_step2_acceptance.sh` — formal Phase 1 Step 2 acceptance boundary; verifies the exact implementation/evidence chain, retained evidence integrity, synchronized documentation, and the still-passing implementation gate.
 - `validate_phase1_step3_contract.sh` — Phase 1 Step 3 phase-entry contract; verifies requirements, architecture, traceability, testing, acceptance-template, accepted predecessor, and repository synchronization. It is not the final executable Step 3 gate.
 
+- `validate_phase1_step3_authentication_foundation.sh` — first Phase 1 Step 3 implementation gate; verifies typed authentication modes, development-header isolation, immutable request identity, production fail-closed behavior, future adapter/resolver seams, targeted race tests, the accepted contract predecessor, and complete repository validation. It is not Step 3 acceptance.
+
+
 Step 2 uses the tested `isolated_gate_revalidate` helper. The helper preserves the predecessor validator exit status after temporary-clone cleanup, so a failed historical gate cannot be reported as a passing revalidation.
 
 ## Canonical Repository Requirement

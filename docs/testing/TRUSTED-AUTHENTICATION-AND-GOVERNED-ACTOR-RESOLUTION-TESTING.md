@@ -2,10 +2,17 @@
 
 ## Status
 
-Phase 1 Step 3 test contract candidate.
+Phase 1 Step 3 test contract integrated; authentication-foundation tests active.
 
 These tests are required for the final executable candidate. This document does
 not claim that a production adapter or session implementation exists.
+
+## Authentication foundation implementation checkpoint
+
+The current candidate adds executable tests for typed mode parsing, default mode selection, legacy-setting rejection, bounded development headers, duplicate and unknown role rejection, immutable context copies, production rejection of development headers, missing-adapter fail-closed behavior, adapter/resolver composition, nested middleware rejection, public health/readiness paths, and query-string actor spoofing.
+
+These tests do not substitute for provider-protocol, database-backed actor-resolution, session, CSRF, replay, logout, key-rotation, or trusted-proxy test campaigns.
+
 
 ## Test layers
 

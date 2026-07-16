@@ -2,7 +2,7 @@
 
 ## Status
 
-Phase 1 Step 3 normative contract candidate.
+Phase 1 Step 3 normative contract integrated; authentication-foundation implementation candidate active.
 
 This document defines the production-authentication and governed
 actor-resolution boundary. It does not claim that a production identity
@@ -42,6 +42,22 @@ Phase 1 Steps 1 and 2 already provide:
 - database-enforced governed-change controls.
 
 Step 3 extends this foundation. It shall not replace or weaken it.
+
+
+## Authentication foundation implementation checkpoint
+
+The first bounded implementation candidate now provides:
+
+- typed `development` and `production` authentication modes;
+- a dedicated middleware that establishes identity before protected handlers;
+- private immutable request context for the normalized principal and resolved actor;
+- a controlled development-only header adapter with bounded parsing;
+- unconditional rejection of development identity headers in production mode;
+- future `Authenticator` and `ActorResolver` interfaces;
+- fail-closed protected routes when no production adapter is configured; and
+- public health, readiness, and static-asset paths that do not manufacture an actor.
+
+No external provider adapter is accepted. No provider-backed actor lookup, session, CSRF, replay, logout, trusted-proxy, or production deployment boundary is implemented by this checkpoint.
 
 ## Terminology
 

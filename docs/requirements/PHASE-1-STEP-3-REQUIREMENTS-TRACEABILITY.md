@@ -2,8 +2,7 @@
 
 ## Status
 
-Phase 1 Step 3 contract candidate. No executable production authentication is
-accepted by this record.
+Phase 1 Step 3 contract integrated. The authentication-foundation implementation candidate is active; no external provider or production authentication is accepted by this record.
 
 ## Accepted predecessor
 
@@ -49,6 +48,16 @@ The accepted schema already contains:
 
 Any Step 3 migration shall be limited to proven lifecycle, session,
 authentication-event, or controlled service-API needs.
+
+## Authentication foundation implementation status
+
+- `IA-AUTH-008`: Implemented for the current HTTP boundary. Protected handlers consume only the actor from private server-side request context; body, form, query, path, and ordinary headers do not select it.
+- `IA-AUTH-009`: Implemented for configuration. `development` and `production` are typed, mutually exclusive modes; the legacy boolean is rejected.
+- `IA-AUTH-014`: Partially implemented. Request identity is private and immutable by copy, while the accepted transaction-local PostgreSQL actor boundary remains unchanged.
+- `IA-AUTH-016`: Partially implemented. Nested identity middleware, unknown development roles, production development headers, and missing production adapters fail closed.
+
+Provider verification, governed database-backed external-identity resolution, sessions, CSRF, trusted-proxy enforcement, lifecycle invalidation, and representative-provider evidence remain required.
+
 
 ## Required hostile classes
 
