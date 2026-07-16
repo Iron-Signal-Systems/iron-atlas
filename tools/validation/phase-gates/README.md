@@ -20,3 +20,10 @@ Step 2 uses the tested `isolated_gate_revalidate` helper. The helper preserves t
 ## Canonical Repository Requirement
 
 A local phase gate is necessary but not sufficient for acceptance. The exact pushed commit must also pass the applicable gate through `tools/validation/verify_canonical_clone.sh`. Retained output is recorded with `tools/validation/record_validation_evidence.sh` and committed below `validation/evidence/`.
+
+- `validate_phase1_step3_governed_actor_resolution.sh` — second Phase 1
+  Step 3 implementation gate; verifies the least-privileged PostgreSQL resolver
+  function, explicit role mapping, fail-closed governed-state behavior,
+  disposable database and race tests, accepted authentication-foundation
+  predecessor, and complete repository validation. It is not Step 3
+  acceptance.

@@ -4,7 +4,7 @@
 >
 > Built on purpose. Backed by discipline. Engineered to endure.
 >
-> Development status: Phase 1 Step 2 is accepted and the Phase 1 Step 3 trusted-authentication contract is integrated; the typed authentication-mode and immutable request-identity foundation is the active implementation candidate; no external provider, session, CSRF, or trusted-proxy implementation is accepted; not ready for production use
+> Development status: Phase 1 Step 2 is accepted; the Phase 1 Step 3 authentication foundation is merged; the least-privileged PostgreSQL governed actor resolver is the active implementation candidate; no external provider, session, CSRF, or trusted-proxy implementation is accepted; not ready for production use
 
 Iron Atlas is an authoritative, version-controlled system for infrastructure documentation, diagrams, inventory, automated discovery, project tracking, change management, validation, preventive health analysis, and formal acceptance.
 
@@ -138,3 +138,15 @@ Raw firewall backups, technical-support output, credentials, database URLs, SSH 
 ## License
 
 BSD 3-Clause. See [LICENSE](LICENSE).
+
+## Governed Actor Resolution Candidate
+
+The active Phase 1 Step 3 checkpoint adds a least-privileged PostgreSQL
+`ActorResolver` behind `atlas.resolve_governed_actor(text, text)`. The
+application role receives function execution only, not broad access to governed
+identity or role tables. Missing, inactive, disabled, retired, unmapped, or
+unsupported governed state fails closed.
+
+This checkpoint still does not implement an external identity-provider adapter,
+sessions, CSRF protection, trusted-proxy enforcement, or production
+authentication.

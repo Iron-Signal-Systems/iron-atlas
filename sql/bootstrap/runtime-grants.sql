@@ -9,6 +9,7 @@ GRANT USAGE ON SCHEMA atlas TO atlas_application, atlas_readonly, atlas_auditor;
 
 GRANT EXECUTE ON FUNCTION atlas.create_change_request(text, text, integer) TO atlas_application;
 GRANT EXECUTE ON FUNCTION atlas.record_approval(text, text, text) TO atlas_application;
+GRANT EXECUTE ON FUNCTION atlas.resolve_governed_actor(text, text) TO atlas_application;
 
 GRANT SELECT ON atlas.change_request, atlas.change_approval_summary TO atlas_application;
 GRANT SELECT ON ALL TABLES IN SCHEMA atlas TO atlas_readonly;

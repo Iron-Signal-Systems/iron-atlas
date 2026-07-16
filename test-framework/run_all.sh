@@ -30,6 +30,8 @@ run "Phase 1 Step 3 contract static validation" python3 tools/validation/validat
 run "Phase 1 Step 3 contract regression" ./test-framework/authentication/test_phase1_step3_contract.sh
 run "Phase 1 Step 3 authentication foundation static validation" python3 tools/validation/validate_phase1_step3_authentication_foundation.py
 run "Phase 1 Step 3 authentication foundation regression" ./test-framework/authentication/test_phase1_step3_authentication_foundation.sh
+run "Phase 1 Step 3 governed actor resolution static validation" python3 tools/validation/validate_phase1_step3_governed_actor_resolution.py
+run "Phase 1 Step 3 governed actor resolution regression" ./test-framework/authentication/test_phase1_step3_governed_actor_resolution.sh
 run "phase-gate exit propagation" ./test-framework/phase-gates/test_isolated_gate_revalidation.sh
 run "external toolchain validation" python3 tools/validation/validate_toolchain.py
 run "portable acceptance static validation" python3 tools/validation/validate_portable_acceptance.py

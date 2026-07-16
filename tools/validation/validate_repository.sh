@@ -41,6 +41,9 @@ required=(
   cmd/atlasd/main.go internal/change/change.go
   internal/authentication/authentication.go
   internal/authentication/authentication_test.go
+  internal/authentication/postgresql/resolver.go
+  internal/authentication/postgresql/resolver_test.go
+  internal/authentication/postgresql/resolver_integration_test.go
   internal/database/postgresql/pool.go
   internal/change/postgresql/service.go
   internal/health/health.go
@@ -51,6 +54,7 @@ required=(
   tools/validation/validate_go_postgresql_runtime.py
   tools/validation/validate_phase1_step3_contract.py
   tools/validation/validate_phase1_step3_authentication_foundation.py
+  tools/validation/validate_phase1_step3_governed_actor_resolution.py
   tools/validation/validate_portable_acceptance.py
   tools/validation/validate_committed_evidence.py
   tools/validation/validate_toolchain.py
@@ -60,8 +64,10 @@ required=(
   tools/validation/phase-gates/validate_phase1_step2.sh
   tools/validation/phase-gates/validate_phase1_step3_contract.sh
   tools/validation/phase-gates/validate_phase1_step3_authentication_foundation.sh
+  tools/validation/phase-gates/validate_phase1_step3_governed_actor_resolution.sh
   test-framework/authentication/test_phase1_step3_contract.sh
   test-framework/authentication/test_phase1_step3_authentication_foundation.sh
+  test-framework/authentication/test_phase1_step3_governed_actor_resolution.sh
   test-framework/phase-gates/test_isolated_gate_revalidation.sh
   test-framework/portability/test_portable_validation.sh
 )
@@ -75,6 +81,7 @@ check "database security static contract" python3 tools/validation/validate_sql_
 check "Go PostgreSQL runtime static contract" python3 tools/validation/validate_go_postgresql_runtime.py
 check "Phase 1 Step 3 contract" python3 tools/validation/validate_phase1_step3_contract.py
 check "Phase 1 Step 3 authentication foundation" python3 tools/validation/validate_phase1_step3_authentication_foundation.py
+check "Phase 1 Step 3 governed actor resolution" python3 tools/validation/validate_phase1_step3_governed_actor_resolution.py
 check "portable acceptance static contract" python3 tools/validation/validate_portable_acceptance.py
 check "committed validation evidence" python3 tools/validation/validate_committed_evidence.py
 check "Draw.io XML" python3 -c 'import xml.etree.ElementTree as ET; ET.parse("diagrams/source/curated/architecture/ARCH-001-iron-atlas-context.drawio")'

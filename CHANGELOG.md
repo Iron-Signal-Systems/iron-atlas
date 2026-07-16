@@ -63,3 +63,14 @@
 - Documentation, testing, validation, and phase-gate structure.
 - Phase 0 accepted as a non-production development baseline under annotated tag
   `phase-0-repository-and-executable-baseline-complete-v1`.
+
+### Phase 1 Step 3 PostgreSQL governed actor-resolution candidate
+
+- Added migration 007 with a fixed-search-path, least-privileged
+  `atlas.resolve_governed_actor(text, text)` function.
+- Added a PostgreSQL `authentication.ActorResolver` with explicit Atlas role
+  mapping and fail-closed unknown-state handling.
+- Added disposable-database, integration, hostile-input, concurrency, race,
+  static-validation, and phase-gate coverage.
+- Preserved the prohibition on broad application-role reads of governed
+  identity and role tables.

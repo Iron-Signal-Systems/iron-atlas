@@ -5,3 +5,4 @@ migrations/003_roles_and_authority.sql
 migrations/004_governed_changes.sql
 migrations/005_change_approvals.sql
 migrations/006_append_only_history.sql
+migrations/007_governed_actor_resolution.sql

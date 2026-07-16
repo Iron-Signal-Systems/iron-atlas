@@ -31,22 +31,87 @@ def sql(statement: str, user: str | None = None, actor: str | None = None, expec
 def setup():
     sql("""
     SET ROLE atlas_schema_owner;
-    INSERT INTO atlas.identity_provider(provider_id, provider_type, display_name)
-    VALUES ('dev', 'LOCAL_DEVELOPMENT', 'Disposable test provider')
+
+    INSERT INTO atlas.identity_provider(
+        provider_id,
+        provider_type,
+        display_name,
+        active
+    ) VALUES
+      ('dev', 'LOCAL_DEVELOPMENT', 'Disposable test provider', true),
+      ('inactive-provider', 'OIDC', 'Inactive test provider', false)
     ON CONFLICT DO NOTHING;
-    INSERT INTO atlas.actor(actor_id, display_name, actor_type) VALUES
-      ('requester', 'Requester', 'HUMAN'),
-      ('approver-a', 'Approver A', 'HUMAN'),
-      ('approver-b', 'Approver B', 'HUMAN'),
-      ('unauthorized', 'Unauthorized', 'HUMAN')
+
+    INSERT INTO atlas.actor(
+        actor_id,
+        display_name,
+        actor_type,
+        actor_status,
+        disabled_at
+    ) VALUES
+      ('requester', 'Requester', 'HUMAN', 'ACTIVE', NULL),
+      ('approver-a', 'Approver A', 'HUMAN', 'ACTIVE', NULL),
+      ('approver-b', 'Approver B', 'HUMAN', 'ACTIVE', NULL),
+      ('unauthorized', 'Unauthorized', 'HUMAN', 'ACTIVE', NULL),
+      ('disabled-actor', 'Disabled Actor', 'HUMAN', 'DISABLED', transaction_timestamp()),
+      ('no-role', 'No Role Actor', 'HUMAN', 'ACTIVE', NULL),
+      ('expired-role', 'Expired Role Actor', 'HUMAN', 'ACTIVE', NULL),
+      ('inactive-role', 'Inactive Role Actor', 'HUMAN', 'ACTIVE', NULL),
+      ('unknown-role', 'Unknown Role Actor', 'HUMAN', 'ACTIVE', NULL)
     ON CONFLICT DO NOTHING;
-    INSERT INTO atlas.role_binding(actor_id, role_code, granted_by_actor_id, grant_reason) VALUES
-      ('requester', 'NETWORK_TECHNICIAN', NULL, 'test fixture'),
-      ('approver-a', 'CHANGE_APPROVER', NULL, 'test fixture'),
-      ('approver-b', 'CHANGE_APPROVER', NULL, 'test fixture')
+
+    INSERT INTO atlas.external_identity(
+        actor_id,
+        provider_id,
+        provider_subject
+    ) VALUES
+      ('requester', 'dev', 'subject-requester'),
+      ('disabled-actor', 'dev', 'subject-disabled-actor'),
+      ('no-role', 'dev', 'subject-no-role'),
+      ('expired-role', 'dev', 'subject-expired-role'),
+      ('inactive-role', 'dev', 'subject-inactive-role'),
+      ('unknown-role', 'dev', 'subject-unknown-role'),
+      ('unauthorized', 'inactive-provider', 'subject-inactive-provider')
+    ON CONFLICT DO NOTHING;
+
+    INSERT INTO atlas.role_definition(
+        role_code,
+        description,
+        active
+    ) VALUES
+      ('INACTIVE_ROLE', 'Inactive resolver test role', false),
+      ('CUSTOM_ROLE', 'Unsupported resolver test role', true)
+    ON CONFLICT (role_code) DO NOTHING;
+
+    INSERT INTO atlas.role_binding(
+        actor_id,
+        role_code,
+        valid_from,
+        valid_until,
+        granted_by_actor_id,
+        grant_reason
+    ) VALUES
+      ('requester', 'NETWORK_TECHNICIAN',
+       transaction_timestamp() - interval '1 hour', NULL,
+       NULL, 'test fixture'),
+      ('approver-a', 'CHANGE_APPROVER',
+       transaction_timestamp() - interval '1 hour', NULL,
+       NULL, 'test fixture'),
+      ('approver-b', 'CHANGE_APPROVER',
+       transaction_timestamp() - interval '1 hour', NULL,
+       NULL, 'test fixture'),
+      ('expired-role', 'NETWORK_TECHNICIAN',
+       transaction_timestamp() - interval '2 hours',
+       transaction_timestamp() - interval '1 hour',
+       NULL, 'expired resolver fixture'),
+      ('inactive-role', 'INACTIVE_ROLE',
+       transaction_timestamp() - interval '1 hour', NULL,
+       NULL, 'inactive resolver fixture'),
+      ('unknown-role', 'CUSTOM_ROLE',
+       transaction_timestamp() - interval '1 hour', NULL,
+       NULL, 'unsupported resolver fixture')
     ON CONFLICT DO NOTHING;
     """)
-
 
 def assert_eq(actual, expected, name):
     if actual.strip() != expected:
@@ -57,7 +122,80 @@ def assert_eq(actual, expected, name):
 def main():
     setup()
     count = sql("SELECT count(*) FROM atlas.schema_migration;").stdout.strip()
-    assert_eq(count, "6", "six migrations recorded")
+    assert_eq(count, "7", "seven migrations recorded")
+
+    resolved = sql(
+        """
+        SELECT actor_id || '|' || array_to_string(role_codes, ',')
+        FROM atlas.resolve_governed_actor('dev', 'subject-requester');
+        """,
+        user="atlas_application",
+    ).stdout.strip()
+    assert_eq(
+        resolved,
+        "requester|NETWORK_TECHNICIAN",
+        "governed actor resolver returns current Atlas roles",
+    )
+
+    for statement, name in (
+        (
+            "SELECT count(*) FROM atlas.resolve_governed_actor("
+            "'dev', 'subject-disabled-actor');",
+            "disabled actor resolution fails closed",
+        ),
+        (
+            "SELECT count(*) FROM atlas.resolve_governed_actor("
+            "'inactive-provider', 'subject-inactive-provider');",
+            "inactive provider resolution fails closed",
+        ),
+        (
+            "SELECT count(*) FROM atlas.resolve_governed_actor("
+            "'dev', 'subject-unmapped');",
+            "unmapped identity resolution fails closed",
+        ),
+        (
+            "SELECT count(*) FROM atlas.resolve_governed_actor("
+            "' dev', 'subject-requester');",
+            "unnormalized provider resolution fails closed",
+        ),
+    ):
+        assert_eq(
+            sql(statement, user="atlas_application").stdout.strip(),
+            "0",
+            name,
+        )
+
+    for subject, actor_id, name in (
+        (
+            "subject-no-role",
+            "no-role",
+            "actor with no binding resolves with zero roles",
+        ),
+        (
+            "subject-expired-role",
+            "expired-role",
+            "expired role binding is excluded",
+        ),
+        (
+            "subject-inactive-role",
+            "inactive-role",
+            "inactive role definition is excluded",
+        ),
+    ):
+        value = sql(
+            "SELECT actor_id || '|' || cardinality(role_codes)::text "
+            "FROM atlas.resolve_governed_actor("
+            f"'dev', '{subject}');",
+            user="atlas_application",
+        ).stdout.strip()
+        assert_eq(value, f"{actor_id}|0", name)
+
+    sql(
+        "SELECT actor_id FROM atlas.actor;",
+        user="atlas_application",
+        expect=False,
+    )
+    print("PASS: application cannot directly select governed actor table")
 
     sql(
         "SELECT atlas.current_actor_id();",
