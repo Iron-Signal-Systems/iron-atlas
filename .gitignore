@@ -25,3 +25,18 @@ config.xml
 # Sanitized, immutable validation and acceptance evidence is version-controlled.
 !/validation/evidence/
 !/validation/evidence/**
+
+# ISRAS and Python validation tooling
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.coverage
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+Thumbs.db
+.isras-tools-venv/
+
+# Repository-local pinned Go assurance tools
+.isras-go-tools/

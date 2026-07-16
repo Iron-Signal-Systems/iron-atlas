@@ -1,0 +1,123 @@
+{
+  "schema_version": "ISRAS-ENVIRONMENT-V1",
+  "profile": "portable",
+  "classification": "portable",
+  "operating_systems": [
+    "Linux",
+    "Darwin",
+    "Windows"
+  ],
+  "architectures": [
+    "x86_64",
+    "AMD64",
+    "aarch64",
+    "arm64"
+  ],
+  "required_commands": [
+    {
+      "command": "git",
+      "version_args": [
+        "--version"
+      ],
+      "version_pattern": "^git version [0-9]+\\.[0-9]+"
+    },
+    {
+      "command": "python3",
+      "version_args": [
+        "--version"
+      ],
+      "version_pattern": "^Python 3\\.(1[1-9]|[2-9][0-9])",
+      "operating_systems": [
+        "Linux",
+        "Darwin"
+      ]
+    },
+    {
+      "command": "python",
+      "version_args": [
+        "--version"
+      ],
+      "version_pattern": "^Python 3\\.(1[1-9]|[2-9][0-9])",
+      "operating_systems": [
+        "Windows"
+      ]
+    },
+    {
+      "command": "bash",
+      "version_args": [
+        "--version"
+      ],
+      "version_pattern": "GNU bash, version (3\\.[2-9]|[4-9]\\.)",
+      "operating_systems": [
+        "Linux",
+        "Darwin"
+      ]
+    },
+    {
+      "command": "pwsh",
+      "version_args": [
+        "--version"
+      ],
+      "version_pattern": "PowerShell 7\\.",
+      "operating_systems": [
+        "Windows"
+      ]
+    },
+    {
+      "command": "go",
+      "version_args": [
+        "version"
+      ],
+      "version_pattern": "^go version go1\\.26\\.5(?:[-+][^ ]+)? "
+    },
+    {
+      "command": "govulncheck",
+      "version_args": [
+        "-version"
+      ],
+      "version_pattern": "^Go: go1\\.26\\.5(?:[-+].*)?$"
+    }
+  ],
+  "optional_commands": [
+    {
+      "command": "pwsh",
+      "version_args": [
+        "--version"
+      ],
+      "version_pattern": "PowerShell 7\\.",
+      "operating_systems": [
+        "Linux",
+        "Darwin"
+      ]
+    }
+  ],
+  "required_python_modules": [
+    {
+      "module": "jsonschema",
+      "distribution": "jsonschema",
+      "version": "4.26.0"
+    },
+    {
+      "module": "yaml",
+      "distribution": "PyYAML",
+      "version": "6.0.3"
+    }
+  ],
+  "required_environment_variables": [],
+  "capabilities": [
+    "policy-validation",
+    "schema-validation",
+    "workflow-yaml-validation",
+    "source-manifest-verification",
+    "python-syntax",
+    "bash-syntax",
+    "fresh-clone",
+    "go-vulnerability-analysis"
+  ],
+  "containers_required": false,
+  "notes": [
+    "Project-specific commands and exact toolchains must be declared and committed.",
+    "govulncheck is installed from tools/go-tools.lock.json and verified before portable validation.",
+    "Go language compatibility is 1.25.0; the preferred build and validation toolchain is go1.26.5."
+  ]
+}

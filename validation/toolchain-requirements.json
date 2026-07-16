@@ -11,8 +11,10 @@
       "minimum": "2.39"
     },
     "go": {
-      "minimum": "1.25",
-      "maximum_exclusive": "1.27"
+      "minimum": "1.26.5",
+      "maximum_exclusive": "1.27",
+      "language_version": "1.25.0",
+      "preferred_toolchain": "go1.26.5"
     },
     "python": {
       "minimum": "3.11"
