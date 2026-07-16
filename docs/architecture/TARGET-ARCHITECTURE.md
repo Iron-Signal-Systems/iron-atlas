@@ -2,7 +2,7 @@
 
 ## Status
 
-Normative target direction. Phase 1 Steps 1 and 2 are accepted. The Phase 1 Step 3 authentication foundation, governed actor resolver, and bounded OIDC discovery, JWKS, and ID-token verification checkpoints are integrated. Authorization-code exchange, PKCE transaction persistence, sessions, CSRF, trusted-proxy enforcement, and production authentication are not accepted.
+Normative target direction. Phase 1 Steps 1 and 2 are accepted. The Phase 1 Step 3 authentication foundation, governed actor resolver, and bounded OIDC discovery, JWKS, and ID-token verification checkpoints are integrated. Authorization-code exchange, PKCE S256, and bounded one-time in-memory preauthentication transactions are the active implementation candidate. HTTP login and callback routes, browser cookies, durable sessions, CSRF, logout, trusted-proxy enforcement, governed actor wiring, and production authentication are not accepted.
 
 ## Layers
 

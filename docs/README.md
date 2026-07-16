@@ -2,7 +2,7 @@
 
 > Owner: Iron Signal Systems
 >
-> Status: Phase 1 Step 2 is accepted; the Phase 1 Step 3 authentication foundation and governed actor resolver are merged; bounded OIDC discovery, JWKS, and ID-token verification is the active implementation candidate; no authorization-code exchange, session, CSRF, or trusted-proxy implementation is accepted; not ready for production use
+> Status: Phase 1 Step 2 is accepted; the Phase 1 Step 3 authentication foundation, governed actor resolver, and bounded OIDC discovery/JWKS/ID-token verification checkpoints are merged; authorization-code exchange with PKCE S256 and bounded one-time in-memory preauthentication transactions is the active implementation candidate; no HTTP login/callback route, durable session, cookie, CSRF, logout, or trusted-proxy implementation is accepted; not ready for production use
 
 ## Start Here
 
@@ -17,6 +17,7 @@
 - [PostgreSQL database security boundary](architecture/POSTGRESQL-DATABASE-SECURITY-BOUNDARY.md)
 - [Go PostgreSQL runtime and identity context](architecture/GO-POSTGRESQL-RUNTIME-AND-IDENTITY-CONTEXT.md)
 - [Trusted authentication and governed actor resolution](architecture/TRUSTED-AUTHENTICATION-AND-GOVERNED-ACTOR-RESOLUTION.md)
+- [OIDC authorization-code and PKCE transaction implementation](architecture/OIDC-AUTHORIZATION-CODE-AND-PKCE-TRANSACTION-IMPLEMENTATION.md)
 - [ADR-0004 — pgx PostgreSQL runtime driver](decisions/ADR-0004-PGX-POSTGRESQL-RUNTIME-DRIVER.md)
 - [Cisco NPS/RADIUS service authentication](architecture/CISCO-NPS-RADIUS-SERVICE-AUTHENTICATION.md)
 - [Cisco collection profile catalog](architecture/CISCO-COLLECTION-PROFILE-CATALOG.md)
@@ -56,5 +57,8 @@ A phase is not complete until the root README, documentation indexes, architectu
 - `architecture/OIDC-ID-TOKEN-VERIFICATION-IMPLEMENTATION.md` records the
   bounded Phase 1 Step 3 OIDC discovery, JWKS, and ID-token verification
   candidate.
+- `architecture/OIDC-AUTHORIZATION-CODE-AND-PKCE-TRANSACTION-IMPLEMENTATION.md`
+  records the bounded successor authorization-code, PKCE S256, state, nonce,
+  one-time transaction, token exchange, and verified-principal candidate.
 - `decisions/ADR-0006-OIDC-ID-TOKEN-VERIFICATION-LIBRARIES.md` records the
   pinned protocol-library decision and retained Atlas enforcement boundary.

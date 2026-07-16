@@ -67,6 +67,7 @@ docs/architecture/GO-POSTGRESQL-RUNTIME-AND-IDENTITY-CONTEXT.md
 docs/architecture/HTML5-INTERFACE-AND-ROLE-WORKSPACES.md
 docs/architecture/MINIMAL-ARCH-LINUX-DEPLOYMENT.md
 docs/architecture/MODULARITY-AND-DEPENDENCY-DIRECTION.md
+docs/architecture/OIDC-AUTHORIZATION-CODE-AND-PKCE-TRANSACTION-IMPLEMENTATION.md
 docs/architecture/OIDC-ID-TOKEN-VERIFICATION-IMPLEMENTATION.md
 docs/architecture/OPERATIONAL-SYSTEM-COMPLEMENT-AND-INTEGRATION-MODEL.md
 docs/architecture/PORTABLE-VALIDATION-AND-CANONICAL-REPOSITORY-ACCEPTANCE.md
@@ -111,6 +112,8 @@ internal/app/app.go
 internal/app/app_test.go
 internal/authentication/authentication.go
 internal/authentication/authentication_test.go
+internal/authentication/oidc/authorization_code.go
+internal/authentication/oidc/authorization_code_test.go
 internal/authentication/oidc/verifier.go
 internal/authentication/oidc/verifier_test.go
 internal/authentication/postgresql/resolver.go
@@ -188,6 +191,7 @@ test-framework/README.md
 test-framework/authentication/test_phase1_step3_authentication_foundation.sh
 test-framework/authentication/test_phase1_step3_contract.sh
 test-framework/authentication/test_phase1_step3_governed_actor_resolution.sh
+test-framework/authentication/test_phase1_step3_oidc_authorization_code_pkce.sh
 test-framework/authentication/test_phase1_step3_oidc_id_token_verification.sh
 test-framework/database/run_disposable_postgres.sh
 test-framework/database/test_database.py
@@ -238,6 +242,7 @@ tools/validation/phase-gates/validate_phase1_step2_acceptance.sh
 tools/validation/phase-gates/validate_phase1_step3_authentication_foundation.sh
 tools/validation/phase-gates/validate_phase1_step3_contract.sh
 tools/validation/phase-gates/validate_phase1_step3_governed_actor_resolution.sh
+tools/validation/phase-gates/validate_phase1_step3_oidc_authorization_code_pkce.sh
 tools/validation/phase-gates/validate_phase1_step3_oidc_id_token_verification.sh
 tools/validation/record_validation_evidence.sh
 tools/validation/redact_validation_text.py
@@ -253,6 +258,7 @@ tools/validation/validate_migrations.py
 tools/validation/validate_phase1_step3_authentication_foundation.py
 tools/validation/validate_phase1_step3_contract.py
 tools/validation/validate_phase1_step3_governed_actor_resolution.py
+tools/validation/validate_phase1_step3_oidc_authorization_code_pkce.py
 tools/validation/validate_phase1_step3_oidc_id_token_verification.py
 tools/validation/validate_portable.sh
 tools/validation/validate_portable_acceptance.py

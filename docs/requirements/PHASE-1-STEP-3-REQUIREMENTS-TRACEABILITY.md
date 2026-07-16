@@ -2,14 +2,14 @@
 
 ## Status
 
-Phase 1 Step 3 contract integrated. The authentication-foundation implementation candidate is active; no external provider or production authentication is accepted by this record.
+Phase 1 Step 3 contract integrated. Authentication foundation, governed actor resolution, and OIDC ID-token verification checkpoints are merged. Authorization-code and PKCE transaction handling is the active bounded candidate; no HTTP login/callback route, durable session, CSRF, trusted-proxy, or production authentication is accepted by this record.
 
 ## Accepted predecessor
 
 - Tag:
   `phase-1-step-2-go-postgresql-runtime-and-identity-context-complete-v1`
-- Accepted `dev` merge boundary:
-  `1a750f7de791f567184c6f48e18eaec2933b8a14`
+- Active implementation base:
+  `36394c917a7c60350f229fc80df2066a0c132681`
 - Preserved invariant: authenticated actor context remains transaction-local in
   PostgreSQL and cannot leak across pooled connections.
 
@@ -56,7 +56,7 @@ authentication-event, or controlled service-API needs.
 - `IA-AUTH-014`: Partially implemented. Request identity is private and immutable by copy, while the accepted transaction-local PostgreSQL actor boundary remains unchanged.
 - `IA-AUTH-016`: Partially implemented. Nested identity middleware, unknown development roles, production development headers, and missing production adapters fail closed.
 
-Provider verification, governed database-backed external-identity resolution, sessions, CSRF, trusted-proxy enforcement, lifecycle invalidation, and representative-provider evidence remain required.
+HTTP login and callback routes, production authenticator wiring, durable sessions, cookies, CSRF, trusted-proxy enforcement, lifecycle invalidation, authentication audit persistence, and representative-provider evidence remain required.
 
 
 ## Required hostile classes
@@ -108,6 +108,27 @@ issuer, audience, authorized party, expiry, issued-at, not-before, nonce,
 stable-subject, access-token-hash, duplicate sensitive-field, key-rotation,
 outage, malformed-input, race, and concurrency handling.
 
-Authorization-code exchange, PKCE transaction state, browser sessions, CSRF,
-logout, trusted proxies, authentication audit persistence, representative
-provider evidence, and formal Step 3 acceptance remain unimplemented.
+That verifier checkpoint did not implement authorization-code exchange or
+PKCE transaction state. The successor candidate now implements bounded code
+exchange and one-time in-memory transaction handling. Browser routes, cookies,
+durable sessions, CSRF, logout, trusted proxies, authentication audit
+persistence, representative-provider evidence, and formal Step 3 acceptance
+remain unimplemented.
+
+## OIDC authorization-code and PKCE implementation status
+
+The authorization-code and PKCE candidate partially implements `IA-AUTH-002`,
+`IA-AUTH-004`, `IA-AUTH-008`, `IA-AUTH-009`, `IA-AUTH-013`, `IA-AUTH-015`, and
+`IA-AUTH-016`.
+
+It proves cryptographic state, nonce, and PKCE verifier generation; SHA-256 state
+digests; discovered `S256`; exact redirect and token endpoints; explicit client
+authentication; bounded lifetime, capacity, code, and response sizes; atomic
+one-time state consumption; invalid-code and outage classification; verified
+principal production; replay rejection; exactly one concurrent consumer; and
+secret-redacted errors.
+
+It does not prove browser state cookies, HTTP callbacks, durable
+restart-surviving transactions, authenticated sessions, CSRF, logout, trusted
+proxies, production credential delivery, representative-provider compatibility,
+or formal Step 3 acceptance.

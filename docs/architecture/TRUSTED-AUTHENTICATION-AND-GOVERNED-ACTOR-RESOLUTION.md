@@ -2,17 +2,18 @@
 
 ## Status
 
-Phase 1 Step 3 normative contract integrated; authentication-foundation implementation candidate active.
+Phase 1 Step 3 normative contract integrated. Authentication foundation, governed actor resolution, and OIDC ID-token verification checkpoints are merged; authorization-code and PKCE transaction handling is the active bounded implementation candidate.
 
 This document defines the production-authentication and governed
 actor-resolution boundary. It does not claim that a production identity
 provider, login flow, session service, trusted-proxy deployment, or production
 authentication implementation is accepted.
 
-The accepted predecessor is Phase 1 Step 2. The current accepted `dev` merge
-boundary is `1a750f7de791f567184c6f48e18eaec2933b8a14`, and the immutable
-predecessor tag is
+The formally accepted predecessor is Phase 1 Step 2 under the immutable tag
 `phase-1-step-2-go-postgresql-runtime-and-identity-context-complete-v1`.
+
+The exact merged `dev` implementation base for the active authorization-code
+checkpoint is `36394c917a7c60350f229fc80df2066a0c132681`.
 
 ## Purpose
 
@@ -46,7 +47,7 @@ Step 3 extends this foundation. It shall not replace or weaken it.
 
 ## Authentication foundation implementation checkpoint
 
-The first bounded implementation candidate now provides:
+The merged authentication-foundation checkpoint provides:
 
 - typed `development` and `production` authentication modes;
 - a dedicated middleware that establishes identity before protected handlers;
@@ -341,8 +342,36 @@ allowlisting, expiry, issued-at, not-before, nonce, stable-subject,
 access-token-hash, duplicate sensitive-field, key-rotation, outage, race, and
 concurrency enforcement.
 
-This checkpoint deliberately stops before authorization-code exchange and
-preauthentication transaction persistence because those controls must be
-designed together with the later session, replay, cookie, CSRF, logout, and
-trusted-proxy boundaries. It does not yet implement a production
-`authentication.Authenticator`.
+That checkpoint deliberately stopped before authorization-code exchange and
+preauthentication transaction handling. The successor candidate now implements
+bounded authorization-code exchange, state, nonce, PKCE S256, atomic one-time
+in-memory transaction consumption, and verified-principal production.
+
+The successor still does not implement HTTP login or callback routes, browser
+cookies, durable restart-surviving preauthentication storage, authenticated
+sessions, CSRF, logout, trusted-proxy enforcement, governed actor wiring, or a
+production `authentication.Authenticator`.
+
+## OIDC authorization-code and PKCE transaction implementation checkpoint
+
+The active bounded candidate adds:
+
+- 256-bit random state, nonce, and PKCE verifier generation;
+- a SHA-256 state digest rather than raw-state storage;
+- discovered PKCE `S256` enforcement;
+- exact discovered HTTPS authorization and token endpoints;
+- exact configured HTTPS redirect URI binding;
+- explicit compatible token-endpoint client authentication;
+- bounded short-lived preauthentication lifetime and capacity;
+- atomic one-time transaction consumption before token exchange;
+- token-endpoint redirect prohibition;
+- bounded token-response reading;
+- existing ID-token and access-token-hash verification;
+- invalid-code, outage, expiry, replay, concurrency, response-size, randomness,
+  and redaction tests; and
+- provider-neutral `authentication.Principal` output.
+
+The in-memory store intentionally invalidates outstanding transactions on
+process restart. Durable restart-surviving preauthentication storage is not
+accepted until the later credential and secret-protection boundary can protect
+a persisted PKCE verifier.

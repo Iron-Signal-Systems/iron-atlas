@@ -8,7 +8,7 @@ The current execution objective is to move the accepted Phase 1 Step 2 non-produ
 
 Execution priority, capacity assumptions, representative-environment boundaries, quarterly milestones, focus controls, and first-product deferrals are governed by the [Atlas Primary-Focus Execution Plan](ATLAS-PRIMARY-FOCUS-EXECUTION-PLAN.md).
 
-The active formal candidate is Phase 1 Step 3 — Trusted Authentication and Governed Actor Resolution. The authentication foundation, governed actor resolver, and bounded OIDC discovery, JWKS, and ID-token verification checkpoints are integrated. Live infrastructure collection is not accepted until the applicable identity, credential, TLS, recovery, and resource-governance boundaries are complete.
+The active formal candidate is Phase 1 Step 3 — Trusted Authentication and Governed Actor Resolution. The authentication foundation, governed actor resolver, and bounded OIDC discovery, JWKS, and ID-token verification checkpoints are integrated. Authorization-code exchange with PKCE S256 and bounded one-time in-memory preauthentication transactions is the active implementation candidate. Live infrastructure collection is not accepted until the applicable identity, credential, TLS, recovery, and resource-governance boundaries are complete.
 
 ## Phase 0 — Repository and Executable Baseline
 
@@ -55,7 +55,7 @@ Step 2 is accepted as a non-production runtime and portable-validation boundary 
 
 ### Step 3 — Trusted Authentication and Governed Actor Resolution
 
-**Status:** Contract, authentication foundation, governed actor resolver, and bounded OIDC discovery, JWKS, and ID-token verification checkpoints are integrated. Authorization-code exchange, PKCE transaction persistence, sessions, CSRF, trusted-proxy enforcement, and production authentication are not accepted.
+**Status:** Contract, authentication foundation, governed actor resolver, and bounded OIDC discovery, JWKS, and ID-token verification checkpoints are integrated. Authorization-code exchange, PKCE S256, and bounded one-time in-memory preauthentication transactions are the active candidate. HTTP login/callback routes, cookies, durable sessions, CSRF, logout, trusted-proxy enforcement, governed actor wiring, and production authentication are not accepted.
 
 - Pluggable trusted authentication adapter
 - Verified provider identity normalization
@@ -69,7 +69,7 @@ Step 2 is accepted as a non-production runtime and portable-validation boundary 
 - Spoofing, ambiguity, lifecycle, concurrency, and confused-deputy tests
 - Continued transaction-local PostgreSQL actor context
 
-**Current implementation checkpoint:** typed authentication modes, development-header isolation, production fail-closed middleware, private immutable request identity, least-privileged governed actor resolution, and bounded OIDC discovery, JWKS, and ID-token verification. Authorization-code and PKCE transaction handling, production authenticator wiring, sessions, cookies, logout, CSRF, trusted proxies, authentication audit, lifecycle invalidation, and formal acceptance remain.
+**Current implementation checkpoint:** typed authentication modes, development-header isolation, production fail-closed middleware, private immutable request identity, least-privileged governed actor resolution, bounded OIDC discovery/JWKS/ID-token verification, and a candidate authorization-code/PKCE S256 flow with atomic one-time in-memory transactions. HTTP login and callback routes, production authenticator wiring, durable sessions, cookies, logout, CSRF, trusted proxies, authentication audit, lifecycle invalidation, and formal acceptance remain.
 
 
 ### Remaining Phase 1 Work
@@ -159,18 +159,29 @@ Step 2 is accepted as a non-production runtime and portable-validation boundary 
 
 ## Active Step 3 governed actor-resolution checkpoint
 
-The current bounded checkpoint implements the least-privileged PostgreSQL
-governed actor resolver. Bounded OIDC provider protocol and ID-token verification
-is now also integrated. The remaining Step 3 work includes authorization-code
-and PKCE transaction handling, production authenticator wiring, sessions,
-cookies, logout, CSRF, trusted proxies, authentication audit, lifecycle
-invalidation, and formal acceptance. Formal Step 3 acceptance must not be
-recorded from either checkpoint alone.
+The merged bounded checkpoints implement the least-privileged PostgreSQL
+governed actor resolver and OIDC provider protocol and ID-token verification.
+The active successor adds authorization-code exchange, PKCE S256, and atomic
+one-time in-memory preauthentication transactions. The remaining Step 3 work
+includes HTTP login and callback routes, production authenticator wiring,
+durable sessions, cookies, logout, CSRF, trusted proxies, authentication audit,
+lifecycle invalidation, and formal acceptance. Formal Step 3 acceptance must
+not be recorded from these checkpoints alone.
 
 ## Active Step 3 OIDC ID-token verification checkpoint
 
-The current bounded checkpoint implements OIDC discovery, JWKS, and ID-token
-verification only. The subsequent Step 3 checkpoints remain authorization-code
-and PKCE transaction handling, durable server-side sessions, cookie and logout
-controls, CSRF, trusted proxies, authentication audit, lifecycle invalidation,
-and formal Step 3 acceptance.
+The merged bounded checkpoint implements OIDC discovery, JWKS, and ID-token
+verification. Its active successor implements authorization-code exchange and
+one-time PKCE transaction handling. Subsequent Step 3 checkpoints remain HTTP
+browser routes, durable server-side sessions, cookie and logout controls, CSRF,
+trusted proxies, authentication audit, lifecycle invalidation, and formal Step
+3 acceptance.
+
+## Active Step 3 OIDC authorization-code and PKCE transaction checkpoint
+
+The current bounded candidate creates and consumes short-lived state, nonce, and
+PKCE S256 transactions, exchanges one code through the exact discovered token
+endpoint and redirect URI, bounds provider responses, and returns a verified
+principal. The in-memory store does not survive restart. No browser route,
+cookie, durable session, actor wiring, CSRF, logout, trusted proxy, production
+credential delivery, or production readiness claim is made.
