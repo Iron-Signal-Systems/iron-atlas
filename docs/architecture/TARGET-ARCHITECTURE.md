@@ -2,7 +2,7 @@
 
 ## Status
 
-Normative target direction. Phase 1 Step 1 is accepted; the current executable includes a Phase 1 Step 2 PostgreSQL runtime candidate.
+Normative target direction. Phase 1 Steps 1 and 2 are accepted. Phase 1 Step 3 trusted authentication and governed actor resolution is the active contract candidate; no executable production authentication is accepted.
 
 ## Layers
 
@@ -54,6 +54,8 @@ The current candidate still combines the UI/API service in one process. Phase 1 
 - Vendor-specific representations do not become the canonical model.
 - External monitoring products do not become authorization or historical sources of truth.
 - UI visibility is never treated as authorization.
+- Identity-provider claims never directly become Atlas authority; production requests resolve through governed Atlas actors and role bindings.
+- Request-controlled bodies, forms, queries, paths, and ordinary headers never select the production actor.
 - A requester cannot independently approve the requester’s own governed change.
 - Parser uncertainty is visible and never silently converted into certainty.
 - Generated diagrams never overwrite curated diagrams.

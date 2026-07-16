@@ -26,6 +26,8 @@ run "go test" go test -race ./...
 run "migration static validation" python3 tools/validation/validate_migrations.py
 run "database security static validation" python3 tools/validation/validate_sql_static.py
 run "Go PostgreSQL runtime static validation" python3 tools/validation/validate_go_postgresql_runtime.py
+run "Phase 1 Step 3 contract static validation" python3 tools/validation/validate_phase1_step3_contract.py
+run "Phase 1 Step 3 contract regression" ./test-framework/authentication/test_phase1_step3_contract.sh
 run "phase-gate exit propagation" ./test-framework/phase-gates/test_isolated_gate_revalidation.sh
 run "external toolchain validation" python3 tools/validation/validate_toolchain.py
 run "portable acceptance static validation" python3 tools/validation/validate_portable_acceptance.py
