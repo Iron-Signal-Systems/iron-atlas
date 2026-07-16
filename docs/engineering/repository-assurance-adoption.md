@@ -63,3 +63,12 @@ Before advancing beyond `RECORDED`, Iron Atlas must separately review and
 register its accepted historical phase checkpoints, validate the pushed
 adoption commit from a clean clone, observe the portable workflow across
 approved systems, and define any repository-specific exceptions.
+
+## Fresh-clone bootstrap boundary
+
+Exact-commit fresh-clone validation provisions the pinned Python environment
+and `govulncheck` installation inside the disposable canonical clone before
+running portable validation. This prevents a developer workstation's ambient
+tools from satisfying the acceptance boundary and proves that the pushed
+repository contains the instructions needed to reproduce its validation
+environment.

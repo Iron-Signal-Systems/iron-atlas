@@ -40,3 +40,14 @@ cryptographically binds `FILE-MANIFEST.txt`.
 
 Manifest regeneration must be the final content-changing operation before
 validation and candidate review.
+
+## Fresh-clone tool bootstrap
+
+Fresh-clone validation checks out the exact candidate commit from the canonical
+remote and then bootstraps the pinned Python and Go assurance tools inside that
+temporary clone. It does not depend on an ambient workstation installation.
+
+The temporary clone sets clone-local `ISRAS_PYTHON`,
+`ISRAS_GO_TOOLS_BIN`, and `PATH` values before portable validation. The
+repository must remain clean because `.isras-tools-venv/` and
+`.isras-go-tools/` are ignored repository-local tool directories.

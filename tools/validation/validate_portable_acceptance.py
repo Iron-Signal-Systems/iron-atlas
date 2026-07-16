@@ -13,6 +13,7 @@ required=[
   "tools/validation/validate_committed_evidence.py",
   "tools/validation/record_validation_evidence.sh",
   "tools/validation/verify_canonical_clone.sh",
+  "tools/isras/validate_fresh_clone.py",
   "docs/architecture/PORTABLE-VALIDATION-AND-CANONICAL-REPOSITORY-ACCEPTANCE.md",
   "docs/decisions/ADR-0005-CANONICAL-REPOSITORY-REPRODUCIBILITY.md",
   "docs/operations/CANONICAL-CLEAN-CLONE-VALIDATION.md",
@@ -34,6 +35,16 @@ for token in ["mktemp -d", "redact_validation_text.py", "validate_committed_evid
 verify=(root/"tools/validation/verify_canonical_clone.sh").read_text()
 for token in ["git ls-remote", "git clone", "fetch --quiet --force --tags", "validate_toolchain.py", "go mod verify"]:
     if token not in verify: errors.append(f"canonical clone verifier missing token: {token}")
+fresh=(root/"tools/isras/validate_fresh_clone.py").read_text()
+for token in [
+    "bootstrap_tools.sh",
+    "Bootstrap-Tools.ps1",
+    "ISRAS_PYTHON",
+    "ISRAS_GO_TOOLS_BIN",
+    "Fresh clone remains clean after ignored tool bootstrap",
+]:
+    if token not in fresh:
+        errors.append(f"fresh-clone validator missing token: {token}")
 template=(root/"docs/acceptance/PHASE-1-STEP-2-ACCEPTANCE-RECORD-TEMPLATE.md").read_text()
 for token in ["Canonical clean-clone validation", "Committed evidence path", "Toolchain requirements SHA-256"]:
     if token not in template: errors.append(f"Step 2 acceptance template missing token: {token}")
