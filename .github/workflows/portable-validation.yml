@@ -12,6 +12,9 @@ on:
 permissions:
   contents: read
 
+env:
+  GOTOOLCHAIN: go1.26.5
+
 concurrency:
   group: portable-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
@@ -41,6 +44,7 @@ jobs:
       - name: Create pinned ISRAS tool environment
         shell: bash
         run: |
+          test "$(go version | awk '{print $3}')" = "go1.26.5"
           chmod +x tools/environment/bootstrap_tools.sh
           ./tools/environment/bootstrap_tools.sh
           echo "ISRAS_PYTHON=$PWD/.isras-tools-venv/bin/python" >> "$GITHUB_ENV"

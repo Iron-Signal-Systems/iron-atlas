@@ -72,3 +72,15 @@ running portable validation. This prevents a developer workstation's ambient
 tools from satisfying the acceptance boundary and proves that the pushed
 repository contains the instructions needed to reproduce its validation
 environment.
+
+## Hosted Go toolchain security disposition
+
+The initial pull-request portable workflow used the runner-bundled Go 1.25.0
+toolchain. `govulncheck v1.6.0` correctly reported reachable vulnerabilities in
+that unpatched standard library, so the failure was treated as a real
+toolchain-security defect rather than waived.
+
+Iron Atlas now keeps its language level at `1.25.0` and pins
+`go1.26.5` as the preferred validation and build toolchain. The hosted
+workflow explicitly selects the same release. This aligns developer, clean
+clone, and hosted vulnerability analysis with the official patched Go release.
