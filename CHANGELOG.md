@@ -22,6 +22,11 @@
 
 ### Changed
 
+- Clarified Atlas as an active complement to Zabbix, Graylog, Security Onion, Draw.io, and vendor platforms rather than a replacement for their mature operational functions.
+- Reordered the unaccepted first-product sequence to prioritize an offline Catalyst 9300L/9300, 9500, and 9800 infrastructure-value slice before Fortinet policy analysis.
+- Added governed direction for Zabbix maps, dashboards, templates, discovery, and reports; Graylog lookup, enrichment, queries, pipelines, streams, dashboards, and reports; and future separately accepted external-system provisioning.
+- Synchronized current documentation status with the merged Phase 1 Step 3 OIDC discovery, JWKS, and ID-token verification checkpoint.
+
 - Replaced the legacy development-identity boolean with explicit `development` and `production` authentication modes.
 - Moved HTTP actor construction out of handlers and into the authentication boundary.
 - Raised the Go module baseline to Go 1.25 for the accepted `pgx` v5 runtime dependency.

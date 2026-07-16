@@ -10,18 +10,30 @@ Iron Atlas is an authoritative, version-controlled system for infrastructure doc
 
 The project is designed for network technicians, network administrators, network-security staff, reviewers, auditors, and infrastructure teams. It combines a lightweight Go service and HTML5 interface with modular collectors, vendor parsers, normalized infrastructure records, governed changes, independent approvals, topology generation, and replaceable external-system adapters.
 
+## Product Position
+
+Iron Atlas is an infrastructure-intelligence, documentation, and integration platform. It complements established operational systems instead of recreating capabilities that those systems already perform well.
+
+- Zabbix remains responsible for continuous monitoring, alerting, graphing, escalation, maintenance, and availability history. Atlas adds authoritative infrastructure identity, topology, evidence provenance, reconciliation, and governed assistance for maps, dashboards, templates, low-level discovery, and reports.
+- Graylog remains responsible for centralized log and SNMP-trap collection, search, retention, and investigation. Atlas adds device, site, interface, VLAN, role, and topology context that can improve lookup tables, pipelines, streams, queries, dashboards, and reports.
+- Security Onion remains responsible for network-security monitoring, packet analysis, detection, and investigation. Atlas may provide governed asset and topology context without becoming its detection engine.
+- Cisco, Fortinet, and other infrastructure platforms remain responsible for operation and enforcement. Atlas observes, documents, compares, explains, and validates their state; it is not initially a controller or automated-remediation system.
+
+Atlas may consume approved evidence from existing systems and may generate recommendations, exports, definitions, maps, dashboards, queries, reports, and other reviewable integration artifacts for them. Any future write or provisioning integration must be separately accepted, previewable, attributable, bounded, idempotent where practical, reversible where practical, and subject to the applicable approval policy.
+
 ## Initial Scope
 
 - Go-first service architecture with an embedded HTML5 interface.
 - Role-aware workspaces for network operations and security teams.
 - Independent two-person control for governed changes.
 - Firewall configuration ingestion and semantic analysis for FortiGate, OPNsense, and pfSense.
-- Cisco IOS and IOS XE evidence collection for Catalyst 2960 through 2960-X, 9200, 9300, and 9500.
-- Catalyst 9800 wireless-controller collection.
+- Cisco IOS and IOS XE evidence collection, with the first-value slice centered on Catalyst 9300L/9300 access switching, Catalyst 9500 core and distribution switching, and Catalyst 9800 wireless controllers.
+- Compatibility profiles for Catalyst 2960 through 2960-X and Catalyst 9200 after the first Cisco slice is established.
 - Thirty-day full technical-support evidence collection plus lighter recurring health collection.
 - Port, trunk, CDP/LLDP, MAC, spanning-tree, ACL, VLAN-pruning, and port-channel analysis.
 - Draw.io source governance and generated/curated diagram separation.
-- Canonical telemetry with replaceable Zabbix, webhook, syslog, and OpenMetrics adapters.
+- Canonical telemetry and infrastructure context with replaceable Zabbix, Graylog/syslog, webhook, SIEM, and OpenMetrics adapters.
+- Reviewable generation and reconciliation support for external-system maps, dashboards, queries, lookup data, templates, reports, and documentation.
 - Minimal Arch Linux deployment using systemd and only required runtime packages.
 
 ## Current Executable Boundary
@@ -111,6 +123,7 @@ Start with:
 
 - [Documentation index](docs/README.md)
 - [Target architecture](docs/architecture/TARGET-ARCHITECTURE.md)
+- [Operational-system complement and integration model](docs/architecture/OPERATIONAL-SYSTEM-COMPLEMENT-AND-INTEGRATION-MODEL.md)
 - [Change management and two-person control](docs/architecture/CHANGE-MANAGEMENT-AND-TWO-PERSON-CONTROL.md)
 - [PostgreSQL migration and ownership model](docs/architecture/POSTGRESQL-MIGRATION-AND-OWNERSHIP-MODEL.md)
 - [PostgreSQL database security boundary](docs/architecture/POSTGRESQL-DATABASE-SECURITY-BOUNDARY.md)

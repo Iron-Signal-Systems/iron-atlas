@@ -2,7 +2,7 @@
 
 ## Status
 
-Normative target direction. Phase 1 Steps 1 and 2 are accepted, and the Phase 1 Step 3 trusted-authentication contract is integrated. The typed authentication-mode and immutable request-identity foundation is the active implementation candidate; no external provider, session, CSRF, or trusted-proxy implementation is accepted.
+Normative target direction. Phase 1 Steps 1 and 2 are accepted. The Phase 1 Step 3 authentication foundation, governed actor resolver, and bounded OIDC discovery, JWKS, and ID-token verification checkpoints are integrated. Authorization-code exchange, PKCE transaction persistence, sessions, CSRF, trusted-proxy enforcement, and production authentication are not accepted.
 
 ## Layers
 
@@ -23,16 +23,33 @@ Signed ingestion boundary and protected raw evidence storage
 Authorized read-only devices and imported configuration backups
 ```
 
-Replaceable external adapters consume canonical telemetry and records:
+Replaceable external adapters operate in both governed directions:
 
 ```text
-Canonical Atlas telemetry/outbox
-        ├── Zabbix sender adapter
-        ├── OpenMetrics adapter
-        ├── Syslog adapter
-        ├── Webhook adapter
-        └── Future monitoring systems
+Approved external evidence and metadata
+        ├── Cisco and Fortinet evidence
+        ├── Zabbix inventory and monitoring metadata
+        ├── Graylog syslog and SNMP-trap context
+        ├── Security-platform asset references
+        └── Curated documentation and Draw.io sources
+                         ↓
+              Atlas evidence and adapter boundary
+                         ↓
+       Canonical normalized records and governed findings
+                         ↓
+Atlas context, outbox, recommendations, and generated artifacts
+        ├── Zabbix metrics, reconciliation, maps, dashboards,
+        │   template and discovery suggestions, and report context
+        ├── Graylog lookup data, queries, pipelines, streams,
+        │   dashboards, and report definitions
+        ├── Security-platform asset and topology context
+        ├── Draw.io-compatible generated topology sources
+        ├── OpenMetrics
+        ├── Syslog and webhooks
+        └── Future versioned adapters
 ```
+
+External systems retain responsibility for their mature operational functions. Atlas retains responsibility for canonical evidence, normalized infrastructure identity, topology, governed findings, change history, and formal acceptance history.
 
 ## Process Direction
 
@@ -53,6 +70,9 @@ The current candidate still combines the UI/API service in one process. Phase 1 
 - Raw evidence is not stored in Git.
 - Vendor-specific representations do not become the canonical model.
 - External monitoring products do not become authorization or historical sources of truth.
+- Atlas complements mature monitoring, logging, security, diagramming, and vendor systems rather than recreating them without evidence of need.
+- External-system records do not silently become authoritative Atlas state.
+- Future external-system writes or provisioning require a separately accepted, previewable, attributable, bounded, and validated integration boundary.
 - UI visibility is never treated as authorization.
 - Identity-provider claims never directly become Atlas authority; production requests resolve through governed Atlas actors and role bindings.
 - Request-controlled bodies, forms, queries, paths, and ordinary headers never select the production actor.

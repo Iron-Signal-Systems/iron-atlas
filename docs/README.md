@@ -2,12 +2,13 @@
 
 > Owner: Iron Signal Systems
 >
-> Status: Phase 1 Step 2 is accepted and the Phase 1 Step 3 trusted-authentication contract is integrated; the typed authentication-mode and immutable request-identity foundation is the active implementation candidate; no external provider, session, CSRF, or trusted-proxy implementation is accepted; not ready for production use
+> Status: Phase 1 Step 2 is accepted; the Phase 1 Step 3 authentication foundation and governed actor resolver are merged; bounded OIDC discovery, JWKS, and ID-token verification is the active implementation candidate; no authorization-code exchange, session, CSRF, or trusted-proxy implementation is accepted; not ready for production use
 
 ## Start Here
 
 - [Project mission](goals/PROJECT-MISSION.md)
 - [Target architecture](architecture/TARGET-ARCHITECTURE.md)
+- [Operational-system complement and integration model](architecture/OPERATIONAL-SYSTEM-COMPLEMENT-AND-INTEGRATION-MODEL.md)
 - [Modularity and dependency direction](architecture/MODULARITY-AND-DEPENDENCY-DIRECTION.md)
 - [HTML5 interface and role workspaces](architecture/HTML5-INTERFACE-AND-ROLE-WORKSPACES.md)
 - [Change management and two-person control](architecture/CHANGE-MANAGEMENT-AND-TWO-PERSON-CONTROL.md)

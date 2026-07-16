@@ -4,7 +4,7 @@
 
 This document governs the current execution focus for Iron Atlas.
 
-Iron Atlas is the primary active product-development effort. Work must remain concentrated on moving the accepted non-production foundation toward a bounded, read-only, demonstrable infrastructure-assessment and documentation product.
+Iron Atlas is the primary active product-development effort. Work must remain concentrated on moving the accepted non-production foundation toward a bounded, read-only, demonstrable infrastructure-intelligence, documentation, reconciliation, and integration-assistance product.
 
 This plan applies only to Iron Atlas. It does not govern or include work for other projects.
 
@@ -40,26 +40,32 @@ By the end of the current planning horizon, Iron Atlas should be able to:
 
 - install on the current Arch Linux WSL development host and later on an accepted representative minimal Arch Linux deployment host;
 - authenticate users through an accepted production identity boundary;
-- receive authorized Cisco, Fortinet, and Zabbix evidence without modifying source infrastructure;
+- receive authorized Cisco, Fortinet, Zabbix, Graylog, and approved documentation evidence without modifying source infrastructure;
 - preserve evidence provenance, integrity, parser version, and collection context;
 - normalize infrastructure inventory, interfaces, VLANs, trunks, neighbor relationships, port channels, routes, firewall objects, and selected policy records;
 - identify a bounded set of high-confidence infrastructure conditions;
 - reconcile collected infrastructure identity with selected Zabbix records;
-- generate useful inventory, topology, preventive-health, discrepancy, and change-review reports;
+- generate governed Graylog lookup, query, pipeline, stream, dashboard, and report context for syslog and SNMP traps;
+- generate useful inventory, topology, preventive-health, discrepancy, integration, and change-review reports;
 - operate under explicit resource, timeout, cancellation, retention, and recovery controls; and
 - support a controlled representative-environment pilot without claiming production readiness beyond accepted evidence.
 
 ## Product Position
 
-Atlas complements existing operational systems rather than replacing them.
+Atlas is an active complement to existing operational systems rather than a passive companion or a replacement for mature tools.
 
-- Zabbix remains responsible for monitoring, availability, performance, and alerting.
-- Graylog and other log platforms remain responsible for centralized log collection and investigation.
-- Security Onion and other network-security platforms remain responsible for network-security monitoring, packet analysis, and detection.
-- Cisco and Fortinet systems remain responsible for infrastructure operation and enforcement.
-- Atlas is responsible for authoritative infrastructure evidence, normalized records, topology context, documentation, governed findings, change comparison, and formal acceptance history.
+- Zabbix remains responsible for monitoring, availability, performance history, triggers, alerting, graphing, escalation, maintenance, and proxy behavior. Atlas supplies authoritative infrastructure identity, evidence age, topology, reconciliation, findings, and reviewable maps, dashboards, template, discovery, and report assistance.
+- Graylog and other log platforms remain responsible for centralized syslog and SNMP-trap collection, indexing, retention, search, and investigation. Atlas supplies governed lookup, enrichment, site, device, interface, VLAN, wireless, and topology context plus reviewable queries, pipelines, streams, dashboards, and report definitions.
+- Security Onion and other network-security platforms remain responsible for network-security monitoring, packet analysis, detection, and investigation. Atlas may supply governed asset and topology context.
+- Cisco and Fortinet systems remain responsible for infrastructure operation and enforcement. Atlas observes, documents, compares, explains, and validates their state.
+- Draw.io remains a supported human-editable diagram source and publication format. Atlas may generate separate Draw.io-compatible topology sources.
+- Atlas is responsible for authoritative infrastructure evidence, normalized records, topology context, documentation, governed findings, change comparison, integration assistance, and formal acceptance history.
 
-The first product boundary is an infrastructure-assessment and documentation system, not a network controller or automated-remediation platform.
+Atlas may consume approved evidence from existing systems and may generate recommendations, exports, maps, dashboards, queries, lookup data, templates, reports, and other reviewable artifacts that improve them.
+
+The default mode is read, reconcile, generate, recommend, export, or deliver. Any future write or provisioning integration requires a separately accepted, least-privileged, previewable, attributable, bounded, approval-aware, and validated boundary.
+
+The first product boundary is an infrastructure-assessment, documentation, and integration-assistance system, not a network controller or automated-remediation platform.
 
 ## Capacity Assumption
 
@@ -77,7 +83,7 @@ Appropriate Atlas work in an authorized operational environment includes:
 
 - documenting infrastructure questions and recurring operational pain points;
 - preparing approved and sanitized parser fixtures;
-- comparing Atlas output with known-good Cisco, Fortinet, and Zabbix state;
+- comparing Atlas output with known-good Cisco, Fortinet, Zabbix, Graylog, and documentation state;
 - manually validating inventory, topology, and findings;
 - recording unsupported syntax and partial-evidence conditions;
 - evaluating reports against real administrator workflows;
@@ -120,7 +126,7 @@ The public repository must not contain:
 
 The accepted predecessor is Phase 1 Step 2. Later work must preserve that accepted boundary and proceed in bounded steps.
 
-The Phase 1 Step 3 contract is integrated. The active implementation candidate is the typed authentication-mode and immutable request-identity foundation; it does not establish an external provider, sessions, CSRF, trusted-proxy enforcement, or production authentication.
+The Phase 1 Step 3 contract, authentication foundation, governed actor resolver, and bounded OIDC discovery, JWKS, and ID-token verification checkpoints are integrated. The active candidate does not establish authorization-code exchange, PKCE transaction persistence, sessions, CSRF, trusted-proxy enforcement, or production authentication.
 
 ### Stage 1 — Complete the Phase 1 production foundation
 
@@ -150,44 +156,58 @@ Target outcomes:
 
 Manual sanitized evidence intake should be accepted before live recurring collection.
 
-### Stage 3 — Fortinet vertical slice
+### Stage 3 — Cisco offline evidence and normalization foundation
 
-The first Fortinet release should prioritize:
+Offline sanitized command-bundle support precedes restricted live collection.
 
-- device metadata;
-- interfaces and zones;
-- addresses and address groups;
-- services and service groups;
-- firewall policies;
-- routes and gateways;
-- enabled and disabled state;
-- referenced and unreferenced objects;
-- parser warnings and unsupported syntax; and
-- high-confidence configuration-consistency findings.
+The first infrastructure-value slice prioritizes:
 
-VPN, SD-WAN, advanced NAT, and complete traffic-path explanation remain later increments unless required by an accepted step.
+1. Catalyst 9300L and Catalyst 9300 access switching.
+2. Catalyst 9500 core and distribution switching.
+3. Catalyst 9800 Wireless LAN Controllers.
 
-### Stage 4 — Cisco offline evidence and collection foundation
-
-Offline parser support should precede live collection.
+These systems provide broad organizational visibility because users, devices, phones, servers, access points, VLANs, and network paths depend on them.
 
 Initial evidence profiles should cover the commands needed for:
 
-- platform and software inventory;
-- hardware and stack inventory;
-- interface state and descriptions;
-- VLAN inventory;
-- trunk state;
+- platform, software, hardware, license, and stack inventory;
+- interface state, descriptions, switchport mode, errors, and selected counters;
+- VLAN and voice-VLAN inventory;
+- trunk, native VLAN, allowed, active, and pruned VLAN state;
 - CDP and LLDP neighbors;
-- port-channel state;
+- port-channel state and membership;
 - spanning-tree state;
-- IP-interface summary;
-- selected environmental state; and
-- selected running-configuration semantics.
+- IP-interface and management identity;
+- selected environmental and resource state;
+- selected running-configuration semantics;
+- Catalyst 9800 controller, HA, AP, WLAN, profile, and tag relationships; and
+- explicit unsupported, malformed, truncated, conflicting, and partial evidence.
 
-Representative families should initially prioritize the supported Cisco Catalyst equipment already named in the target architecture.
+The accepted offline path must prove evidence receipt, digest, provenance, classification, parser version, deterministic normalization, resource governance, human verification, and report usefulness.
 
-Live collection, when separately authorized and accepted, must use:
+### Stage 4 — Cisco semantic, topology, and complementary-integration slice
+
+Initial analysis and integration priority:
+
+1. Device, hardware, software, license, and stack inventory.
+2. Interface state, descriptions, errors, and counter deltas.
+3. CDP and LLDP relationships.
+4. VLAN existence and use.
+5. Trunk allowed, active, and pruned VLAN state.
+6. Port-channel membership and consistency.
+7. Native-VLAN consistency.
+8. Spanning-tree root, role, state, and topology-change observations.
+9. Catalyst 9800 controller, HA, AP, WLAN, profile, and tag relationships.
+10. Zabbix host, interface, template, discovery, map, dashboard, and documentation reconciliation.
+11. Graylog lookup and enrichment context for syslog and SNMP traps.
+12. Reviewable Graylog query, pipeline, stream, dashboard, and report suggestions.
+13. Draw.io-compatible topology generation.
+14. Documentation discrepancies.
+15. Finding correlation and duplicate suppression.
+
+Deep ACL, QoS, complete wireless-client attribution, and broad endpoint attribution follow a trustworthy inventory and topology foundation.
+
+Restricted live collection, when separately authorized and accepted, must use:
 
 - pinned SSH host keys;
 - restricted service authentication;
@@ -200,24 +220,24 @@ Live collection, when separately authorized and accepted, must use:
 - protected transcripts; and
 - complete evidence provenance.
 
-### Stage 5 — Cisco semantic and preventive analysis
+### Stage 5 — Fortinet policy and traffic-boundary slice
 
-Initial analysis priority:
+The first Fortinet release should prioritize:
 
-1. Device, hardware, software, and stack inventory.
-2. Interface state and descriptions.
-3. CDP and LLDP relationships.
-4. VLAN existence and use.
-5. Trunk allowed, active, and pruned VLAN state.
-6. Port-channel membership and consistency.
-7. Native-VLAN consistency.
-8. Spanning-tree root observations.
-9. Zabbix identity reconciliation.
-10. Counter, resource, and environmental trends.
-11. Documentation discrepancies.
-12. Finding correlation and duplicate suppression.
+- device metadata;
+- interfaces and zones;
+- addresses and address groups;
+- services and service groups;
+- firewall policies and evaluation order;
+- routes and gateways;
+- enabled and disabled state;
+- referenced and unreferenced objects;
+- parser warnings and unsupported syntax; and
+- high-confidence configuration-consistency findings.
 
-Deep ACL, QoS, wireless-client, and endpoint-attribution analysis should follow a trustworthy inventory and topology foundation.
+Fortinet adds policy and traffic-boundary context to the Cisco-derived inventory and topology foundation.
+
+VPN, SD-WAN, advanced NAT, and complete traffic-path explanation remain later increments unless required by an accepted step.
 
 ### Stage 6 — First operational report
 
@@ -231,8 +251,9 @@ The first operationally useful Atlas report should include:
 - interfaces, trunks, VLANs, and port channels;
 - neighbor relationships;
 - spanning-tree observations;
-- Fortinet object and policy observations;
-- Zabbix reconciliation;
+- Fortinet object and policy observations when the applicable slice is available;
+- Zabbix reconciliation plus map, dashboard, template, discovery, and report recommendations;
+- Graylog lookup, enrichment, query, dashboard, and report context;
 - findings by confidence and severity;
 - documentation discrepancies;
 - evidence source, timestamp, digest, parser version, and collection context;
@@ -248,9 +269,12 @@ The first pilot must be explicitly authorized and bounded.
 A suitable initial scope is:
 
 - one noncritical site or lab boundary;
-- one Fortinet configuration export;
-- one Cisco device or switch stack;
+- one Catalyst 9300L/9300 access switch or stack;
+- one Catalyst 9500 core or distribution device or logical pair where authorized;
+- one Catalyst 9800 controller or approved offline controller bundle where available;
 - Zabbix reconciliation for the same equipment;
+- Graylog context generation for approved syslog or SNMP-trap examples;
+- one Fortinet configuration export only after the Fortinet slice is ready;
 - offline or manual intake before live collection;
 - no automated changes;
 - no automated remediation;
@@ -280,17 +304,20 @@ Pilot success requires:
 - Preserve Phase 1 Step 2 acceptance unchanged.
 - Establish accepted production identity, credential, TLS, recovery, and resource-control contracts.
 
-### Quarter 2 — Establish evidence intake and Fortinet value
+### Quarter 2 — Establish evidence intake and Cisco first value
 
 - Accept the evidence-bundle and protected-storage boundaries.
 - Accept parser isolation and provenance.
-- Deliver the first bounded Fortinet normalization and findings vertical slice.
+- Deliver the first bounded offline Catalyst 9300L/9300, 9500, and 9800 evidence, normalization, and topology slice.
+- Establish initial Zabbix reconciliation and Graylog context generation.
 
-### Quarter 3 — Establish Cisco inventory and topology evidence
+### Quarter 3 — Establish restricted Cisco collection and Fortinet boundary context
 
-- Accept offline Cisco evidence profiles and parsers.
-- Add authorized restricted collection only after offline acceptance.
-- Deliver normalized device, interface, VLAN, trunk, neighbor, stack, and port-channel records.
+- Add authorized restricted Cisco collection only after offline acceptance.
+- Deliver normalized device, interface, VLAN, trunk, neighbor, stack, port-channel, spanning-tree, and wireless records.
+- Deliver reviewable Zabbix maps, dashboards, template, discovery, and reporting assistance.
+- Deliver reviewable Graylog lookup, query, dashboard, and report assistance.
+- Deliver the first bounded Fortinet policy and traffic-boundary slice.
 
 ### Quarter 4 — Deliver reporting and a controlled pilot
 
@@ -340,10 +367,12 @@ The first-product backlog includes:
 - backup and recovery;
 - resource budgets;
 - evidence intake and storage;
-- Fortinet parsing and normalization;
-- Cisco parsing and restricted collection;
+- Cisco 9300L/9300, 9500, and 9800 offline parsing and normalization;
+- Cisco restricted collection after offline acceptance;
 - inventory and topology;
-- Zabbix reconciliation;
+- Zabbix reconciliation, maps, dashboards, template, discovery, and report assistance;
+- Graylog lookup, enrichment, query, pipeline, stream, dashboard, and report assistance;
+- Fortinet parsing, policy normalization, and traffic-boundary context;
 - defensible findings;
 - operational reporting; and
 - a controlled read-only pilot.
