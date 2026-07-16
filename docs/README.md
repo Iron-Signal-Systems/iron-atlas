@@ -48,3 +48,6 @@
 ## Documentation Synchronization Rule
 
 A phase is not complete until the root README, documentation indexes, architecture status, requirements, test documentation, validation tooling, committed retained evidence, acceptance record, terminology, version statements, and next-work statement describe the same repository state. No step may be accepted until the exact pushed commit passes applicable validation from a clean canonical GitHub clone.
+
+- `architecture/POSTGRESQL-GOVERNED-ACTOR-RESOLUTION-IMPLEMENTATION.md`
+  records the bounded Phase 1 Step 3 least-privileged governed actor resolver.

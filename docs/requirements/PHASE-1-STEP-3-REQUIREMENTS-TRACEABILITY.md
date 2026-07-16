@@ -84,3 +84,15 @@ representative provider, toolchain, protocol profile, session policy, CSRF
 policy, proxy topology, hostile classes, test counts, correctness result,
 resource observations, limitations, predecessor revalidation, and exact
 canonical clean-clone result.
+
+## Governed actor-resolution implementation status
+
+The PostgreSQL governed actor-resolution candidate partially implements
+IA-AUTH-004, IA-AUTH-005, IA-AUTH-006, IA-AUTH-007, IA-AUTH-008,
+IA-AUTH-009, IA-AUTH-014, and IA-AUTH-016.
+
+It proves active-provider enforcement, exact provider-subject mapping, active
+actor enforcement, current Atlas role loading, explicit role-code translation,
+least-privileged database access, and fail-closed missing or unsupported state.
+Provider protocol verification, sessions, CSRF, trusted proxies, and formal
+Step 3 acceptance remain unimplemented.

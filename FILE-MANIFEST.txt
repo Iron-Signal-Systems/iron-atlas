@@ -69,6 +69,7 @@ docs/architecture/MINIMAL-ARCH-LINUX-DEPLOYMENT.md
 docs/architecture/MODULARITY-AND-DEPENDENCY-DIRECTION.md
 docs/architecture/PORTABLE-VALIDATION-AND-CANONICAL-REPOSITORY-ACCEPTANCE.md
 docs/architecture/POSTGRESQL-DATABASE-SECURITY-BOUNDARY.md
+docs/architecture/POSTGRESQL-GOVERNED-ACTOR-RESOLUTION-IMPLEMENTATION.md
 docs/architecture/POSTGRESQL-MIGRATION-AND-OWNERSHIP-MODEL.md
 docs/architecture/PROJECT-AND-PORTFOLIO-TRACKING.md
 docs/architecture/RBAC-ROLE-AND-AUTHORITY-CATALOG.md
@@ -107,6 +108,9 @@ internal/app/app.go
 internal/app/app_test.go
 internal/authentication/authentication.go
 internal/authentication/authentication_test.go
+internal/authentication/postgresql/resolver.go
+internal/authentication/postgresql/resolver_integration_test.go
+internal/authentication/postgresql/resolver_test.go
 internal/authz/authz.go
 internal/authz/authz_test.go
 internal/change/change.go
@@ -174,9 +178,11 @@ sql/schema/migrations/003_roles_and_authority.sql
 sql/schema/migrations/004_governed_changes.sql
 sql/schema/migrations/005_change_approvals.sql
 sql/schema/migrations/006_append_only_history.sql
+sql/schema/migrations/007_governed_actor_resolution.sql
 test-framework/README.md
 test-framework/authentication/test_phase1_step3_authentication_foundation.sh
 test-framework/authentication/test_phase1_step3_contract.sh
+test-framework/authentication/test_phase1_step3_governed_actor_resolution.sh
 test-framework/database/run_disposable_postgres.sh
 test-framework/database/test_database.py
 test-framework/phase-gates/test_isolated_gate_revalidation.sh
@@ -225,6 +231,7 @@ tools/validation/phase-gates/validate_phase1_step2.sh
 tools/validation/phase-gates/validate_phase1_step2_acceptance.sh
 tools/validation/phase-gates/validate_phase1_step3_authentication_foundation.sh
 tools/validation/phase-gates/validate_phase1_step3_contract.sh
+tools/validation/phase-gates/validate_phase1_step3_governed_actor_resolution.sh
 tools/validation/record_validation_evidence.sh
 tools/validation/redact_validation_text.py
 tools/validation/regenerate_manifests.py
@@ -238,6 +245,7 @@ tools/validation/validate_go_postgresql_runtime.py
 tools/validation/validate_migrations.py
 tools/validation/validate_phase1_step3_authentication_foundation.py
 tools/validation/validate_phase1_step3_contract.py
+tools/validation/validate_phase1_step3_governed_actor_resolution.py
 tools/validation/validate_portable.sh
 tools/validation/validate_portable_acceptance.py
 tools/validation/validate_repository.sh

@@ -140,3 +140,20 @@ runs establish defensible budgets.
 Passing Step 3 does not prove credential delivery, PostgreSQL TLS, backup,
 high availability, live collection, protected evidence storage, all providers,
 all proxies, or production readiness.
+
+## Governed actor-resolution implementation campaign
+
+The governed resolver checkpoint adds tests for:
+
+- active provider, external identity, actor, and current-role resolution;
+- inactive providers and disabled actors;
+- unmapped and non-normalized subjects;
+- expired bindings and inactive role definitions;
+- unsupported and duplicate role codes;
+- denial of direct application-role table reads;
+- database unavailability classification;
+- concurrent pooled resolution isolation; and
+- Go race detection.
+
+These tests do not exercise OIDC, browser sessions, CSRF, logout, replay
+defense, or trusted-proxy behavior.

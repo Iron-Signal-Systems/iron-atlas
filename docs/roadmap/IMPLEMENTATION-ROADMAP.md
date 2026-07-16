@@ -148,3 +148,11 @@ Step 2 is accepted as a non-production runtime and portable-validation boundary 
 - Break-glass
 - Trusted rebuild and compromise recovery
 - Operational acceptance on representative hardware
+
+## Active Step 3 governed actor-resolution checkpoint
+
+The current bounded checkpoint implements the least-privileged PostgreSQL
+governed actor resolver. The subsequent Step 3 work remains provider protocol
+verification and the still-separated session, CSRF, and trusted-proxy
+boundaries. Formal Step 3 acceptance must not be recorded from this checkpoint
+alone.

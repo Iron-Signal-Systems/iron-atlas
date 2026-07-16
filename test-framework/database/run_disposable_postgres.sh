@@ -60,7 +60,8 @@ export IRON_ATLAS_TEST_DATABASE_URL="host=$socket port=$port dbname=iron_atlas_t
   cd "$repo_root"
   go test -race -tags=integration \
     ./internal/database/postgresql \
-    ./internal/change/postgresql
+    ./internal/change/postgresql \
+    ./internal/authentication/postgresql
 )
 
 echo "PASS: Go PostgreSQL runtime integration tests"

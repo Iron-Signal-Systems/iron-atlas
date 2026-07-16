@@ -316,3 +316,18 @@ Step 3 may be accepted only after the exact pushed candidate passes:
 A disposable provider emulator may prove the generic protocol boundary.
 Representative-provider validation remains a separately identified environment
 claim.
+
+## PostgreSQL governed actor-resolution implementation checkpoint
+
+The active bounded implementation candidate adds
+`atlas.resolve_governed_actor(text, text)` and a Go PostgreSQL
+`authentication.ActorResolver`.
+
+The application role receives function execution only and does not receive
+broad `SELECT` access to governed identity or role tables. Resolution requires
+an active provider, one external identity mapping, an active actor, active role
+definitions, and role bindings valid at database transaction time. Unknown
+database role codes fail closed in Go.
+
+This checkpoint does not implement a production authentication adapter,
+sessions, CSRF, trusted-proxy enforcement, or production readiness.
