@@ -87,3 +87,6 @@
   concurrency behavior.
 - Preserved explicit nonclaims for authorization-code exchange, PKCE state,
   browser sessions, CSRF, logout, trusted proxies, and production readiness.
+- Synchronized the standard hosted `validate` workflow with the
+  repository-owned pinned tool bootstrap so `govulncheck` and future declared
+  Go validation tools are available before the complete test framework runs.
