@@ -32,6 +32,7 @@ required=(
   docs/decisions/ADR-0005-CANONICAL-REPOSITORY-REPRODUCIBILITY.md
   docs/decisions/ADR-0006-OIDC-ID-TOKEN-VERIFICATION-LIBRARIES.md
   docs/architecture/OIDC-ID-TOKEN-VERIFICATION-IMPLEMENTATION.md
+  docs/architecture/OIDC-AUTHORIZATION-CODE-AND-PKCE-TRANSACTION-IMPLEMENTATION.md
   docs/testing/POSTGRESQL-DISPOSABLE-DATABASE-TESTING.md
   docs/testing/GO-POSTGRESQL-RUNTIME-INTEGRATION-TESTING.md
   docs/testing/TRUSTED-AUTHENTICATION-AND-GOVERNED-ACTOR-RESOLUTION-TESTING.md
@@ -48,6 +49,8 @@ required=(
   internal/authentication/postgresql/resolver_integration_test.go
   internal/authentication/oidc/verifier.go
   internal/authentication/oidc/verifier_test.go
+  internal/authentication/oidc/authorization_code.go
+  internal/authentication/oidc/authorization_code_test.go
   internal/database/postgresql/pool.go
   internal/change/postgresql/service.go
   internal/health/health.go
@@ -60,6 +63,7 @@ required=(
   tools/validation/validate_phase1_step3_authentication_foundation.py
   tools/validation/validate_phase1_step3_governed_actor_resolution.py
   tools/validation/validate_phase1_step3_oidc_id_token_verification.py
+  tools/validation/validate_phase1_step3_oidc_authorization_code_pkce.py
   tools/validation/validate_portable_acceptance.py
   tools/validation/validate_committed_evidence.py
   tools/validation/validate_toolchain.py
@@ -71,10 +75,12 @@ required=(
   tools/validation/phase-gates/validate_phase1_step3_authentication_foundation.sh
   tools/validation/phase-gates/validate_phase1_step3_governed_actor_resolution.sh
   tools/validation/phase-gates/validate_phase1_step3_oidc_id_token_verification.sh
+  tools/validation/phase-gates/validate_phase1_step3_oidc_authorization_code_pkce.sh
   test-framework/authentication/test_phase1_step3_contract.sh
   test-framework/authentication/test_phase1_step3_authentication_foundation.sh
   test-framework/authentication/test_phase1_step3_governed_actor_resolution.sh
   test-framework/authentication/test_phase1_step3_oidc_id_token_verification.sh
+  test-framework/authentication/test_phase1_step3_oidc_authorization_code_pkce.sh
   test-framework/phase-gates/test_isolated_gate_revalidation.sh
   test-framework/portability/test_portable_validation.sh
 )
@@ -90,6 +96,7 @@ check "Phase 1 Step 3 contract" python3 tools/validation/validate_phase1_step3_c
 check "Phase 1 Step 3 authentication foundation" python3 tools/validation/validate_phase1_step3_authentication_foundation.py
 check "Phase 1 Step 3 governed actor resolution" python3 tools/validation/validate_phase1_step3_governed_actor_resolution.py
 check "Phase 1 Step 3 OIDC ID-token verification" python3 tools/validation/validate_phase1_step3_oidc_id_token_verification.py
+check "Phase 1 Step 3 OIDC authorization-code and PKCE" python3 tools/validation/validate_phase1_step3_oidc_authorization_code_pkce.py
 check "portable acceptance static contract" python3 tools/validation/validate_portable_acceptance.py
 check "committed validation evidence" python3 tools/validation/validate_committed_evidence.py
 check "Draw.io XML" python3 -c 'import xml.etree.ElementTree as ET; ET.parse("diagrams/source/curated/architecture/ARCH-001-iron-atlas-context.drawio")'

@@ -100,16 +100,20 @@ func keySetDependencyUnavailable(err error) bool {
 // Verifier validates one OIDC provider's signed ID tokens and normalizes the
 // verified result into the provider-neutral authentication.Principal contract.
 type Verifier struct {
-	providerID    string
-	clientID      string
-	issuerURL     string
-	allowedAlgs   map[string]struct{}
-	httpClient    *http.Client
-	tokenVerifier *coreoidc.IDTokenVerifier
-	now           func() time.Time
-	maxClockSkew  time.Duration
-	maxTokenAge   time.Duration
-	maxTokenBytes int
+	providerID               string
+	clientID                 string
+	issuerURL                string
+	authorizationEndpoint    string
+	tokenEndpoint            string
+	tokenEndpointAuthMethods []string
+	codeChallengeMethods     []string
+	allowedAlgs              map[string]struct{}
+	httpClient               *http.Client
+	tokenVerifier            *coreoidc.IDTokenVerifier
+	now                      func() time.Time
+	maxClockSkew             time.Duration
+	maxTokenAge              time.Duration
+	maxTokenBytes            int
 }
 
 func New(ctx context.Context, config Config) (*Verifier, error) {
@@ -182,10 +186,15 @@ func New(ctx context.Context, config Config) (*Verifier, error) {
 	}
 
 	endpoint := provider.Endpoint()
-	if _, err := trustedHTTPSURL("authorization endpoint", endpoint.AuthURL); err != nil {
+	authorizationEndpoint, err := trustedHTTPSURL(
+		"authorization endpoint",
+		endpoint.AuthURL,
+	)
+	if err != nil {
 		return nil, err
 	}
-	if _, err := trustedHTTPSURL("token endpoint", endpoint.TokenURL); err != nil {
+	tokenEndpoint, err := trustedHTTPSURL("token endpoint", endpoint.TokenURL)
+	if err != nil {
 		return nil, err
 	}
 	var metadata struct {
@@ -194,6 +203,7 @@ func New(ctx context.Context, config Config) (*Verifier, error) {
 		ResponseTypesSupported   []string `json:"response_types_supported"`
 		SubjectTypesSupported    []string `json:"subject_types_supported"`
 		TokenEndpointAuthMethods []string `json:"token_endpoint_auth_methods_supported"`
+		CodeChallengeMethods     []string `json:"code_challenge_methods_supported"`
 	}
 	if err := provider.Claims(&metadata); err != nil {
 		return nil, fmt.Errorf(
@@ -240,16 +250,20 @@ func New(ctx context.Context, config Config) (*Verifier, error) {
 	)
 
 	return &Verifier{
-		providerID:    providerID,
-		clientID:      clientID,
-		issuerURL:     issuerURL,
-		allowedAlgs:   allowed,
-		httpClient:    httpClient,
-		tokenVerifier: tokenVerifier,
-		now:           now,
-		maxClockSkew:  clockSkew,
-		maxTokenAge:   maxTokenAge,
-		maxTokenBytes: maxTokenBytes,
+		providerID:               providerID,
+		clientID:                 clientID,
+		issuerURL:                issuerURL,
+		authorizationEndpoint:    authorizationEndpoint,
+		tokenEndpoint:            tokenEndpoint,
+		tokenEndpointAuthMethods: append([]string(nil), metadata.TokenEndpointAuthMethods...),
+		codeChallengeMethods:     append([]string(nil), metadata.CodeChallengeMethods...),
+		allowedAlgs:              allowed,
+		httpClient:               httpClient,
+		tokenVerifier:            tokenVerifier,
+		now:                      now,
+		maxClockSkew:             clockSkew,
+		maxTokenAge:              maxTokenAge,
+		maxTokenBytes:            maxTokenBytes,
 	}, nil
 }
 

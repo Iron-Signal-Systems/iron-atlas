@@ -126,7 +126,7 @@ The public repository must not contain:
 
 The accepted predecessor is Phase 1 Step 2. Later work must preserve that accepted boundary and proceed in bounded steps.
 
-The Phase 1 Step 3 contract, authentication foundation, governed actor resolver, and bounded OIDC discovery, JWKS, and ID-token verification checkpoints are integrated. The active candidate does not establish authorization-code exchange, PKCE transaction persistence, sessions, CSRF, trusted-proxy enforcement, or production authentication.
+The Phase 1 Step 3 contract, authentication foundation, governed actor resolver, and bounded OIDC discovery, JWKS, and ID-token verification checkpoints are integrated. Authorization-code exchange with PKCE S256 and bounded one-time in-memory preauthentication transactions is the active implementation candidate. HTTP login/callback routes, cookies, durable sessions, CSRF, logout, trusted-proxy enforcement, governed actor wiring, and production authentication remain unaccepted.
 
 ### Stage 1 — Complete the Phase 1 production foundation
 

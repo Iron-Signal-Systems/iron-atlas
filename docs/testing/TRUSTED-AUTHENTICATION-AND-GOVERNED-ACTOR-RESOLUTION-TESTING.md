@@ -2,16 +2,16 @@
 
 ## Status
 
-Phase 1 Step 3 test contract integrated; authentication-foundation tests active.
+Phase 1 Step 3 test contract integrated. Authentication foundation, governed resolver, and OIDC ID-token campaigns are merged; authorization-code and PKCE transaction tests are active.
 
 These tests are required for the final executable candidate. This document does
 not claim that a production adapter or session implementation exists.
 
 ## Authentication foundation implementation checkpoint
 
-The current candidate adds executable tests for typed mode parsing, default mode selection, legacy-setting rejection, bounded development headers, duplicate and unknown role rejection, immutable context copies, production rejection of development headers, missing-adapter fail-closed behavior, adapter/resolver composition, nested middleware rejection, public health/readiness paths, and query-string actor spoofing.
+The merged foundation checkpoint adds executable tests for typed mode parsing, default mode selection, legacy-setting rejection, bounded development headers, duplicate and unknown role rejection, immutable context copies, production rejection of development headers, missing-adapter fail-closed behavior, adapter/resolver composition, nested middleware rejection, public health/readiness paths, and query-string actor spoofing.
 
-These tests do not substitute for provider-protocol, database-backed actor-resolution, session, CSRF, replay, logout, key-rotation, or trusted-proxy test campaigns.
+These tests do not substitute for later provider-protocol, actor-resolution, authorization-code, session, CSRF, replay, logout, key-rotation, or trusted-proxy campaigns.
 
 
 ## Test layers
@@ -180,6 +180,30 @@ The bounded provider-emulator campaign now covers:
 - unknown-key rejection while the provider remains responsive; and
 - non-success JWKS response classification.
 
-The campaign does not cover authorization-code replay, PKCE verifier
-persistence, browser sessions, cookies, CSRF, logout, or trusted-proxy
+That verifier campaign does not itself cover authorization-code replay, PKCE
+transaction state, browser sessions, cookies, CSRF, logout, or trusted-proxy
 behavior.
+
+## OIDC authorization-code and PKCE transaction campaign
+
+The active bounded campaign covers:
+
+- authorization URLs with exact client ID, redirect URI, `openid` scope, state,
+  nonce, PKCE challenge, and `S256`;
+- absence of the client secret and PKCE verifier from the authorization URL;
+- SHA-256 state-digest storage;
+- successful code exchange and verified-principal production;
+- exact redirect URI, client authentication, code, and PKCE verifier exchange;
+- unknown, malformed, expired, and replayed state rejection;
+- invalid authorization-code classification;
+- provider-outage classification;
+- token-response size bounds;
+- bounded store capacity and expired-state cleanup;
+- cryptographic-randomness failure;
+- secret-redacted errors; and
+- exactly one concurrent consumer and token exchange under the race detector.
+
+The campaign does not cover HTTP login or callback handlers, browser state
+cookies, durable restart-surviving transactions, authenticated sessions, CSRF,
+logout, trusted proxies, governed actor wiring, or production credential
+delivery.

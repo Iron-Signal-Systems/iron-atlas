@@ -4,7 +4,7 @@
 >
 > Built on purpose. Backed by discipline. Engineered to endure.
 >
-> Development status: Phase 1 Step 2 is accepted; the Phase 1 Step 3 authentication foundation and governed actor resolver are merged; bounded OIDC discovery, JWKS, and ID-token verification is the active implementation candidate; no authorization-code exchange, session, CSRF, or trusted-proxy implementation is accepted; not ready for production use
+> Development status: Phase 1 Step 2 is accepted; the Phase 1 Step 3 authentication foundation, governed actor resolver, and bounded OIDC discovery/JWKS/ID-token verification checkpoints are merged; authorization-code exchange with PKCE S256 and bounded one-time in-memory preauthentication transactions is the active implementation candidate; no HTTP login/callback route, durable session, cookie, CSRF, logout, or trusted-proxy implementation is accepted; not ready for production use
 
 Iron Atlas is an authoritative, version-controlled system for infrastructure documentation, diagrams, inventory, automated discovery, project tracking, change management, validation, preventive health analysis, and formal acceptance.
 
@@ -54,7 +54,7 @@ Accepted Phase 1 Step 2 adds:
 Step 2 does **not** establish production authentication, credential delivery, TLS provisioning, backup recovery, high availability, live collection, or production readiness.
 
 
-The active Phase 1 Step 3 authentication-foundation candidate adds:
+The merged Phase 1 Step 3 authentication-foundation checkpoint adds:
 
 - Typed `development` and `production` authentication modes.
 - A dedicated authentication middleware and private immutable request-context identity.
@@ -63,7 +63,7 @@ The active Phase 1 Step 3 authentication-foundation candidate adds:
 - Fail-closed protected routes when no production adapter is configured.
 - Public health, readiness, and static-asset routes that do not manufacture an actor.
 
-This candidate does not implement an external identity provider, sessions, CSRF protection, trusted-proxy enforcement, or production authentication.
+This checkpoint does not by itself implement a production authentication adapter, sessions, CSRF protection, trusted-proxy enforcement, or production authentication.
 
 ## Quick Start
 
@@ -112,7 +112,7 @@ Memory mode defaults to `development` authentication for the Phase 0 demonstrati
 ```bash
 python3 tools/validation/validate_toolchain.py
 ./test-framework/run_all.sh
-./tools/validation/phase-gates/validate_phase1_step3_authentication_foundation.sh
+./tools/validation/phase-gates/validate_phase1_step3_oidc_authorization_code_pkce.sh
 ```
 
 Formal acceptance additionally requires the exact pushed commit to pass `tools/validation/verify_canonical_clone.sh` from a clean clone of the canonical GitHub repository. Retained validation evidence is sanitized and committed under `validation/evidence/`.
@@ -129,6 +129,7 @@ Start with:
 - [PostgreSQL database security boundary](docs/architecture/POSTGRESQL-DATABASE-SECURITY-BOUNDARY.md)
 - [Go PostgreSQL runtime and identity context](docs/architecture/GO-POSTGRESQL-RUNTIME-AND-IDENTITY-CONTEXT.md)
 - [Trusted authentication and governed actor resolution](docs/architecture/TRUSTED-AUTHENTICATION-AND-GOVERNED-ACTOR-RESOLUTION.md)
+- [OIDC authorization-code and PKCE transaction implementation](docs/architecture/OIDC-AUTHORIZATION-CODE-AND-PKCE-TRANSACTION-IMPLEMENTATION.md)
 - [ADR-0004 — pgx PostgreSQL runtime driver](docs/decisions/ADR-0004-PGX-POSTGRESQL-RUNTIME-DRIVER.md)
 - [Go PostgreSQL runtime integration testing](docs/testing/GO-POSTGRESQL-RUNTIME-INTEGRATION-TESTING.md)
 - [Portable validation and canonical repository acceptance](docs/architecture/PORTABLE-VALIDATION-AND-CANONICAL-REPOSITORY-ACCEPTANCE.md)
@@ -154,7 +155,7 @@ BSD 3-Clause. See [LICENSE](LICENSE).
 
 ## Governed Actor Resolution Candidate
 
-The active Phase 1 Step 3 checkpoint adds a least-privileged PostgreSQL
+The merged bounded Phase 1 Step 3 checkpoint adds a least-privileged PostgreSQL
 `ActorResolver` behind `atlas.resolve_governed_actor(text, text)`. The
 application role receives function execution only, not broad access to governed
 identity or role tables. Missing, inactive, disabled, retired, unmapped, or
@@ -166,12 +167,26 @@ authentication.
 
 ## OIDC ID-Token Verification Candidate
 
-The active bounded Phase 1 Step 3 candidate verifies exact HTTPS provider
+The merged bounded Phase 1 Step 3 predecessor verifies exact HTTPS provider
 discovery, remote JWKS signatures, issuer, audience, authorized party, permitted
 asymmetric algorithms, expiry, issued-at, not-before, nonce, stable subject,
 access-token hash when present, duplicate sensitive claims, key rotation, and
 provider outage behavior.
 
-It does not yet provide browser login routes, authorization-code exchange, PKCE
-transaction persistence, cookies, sessions, CSRF, logout, trusted-proxy
-enforcement, or production authentication.
+That verifier checkpoint does not itself provide browser login routes,
+authorization-code exchange, PKCE transaction handling, cookies, sessions,
+CSRF, logout, trusted-proxy enforcement, or production authentication.
+
+## OIDC Authorization-Code and PKCE Candidate
+
+The active bounded Phase 1 Step 3 candidate creates 256-bit state, nonce, and
+PKCE verifier values, stores only a SHA-256 state digest, requires discovered
+PKCE S256 support, atomically consumes each transaction once, exchanges the code
+through the exact discovered HTTPS token endpoint and redirect URI, bounds the
+provider response, and returns only a verified provider-neutral principal.
+
+The candidate uses a bounded in-memory transaction store. Process restart
+invalidates outstanding login attempts. It does not add HTTP login or callback
+routes, browser cookies, durable sessions, governed actor wiring, CSRF, logout,
+trusted-proxy enforcement, production credential delivery, formal Step 3
+acceptance, or production readiness.
