@@ -4,6 +4,14 @@
 
 ### Added
 
+- A pinned maintained YAML v4 node decoder, Atlas node-conversion boundary, multiline quoted-scalar fixture, hostile admission tests, explicit resource limits, and cancellation checks for the experimental FortiGate YAML adapter.
+- Upload-safe `fortigate-inspect -redact` summaries that omit local paths, device identity, FortiOS version, and finding details while retaining counts and bounded decoder positions.
+- Upload-safe structure diagnostics that report only public FortiOS section labels and aggregate layout counts while omitting private scalar values, unknown keys, and VDOM names.
+- Upload-safe semantic-quality aggregates for normalized record kinds, resolved and unresolved reference classes, built-ins, findings, and coverage warnings.
+- Stable vendor-independent normalized-record metrics and explicit built-in-reference records.
+- A bounded compatibility repair for confirmed Fortinet-generated invalid YAML forms, with semantic, false-positive, and resource-limit tests.
+- ADR-0007 and synchronized FortiGate YAML snapshot architecture documentation.
+
 - Phase 1 Step 3 OIDC authorization-code exchange with PKCE S256, 256-bit state and nonce, SHA-256 state-digest storage, bounded one-time in-memory preauthentication transactions, exact redirect binding, token-response bounds, replay resistance, concurrency proofs, and secret-redaction tests.
 - Phase 1 Step 3 authorization-code and PKCE architecture, testing, traceability, static validation, regression, and phase-gate synchronization.
 
@@ -25,6 +33,10 @@
 
 ### Changed
 
+- Replaced the FortiGate adapter's handwritten physical-line YAML grammar with maintained node decoding while preserving Atlas normalization, source-location, evidence, and snapshot contracts.
+- Added bounded layout detection for canonical fixtures, native direct CMDB sections, and native VDOM containers while retaining fail-closed rejection of unrelated YAML.
+- Extended the firewall reference graph with object-kind resolution, explicit built-ins, unresolved-versus-ambiguous classification, and normalized-reference limits.
+
 - Clarified Atlas as an active complement to Zabbix, Graylog, Security Onion, Draw.io, and vendor platforms rather than a replacement for their mature operational functions.
 - Reordered the unaccepted first-product sequence to prioritize an offline Catalyst 9300L/9300, 9500, and 9800 infrastructure-value slice before Fortinet policy analysis.
 - Added governed direction for Zabbix maps, dashboards, templates, discovery, and reports; Graylog lookup, enrichment, queries, pipelines, streams, dashboards, and reports; and future separately accepted external-system provisioning.
@@ -39,6 +51,9 @@
 - Updated CI and the disposable PostgreSQL runner to execute Go database integration tests.
 
 ### Security
+
+- FortiGate YAML fails closed on oversized or excessive input, aliases, anchors, custom tags, duplicate keys, multiple documents, unsupported scalar forms, and normalized-record or finding limit violations.
+- Upload-safe semantic output uses fixed allowlists and fallback classifications so source-derived labels, names, values, paths, and finding details cannot be reflected into retained logs.
 
 - Production mode now rejects development identity headers and protected requests fail closed when no trusted adapter is configured.
 - Defined fail-closed external-identity resolution, Atlas-owned role authority, immutable request identity, bounded server-side sessions, CSRF, replay, trusted-proxy, and authentication-secret redaction requirements.
@@ -55,6 +70,9 @@
 - Recorded the exact candidate commit, deterministic Git archive hash, validation evidence, limitations, security assumptions, temporary single-maintainer development exception, and exact Phase 1 Step 2 work.
 
 ### Fixed
+
+- Repaired confirmed Fortinet-generated invalid YAML adjacent multi-value fragments and restricted literal object-name keys while leaving ordinary valid YAML unchanged and broader malformed YAML fail-closed.
+- Repaired admission of native FortiGate YAML backups whose root does not use the prototype's synthetic `global` or `vdom` wrapper.
 
 - Synchronized the Go PostgreSQL runtime validator with the typed authentication-mode boundary while retaining explicit PostgreSQL production-default and controlled-development assertions.
 - Removed ambiguous PL/pgSQL actor variable and column resolution from the governed change and approval functions.

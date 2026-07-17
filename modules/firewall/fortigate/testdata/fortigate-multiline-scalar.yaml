@@ -1,0 +1,6 @@
+# config-version=FGT60F-7.4.5-FW-build2573-240514
+global:
+  system_global:
+    version: 7.4.5
+    admin-banner: "Authorized operators only;
+escaped quote: \"preserved\"; continuation complete."

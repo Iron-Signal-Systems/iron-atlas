@@ -68,7 +68,6 @@ FortiGate configuration and operational evidence supplies security-policy, routi
 Cisco and FortiGate adapters may progress independently, but neither adapter is the product by itself. Their evidence converges into the canonical network and security model and the answer engine.
 
 ## Product Position
-This checkpoint does not by itself implement a production authentication adapter, sessions, CSRF protection, trusted-proxy enforcement, or production authentication.
 
 Atlas complements established operational systems instead of recreating capabilities they already perform well.
 
@@ -90,6 +89,17 @@ The accepted Phase 0 baseline contains an embedded HTML5 interface, module regis
 Accepted Phase 1 Steps 1 and 2 add governed PostgreSQL migrations, durable identity and authority records, database-enforced independent approval, append-only history, a least-privileged Go PostgreSQL runtime, transaction-local actor context, persistent change creation and approval, failure isolation, and readiness behavior.
 
 Phase 1 Step 3 trusted-authentication work remains incomplete and non-production. Infrastructure evidence ingestion, normalization, correlation, query, and reporting capabilities are active development work and must not be represented as production-complete.
+
+FortiGate YAML snapshot ingestion is an active, self-validated,
+non-production evidence-adapter candidate. The current checkpoint processes a
+private 13.2 MB FortiOS 7.2.13 YAML export using bounded maintained YAML
+decoding, native-layout detection, vendor-independent normalization, semantic
+reference analysis, and aggregate-only privacy-safe reporting. It produced
+2,923 normalized records and classified 10,287 references while retaining
+1,597 unresolved references and 263 unrecognized root entries as explicit
+coverage gaps. This proves a bounded ingestion foundation, not complete
+FortiGate understanding, cross-vendor correlation, reachability analysis, or
+production readiness.
 
 ## Quick Start
 
@@ -140,6 +150,8 @@ Start with:
 - [Product vision and operating mindset](docs/goals/PRODUCT-VISION-AND-OPERATING-MINDSET.md)
 - [Target architecture](docs/architecture/TARGET-ARCHITECTURE.md)
 - [Query, reachability, and change-impact model](docs/architecture/QUERY-REACHABILITY-AND-CHANGE-IMPACT-MODEL.md)
+- [FortiGate YAML snapshot prototype](docs/architecture/FORTIGATE-YAML-SNAPSHOT-PROTOTYPE.md)
+- [ADR-0007 — maintained YAML decoder](docs/decisions/ADR-0007-MAINTAINED-YAML-DECODER.md)
 - [BloodHound and identity attack-graph integration](docs/architecture/BLOODHOUND-AND-IDENTITY-ATTACK-GRAPH-INTEGRATION.md)
 - [HTML5 interface and role workspaces](docs/architecture/HTML5-INTERFACE-AND-ROLE-WORKSPACES.md)
 - [Change management and two-person control](docs/architecture/CHANGE-MANAGEMENT-AND-TWO-PERSON-CONTROL.md)

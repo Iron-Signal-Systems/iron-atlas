@@ -27,9 +27,11 @@
 - [PostgreSQL database security boundary](architecture/POSTGRESQL-DATABASE-SECURITY-BOUNDARY.md)
 - [Go PostgreSQL runtime and identity context](architecture/GO-POSTGRESQL-RUNTIME-AND-IDENTITY-CONTEXT.md)
 - [Trusted authentication and governed actor resolution](architecture/TRUSTED-AUTHENTICATION-AND-GOVERNED-ACTOR-RESOLUTION.md)
-- OIDC authorization-code and PKCE transaction implementation *(planned implementation document; not yet present)*
+- [OIDC authorization-code and PKCE transaction implementation](architecture/OIDC-AUTHORIZATION-CODE-AND-PKCE-TRANSACTION-IMPLEMENTATION.md)
 - [Evidence ingestion and protection](architecture/EVIDENCE-INGESTION-AND-PROTECTION.md)
 - [Firewall semantic analysis](architecture/FIREWALL-CONFIGURATION-SEMANTIC-ANALYSIS.md)
+- [FortiGate YAML snapshot prototype](architecture/FORTIGATE-YAML-SNAPSHOT-PROTOTYPE.md)
+- [ADR-0007 — maintained YAML decoder](decisions/ADR-0007-MAINTAINED-YAML-DECODER.md)
 - [BloodHound and identity attack-graph integration](architecture/BLOODHOUND-AND-IDENTITY-ATTACK-GRAPH-INTEGRATION.md)
 - [Firewall traffic path and SD-WAN model](architecture/FIREWALL-TRAFFIC-PATH-AND-SDWAN-MODEL.md)
 - [Cisco evidence collection and preventive health](architecture/CISCO-EVIDENCE-COLLECTION-AND-PREVENTIVE-HEALTH.md)

@@ -1,0 +1,195 @@
+# config-version=FGT60F-7.4.5-FW-build2573-240514
+vdom:
+  - root:
+      system_interface:
+        - wan1:
+            ip: [192.0.2.2, 255.255.255.0]
+            role: wan
+            status: enable
+            allowaccess: [ping, https, ssh]
+        - wan2:
+            ip: [198.51.100.2, 255.255.255.0]
+            role: wan
+            status: enable
+        - port3:
+            role: lan
+            status: enable
+        - users.120:
+            type: vlan
+            interface: port3
+            vlanid: 120
+            ip: [10.120.0.1, 255.255.255.0]
+            role: lan
+            status: enable
+            description: User VLAN
+      firewall_address:
+        - Users-Network:
+            subnet: [10.120.0.0, 255.255.255.0]
+            associated-interface: users.120
+            comment: User workstations
+        - Public-DNS:
+            subnet: [1.1.1.1, 255.255.255.255]
+        - Web-Server-Internal:
+            subnet: [10.120.0.20, 255.255.255.255]
+      firewall_addrgrp:
+        - User-Subnets:
+            member: [Users-Network]
+      firewall_service_custom:
+        - HTTPS-Custom:
+            protocol: TCP/UDP/SCTP
+            tcp-portrange: [443]
+        - DNS-Custom:
+            protocol: TCP/UDP/SCTP
+            tcp-portrange: [53]
+            udp-portrange: [53]
+      firewall_service_group:
+        - Internet-Core:
+            member: [HTTPS-Custom, DNS-Custom]
+      firewall_vip:
+        - Published-Web:
+            extip: 203.0.113.10
+            mappedip: [10.120.0.20]
+            extintf: wan1
+            portforward: enable
+            protocol: tcp
+            extport: [443]
+            mappedport: [443]
+      firewall_ippool:
+        - Users-Egress-Pool:
+            startip: 203.0.113.20
+            endip: 203.0.113.25
+            type: overload
+      firewall_shaper_traffic_shaper:
+        - Business-Critical:
+            guaranteed-bandwidth: 10000
+            maximum-bandwidth: 50000
+            bandwidth-unit: kbps
+            priority: high
+            dscp-marking: AF31
+      firewall_shaper_per_ip_shaper:
+        - Per-User-20M:
+            max-bandwidth: 20000
+            bandwidth-unit: kbps
+      system_sdwan:
+        status: enable
+        zone:
+          - virtual-wan-link:
+              service-sla-tie-break: cfg-order
+        members:
+          - 1:
+              interface: wan1
+              gateway: 192.0.2.1
+              zone: virtual-wan-link
+              cost: 10
+              priority: 1
+          - 2:
+              interface: wan2
+              gateway: 198.51.100.1
+              zone: virtual-wan-link
+              cost: 20
+              priority: 2
+        health-check:
+          - Internet-SLA:
+              server: [1.1.1.1, 8.8.8.8]
+              protocol: ping
+              members: [1, 2]
+              latency-threshold: 120
+              jitter-threshold: 30
+              packetloss-threshold: 5
+        service:
+          - 1:
+              name: Prefer-WAN1
+              src: [User-Subnets]
+              dst: [all]
+              service: [Internet-Core]
+              mode: priority
+              priority-members: [1, 2]
+              health-check: [Internet-SLA]
+              dscp: AF31
+      router_static:
+        - 1:
+            dst: [0.0.0.0, 0.0.0.0]
+            device: virtual-wan-link
+            distance: 10
+            priority: 1
+            status: enable
+        - 10:
+            dst: [10.200.0.0, 255.255.255.0]
+            gateway: 10.120.0.254
+            device: users.120
+            distance: 10
+            status: enable
+      system_dhcp_server:
+        - 1:
+            interface: users.120
+            status: enable
+            default-gateway: 10.120.0.1
+            netmask: 255.255.255.0
+            dns-server1: 1.1.1.1
+            dns-server2: 8.8.8.8
+            lease-time: 86400
+            domain: example.test
+            ip-range:
+              - 1:
+                  start-ip: 10.120.0.100
+                  end-ip: 10.120.0.200
+            reserved-address:
+              - printer:
+                  mac: 02:00:00:00:01:20
+                  ip: 10.120.0.20
+                  description: Test reservation
+      vpn_ipsec_phase1_interface:
+        - Branch-Tunnel:
+            interface: wan1
+            remote-gw: 192.0.2.200
+            status: enable
+      firewall_policy:
+        - 10:
+            name: Users to Internet
+            srcintf: [users.120]
+            dstintf: [virtual-wan-link]
+            srcaddr: [User-Subnets]
+            dstaddr: [all]
+            service: [Internet-Core]
+            schedule: always
+            action: accept
+            nat: enable
+            ippool: enable
+            poolname: [Users-Egress-Pool]
+            traffic-shaper: Business-Critical
+            per-ip-shaper: Per-User-20M
+            diffserv: enable
+            diffservcode: AF31
+            diffservcode-forward: EF
+            logtraffic: all
+            status: enable
+        - 20:
+            name: Published Web
+            srcintf: [wan1]
+            dstintf: [users.120]
+            srcaddr: [all]
+            dstaddr: [Published-Web]
+            service: [HTTPS-Custom]
+            schedule: always
+            action: accept
+            nat: disable
+            logtraffic: all
+            status: enable
+      firewall_shaping_policy:
+        - 1:
+            srcintf: [users.120]
+            dstintf: [virtual-wan-link]
+            srcaddr: [User-Subnets]
+            dstaddr: [all]
+            service: [Internet-Core]
+            traffic-shaper: Business-Critical
+            per-ip-shaper: Per-User-20M
+            dscp: AF31
+            status: enable
+global:
+  system_global:
+    alias: Sanitized FortiGate
+    hostname: atlas-fgt-test
+    serial-number: FGVM000000000001
+    version: 7.4.5
+    vdom-mode: multi-vdom

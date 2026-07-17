@@ -8,6 +8,7 @@ require (
 	github.com/coreos/go-oidc/v3 v3.19.0
 	github.com/go-jose/go-jose/v4 v4.1.4
 	github.com/jackc/pgx/v5 v5.10.0
+	go.yaml.in/yaml/v4 v4.0.0-rc.6
 )
 
 require (
