@@ -63,7 +63,7 @@ func NormalizeFortiGateYAML(doc *YAMLDocument) (*snapshot.FirewallSnapshot, erro
 }
 
 func (n *normalizer) parseGlobal() {
-	global := n.doc.Root.Child("global")
+	global := fortiGateGlobalScope(n.doc.Root)
 	if global == nil {
 		return
 	}
@@ -80,11 +80,7 @@ func (n *normalizer) parseGlobal() {
 }
 
 func (n *normalizer) vdomEntries() []namedNode {
-	vdom := n.doc.Root.Child("vdom")
-	if vdom == nil {
-		return nil
-	}
-	return tableEntries(vdom, "$.vdom")
+	return fortiGateVDOMEntries(n.doc.Root)
 }
 
 func (n *normalizer) parseVDOM(entry namedNode) {
@@ -120,6 +116,9 @@ func (n *normalizer) ref(owner snapshot.ObjectID, role string, kind snapshot.Obj
 	ref := snapshot.ObjectRef{Kind: kind, VendorName: name, Scope: scope, Source: source}
 	if isBuiltinReference(kind, name) {
 		ref.Resolution = snapshot.ReferenceBuiltIn
+		n.out.References.BuiltIns = append(n.out.References.BuiltIns, snapshot.BuiltInReference{
+			From: owner, Kind: kind, Role: role, Source: source,
+		})
 		return ref
 	}
 
@@ -128,7 +127,7 @@ func (n *normalizer) ref(owner snapshot.ObjectID, role string, kind snapshot.Obj
 		ref.ID = candidates[0].ID
 		ref.Kind = candidates[0].Kind
 		ref.Resolution = snapshot.ReferenceResolved
-		n.out.References.Edges = append(n.out.References.Edges, snapshot.ReferenceEdge{From: owner, To: ref.ID, Role: role, Source: source})
+		n.out.References.Edges = append(n.out.References.Edges, snapshot.ReferenceEdge{From: owner, To: ref.ID, Kind: ref.Kind, Role: role, Source: source})
 		return ref
 	}
 	if len(candidates) > 1 {
@@ -192,7 +191,8 @@ func deduplicateRegistered(in []registeredObject) []registeredObject {
 
 func (n *normalizer) addUnresolved(owner snapshot.ObjectID, role string, ref snapshot.ObjectRef) {
 	n.out.References.Unresolved = append(n.out.References.Unresolved, snapshot.UnresolvedReference{
-		From: owner, Kind: ref.Kind, VendorName: ref.VendorName, Role: role, Scope: ref.Scope, Source: ref.Source,
+		From: owner, Kind: ref.Kind, VendorName: ref.VendorName, Role: role, Scope: ref.Scope,
+		Resolution: ref.Resolution, Source: ref.Source,
 	})
 }
 

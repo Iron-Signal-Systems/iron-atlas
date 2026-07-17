@@ -1,7 +1,6 @@
 package fortigate
 
 import (
-	"bytes"
 	"context"
 	"errors"
 	"fmt"
@@ -17,12 +16,8 @@ type YAMLParser struct{}
 
 func (YAMLParser) ID() string { return "firewall.fortigate.yaml.v1" }
 
-func (YAMLParser) Probe(_ context.Context, reader io.Reader) (ingest.Probe, error) {
-	data, err := io.ReadAll(io.LimitReader(reader, 2*1024*1024))
-	if err != nil {
-		return ingest.Probe{}, err
-	}
-	doc, err := ParseYAMLDocument(bytes.NewReader(data))
+func (YAMLParser) Probe(ctx context.Context, reader io.Reader) (ingest.Probe, error) {
+	doc, err := ParseYAMLDocumentContext(ctx, reader)
 	if err != nil {
 		return ingest.Probe{}, err
 	}
@@ -33,15 +28,8 @@ func (YAMLParser) Probe(_ context.Context, reader io.Reader) (ingest.Probe, erro
 	return ingest.Probe{Vendor: "fortinet", Platform: "fortigate", Format: "fortios-yaml", Version: version}, nil
 }
 
-func (YAMLParser) Parse(_ context.Context, reader io.Reader) (ingest.Result, error) {
-	doc, err := ParseYAMLDocument(reader)
-	if err != nil {
-		return ingest.Result{}, err
-	}
-	if err := validateFortiGateYAMLRoot(doc.Root); err != nil {
-		return ingest.Result{}, err
-	}
-	normalized, err := NormalizeFortiGateYAML(doc)
+func (YAMLParser) Parse(ctx context.Context, reader io.Reader) (ingest.Result, error) {
+	normalized, err := parseFortiGateYAMLWithLimits(ctx, reader, defaultYAMLDecodeLimits())
 	if err != nil {
 		return ingest.Result{}, err
 	}
@@ -58,22 +46,57 @@ func (YAMLParser) Parse(_ context.Context, reader io.Reader) (ingest.Result, err
 }
 
 func ParseFortiGateYAML(reader io.Reader) (*snapshot.FirewallSnapshot, error) {
-	doc, err := ParseYAMLDocument(reader)
+	normalized, _, err := parseFortiGateYAMLWithLayoutAndLimits(context.Background(), reader, defaultYAMLDecodeLimits())
+	return normalized, err
+}
+
+func ParseFortiGateYAMLContext(ctx context.Context, reader io.Reader) (*snapshot.FirewallSnapshot, error) {
+	normalized, _, err := parseFortiGateYAMLWithLayoutAndLimits(ctx, reader, defaultYAMLDecodeLimits())
+	return normalized, err
+}
+
+// ParseFortiGateYAMLWithLayout performs one bounded decode and returns both the
+// normalized snapshot and an upload-safe structural diagnostic derived from
+// the same admitted document.
+func ParseFortiGateYAMLWithLayout(reader io.Reader) (*snapshot.FirewallSnapshot, FortiGateYAMLLayout, error) {
+	return parseFortiGateYAMLWithLayoutAndLimits(context.Background(), reader, defaultYAMLDecodeLimits())
+}
+
+func parseFortiGateYAMLWithLimits(
+	ctx context.Context,
+	reader io.Reader,
+	limits yamlDecodeLimits,
+) (*snapshot.FirewallSnapshot, error) {
+	normalized, _, err := parseFortiGateYAMLWithLayoutAndLimits(ctx, reader, limits)
+	return normalized, err
+}
+
+func parseFortiGateYAMLWithLayoutAndLimits(
+	ctx context.Context,
+	reader io.Reader,
+	limits yamlDecodeLimits,
+) (*snapshot.FirewallSnapshot, FortiGateYAMLLayout, error) {
+	doc, err := parseYAMLDocumentWithLimits(ctx, reader, limits)
 	if err != nil {
-		return nil, err
+		return nil, FortiGateYAMLLayout{}, err
 	}
+	layout := DiagnoseFortiGateYAMLLayout(doc)
 	if err := validateFortiGateYAMLRoot(doc.Root); err != nil {
-		return nil, err
+		return nil, layout, err
 	}
-	return NormalizeFortiGateYAML(doc)
+	normalized, err := NormalizeFortiGateYAML(doc)
+	if err != nil {
+		return nil, layout, err
+	}
+	if err := validateNormalizedSnapshotLimits(normalized, limits); err != nil {
+		return nil, layout, err
+	}
+	return normalized, layout, nil
 }
 
 func validateFortiGateYAMLRoot(root *YAMLNode) error {
 	if root == nil || root.Kind != YAMLMapping {
 		return errors.New("FortiGate YAML root must be a mapping")
-	}
-	if root.Child("global") == nil && root.Child("vdom") == nil {
-		return errors.New("input does not appear to be a FortiGate YAML configuration: expected global or vdom")
 	}
 	global := root.Child("global")
 	if global != nil && global.Kind != YAMLMapping {
@@ -82,6 +105,9 @@ func validateFortiGateYAMLRoot(root *YAMLNode) error {
 	vdom := root.Child("vdom")
 	if vdom != nil && vdom.Kind != YAMLSequence && vdom.Kind != YAMLMapping {
 		return errors.New("FortiGate YAML vdom section must be a sequence or mapping")
+	}
+	if fortiGateGlobalScope(root) == nil && len(fortiGateVDOMEntries(root)) == 0 {
+		return errors.New("input does not appear to be a supported FortiGate YAML configuration layout")
 	}
 	return nil
 }
@@ -106,6 +132,11 @@ func detectFortiOSVersion(doc *YAMLDocument) string {
 	}
 	if node := doc.Root.At("global", "system_global", "version"); node != nil {
 		return node.Scalar()
+	}
+	if global := fortiGateGlobalScope(doc.Root); global != nil {
+		if node := childAlias(global, "system_global"); node != nil {
+			return scalarField(node, "version")
+		}
 	}
 	return ""
 }

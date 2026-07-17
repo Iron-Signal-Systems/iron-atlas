@@ -121,23 +121,33 @@ type ObjectRef struct {
 
 type ReferenceGraph struct {
 	Edges      []ReferenceEdge       `json:"edges,omitempty"`
+	BuiltIns   []BuiltInReference    `json:"built_ins,omitempty"`
 	Unresolved []UnresolvedReference `json:"unresolved,omitempty"`
 }
 
 type ReferenceEdge struct {
 	From   ObjectID       `json:"from"`
 	To     ObjectID       `json:"to"`
+	Kind   ObjectKind     `json:"kind"`
+	Role   string         `json:"role"`
+	Source SourceLocation `json:"source,omitempty"`
+}
+
+type BuiltInReference struct {
+	From   ObjectID       `json:"from"`
+	Kind   ObjectKind     `json:"kind"`
 	Role   string         `json:"role"`
 	Source SourceLocation `json:"source,omitempty"`
 }
 
 type UnresolvedReference struct {
-	From       ObjectID       `json:"from"`
-	Kind       ObjectKind     `json:"kind"`
-	VendorName string         `json:"vendor_name"`
-	Role       string         `json:"role"`
-	Scope      ObjectScope    `json:"scope,omitempty"`
-	Source     SourceLocation `json:"source,omitempty"`
+	From       ObjectID            `json:"from"`
+	Kind       ObjectKind          `json:"kind"`
+	VendorName string              `json:"vendor_name"`
+	Role       string              `json:"role"`
+	Scope      ObjectScope         `json:"scope,omitempty"`
+	Resolution ReferenceResolution `json:"resolution"`
+	Source     SourceLocation      `json:"source,omitempty"`
 }
 
 type RoutingDomain struct {

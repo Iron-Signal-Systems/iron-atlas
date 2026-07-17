@@ -53,6 +53,7 @@ Accepted Phase 1 Step 2 adds:
 
 Step 2 does **not** establish production authentication, credential delivery, TLS provisioning, backup recovery, high availability, live collection, or production readiness.
 
+The experimental FortiGate YAML side path has completed a private upload-safe V8 demonstration against a 13.2 MB FortiOS 7.2.13 export: maintained decoding, bounded admission, native direct-root layout detection, normalization, and repository validation all passed. The adapter remains unaccepted and non-production while aggregate semantic-quality analysis classifies 1,597 unresolved references, 1,605 findings, and 263 currently unrecognized root entries without exposing production-derived names or values.
 
 The merged Phase 1 Step 3 authentication-foundation checkpoint adds:
 

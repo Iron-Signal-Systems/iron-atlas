@@ -28,6 +28,8 @@ changes/templates/change-record-template.md
 cmd/atlasctl/main.go
 cmd/atlasd/main.go
 cmd/fortigate-inspect/main.go
+cmd/fortigate-inspect/main_test.go
+cmd/fortigate-inspect/semantic_quality.go
 configs/devices/cisco-switches.example.json
 configs/iron-atlas-postgresql.env.example
 configs/iron-atlas.example.json
@@ -89,6 +91,7 @@ docs/decisions/ADR-0003-RAW-EVIDENCE-OUTSIDE-GIT.md
 docs/decisions/ADR-0004-PGX-POSTGRESQL-RUNTIME-DRIVER.md
 docs/decisions/ADR-0005-CANONICAL-REPOSITORY-REPRODUCIBILITY.md
 docs/decisions/ADR-0006-OIDC-ID-TOKEN-VERIFICATION-LIBRARIES.md
+docs/decisions/ADR-0007-MAINTAINED-YAML-DECODER.md
 docs/engineering/release-and-acceptance-model.md
 docs/engineering/repository-assurance-adoption.md
 docs/engineering/secure-development-lifecycle.md
@@ -152,8 +155,18 @@ modules/firewall/fortigate/normalize_network.go
 modules/firewall/fortigate/normalize_policy.go
 modules/firewall/fortigate/parser.go
 modules/firewall/fortigate/parser_test.go
+modules/firewall/fortigate/testdata/fortigate-adjacent-quoted-values.yaml
+modules/firewall/fortigate/testdata/fortigate-multiline-scalar.yaml
 modules/firewall/fortigate/testdata/fortigate-sanitized.yaml
 modules/firewall/fortigate/yaml_document.go
+modules/firewall/fortigate/yaml_fortinet_compat.go
+modules/firewall/fortigate/yaml_fortinet_compat_test.go
+modules/firewall/fortigate/yaml_layout.go
+modules/firewall/fortigate/yaml_layout_test.go
+modules/firewall/fortigate/yaml_limits.go
+modules/firewall/fortigate/yaml_node_convert.go
+modules/firewall/fortigate/yaml_node_convert_test.go
+modules/firewall/fortigate/yaml_normalized_limits.go
 modules/firewall/fortigate/yaml_parser.go
 modules/firewall/fortigate/yaml_parser_test.go
 modules/firewall/opnsense/README.md
@@ -163,6 +176,8 @@ modules/firewall/pfsense/README.md
 modules/firewall/pfsense/parser.go
 modules/firewall/pfsense/parser_test.go
 modules/firewall/snapshot/README.md
+modules/firewall/snapshot/metrics.go
+modules/firewall/snapshot/metrics_test.go
 modules/firewall/snapshot/model.go
 modules/network/cisco/README.md
 modules/network/cisco/common/command_bundle.go

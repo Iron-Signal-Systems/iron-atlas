@@ -22,6 +22,8 @@
 - [Cisco NPS/RADIUS service authentication](architecture/CISCO-NPS-RADIUS-SERVICE-AUTHENTICATION.md)
 - [Cisco collection profile catalog](architecture/CISCO-COLLECTION-PROFILE-CATALOG.md)
 - [Firewall traffic path and SD-WAN model](architecture/FIREWALL-TRAFFIC-PATH-AND-SDWAN-MODEL.md)
+- [FortiGate YAML snapshot prototype](architecture/FORTIGATE-YAML-SNAPSHOT-PROTOTYPE.md)
+- [ADR-0007 — maintained YAML decoder](decisions/ADR-0007-MAINTAINED-YAML-DECODER.md)
 - [Data and record model](architecture/DATA-AND-RECORD-MODEL.md)
 - [Zabbix integration contract](architecture/ZABBIX-INTEGRATION-CONTRACT.md)
 - [Project and portfolio tracking](architecture/PROJECT-AND-PORTFOLIO-TRACKING.md)
@@ -62,3 +64,8 @@ A phase is not complete until the root README, documentation indexes, architectu
   one-time transaction, token exchange, and verified-principal candidate.
 - `decisions/ADR-0006-OIDC-ID-TOKEN-VERIFICATION-LIBRARIES.md` records the
   pinned protocol-library decision and retained Atlas enforcement boundary.
+- `decisions/ADR-0007-MAINTAINED-YAML-DECODER.md` records the pinned YAML v4
+  node-decoder decision and the retained FortiGate admission boundary.
+- `architecture/FORTIGATE-YAML-SNAPSHOT-PROTOTYPE.md` records the successful
+  private native-layout V8 demonstration and the aggregate-only semantic-quality
+  diagnostic now used to classify remaining reference and coverage defects.
