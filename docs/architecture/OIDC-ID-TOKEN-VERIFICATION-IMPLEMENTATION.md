@@ -2,13 +2,15 @@
 
 ## Status
 
-Phase 1 Step 3 bounded implementation candidate.
+Phase 1 Step 3 bounded implementation checkpoint integrated; authorization-code and PKCE transaction handling is the active successor candidate.
 
-This checkpoint implements provider discovery, JWKS-backed signature
-verification, and normalized ID-token verification. It does not implement a
-browser login route, authorization-code exchange, PKCE transaction storage,
-cookies, durable sessions, CSRF, logout, trusted-proxy enforcement, or
-production readiness.
+This document's checkpoint implements provider discovery, JWKS-backed
+signature verification, and normalized ID-token verification. It does not
+implement a browser login route, authorization-code exchange, PKCE transaction
+storage, cookies, durable sessions, CSRF, logout, trusted-proxy enforcement, or
+production readiness by itself. The repository's successor checkpoint adds
+bounded code exchange and in-memory one-time PKCE transactions without
+expanding those browser and session nonclaims.
 
 ## Accepted predecessor
 
@@ -107,3 +109,10 @@ This checkpoint does not establish:
 - trusted-proxy enforcement;
 - representative-provider compatibility; or
 - production readiness.
+
+## Successor relationship
+
+The authorization-code and PKCE transaction successor reuses this verifier. It
+must supply the exact stored nonce and returned access token, so nonce and
+`at_hash` enforcement remain inside this merged verification boundary rather
+than being reimplemented by the flow.

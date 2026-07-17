@@ -4,6 +4,9 @@
 
 ### Added
 
+- Phase 1 Step 3 OIDC authorization-code exchange with PKCE S256, 256-bit state and nonce, SHA-256 state-digest storage, bounded one-time in-memory preauthentication transactions, exact redirect binding, token-response bounds, replay resistance, concurrency proofs, and secret-redaction tests.
+- Phase 1 Step 3 authorization-code and PKCE architecture, testing, traceability, static validation, regression, and phase-gate synchronization.
+
 - Phase 1 Step 3 typed authentication-mode middleware, immutable request identity, future authenticator and actor-resolver interfaces, and targeted hostile tests.
 - Phase 1 Step 3 trusted-authentication and governed-actor-resolution architecture contract.
 - Phase 1 Step 3 requirements traceability, adversarial testing model, acceptance template, static validator, phase-entry gate, and regression test.

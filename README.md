@@ -68,6 +68,7 @@ FortiGate configuration and operational evidence supplies security-policy, routi
 Cisco and FortiGate adapters may progress independently, but neither adapter is the product by itself. Their evidence converges into the canonical network and security model and the answer engine.
 
 ## Product Position
+This checkpoint does not by itself implement a production authentication adapter, sessions, CSRF protection, trusted-proxy enforcement, or production authentication.
 
 Atlas complements established operational systems instead of recreating capabilities they already perform well.
 

@@ -35,3 +35,10 @@ A local phase gate is necessary but not sufficient for acceptance. The exact pus
   race, concurrency, documentation, manifests, the accepted governed
   actor-resolution predecessor, and complete repository validation. It is not
   Step 3 acceptance.
+
+- `validate_phase1_step3_oidc_authorization_code_pkce.sh` — fourth Phase 1
+  Step 3 implementation gate; verifies state, nonce, PKCE S256, SHA-256
+  state-digest storage, atomic one-time consumption, exact redirect and token
+  endpoint binding, bounded token exchange, replay, outage, race, concurrency,
+  redaction, predecessor revalidation, and complete repository validation. It
+  is not Step 3 acceptance.
