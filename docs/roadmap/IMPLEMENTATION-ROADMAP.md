@@ -4,150 +4,196 @@
 
 Iron Atlas is the primary active product-development effort.
 
-The current execution objective is to move the accepted Phase 1 Step 2 non-production boundary toward a bounded, read-only infrastructure-intelligence, documentation, reconciliation, and integration-assistance product. Work must continue in the accepted phase order below and must preserve predecessor validation.
+The implementation roadmap preserves accepted foundation boundaries while delivering vertical product slices that answer real network and security questions as early as safely possible.
 
-Execution priority, capacity assumptions, representative-environment boundaries, quarterly milestones, focus controls, and first-product deferrals are governed by the [Atlas Primary-Focus Execution Plan](ATLAS-PRIMARY-FOCUS-EXECUTION-PLAN.md).
+> **Cisco and FortiGate are the first two major evidence sources. The product is the correlated answer, risk analysis, and decision evidence produced from them.**
 
-The active formal candidate is Phase 1 Step 3 — Trusted Authentication and Governed Actor Resolution. The authentication foundation, governed actor resolver, and bounded OIDC discovery, JWKS, and ID-token verification checkpoints are integrated. Authorization-code exchange with PKCE S256 and bounded one-time in-memory preauthentication transactions is the active implementation candidate. Live infrastructure collection is not accepted until the applicable identity, credential, TLS, recovery, and resource-governance boundaries are complete.
+## Vertical Product Slices Across Phases
+
+The phase sequence remains authoritative, but implementation within and across compatible phases should produce bounded vertical slices.
+
+### Slice A — IP, CIDR, Subnet, and VLAN Intelligence
+
+- evidence ingestion;
+- canonical identity;
+- prefix containment and longest-prefix match;
+- VLAN and interface placement;
+- routes and gateways;
+- policy and ACL references;
+- NAT, VIP, VPN, and SD-WAN relationships;
+- evidence and unknowns.
+
+### Slice B — Reachability and Attack-Path Explanation
+
+- source and destination context;
+- Layer-2 and Layer-3 path;
+- route selection;
+- firewall policy and ACL evaluation;
+- NAT;
+- VPN and SD-WAN;
+- return path;
+- trust-boundary crossings;
+- optional BloodHound identity privilege and critical-asset context;
+- explicit separation of identity capability, network capability, and combined path;
+- evidence-backed result.
+
+### Slice C — Change Impact and Decision Support
+
+- prior, current, proposed, and post-change state;
+- paths and dependencies changed;
+- blast radius;
+- risk of approval;
+- risk of denial or delay;
+- engineering plan;
+- leadership decision summary;
+- validation, rollback, and acceptance.
+
+A slice may begin with partial evidence. Unsupported and unknown behavior must remain explicit.
 
 ## Phase 0 — Repository and Executable Baseline
 
-**Status:** Accepted as a non-production development baseline under tag `phase-0-repository-and-executable-baseline-complete-v1`.
+**Status:** Accepted non-production baseline.
 
 - Mission, architecture, requirements, and boundaries
 - Go module and embedded HTML5 interface
 - RBAC and requester-approval independence candidate
 - Module registry and parser contracts
-- Initial FortiGate, OPNsense, pfSense, Cisco, and Zabbix code candidates
-- Unit tests and repository phase gate
+- Initial FortiGate, OPNsense, pfSense, Cisco, and Zabbix candidates
+- Unit tests and repository validation
 - Minimal Arch deployment material
 
-Acceptance does not claim production authentication, persistence, collection, or semantic completeness.
+Acceptance does not claim production authentication, persistence, collection, semantic completeness, or production readiness.
 
 ## Phase 1 — PostgreSQL Foundation and Governed Identity
 
-**Status:** Steps 1 and 2 accepted; Step 2 is frozen under tag `phase-1-step-2-go-postgresql-runtime-and-identity-context-complete-v1`. Later Phase 1 work is not accepted.
+**Status:** Steps 1 and 2 accepted; Step 3 and remaining production boundaries incomplete.
 
-### Step 1 — Migration and Database Governance Foundation
+### Step 1
 
 - Manifest-driven migrations
 - Production role and ownership topology
 - Governed actors and external identities
-- Role binding and authority records
-- Change, approval, decision, and audit records
+- Role binding, authority, approval, decision, and audit records
 - Database-enforced requester and approver independence
 - Append-only history
-- Disposable database tests and concurrency proofs
+- Disposable database and concurrency tests
 
-### Step 2 — Go PostgreSQL Runtime and Identity Context Boundary
+### Step 2
 
-- Replaceable PostgreSQL implementation of the change-service interface
-- Bounded least-privileged `pgxpool` connection pool
-- Transaction-local authenticated actor context
-- No actor context at session scope
-- Persistent change creation and approval through accepted service functions
-- Rollback and failure isolation
-- Database-aware readiness behavior
-- Sequential and concurrent pooled-connection identity-leak tests
-- Disposable Go and PostgreSQL integration tests
+- Replaceable PostgreSQL change-service implementation
+- Least-privileged bounded connection pool
+- Transaction-local actor context
+- Persistent change creation and approval
+- Rollback and pooled-connection isolation
+- PostgreSQL-aware readiness
 
-Step 2 is accepted as a non-production runtime and portable-validation boundary after its exact pushed commit passed the applicable phase gate from a clean canonical GitHub clone and the sanitized evidence was committed. It does not establish production authentication, production credential delivery, database recovery, or production readiness.
+### Step 3 and Remaining Work
 
-### Step 3 — Trusted Authentication and Governed Actor Resolution
-
-**Status:** Contract, authentication foundation, governed actor resolver, and bounded OIDC discovery, JWKS, and ID-token verification checkpoints are integrated. Authorization-code exchange, PKCE S256, and bounded one-time in-memory preauthentication transactions are the active candidate. HTTP login/callback routes, cookies, durable sessions, CSRF, logout, trusted-proxy enforcement, governed actor wiring, and production authentication are not accepted.
-
-- Pluggable trusted authentication adapter
-- Verified provider identity normalization
-- Unique governed external-identity and active actor resolution
-- Atlas-owned current role-binding resolution
-- Immutable server-side request identity
-- Bounded server-side session lifecycle
-- Cookie, CSRF, replay, logout, and expiry controls
-- Explicit trusted-proxy boundary
-- Authentication audit and secret redaction
-- Spoofing, ambiguity, lifecycle, concurrency, and confused-deputy tests
-- Continued transaction-local PostgreSQL actor context
-
-**Current implementation checkpoint:** typed authentication modes, development-header isolation, production fail-closed middleware, private immutable request identity, least-privileged governed actor resolution, bounded OIDC discovery/JWKS/ID-token verification, and a candidate authorization-code/PKCE S256 flow with atomic one-time in-memory transactions. HTTP login and callback routes, production authenticator wiring, durable sessions, cookies, logout, CSRF, trusted proxies, authentication audit, lifecycle invalidation, and formal acceptance remain.
-
-
-### Remaining Phase 1 Work
-
-- Production credential delivery and rotation
-- Database TLS and certificate deployment
-- Database backup and restoration test boundary
+- Trusted production authentication
+- Governed actor resolution
+- Bounded sessions, cookies, CSRF, logout, and trusted proxies
+- Credential delivery and rotation
+- PostgreSQL TLS
+- Backup and recovery
 - Production connection and resource budgets
+
+Offline evidence, parser, canonical-model, and documentation work may continue in isolated workstreams without representing live collection or production authority as accepted.
 
 ## Phase 2 — Evidence Intake and Storage
 
-- Mutually authenticated ingestion API
-- Durable staging queue
+- Versioned evidence-bundle contracts
+- Manual and authenticated intake
+- Durable staging
 - Signed evidence bundles
 - Encrypted content-addressed storage
+- Duplicate detection and quarantine
 - Redaction and classification
-- Parser isolation and resource governance
+- Parser isolation
+- Cancellation, timeout, and resource governance
+- Provenance from receipt through normalized output
 
 ## Phase 3 — Cisco Offline Evidence and Normalization Foundation
 
-- Sanitized versioned Cisco command-bundle format
-- Evidence receipt, digest, provenance, classification, and parser version
-- First-value Catalyst 9300L/9300 access-switch profiles
-- First-value Catalyst 9500 core and distribution profiles
-- First-value Catalyst 9800 controller and wireless profiles
-- Deterministic offline parsing before live collection
-- Device, stack, interface, VLAN, trunk, neighbor, port-channel, spanning-tree, and wireless normalization
+- Sanitized versioned command bundles
+- Catalyst 9300L/9300 access-switch profiles
+- Catalyst 9500 core and distribution profiles
+- Catalyst 9800 controller profiles
+- Compatibility profiles for Catalyst 9200 and 2960 families after first-value support
+- Device, stack, interface, VLAN, trunk, neighbor, port-channel, spanning-tree, route, ACL, and wireless normalization
+- Running configuration and diagnostic evidence
 - Unsupported, malformed, truncated, conflicting, and partial-state handling
 - Golden fixtures, adversarial parsing, cancellation, and resource governance
 
-## Phase 4 — Cisco Semantic Analysis, Topology, and Complementary Integrations
+## Phase 4 — Cisco Semantic Analysis, Topology, and Restricted Collection
 
-- Access, core/distribution, and wireless topology
-- Trunk, pruning, CDP/LLDP, STP, and port-channel analysis
-- Resource, environment, stack, software, and counter trends
-- Catalyst 9800 controller, AP, WLAN, profile, site, flex, tag, and selected client analysis
-- Zabbix host, interface, template, discovery, map, dashboard, and report reconciliation
-- Graylog lookup and enrichment context for syslog and SNMP traps
-- Reviewable Graylog queries, pipelines, streams, dashboards, and report definitions
+- Layer-2 and Layer-3 topology
+- VLAN and trunk analysis
+- Native-VLAN, pruning, STP, and port-channel consistency
+- Endpoint attachment and neighbor relationships
+- Route and ACL context
+- Wireless controller, AP, WLAN, profile, site, flex, and tag relationships
+- Resource, environmental, software, stack, and counter trends
+- Zabbix reconciliation
+- Graylog enrichment and query context
 - Draw.io-compatible generated topology
-- Finding correlation and duplicate suppression
-- Device enrollment, host-key pinning, NPS/RADIUS service authentication, and restricted live collection only after offline acceptance
-- Compatibility profiles for Catalyst 9200 and 2960 families after the first-value slice
+- Restricted read-only live collection only after offline and security-boundary acceptance
 
 ## Phase 5 — Firewall Ingestion and Traffic-Boundary Analysis
 
 - FortiGate native parser and semantic normalization
-- FortiGate YAML adapter
+- FortiGate supported YAML ingestion
+- FortiGate operational and diagnostic evidence profiles
 - OPNsense and pfSense XML normalization
-- Interface, route, gateway, SD-WAN, policy, object, NAT, and VPN graph
-- Policy order and traffic-boundary explanation correlated with Cisco-derived topology
+- Interface, VLAN, zone, VDOM, route, gateway, policy, ACL-equivalent, object, NAT, VIP, VPN, and SD-WAN graph
+- Policy order and traffic-boundary explanation
+- Configured-versus-observed distinction
+- Management and local-in exposure
+- Runtime-health uncertainty
 - Golden fixtures and adversarial parsing
+- Correlation with Cisco-derived topology
 
-## Phase 6 — Projects, Changes, and Acceptance
+## Phase 6 — Query, Projects, Changes, and Acceptance
 
-- Complete project portfolio
+- Global answer-first query
+- IP, CIDR, subnet, and VLAN intelligence
+- Reachability explanation
+- Attack-path and trust-boundary context
+- Dependency and blast-radius analysis
+- Project portfolio
 - Two-person and multi-approver policies
-- Pre/post evidence comparison
+- Pre-change and post-change comparison
+- Risk of approval and risk of denial
+- Director-facing and engineering-facing change packages
 - Expected and unexpected difference disposition
 - Rollback and emergency change handling
 - Formal acceptance and closure
 
-## Phase 7 — Topology and Diagrams
+## Phase 7 — Topology, Diagrams, and Interface Completion
 
 - Normalized graph
-- Generated switch-port, Layer 2, VLAN, route, SD-WAN, firewall, and wireless views
+- Switch-port, Layer-2, VLAN, route, SD-WAN, firewall, VPN, wireless, dependency, and attack-path views
 - Draw.io-compatible generated sources
 - Curated diagram lifecycle
-- SVG/PDF publication and drift checks
+- SVG and PDF publication
+- Drift checks
+- Accessible answer workspace and pivots
 
 ## Phase 8 — External Integrations
 
 - Production Zabbix sender delivery
-- Zabbix provisioning boundary where justified
+- Zabbix reconciliation, map, dashboard, template, discovery, and reporting assistance
+- Graylog lookups, enrichment, queries, pipelines, streams, dashboards, and report assistance
+- Security-platform asset and topology context
+- BloodHound query-result and identity-context import
+- Versioned Atlas OpenGraph extension and payload export
+- Governed identity-to-asset correlation
+- Combined identity, network, exposure, and change-impact analysis
+- Optional least-privileged BloodHound API adapter only after offline acceptance
 - OpenMetrics, syslog, webhook, and SIEM adapters
 - Delivery outbox, retry, backpressure, and dead-letter handling
+- Separately accepted provisioning boundaries where justified
 
-## Phase 9 — Production Security and Recovery
+## Phase 9 — Production Security, Recovery, and Representative Acceptance
 
 - Signed builds and provenance
 - SBOM and package integrity
@@ -155,33 +201,25 @@ Step 2 is accepted as a non-production runtime and portable-validation boundary 
 - Backup protection and restoration validation
 - Break-glass
 - Trusted rebuild and compromise recovery
-- Operational acceptance on representative hardware
+- Representative-host deployment validation
+- Controlled read-only pilot
+- Operational acceptance based on evidence
 
-## Active Step 3 governed actor-resolution checkpoint
+## Acceptance Rule
 
-The merged bounded checkpoints implement the least-privileged PostgreSQL
-governed actor resolver and OIDC provider protocol and ID-token verification.
-The active successor adds authorization-code exchange, PKCE S256, and atomic
-one-time in-memory preauthentication transactions. The remaining Step 3 work
-includes HTTP login and callback routes, production authenticator wiring,
-durable sessions, cookies, logout, CSRF, trusted proxies, authentication audit,
-lifecycle invalidation, and formal acceptance. Formal Step 3 acceptance must
-not be recorded from these checkpoints alone.
+No phase or slice is complete until:
 
-## Active Step 3 OIDC ID-token verification checkpoint
+- implementation;
+- tests;
+- requirements;
+- architecture;
+- limitations;
+- evidence;
+- validation;
+- status;
+- next work; and
+- exact accepted commit
 
-The merged bounded checkpoint implements OIDC discovery, JWKS, and ID-token
-verification. Its active successor implements authorization-code exchange and
-one-time PKCE transaction handling. Subsequent Step 3 checkpoints remain HTTP
-browser routes, durable server-side sessions, cookie and logout controls, CSRF,
-trusted proxies, authentication audit, lifecycle invalidation, and formal Step
-3 acceptance.
+describe the same boundary.
 
-## Active Step 3 OIDC authorization-code and PKCE transaction checkpoint
-
-The current bounded candidate creates and consumes short-lived state, nonce, and
-PKCE S256 transactions, exchanges one code through the exact discovered token
-endpoint and redirect URI, bounds provider responses, and returns a verified
-principal. The in-memory store does not survive restart. No browser route,
-cookie, durable session, actor wiring, CSRF, logout, trusted proxy, production
-credential delivery, or production readiness claim is made.
+Self-validation shall not be represented as independent review.
