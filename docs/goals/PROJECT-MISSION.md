@@ -1,59 +1,111 @@
 # Project Mission
 
-Build a trustworthy infrastructure-intelligence, documentation, integration, and change-governance platform that helps network technicians, network administrators, network-security staff, reviewers, auditors, and infrastructure teams understand:
+## Mission
+
+**Iron Atlas is an evidence-driven network and security intelligence platform built to give Network Operations Teams, Security Operations Teams, operational leaders, and change authorities fast, defensible answers about the environment.**
+
+Atlas ingests configuration, operational, diagnostic, monitoring, logging, security, and documentation evidence. It correlates that evidence across vendors and systems to explain:
 
 - what infrastructure exists;
-- how users, devices, services, networks, and security boundaries are connected;
-- what evidence supports that understanding;
-- what changed, why it changed, and who approved it;
-- whether monitoring, logging, security, vendor, and documentation systems agree;
-- where records are missing, stale, conflicting, incomplete, or uncertain; and
-- whether the resulting environment was validated and formally accepted.
+- where an IP address, CIDR, subnet, VLAN, interface, device, route, policy, service, tunnel, or endpoint exists;
+- how Layer 2, Layer 3, routing, firewall, NAT, VPN, wireless, and security relationships connect;
+- what can reach what, through which controls, and with what uncertainty;
+- which trust boundaries, exposures, dependencies, and attack paths exist;
+- what changed from the previous accepted state;
+- what a proposed change will affect;
+- what risk exists if the change is approved;
+- what risk remains if the change is denied or delayed;
+- what evidence supports each conclusion; and
+- where evidence is missing, stale, unsupported, incomplete, conflicting, inferred, or unknown.
 
-The interface should support the work rather than become additional work.
+## Governing Mindset
+
+> **Do not make the user browse the network. Reconstruct the network and answer the question.**
+
+Atlas shall not force an experienced engineer to repeat the manual work of opening dozens of vendor screens, command outputs, monitoring pages, diagrams, spreadsheets, tickets, and log searches merely to reconstruct one operational or security answer.
+
+The interface shall support the work rather than become additional work.
+
+## Primary Users
+
+Atlas is designed for:
+
+- Network Operations Teams;
+- Security Operations Teams;
+- senior network engineers and administrators;
+- security engineers and red-team-oriented purple teamers;
+- infrastructure technicians;
+- incident responders;
+- operational leaders;
+- change authorities;
+- reviewers and auditors; and
+- infrastructure teams responsible for availability, security, and change.
+
+The same evidence may be presented differently to different users, but the underlying facts, lineage, confidence, and uncertainty shall remain consistent.
 
 ## Purpose
 
-Iron Atlas is an authoritative, version-controlled system for infrastructure documentation, diagrams, inventory, approved discovery, project tracking, change management, validation, preventive health analysis, external-system reconciliation, integration assistance, and formal acceptance.
+Atlas maintains a governed relationship among:
 
-Atlas complements systems that already serve an organization. It does not recreate mature monitoring, logging, network-security, diagramming, or vendor-management capabilities merely to own them.
+- imported configuration;
+- running and diagnostic state;
+- monitoring and logging context;
+- security telemetry and asset context;
+- identity and privilege attack-graph context from BloodHound and approved collectors;
+- curated documentation and diagrams;
+- canonical infrastructure identity;
+- topology and dependency;
+- address, prefix, VLAN, route, policy, NAT, VPN, SD-WAN, ACL, wireless, and management-plane relationships;
+- calculated reachability and attack-path context;
+- findings and human disposition;
+- current, proposed, accepted, and superseded state;
+- change requests, approvals, denial decisions, implementation, rollback, and validation; and
+- formal acceptance records.
 
-Atlas shall maintain a governed relationship among:
+## First Major Ingestion Points
 
-- Current infrastructure state
-- Imported and collected evidence
-- Evidence source, time, digest, parser version, and collection context
-- Normalized inventory
-- Switch ports, trunks, neighbors, VLANs, spanning tree, port channels, and access paths
-- Wireless controllers, access points, profiles, tags, and selected client context
-- Firewall policy, routing, object, and traffic-boundary behavior
-- Zabbix hosts, templates, discovery, maps, dashboards, and reporting context
-- Graylog syslog and SNMP-trap records, lookups, pipelines, streams, searches, dashboards, and reports
-- Security Onion and other security-platform asset and topology context
-- Generated and curated Draw.io diagrams
-- Projects and proposed target states
-- Approved changes
-- Pre-change and post-change validation
-- Documentation reconciliation
-- Operational findings and human disposition
-- Formal acceptance records
+The first major infrastructure-ingestion workstreams are Cisco and FortiGate.
+
+Cisco evidence provides switching, routing, wireless, endpoint-attachment, topology, and health context.
+
+FortiGate evidence provides policy, security-boundary, routing, NAT, VIP, VPN, SD-WAN, and management-exposure context.
+
+These workstreams may be developed independently, but they converge into one vendor-neutral network and security model. Neither parser, collector, nor vendor module is the Atlas product by itself.
 
 ## Complementary-System Principle
 
-Atlas may consume approved evidence from an external system and may produce reviewable context, definitions, recommendations, exports, maps, dashboards, queries, lookup data, templates, and reports that improve that system.
+Atlas complements mature operational systems.
 
-The external system retains responsibility for its mature operational purpose. Atlas retains responsibility for its canonical evidence, normalized records, topology, governed findings, change history, and acceptance history.
+- Monitoring systems retain monitoring and alerting responsibility.
+- Logging systems retain collection, indexing, retention, and search responsibility.
+- Security-monitoring platforms retain detection and investigation responsibility.
+- BloodHound retains identity and privilege attack-graph responsibility, while Atlas correlates that context with network reachability, exposure, dependencies, and change impact.
+- Vendor platforms retain configuration, operation, and enforcement responsibility.
+- Diagramming systems retain curated diagram-authoring responsibility.
 
-No future write or provisioning adapter may silently change an external system. Such an adapter requires a separately accepted boundary with preview, attribution, authorization, bounded scope, idempotency where practical, reversibility where practical, validation, and failure isolation.
+Atlas retains responsibility for evidence lineage, normalized identity, cross-system correlation, topology, reachability explanation, change impact, governed findings, decision support, validation, and acceptance history.
 
-## First Operational Value
+## Human Authority and Initial Read-Only Boundary
 
-The first infrastructure-value slice prioritizes Catalyst 9300L/9300 access switching, Catalyst 9500 core and distribution switching, and Catalyst 9800 wireless controllers because organizational users, devices, access points, phones, servers, VLANs, and network paths depend on that switching and wireless fabric.
+Atlas begins as a read-only evidence, intelligence, comparison, and decision-support platform.
 
-The first slice should turn sanitized offline Cisco command bundles into normalized inventory, interface, VLAN, trunk, neighbor, port-channel, spanning-tree, wireless, and topology records, then use those records to improve documentation, Zabbix reconciliation, Graylog context, maps, dashboards, queries, and operational reports.
+It may produce:
 
-Restricted live collection follows only after the offline evidence, provenance, parser, normalization, resource, and reporting boundaries are accepted.
+- explanations;
+- reports;
+- diagrams;
+- queries;
+- recommendations;
+- proposed configuration snippets;
+- implementation plans;
+- validation plans;
+- rollback plans; and
+- reviewable integration artifacts.
 
-## Leading Principle
+It shall not silently modify infrastructure or external systems.
 
-> Document the environment. Strengthen the tools already in place. Govern the change. Validate the result. Preserve the record.
+Any future write or provisioning capability requires a separately accepted boundary with preview, attribution, authorization, bounded scope, approval awareness, idempotency where practical, reversibility where practical, failure isolation, and post-application validation.
+
+## Leading Principles
+
+> **Answer the question. Show the evidence. Preserve uncertainty. Govern the change. Validate the result. Preserve the record.**
