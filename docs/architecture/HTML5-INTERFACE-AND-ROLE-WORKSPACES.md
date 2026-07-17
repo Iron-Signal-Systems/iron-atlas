@@ -2,67 +2,207 @@
 
 ## Purpose
 
-Provide an accessible, responsive HTML5 interface that complements the work of network technicians, network administrators, network-security staff, reviewers, auditors, and infrastructure teams.
+Provide an accessible, responsive, answer-first HTML5 interface that helps Network Operations Teams, Security Operations Teams, operational leaders, change authorities, reviewers, and auditors obtain fast, defensible answers without reproducing vendor navigation complexity.
 
-## Governing Rules
+## Governing Principle
 
-- The role and its work come first.
-- Common work has a clear and direct path.
-- Stale, incomplete, uncertain, queued, failed, conflicting, and accepted states remain distinguishable.
-- Visibility of a button or record does not grant authority.
-- The interface does not independently create canonical truth.
-- Success is not shown before authoritative confirmation.
-- Keyboard operation, semantic HTML, readable focus state, and screen-reader support are functional requirements.
-- The initial accessibility target is WCAG 2.1 Level AA, with a roadmap to evaluate newer applicable requirements.
+> **Do not make the user browse the network. Reconstruct the network and answer the question.**
 
-## Role Workspaces
+The interface shall not require a user to traverse dozens of menus to correlate information that Atlas already possesses.
 
-### Network Technician
+## Primary Interaction
 
-- Device and port search
-- Current endpoint attachment evidence
-- Access-port configuration and health
-- CDP/LLDP neighbors
-- Open findings and assigned remediation
-- Proposed change creation
-- Collection status
+The primary interaction is a global search and query control that accepts:
 
-### Network Administrator
+- IP addresses;
+- CIDRs and subnets;
+- VLAN IDs and names;
+- devices and hostnames;
+- interfaces and ports;
+- routes and next hops;
+- firewall policies and ACLs;
+- services, protocols, and ports;
+- VPNs, tunnels, and SD-WAN members;
+- sites and locations;
+- findings and changes; and
+- source-to-destination reachability questions.
 
-- Routing, trunk, VLAN, spanning-tree, port-channel, firewall, and wireless views
-- Project and change planning
-- Pre-change and post-change comparison
-- Approval where independent and authorized
-- Configuration standards and drift
-- Collection scheduling and platform coverage
+Examples:
 
-### Network Security
+```text
+10.20.30.45
+10.20.30.0/24
+VLAN 240
+TenGigabitEthernet1/0/48
+tcp/445
+can USER-LAN reach DB-CLUSTER on tcp/5432
+show overlapping prefixes
+show external management exposure
+show paths from guest wireless to server networks
+what depends on this uplink
+what changes if this route is removed
+```
 
-- Firewall policy and NAT analysis
-- ACL attachment and semantic review
-- Management-plane exposure
-- AAA/NPS/RADIUS boundaries
-- Security-control drift
-- High-risk change approval
-- Audit and evidence review
+## Answer Workspace
 
-### Reviewer and Auditor
+A complete answer may contain:
 
-- Decision and approval history
-- Evidence integrity and parser lineage
-- Acceptance records
-- Exceptions and supersession
-- Read-only historical reconstruction
+1. Identity
+2. Placement
+3. Address and prefix
+4. Layer 2
+5. Layer 3
+6. Routing decision
+7. Firewall and ACL controls
+8. NAT and exposure
+9. VPN and SD-WAN
+10. Reachability
+11. Trust-boundary and attack-path context
+12. Dependencies and blast radius
+13. Changes from prior, proposed, or accepted state
+14. Findings and risk
+15. Source evidence
+16. Confidence, conflicts, and unknowns
 
-### Team View
+The workspace shows the most relevant answer first and permits direct pivots into supporting details.
 
-- Shared project and change queues
-- Findings by site and severity
-- Upcoming collection and change windows
-- Blocked work
-- Documentation debt
-- Accepted work and unresolved exceptions
+## Pivot Model
+
+Every meaningful entity is pivotable.
+
+A subnet may pivot to:
+
+- containing or overlapping prefixes;
+- VLANs;
+- gateways and interfaces;
+- devices and sites;
+- routes;
+- firewall policies;
+- ACLs;
+- NAT and VIP relationships;
+- VPN and SD-WAN use;
+- endpoints;
+- findings;
+- dependencies;
+- changes; and
+- evidence.
+
+A policy may pivot to:
+
+- source and destination objects;
+- service and schedule;
+- ingress and egress;
+- routes;
+- NAT;
+- inspection and logging;
+- matching traffic paths;
+- affected subnets and systems;
+- changes; and
+- evidence.
+
+A pivot shall preserve context so the user does not repeatedly restart the investigation.
+
+## Role Perspectives
+
+Role perspectives influence emphasis and available governed actions; they do not create separate facts.
+
+### Network Operations
+
+Emphasize:
+
+- device and interface state;
+- VLANs, trunks, port channels, spanning tree, neighbors, and wireless;
+- subnets, gateways, routing, and dependencies;
+- endpoint attachment;
+- health and capacity;
+- current incidents and findings;
+- planned maintenance and change; and
+- validation status.
+
+### Security Operations
+
+Emphasize:
+
+- policy and ACL behavior;
+- management-plane exposure;
+- NAT, VIP, VPN, and internet exposure;
+- trust-boundary crossings;
+- attack and pivot paths;
+- broad or shadowed access;
+- segmentation;
+- logging and inspection;
+- control drift;
+- relevant security-platform context; and
+- high-risk changes.
+
+### Operational Leadership and Change Authorities
+
+Emphasize:
+
+- problem and requested decision;
+- business and operational effect;
+- security and availability effect;
+- risk of approval;
+- risk of denial or delay;
+- affected departments, sites, and services;
+- expected outage or degradation;
+- rollback readiness;
+- evidence quality;
+- recommendation and confidence; and
+- decision history.
+
+### Reviewers and Auditors
+
+Emphasize:
+
+- evidence provenance;
+- parser and analyzer lineage;
+- decision and approval history;
+- implementation and validation records;
+- accepted and superseded state;
+- exceptions;
+- uncertainty; and
+- historical reconstruction.
+
+## State Presentation
+
+The interface shall distinguish:
+
+- configured;
+- observed;
+- calculated;
+- inferred;
+- unknown;
+- conflicting;
+- stale;
+- incomplete;
+- unsupported;
+- proposed;
+- approved;
+- denied;
+- implementing;
+- validated;
+- rolled back;
+- accepted; and
+- superseded.
+
+A successful visual state shall not be shown before authoritative confirmation.
+
+## Accessibility and Interaction
+
+- WCAG 2.1 Level AA is the initial target.
+- Keyboard operation is a functional requirement.
+- Semantic HTML, readable focus state, and screen-reader support are required.
+- Color is not the sole carrier of meaning.
+- Tables, diagrams, findings, and path explanations provide textual equivalents.
+- High-density operational screens remain readable and responsive.
+- Common work has a direct path.
+- Destructive or governed actions require explicit confirmation and authority.
 
 ## Implementation Direction
 
-The initial UI uses Go `html/template`, embedded static assets, semantic HTML5, and minimal JavaScript. A large single-page application framework is not required for the first implementation and must not be introduced without a demonstrated operational benefit.
+The initial interface uses Go `html/template`, embedded static assets, semantic HTML5, and minimal JavaScript.
+
+A large single-page application framework is not required for the first implementation and shall not be introduced without demonstrated operational benefit.
+
+The interface is a presentation and workflow boundary. It does not create canonical truth, manufacture authority, or silently convert uncertainty into certainty.

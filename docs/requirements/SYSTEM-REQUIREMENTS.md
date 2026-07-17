@@ -4,16 +4,40 @@
 
 - `IA-FND-001`: All production capabilities shall be modular behind versioned contracts.
 - `IA-FND-002`: Core canonical records shall not depend on one vendor or monitoring product.
-- `IA-FND-003`: Unsupported and uncertain parser results shall remain visible.
-- `IA-FND-004`: Raw evidence shall remain outside Git and receive integrity protection.
+- `IA-FND-003`: Unsupported and uncertain parser or analyzer results shall remain visible.
+- `IA-FND-004`: Raw protected evidence shall remain outside Git and receive integrity protection.
 - `IA-FND-005`: Collectors shall not connect directly to PostgreSQL.
 - `IA-FND-006`: Atlas shall complement established operational systems and shall not duplicate mature capabilities without a separately justified and accepted decision.
 - `IA-FND-007`: Imported external-system records shall retain source and confidence and shall not silently become authoritative Atlas state.
+- `IA-FND-008`: Atlas shall preserve the distinction among configured, observed, calculated, inferred, unknown, and conflicting state.
+- `IA-FND-009`: Vendor adapters and collectors shall be evidence sources and shall not define the complete product boundary.
+- `IA-FND-010`: Atlas shall correlate supported Cisco and FortiGate evidence through a vendor-neutral network and security model.
+
+## Query and Intelligence
+
+- `IA-QRY-001`: Atlas shall accept direct queries for supported IP addresses, CIDRs, subnets, VLANs, devices, interfaces, routes, policies, services, ports, tunnels, findings, and changes.
+- `IA-QRY-002`: Query results shall provide an answer summary, supporting relationships, evidence, confidence, assumptions, conflicts, age, unsupported areas, unknowns, and pivots.
+- `IA-QRY-003`: Atlas shall support prefix containment and longest-prefix-match analysis.
+- `IA-QRY-004`: Atlas shall identify supported duplicate, overlapping, conflicting, and unexpectedly broad prefixes.
+- `IA-QRY-005`: Atlas shall correlate supported VLAN, interface, trunk, SVI, gateway, VDOM, VRF, routing-domain, zone, route, policy, ACL, NAT, VIP, VPN, and SD-WAN relationships.
+- `IA-QRY-006`: Atlas shall provide evidence-supported reachability results that are not limited to a binary yes or no.
+- `IA-QRY-007`: Reachability results shall identify each supported path decision and its evidence.
+- `IA-QRY-008`: Atlas shall distinguish current, prior accepted, proposed, expected post-change, and actual post-change state.
+- `IA-QRY-009`: Atlas shall provide dependency and blast-radius analysis where evidence permits.
+- `IA-QRY-010`: Atlas shall provide reviewable trust-boundary and attack-path context without representing it as an unexplained detection verdict.
+- `IA-QRY-011`: Missing runtime health or incomplete evidence shall result in conditional, partial, unknown, conflicting, or unsupported state rather than silent certainty.
+- `IA-QRY-012`: The first complete cross-vendor slice shall accept an IP address, CIDR, or VLAN and correlate the supported Cisco and FortiGate evidence required to explain placement, routing, control, reachability, evidence, and unknowns.
 
 ## Interface and Access
 
 - `IA-UI-001`: The system shall provide an accessible HTML5 interface.
-- `IA-UI-002`: Role workspaces shall support network technicians, administrators, security, reviewers, and teams.
+- `IA-UI-002`: Role perspectives shall support Network Operations Teams, Security Operations Teams, operational leaders, change authorities, reviewers, auditors, and teams.
+- `IA-UI-003`: The primary interface shall provide a global search or query path for common identifiers and questions.
+- `IA-UI-004`: The interface shall present the most relevant answer before requiring navigation into supporting detail.
+- `IA-UI-005`: Material entities and relationships shall support context-preserving pivots.
+- `IA-UI-006`: Configured, observed, calculated, inferred, unknown, conflicting, stale, incomplete, unsupported, proposed, approved, denied, implemented, validated, accepted, and superseded state shall remain distinguishable.
+- `IA-UI-007`: Keyboard operation, semantic HTML, visible focus, and screen-reader support shall be functional requirements.
+- `IA-UI-008`: The initial accessibility target shall be WCAG 2.1 Level AA.
 - `IA-AUTH-001`: UI visibility shall not grant authority.
 - `IA-AUTH-002`: Production authentication and authorization shall fail closed.
 - `IA-AUTH-003`: Platform administration shall not automatically grant change approval.
@@ -33,11 +57,17 @@
 
 ## Change Management
 
-- `IA-CHG-001`: A requester shall not approve the requester’s own governed change.
-- `IA-CHG-002`: Approval shall retain actor, authority, stage, scope, decision, reason, and time.
+- `IA-CHG-001`: A requester shall not approve the requester’s own governed infrastructure change.
+- `IA-CHG-002`: Approval and denial shall retain actor, authority, stage, scope, decision, reason, and time.
 - `IA-CHG-003`: High-impact changes may require multiple independent approvers.
 - `IA-CHG-004`: A change shall not be accepted before post-change validation and documentation reconciliation.
 - `IA-CHG-005`: Material history shall use correction and supersession rather than silent rewriting.
+- `IA-CHG-006`: A proposed change shall explain the risk of approval and the risk of denial or delay.
+- `IA-CHG-007`: Atlas shall provide a leadership-facing decision summary and a synchronized engineering and security view derived from the same governed evidence.
+- `IA-CHG-008`: Change analysis shall identify supported reachability, attack-path, dependency, blast-radius, availability, and security effects.
+- `IA-CHG-009`: Change packages shall include current state, proposed state, implementation, validation, rollback, pre-change evidence, post-change evidence, expected differences, unexpected differences, and disposition.
+- `IA-CHG-010`: Atlas shall remain read-only with respect to infrastructure until a separate provisioning boundary is accepted.
+- `IA-CHG-011`: Completion of implementation commands shall not by itself establish successful change acceptance.
 
 ## PostgreSQL Runtime
 
@@ -47,46 +77,74 @@
 - `IA-DB-004`: Database dependency failure shall make readiness fail closed without changing liveness behavior.
 - `IA-DB-005`: Database URLs, passwords, certificates, and tokens shall remain outside Git and application logs.
 
-## Validation Portability
+## Validation Portability and Engineering Practice
 
-- Applicable validators, phase gates, helpers, and disposable test-environment scripts shall be version-controlled.
-- External validation toolchain requirements shall be declared in a machine-readable, verifiable repository artifact.
-- Pinned external dependencies shall include integrity records and shall be verified before validation.
-- Retained validation and acceptance evidence shall be sanitized, checksummed, validated, and committed.
-- No implementation step shall be accepted until its exact pushed commit passes applicable validation from a clean clone of the canonical GitHub repository.
-- Repository-external secrets shall be explicit, minimal, non-retained, and prohibited from logs and Git.
+- `IA-VAL-001`: Applicable validators, phase gates, helpers, and disposable test-environment scripts shall be version-controlled.
+- `IA-VAL-002`: External validation toolchain requirements shall be declared in a machine-readable, verifiable repository artifact.
+- `IA-VAL-003`: Pinned external dependencies shall include integrity records and shall be verified before validation.
+- `IA-VAL-004`: Retained validation and acceptance evidence shall be sanitized, checksummed, validated, and committed.
+- `IA-VAL-005`: No formal milestone shall be accepted until its exact pushed commit passes applicable validation from a clean clone of the canonical GitHub repository.
+- `IA-VAL-006`: Repository-external secrets shall be explicit, minimal, non-retained, and prohibited from logs and Git.
+- `IA-VAL-007`: Self-authored and self-tested work shall be described as self-validated and shall not be represented as independently reviewed.
+- `IA-VAL-008`: Exploratory parser or model work may use proportional validation when it is isolated, non-production, truthfully labeled, and does not weaken an accepted boundary.
+- `IA-VAL-009`: Security-sensitive candidates shall receive adversarial, fail-closed, secret-handling, recovery, and applicable concurrency testing.
+- `IA-VAL-010`: Multiple bounded workstreams may proceed in isolated branches or worktrees with no more than one active acceptance candidate per workstream.
+- `IA-VAL-011`: Adoption of external engineering standards or validators shall occur through a visible, reviewable project change and shall not silently alter Atlas.
 
 ## Firewall
 
 - `IA-FW-001`: Support FortiGate, OPNsense, and pfSense adapter boundaries.
-- `IA-FW-002`: Resolve interfaces, zones, routes, policies, objects, NAT, VPN, and SD-WAN relationships.
+- `IA-FW-002`: Resolve interfaces, VLANs, zones, VDOMs, routes, policies, objects, NAT, VIP, VPN, and SD-WAN relationships where supported.
 - `IA-FW-003`: Preserve policy and rule evaluation order.
 - `IA-FW-004`: Distinguish configured, observed, calculated, inferred, unknown, and conflicting state.
 - `IA-FW-005`: Provide evidence-supported traffic-path explanation.
+- `IA-FW-006`: FortiGate configuration evidence shall not be represented as proof of current interface, route, VPN, session, HA, or SD-WAN runtime state.
+- `IA-FW-007`: FortiGate ingestion shall preserve unsupported sections and unresolved relationships.
+- `IA-FW-008`: FortiGate operational and diagnostic profiles shall be read-only, fixed, versioned, bounded, and separately accepted before live use.
+- `IA-FW-009`: Firewall analysis shall identify supported management-plane and external exposure.
+- `IA-FW-010`: Firewall records shall correlate with Cisco-derived topology and routing context where evidence permits.
 
 ## Cisco
 
 - `IA-CSC-001`: Support 2960, 2960-S, 2960-X, 9200, 9300, 9500, and Catalyst 9800 profiles.
-- `IA-CSC-002`: Collect a comprehensive technical-support evidence package every 30 days.
+- `IA-CSC-002`: Support a comprehensive technical-support evidence profile for periodic or targeted collection.
 - `IA-CSC-003`: Provide lighter recurring health collection.
-- `IA-CSC-004`: Support NPS/RADIUS and Active Directory authentication with restricted device-local command authority.
-- `IA-CSC-005`: Collect port description, VLAN, trunk, pruning, CDP/LLDP, spanning tree, ACL, port-channel, QoS, and error information.
+- `IA-CSC-004`: Support NPS/RADIUS and Active Directory authentication with restricted device-local command authority where that deployment model is selected.
+- `IA-CSC-005`: Collect supported device, interface, description, VLAN, trunk, pruning, CDP, LLDP, MAC, ARP, spanning-tree, ACL, route, port-channel, wireless, health, and error information.
 - `IA-CSC-006`: Exclude trunks from local endpoint attribution while retaining full trunk analysis.
-- `IA-CSC-007`: Use counter deltas and historical baselines.
+- `IA-CSC-007`: Use counter deltas and historical baselines where comparable evidence exists.
 - `IA-CSC-008`: The first Cisco infrastructure-value slice shall prioritize Catalyst 9300L/9300, Catalyst 9500, and Catalyst 9800.
 - `IA-CSC-009`: Offline sanitized Cisco evidence shall be accepted before restricted live collection.
-- `IA-CSC-010`: Cisco evidence shall support normalized inventory, topology, Zabbix reconciliation, Graylog context, generated maps, and operational reports.
+- `IA-CSC-010`: Cisco evidence shall support normalized inventory, topology, reachability context, Zabbix reconciliation, Graylog context, generated maps, operational reports, and change analysis.
+- `IA-CSC-011`: Cisco operational evidence shall distinguish configured state from observed forwarding, interface, neighbor, spanning-tree, route, wireless, and health state.
+- `IA-CSC-012`: Restricted live collection shall use pinned host keys, fixed command profiles, bounded authority, no configuration mode, timeouts, cancellation, protected transcripts, and complete provenance.
+
+## Identity Attack-Graph Integration
+
+- `IA-IDG-001`: Atlas shall support a replaceable BloodHound integration boundary without depending on BloodHound internal database schemas.
+- `IA-IDG-002`: Atlas shall preserve BloodHound version, collector version, source time, query or export identity, digest, and evidence lineage.
+- `IA-IDG-003`: Raw SharpHound artifacts and unredacted BloodHound exports shall remain outside Git and receive protected-evidence controls.
+- `IA-IDG-004`: Atlas shall distinguish identity privilege, packet reachability, and combined operational attack-path conclusions.
+- `IA-IDG-005`: Atlas shall not represent a BloodHound path as proof of network reachability or network reachability as proof of identity compromise.
+- `IA-IDG-006`: Cross-system identity and asset correlation shall retain stable identifiers, matching method, confidence, time, conflicts, and disposition.
+- `IA-IDG-007`: Atlas shall not silently merge records based only on short hostname, display name, or mutable IP address.
+- `IA-IDG-008`: Atlas may generate a versioned BloodHound OpenGraph extension and payloads containing selected, evidence-supported network and security context.
+- `IA-IDG-009`: Structural graph relationships and traversable attack relationships shall remain distinct and separately validated.
+- `IA-IDG-010`: Proposed Atlas state shall not be represented as current BloodHound state.
+- `IA-IDG-011`: SharpHound execution or automated BloodHound collection requires a separately accepted, authorized, bounded, version-compatible collector boundary.
+- `IA-IDG-012`: BloodHound integration failure shall not erase Atlas evidence or block unrelated Atlas operations.
 
 ## External-System Integration
 
-- `IA-INT-001`: External adapters shall be replaceable, versioned, least privileged, and isolated from canonical Atlas authority.
-- `IA-INT-002`: Atlas shall distinguish observed external state, imported metadata, generated recommendation, exported definition, approved provisioning request, applied state, and validated result.
-- `IA-INT-003`: Atlas may generate reviewable Zabbix maps, dashboards, template and discovery recommendations, reconciliation findings, and report context without representing them as applied.
-- `IA-INT-004`: Atlas may generate Graylog lookup data, enrichment context, queries, pipelines, streams, dashboards, and report definitions without representing them as applied.
-- `IA-INT-005`: External-system writes or provisioning shall require a separately accepted boundary with preview, attribution, authorization, bounded scope, idempotency where practical, reversal where practical, and post-application validation.
-- `IA-INT-006`: External-system delivery or provisioning failure shall not erase canonical evidence or block unrelated Atlas operations.
-- `IA-INT-007`: Security Onion and other security platforms shall remain responsible for detection and investigation; Atlas context shall not be represented as a detection verdict.
-- `IA-INT-008`: Generated Draw.io topology shall remain separate from curated diagram sources.
+- `IA-EXT-001`: External adapters shall be replaceable, versioned, least privileged, and isolated from canonical Atlas authority.
+- `IA-EXT-002`: Atlas shall distinguish observed external state, imported metadata, generated recommendation, exported definition, approved provisioning request, applied state, and validated result.
+- `IA-EXT-003`: Atlas may generate reviewable Zabbix maps, dashboards, template and discovery recommendations, reconciliation findings, and report context without representing them as applied.
+- `IA-EXT-004`: Atlas may generate Graylog lookup data, enrichment context, queries, pipelines, streams, dashboards, and report definitions without representing them as applied.
+- `IA-EXT-005`: External-system writes or provisioning shall require a separately accepted boundary with preview, attribution, authorization, bounded scope, idempotency where practical, reversal where practical, and post-application validation.
+- `IA-EXT-006`: External-system delivery or provisioning failure shall not erase canonical evidence or block unrelated Atlas operations.
+- `IA-EXT-007`: Security Onion and other security platforms shall remain responsible for detection and investigation; Atlas context shall not be represented as a detection verdict.
+- `IA-EXT-008`: BloodHound shall remain responsible for identity and privilege attack-graph semantics; Atlas shall correlate rather than replace that function.
+- `IA-EXT-009`: Generated Draw.io topology shall remain separate from curated diagram sources.
 
 ## Telemetry
 

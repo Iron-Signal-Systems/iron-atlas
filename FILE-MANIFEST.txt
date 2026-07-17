@@ -53,6 +53,7 @@ docs/acceptance/PHASE-1-STEP-2-ACCEPTANCE-RECORD.md
 docs/acceptance/PHASE-1-STEP-3-ACCEPTANCE-RECORD-TEMPLATE.md
 docs/acceptance/README.md
 docs/acceptance/evidence/.gitkeep
+docs/architecture/BLOODHOUND-AND-IDENTITY-ATTACK-GRAPH-INTEGRATION.md
 docs/architecture/CHANGE-MANAGEMENT-AND-TWO-PERSON-CONTROL.md
 docs/architecture/CISCO-COLLECTION-PROFILE-CATALOG.md
 docs/architecture/CISCO-EVIDENCE-COLLECTION-AND-PREVENTIVE-HEALTH.md
@@ -75,6 +76,7 @@ docs/architecture/POSTGRESQL-DATABASE-SECURITY-BOUNDARY.md
 docs/architecture/POSTGRESQL-GOVERNED-ACTOR-RESOLUTION-IMPLEMENTATION.md
 docs/architecture/POSTGRESQL-MIGRATION-AND-OWNERSHIP-MODEL.md
 docs/architecture/PROJECT-AND-PORTFOLIO-TRACKING.md
+docs/architecture/QUERY-REACHABILITY-AND-CHANGE-IMPACT-MODEL.md
 docs/architecture/RBAC-ROLE-AND-AUTHORITY-CATALOG.md
 docs/architecture/TARGET-ARCHITECTURE.md
 docs/architecture/TOPOLOGY-AND-DRAWIO-GOVERNANCE.md
@@ -87,10 +89,12 @@ docs/decisions/ADR-0003-RAW-EVIDENCE-OUTSIDE-GIT.md
 docs/decisions/ADR-0004-PGX-POSTGRESQL-RUNTIME-DRIVER.md
 docs/decisions/ADR-0005-CANONICAL-REPOSITORY-REPRODUCIBILITY.md
 docs/decisions/ADR-0006-OIDC-ID-TOKEN-VERIFICATION-LIBRARIES.md
+docs/engineering/SOLO-DEVELOPER-OPERATING-MODEL.md
 docs/engineering/release-and-acceptance-model.md
 docs/engineering/repository-assurance-adoption.md
 docs/engineering/secure-development-lifecycle.md
 docs/engineering/validation-environment-model.md
+docs/goals/PRODUCT-VISION-AND-OPERATING-MINDSET.md
 docs/goals/PROJECT-MISSION.md
 docs/operations/CANONICAL-CLEAN-CLONE-VALIDATION.md
 docs/operations/REPOSITORY-CREATION-AND-FIRST-PUSH.md
