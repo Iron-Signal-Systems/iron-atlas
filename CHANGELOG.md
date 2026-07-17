@@ -4,6 +4,14 @@
 
 ### Added
 
+- Ordered, versioned Cisco offline command-evidence bundles with duplicate
+  preservation, deterministic SHA-256 identities, bounded resource limits,
+  cancellation, partial-result state, and upload-safe diagnostics.
+- Adversarial Cisco offline-evidence tests covering malformed structure,
+  truncation, resource limits, cancellation, digest determinism, diagnostic
+  non-disclosure, and endpoint-attribution boundaries.
+- Cisco offline evidence testing and executable-boundary documentation.
+
 - Phase 1 Step 3 OIDC authorization-code exchange with PKCE S256, 256-bit state and nonce, SHA-256 state-digest storage, bounded one-time in-memory preauthentication transactions, exact redirect binding, token-response bounds, replay resistance, concurrency proofs, and secret-redaction tests.
 - Phase 1 Step 3 authorization-code and PKCE architecture, testing, traceability, static validation, regression, and phase-gate synchronization.
 
@@ -24,6 +32,12 @@
 - Go PostgreSQL runtime architecture, testing, acceptance-template, and phase-gate documentation.
 
 ### Changed
+
+- Cisco endpoint attribution now fails closed: unknown state is denied, positive
+  access-port evidence is required, and infrastructure-interface evidence takes
+  precedence over access evidence.
+- The legacy map-based Cisco command-bundle parser remains available only as a
+  compatibility boundary while new work uses ordered evidence records.
 
 - Clarified Atlas as an active complement to Zabbix, Graylog, Security Onion, Draw.io, and vendor platforms rather than a replacement for their mature operational functions.
 - Reordered the unaccepted first-product sequence to prioritize an offline Catalyst 9300L/9300, 9500, and 9800 infrastructure-value slice before Fortinet policy analysis.

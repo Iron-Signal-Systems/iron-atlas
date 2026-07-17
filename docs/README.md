@@ -43,6 +43,7 @@
 - [Disposable PostgreSQL testing](testing/POSTGRESQL-DISPOSABLE-DATABASE-TESTING.md)
 - [Go PostgreSQL runtime integration testing](testing/GO-POSTGRESQL-RUNTIME-INTEGRATION-TESTING.md)
 - [Trusted authentication and governed actor resolution testing](testing/TRUSTED-AUTHENTICATION-AND-GOVERNED-ACTOR-RESOLUTION-TESTING.md)
+- [Cisco offline evidence testing](testing/CISCO-OFFLINE-EVIDENCE-TESTING.md)
 - [Acceptance records](acceptance/README.md)
 - [Repository creation and first push](operations/REPOSITORY-CREATION-AND-FIRST-PUSH.md)
 - [Canonical clean-clone validation](operations/CANONICAL-CLEAN-CLONE-VALIDATION.md)
