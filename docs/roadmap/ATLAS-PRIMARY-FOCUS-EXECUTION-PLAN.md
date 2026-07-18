@@ -77,6 +77,22 @@ Purpose:
 
 Offline exports and sanitized fixtures precede API automation or collector orchestration.
 
+### Compromise Blast-Radius and IFI Integration Workstream
+
+Purpose:
+
+- define time-bounded observed, potential, prevented, and unknown impact;
+- correlate network, identity, data, infrastructure-control, operational, and
+  governance evidence;
+- consume signed minimized context from the separate Iron File Intelligence
+  product;
+- preserve source authority and uncertainty;
+- identify containment effects and required owners; and
+- prevent Atlas from becoming a generic single pane of glass.
+
+Contract and sanitized fixture work may proceed now. Live IFI integration waits
+for a stable IFI context contract and a separately accepted Atlas adapter.
+
 ### Product-Vision and Query Workstream
 
 Purpose:
@@ -225,6 +241,26 @@ Provide:
 - rollback;
 - post-change evidence; and
 - acceptance record.
+
+### Stage 7 — Controlled Representative Pilot
+
+### Stage 6A — Deliver Compromise Blast-Radius Explanation
+
+After the applicable network, identity, data, and dependency evidence exists,
+provide:
+
+- incident subject and time-window reconstruction;
+- observed, potential, prevented, and unknown impact;
+- network and identity radius;
+- IFI data-access and classification context;
+- infrastructure-control and operational dependencies;
+- containment effects;
+- required owners and reviewers;
+- exact evidence; and
+- visible limitations.
+
+The detailed program is defined in
+[Compromise Blast-Radius Program](COMPROMISE-BLAST-RADIUS-PROGRAM.md).
 
 ### Stage 7 — Controlled Representative Pilot
 

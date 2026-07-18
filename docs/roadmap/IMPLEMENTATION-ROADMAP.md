@@ -50,6 +50,28 @@ The phase sequence remains authoritative, but implementation within and across c
 
 A slice may begin with partial evidence. Unsupported and unknown behavior must remain explicit.
 
+## Cross-Phase Program — Compromise Blast-Radius and IFI Integration
+
+This program preserves the phase sequence and does not displace Cisco,
+FortiGate, authentication, evidence-intake, or query work.
+
+It begins with contracts and sanitized fixtures and advances through:
+
+1. incident, subject, time-window, and impact-state contracts;
+2. external signed context-bundle intake;
+3. network radius using accepted Cisco and FortiGate evidence;
+4. identity and combined attack-path radius;
+5. Iron File Intelligence data radius;
+6. infrastructure-control and operational dependencies;
+7. governance responsibility and answer workspace; and
+8. representative multi-system acceptance.
+
+Implementation detail and acceptance gates are defined in
+[Compromise Blast-Radius Program](COMPROMISE-BLAST-RADIUS-PROGRAM.md).
+
+IFI remains an external authoritative product. Atlas does not query IFI's
+database or duplicate its raw evidence.
+
 ## Phase 0 — Repository and Executable Baseline
 
 **Status:** Accepted non-production baseline.
@@ -191,6 +213,10 @@ Offline evidence, parser, canonical-model, and documentation work may continue i
 - Optional least-privileged BloodHound API adapter only after offline acceptance
 - OpenMetrics, syslog, webhook, and SIEM adapters
 - Delivery outbox, retry, backpressure, and dead-letter handling
+
+- Signed IFI context-bundle import and evidence-reference pivots
+- Time-bounded compromise and containment context
+- Cross-system observed, potential, prevented, and unknown impact correlation
 - Separately accepted provisioning boundaries where justified
 
 ## Phase 9 — Production Security, Recovery, and Representative Acceptance

@@ -16,6 +16,19 @@ Iron Atlas records adoption of the Iron Signal Repository Assurance Standard.
 The signed tag and exact commit are authoritative. Iron Atlas does not adopt
 from the standards repository's floating `dev` branch.
 
+## Restarted ISRAS migration direction
+
+The current record refers to the earlier v1.0.1 repository-assurance baseline.
+
+Iron Signal Systems has since restarted ISRAS under a new pinned-project and
+release-artifact architecture. Atlas retains this current project-owned
+validation until a separately reviewed migration to an exact stable release is
+verified and accepted.
+
+Atlas does not treat a prerelease, `engineering-standards/dev`, or an
+unpublished artifact set as adoption authority. See
+[ISRAS 0.1.1 Adoption Readiness](ISRAS-0.1.1-ADOPTION-READINESS.md).
+
 ## Governing rule
 
 A change is complete only when its exact pushed commit can be reconstructed,

@@ -33,6 +33,12 @@ Atlas queries may begin with:
 - BloodHound principal, computer, group, privilege zone, finding, or attack path; or
 - evidence artifact.
 
+- incident;
+- compromised user, account, endpoint, server, certificate, application,
+  service, network device, or file;
+- containment action; or
+- Iron File Intelligence object, classification, or activity reference.
+
 ## Answer Contract
 
 Every answer returns:
@@ -236,6 +242,40 @@ Given a device, interface, route, VLAN, subnet, policy, tunnel, circuit, service
 - expected degradation;
 - unknown dependencies; and
 - evidence quality.
+
+## Change-Impact Analysis
+
+## Compromise Blast-Radius Analysis
+
+A compromise analysis requires a defined subject, incident time window, scope,
+and accepted evidence cutoff.
+
+It reports separately:
+
+- observed activity;
+- potential capability;
+- prevented activity or paths;
+- unknown impact;
+- network radius;
+- identity and privilege radius;
+- data radius;
+- infrastructure-control radius;
+- operational radius;
+- governance and notification radius;
+- containment effects;
+- conflicts; and
+- additional evidence required.
+
+Iron File Intelligence remains authoritative for detailed file and data
+evidence. Atlas consumes governed IFI context and correlates it with network,
+identity, dependency, and operational evidence.
+
+Potential capability is never presented as observed activity. Missing evidence
+is never presented as proof that no activity occurred.
+
+See
+[Compromise Blast-Radius and Incident-Impact Intelligence](COMPROMISE-BLAST-RADIUS-AND-INCIDENT-IMPACT-INTELLIGENCE.md)
+and [Blast-Radius Result Contract](BLAST-RADIUS-RESULT-CONTRACT.md).
 
 ## Change-Impact Analysis
 

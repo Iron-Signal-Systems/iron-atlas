@@ -48,6 +48,10 @@ A query may begin with:
 - a proposed change; or
 - a suspected attack path.
 
+- a compromised user, endpoint, server, account, certificate, application,
+  network device, service, or file; or
+- an incident time window.
+
 ### Evidence-driven
 
 Every material conclusion identifies:
@@ -139,6 +143,13 @@ A complete Atlas answer should provide, when applicable:
 11. **Evidence** — exact support for each conclusion.
 12. **Confidence and unknowns** — what Atlas cannot prove.
 
+13. **Incident impact** — what was observed, what was possible, what was
+    prevented, what remains unknown, and how containment changed the result.
+14. **Data exposure** — which classified data was accessible or affected and
+    which authoritative IFI evidence supports the conclusion.
+15. **Responsibility** — which system, service, data, security, privacy,
+    compliance, and executive owners must review or act.
+
 ## Change-Decision Vision
 
 Atlas shall support both engineering and leadership decisions.
@@ -207,3 +218,9 @@ Atlas shall avoid:
 - treating BloodHound paths as proof of packet reachability or packet reachability as proof of identity compromise;
 - importing organizational process that blocks proportional single-developer progress; and
 - mistaking engineering ceremony for engineering assurance.
+
+- becoming a generic single pane of glass that duplicates EDR, SIEM,
+  monitoring, packet analysis, identity graphs, or Iron File Intelligence;
+- presenting potential capability as observed compromise activity;
+- presenting missing evidence as proof that no activity occurred; and
+- reducing a multi-dimensional blast radius to one unexplained score.

@@ -1,5 +1,34 @@
 # Iron Signal Engineering Standards Glossary
 
+## Blast radius
+
+The evidence-backed set of observed, potential, prevented, and unknown effects
+for a defined subject, time window, scope, and accepted evidence state.
+
+## Iron File Intelligence
+
+A separate Iron Signal Systems product authoritative for file identity, access,
+classification, activity, audit coverage, and forensic lineage. Atlas consumes
+governed IFI context but does not query IFI's database or replace its function.
+
+## Observed impact
+
+Activity directly supported by accepted evidence.
+
+## Potential impact
+
+Capability supported by reachability, permission, identity, trust, or
+dependency evidence but not proven to have been exercised.
+
+## Prevented impact
+
+An attempted or relevant action blocked by an accepted control.
+
+## Unknown impact
+
+Impact that cannot be resolved because evidence is missing, stale, incomplete,
+unsupported, conflicting, or outside coverage.
+
 ## ISRAS
 
 **Expanded name:** Iron Signal Repository Assurance Standard.

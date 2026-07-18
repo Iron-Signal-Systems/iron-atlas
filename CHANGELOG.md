@@ -4,6 +4,19 @@
 
 ### Added
 
+- Planning architecture for time-bounded compromise blast-radius and
+  incident-impact intelligence across observed, potential, prevented, and
+  unknown impact.
+- A governed Iron File Intelligence integration boundary that preserves IFI as
+  a separate authoritative product and uses signed, minimized context bundles.
+- External evidence context-bundle and canonical blast-radius result contracts.
+- ADR-0008, a dedicated compromise blast-radius program, adversarial correlation
+  testing direction, and ISRAS 0.1.1 adoption-readiness planning.
+
+- The canonical Iron Atlas shield logo under
+  `assets/branding/iron-atlas-logo.png`, with documented accessibility,
+  provenance, usage, modification, and assurance boundaries.
+
 - A pinned maintained YAML v4 node decoder, Atlas node-conversion boundary, multiline quoted-scalar fixture, hostile admission tests, explicit resource limits, and cancellation checks for the experimental FortiGate YAML adapter.
 - Upload-safe `fortigate-inspect -redact` summaries that omit local paths, device identity, FortiOS version, and finding details while retaining counts and bounded decoder positions.
 - Upload-safe structure diagnostics that report only public FortiOS section labels and aggregate layout counts while omitting private scalar values, unknown keys, and VDOM names.
@@ -32,6 +45,16 @@
 - Go PostgreSQL runtime architecture, testing, acceptance-template, and phase-gate documentation.
 
 ### Changed
+
+- Extended Atlas's answer-first product direction to include compromise,
+  containment, data exposure, operational dependency, and governance
+  responsibility without turning Atlas into a generic single pane of glass.
+- Preserved Cisco and FortiGate as the first infrastructure evidence workstreams
+  while adding blast-radius and IFI integration as a bounded cross-phase
+  program.
+- Recorded that migration to the restarted ISRAS framework must use an exact
+  stable release and preserve current Atlas validation until compatibility is
+  accepted.
 
 - Replaced the FortiGate adapter's handwritten physical-line YAML grammar with maintained node decoding while preserving Atlas normalization, source-location, evidence, and snapshot contracts.
 - Added bounded layout detection for canonical fixtures, native direct CMDB sections, and native VDOM containers while retaining fail-closed rejection of unrelated YAML.

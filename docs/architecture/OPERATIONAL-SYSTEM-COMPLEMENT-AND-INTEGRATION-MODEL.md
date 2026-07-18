@@ -18,7 +18,14 @@ External systems continue to own their established operational functions:
 - Cisco, Fortinet, and other infrastructure platforms own device operation, configuration enforcement, forwarding, access, and security policy execution.
 - Draw.io remains a supported human-editable diagram source and publication format.
 
+- Iron File Intelligence owns file identity, access, classification, file
+  activity, audit coverage, and detailed forensic lineage.
+
 Atlas does not become a monitoring platform, log platform, detection engine, network controller, or vendor manager merely because it integrates with one.
+
+Atlas also does not become a duplicate file-intelligence platform or a
+generic single pane of glass. Its responsibility is cross-system correlation,
+reachability, dependency, change-impact, and incident-impact explanation.
 
 ## Integration Directions
 
@@ -31,6 +38,9 @@ Approved external evidence may help Atlas reconcile infrastructure state. Exampl
 - Security Onion asset or investigation references that an authorized integration contract permits;
 - Cisco and Fortinet command output, technical-support bundles, configuration exports, inventory, and health evidence; and
 - curated Draw.io sources and approved documentation records.
+
+- signed, versioned, minimized Iron File Intelligence context bundles and
+  authorized IFI evidence references.
 
 Imported records retain source identity, acquisition time, integrity information where available, classification, adapter version, and confidence. An imported external record does not silently become authoritative Atlas truth.
 

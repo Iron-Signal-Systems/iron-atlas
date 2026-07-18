@@ -64,6 +64,12 @@ A complete answer may contain:
 15. Source evidence
 16. Confidence, conflicts, and unknowns
 
+17. Incident time window and evidence cutoff
+18. Observed, potential, prevented, and unknown impact
+19. Data exposure and IFI evidence references
+20. Containment timeline and remaining exposure
+21. Responsible owners and required reviewers
+
 The workspace shows the most relevant answer first and permits direct pivots into supporting details.
 
 ## Pivot Model
@@ -134,6 +140,26 @@ Emphasize:
 - control drift;
 - relevant security-platform context; and
 - high-risk changes.
+
+### Operational Leadership and Change Authorities
+
+### Incident Response and Compromise Review
+
+Emphasize:
+
+- compromised subject and incident window;
+- observed actions;
+- potential reach and authority;
+- prevented paths;
+- identity and session exposure;
+- classified data exposure;
+- infrastructure-control exposure;
+- dependencies and affected services;
+- containment status;
+- evidence coverage and gaps;
+- required system, data, security, privacy, compliance, and executive reviewers;
+  and
+- exact evidence pivots.
 
 ### Operational Leadership and Change Authorities
 

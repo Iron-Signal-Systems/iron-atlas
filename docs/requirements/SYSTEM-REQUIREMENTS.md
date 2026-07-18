@@ -28,6 +28,20 @@
 - `IA-QRY-011`: Missing runtime health or incomplete evidence shall result in conditional, partial, unknown, conflicting, or unsupported state rather than silent certainty.
 - `IA-QRY-012`: The first complete cross-vendor slice shall accept an IP address, CIDR, or VLAN and correlate the supported Cisco and FortiGate evidence required to explain placement, routing, control, reachability, evidence, and unknowns.
 
+- `IA-QRY-013`: Atlas shall support a compromise query for a defined subject,
+  incident time window, scope, and accepted evidence cutoff.
+- `IA-QRY-014`: A compromise result shall distinguish observed, potential,
+  prevented, and unknown impact.
+- `IA-QRY-015`: Atlas shall calculate separate network, identity, data,
+  infrastructure-control, operational, and governance blast-radius dimensions
+  where evidence permits.
+- `IA-QRY-016`: Potential capability shall not be represented as observed
+  activity, and missing evidence shall not be represented as proof that no
+  activity occurred.
+- `IA-QRY-017`: Blast-radius results shall identify containment actions, the time
+  they became effective, remaining exposure, evidence conflicts, and additional
+  evidence required.
+
 ## Interface and Access
 
 - `IA-UI-001`: The system shall provide an accessible HTML5 interface.
@@ -91,6 +105,15 @@
 - `IA-VAL-010`: Multiple bounded workstreams may proceed in isolated branches or worktrees with no more than one active acceptance candidate per workstream.
 - `IA-VAL-011`: Adoption of external engineering standards or validators shall occur through a visible, reviewable project change and shall not silently alter Atlas.
 
+- `IA-VAL-012`: Atlas shall pin an immutable accepted ISRAS release and shall
+  not follow a floating Engineering Standards branch.
+- `IA-VAL-013`: Migration from the current project-owned assurance framework to
+  the restarted ISRAS pinned-project framework shall preserve existing Atlas
+  validation until the replacement passes compatibility, clean-clone, and
+  historical-boundary validation.
+- `IA-VAL-014`: Atlas shall not create a placeholder ISRAS pin before the exact
+  release commit, tag, artifact set, provenance, and digests are verified.
+
 ## Firewall
 
 - `IA-FW-001`: Support FortiGate, OPNsense, and pfSense adapter boundaries.
@@ -145,6 +168,25 @@
 - `IA-EXT-007`: Security Onion and other security platforms shall remain responsible for detection and investigation; Atlas context shall not be represented as a detection verdict.
 - `IA-EXT-008`: BloodHound shall remain responsible for identity and privilege attack-graph semantics; Atlas shall correlate rather than replace that function.
 - `IA-EXT-009`: Generated Draw.io topology shall remain separate from curated diagram sources.
+
+- `IA-EXT-010`: Iron File Intelligence shall remain a separate authoritative
+  system for file identity, access, classification, activity, audit coverage,
+  and forensic lineage.
+- `IA-EXT-011`: Atlas shall integrate with IFI through signed, versioned,
+  minimized context bundles or governed evidence references and shall not query
+  IFI PostgreSQL directly.
+- `IA-EXT-012`: Atlas shall retain IFI source identity, external record identity,
+  accepted time, digest, evidence state, adapter version, coverage, and
+  authorized evidence locator.
+- `IA-EXT-013`: IFI integration failure shall not erase prior accepted context or
+  block unrelated Atlas operations.
+- `IA-EXT-014`: External context-bundle intake shall validate signature,
+  certificate purpose and revocation where applicable, sequence, predecessor,
+  digest, record count, replay, duplicate, gap, conflict, version, and resource
+  bounds.
+- `IA-EXT-015`: Atlas shall minimize imported IFI data and shall not ingest raw
+  file contents, full extracted text, complete ACL evidence, or complete raw
+  Windows events by default.
 
 ## Telemetry
 

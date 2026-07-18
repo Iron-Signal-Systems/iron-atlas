@@ -11,6 +11,12 @@ Atlas ingests configuration, operational, diagnostic, monitoring, logging, secur
 - how Layer 2, Layer 3, routing, firewall, NAT, VPN, wireless, and security relationships connect;
 - what can reach what, through which controls, and with what uncertainty;
 - which trust boundaries, exposures, dependencies, and attack paths exist;
+
+- what an identified compromise actually affected;
+- what the compromised subject could additionally reach, access, alter,
+  impersonate, administer, disrupt, disclose, or destroy;
+- which controls prevented expansion;
+- which data, services, departments, and owners are affected;
 - what changed from the previous accepted state;
 - what a proposed change will affect;
 - what risk exists if the change is approved;
@@ -80,10 +86,18 @@ Atlas complements mature operational systems.
 - Logging systems retain collection, indexing, retention, and search responsibility.
 - Security-monitoring platforms retain detection and investigation responsibility.
 - BloodHound retains identity and privilege attack-graph responsibility, while Atlas correlates that context with network reachability, exposure, dependencies, and change impact.
+
+- Iron File Intelligence retains file identity, access, classification,
+  activity, audit-coverage, and forensic-lineage responsibility, while Atlas
+  correlates governed IFI context with infrastructure and identity evidence.
 - Vendor platforms retain configuration, operation, and enforcement responsibility.
 - Diagramming systems retain curated diagram-authoring responsibility.
 
 Atlas retains responsibility for evidence lineage, normalized identity, cross-system correlation, topology, reachability explanation, change impact, governed findings, decision support, validation, and acceptance history.
+
+Atlas also retains responsibility for Atlas-owned incident correlation and
+evidence-backed compromise blast-radius explanation. Atlas does not replace the
+authoritative external systems that supply the underlying evidence.
 
 ## Human Authority and Initial Read-Only Boundary
 

@@ -170,6 +170,10 @@ Examples:
 - authentication foundation;
 - cross-vendor intelligence integration.
 
+- compromise blast-radius contracts and fixtures;
+- Iron File Intelligence integration; and
+- ISRAS migration readiness.
+
 The rule is:
 
 > **One active acceptance candidate per bounded workstream.**
@@ -213,3 +217,9 @@ A later `engineering-standards` update is adopted only through a normal Atlas ch
 - limitations.
 
 Standards adoption shall not block bounded product experiments unless the experiment crosses a sensitive or accepted boundary requiring the standard.
+
+The restarted ISRAS pinned-project framework is adopted only from an exact
+stable release through the process in
+[ISRAS 0.1.1 Adoption Readiness](ISRAS-0.1.1-ADOPTION-READINESS.md).
+Atlas does not pin a prerelease or floating branch and does not remove its
+current validation until the replacement is proven compatible.

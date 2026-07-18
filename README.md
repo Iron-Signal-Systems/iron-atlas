@@ -1,5 +1,11 @@
 # Iron Atlas
 
+<p align="center">
+  <img src="assets/branding/iron-atlas-logo.png"
+       alt="Iron Atlas shield emblem — Network & Security Intelligence"
+       width="620">
+</p>
+
 > An Iron Signal Systems project
 >
 > Built on purpose. Backed by discipline. Engineered to endure.
@@ -32,6 +38,20 @@ Atlas is intended to answer questions such as:
 - What changed from the prior accepted state?
 - What will a proposed change affect, what is the blast radius, and what happens if the change is denied or delayed?
 - Which exact evidence supports the answer, and what remains unknown, inferred, stale, incomplete, or conflicting?
+
+## Compromise Blast-Radius Question
+
+For a defined compromised user, endpoint, server, account, certificate,
+application, network device, service, or file, Atlas shall explain:
+
+> **What could the compromised subject reach, access, alter, impersonate,
+> administer, disrupt, disclose, destroy, or use as a path to another system—and
+> what does the evidence prove actually happened?**
+
+The answer distinguishes observed, potential, prevented, and unknown impact
+across network, identity, data, infrastructure-control, operational, and
+governance dimensions. See
+[Compromise blast-radius and incident-impact intelligence](docs/architecture/COMPROMISE-BLAST-RADIUS-AND-INCIDENT-IMPACT-INTELLIGENCE.md).
 
 ## First Major Evidence Sources
 
@@ -75,6 +95,11 @@ Atlas complements established operational systems instead of recreating capabili
 - Graylog remains responsible for centralized log and SNMP-trap collection, indexing, retention, search, and investigation.
 - Security Onion and other security platforms remain responsible for packet analysis, detection, and investigation.
 - BloodHound remains responsible for identity and privilege attack-graph analysis; SharpHound remains an approved collector for BloodHound-compatible Active Directory evidence. Atlas correlates identity paths with network reachability, exposure, dependencies, and change impact.
+
+- Iron File Intelligence remains responsible for file identity, access,
+  classification, activity, audit coverage, and forensic lineage. Atlas consumes
+  governed IFI context to explain the data dimension of incident and compromise
+  impact without querying IFI's database or duplicating its raw evidence.
 - Cisco, Fortinet, and other infrastructure systems remain responsible for operation and enforcement.
 - Draw.io remains a supported human-editable diagram source and publication format.
 

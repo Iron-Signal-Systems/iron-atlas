@@ -137,6 +137,47 @@ Define the vendor-neutral records required to answer network, security, change, 
 
 ### Evidence and Lineage
 
+### Incident and Compromise Impact
+
+- Incident
+- Compromise subject
+- Incident time window
+- Containment action and effect
+- Observed action
+- Potential action
+- Prevented action
+- Coverage gap
+- Evidence conflict
+- File-object and content-identity reference
+- Classification snapshot reference
+- Activity-operation reference
+- Network-reachability edge
+- Identity-privilege edge
+- Data-access edge
+- Administrative-control edge
+- Dependency edge
+- Trust relationship
+- Affected business function
+- Governance responsibility
+- Notification-review requirement
+- Blast-radius calculation
+- Blast-radius explanation
+
+### External Product Context
+
+- External product deployment
+- External context bundle
+- External bundle sequence and epoch
+- External signing and revocation evidence
+- External record reference
+- Authorized evidence locator
+- Adapter compatibility profile
+- External coverage state
+- External accepted-state reference
+- Iron File Intelligence context reference
+
+### Evidence and Lineage
+
 - Evidence bundle
 - Artifact
 - Content digest
@@ -233,6 +274,13 @@ Examples include:
 - service depends on path;
 - proposed change affects object;
 - finding supported by evidence; and
+
+- compromised subject reached or controlled another entity;
+- activity operation affected a file-object reference;
+- classification snapshot applied at event time;
+- IFI context supported a data-access conclusion;
+- containment action prevented or removed a path;
+- governance responsibility applies to an affected asset or data category;
 - acceptance supersedes prior state.
 
 ## Identity

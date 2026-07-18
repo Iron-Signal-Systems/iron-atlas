@@ -43,6 +43,10 @@ Initial sources include:
 - BloodHound identity and privilege graph context and approved SharpHound-derived evidence;
 - Draw.io and curated documentation;
 - approved project and change records; and
+
+- signed Iron File Intelligence classification, access, activity,
+  audit-coverage, and forensic-lineage context;
+- approved incident, containment, and responsibility records;
 - human verification and disposition.
 
 ### 2. Evidence Ingestion and Protection
@@ -85,6 +89,10 @@ The canonical model represents:
 - projects, proposed state, changes, approvals, denials, implementation, rollback, validation, and acceptance; and
 - historical and superseded state.
 
+- incidents, compromised subjects, sessions, certificates, observed actions,
+  potential actions, prevented actions, containment, coverage gaps, affected data,
+  business functions, governance responsibilities, and blast-radius results.
+
 ### 5. Correlation and Intelligence Engines
 
 The intelligence layer includes:
@@ -104,6 +112,12 @@ The intelligence layer includes:
 - current-to-proposed comparison;
 - risk-of-change and risk-of-no-change analysis; and
 - evidence and confidence aggregation.
+
+- time-bounded incident reconstruction;
+- observed, potential, prevented, and unknown impact calculation;
+- data, infrastructure-control, operational, and governance radius calculation;
+- external evidence conflict analysis; and
+- containment-effect calculation.
 
 ### 6. Governed Application Services
 
