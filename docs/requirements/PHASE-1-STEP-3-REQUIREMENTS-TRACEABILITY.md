@@ -2,7 +2,7 @@
 
 ## Status
 
-Phase 1 Step 3 contract integrated. Authentication foundation, governed actor resolution, and OIDC ID-token verification checkpoints are merged. Authorization-code and PKCE transaction handling is the active bounded candidate; no HTTP login/callback route, durable session, CSRF, trusted-proxy, or production authentication is accepted by this record.
+Phase 1 Step 3 contract integrated. Authentication foundation, governed actor resolution, OIDC ID-token verification, and authorization-code with PKCE checkpoints are merged. The HTTP login and callback boundary is the active bounded candidate; no durable authenticated session, CSRF, trusted-proxy, or production authentication is accepted by this record.
 
 ## Accepted predecessor
 
@@ -58,6 +58,24 @@ authentication-event, or controlled service-API needs.
 
 HTTP login and callback routes, production authenticator wiring, durable sessions, cookies, CSRF, trusted-proxy enforcement, lifecycle invalidation, authentication audit persistence, and representative-provider evidence remain required.
 
+
+## HTTP login and callback implementation status
+
+The active HTTP candidate partially implements `IA-AUTH-002`, `IA-AUTH-004`,
+`IA-AUTH-008`, `IA-AUTH-009`, `IA-AUTH-013`, `IA-AUTH-015`, and
+`IA-AUTH-016`.
+
+It proves exact browser login and callback routes, a bounded secure browser
+state-binding cookie, duplicate and unknown callback rejection, constant-time
+state matching, callback issuer binding, provider-error cancellation, generic
+failure responses, concurrent one-consumer behavior, and verified-principal
+handoff.
+
+It does not prove durable sessions, protected-request authentication, session
+rotation, idle or absolute expiry, logout, administrative revocation, CSRF,
+trusted proxies, production application wiring, authentication audit
+persistence, representative-provider compatibility, or formal Step 3
+acceptance.
 
 ## Required hostile classes
 

@@ -195,3 +195,15 @@ This checkpoint does not establish:
 - representative-provider compatibility;
 - formal Phase 1 Step 3 acceptance; or
 - production readiness.
+
+## HTTP successor checkpoint
+
+A separate bounded HTTP login and callback component now consumes this
+authorization-code flow.
+
+The authorization-code component itself remains cookie-free and route-free. The
+HTTP successor owns browser state-cookie binding, callback cardinality, issuer
+binding, generic browser responses, and verified-principal handoff.
+
+Neither component creates a durable authenticated Atlas session at this
+checkpoint.

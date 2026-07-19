@@ -2,7 +2,7 @@
 
 ## Status
 
-Phase 1 Step 3 normative contract integrated. Authentication foundation, governed actor resolution, and OIDC ID-token verification checkpoints are merged; authorization-code and PKCE transaction handling is the active bounded implementation candidate.
+Phase 1 Step 3 normative contract integrated. Authentication foundation, governed actor resolution, OIDC ID-token verification, and authorization-code with PKCE checkpoints are merged; the HTTP login and callback boundary is the active bounded implementation candidate.
 
 This document defines the production-authentication and governed
 actor-resolution boundary. It does not claim that a production identity
@@ -59,6 +59,24 @@ The merged authentication-foundation checkpoint provides:
 - public health, readiness, and static-asset paths that do not manufacture an actor.
 
 No external provider adapter is accepted. No provider-backed actor lookup, session, CSRF, replay, logout, trusted-proxy, or production deployment boundary is implemented by this checkpoint.
+
+## HTTP login and callback implementation checkpoint
+
+The active HTTP checkpoint adds:
+
+- exact `GET /auth/login` and `GET /auth/callback` routes;
+- a secure host-only `__Host-iron_atlas_oidc_state` browser cookie;
+- exact callback cardinality and bounded callback parsing;
+- constant-time browser state binding;
+- optional callback issuer binding;
+- atomic provider-error cancellation;
+- generic browser failure classification;
+- no reflection of provider descriptions or protocol secrets; and
+- a verified-principal handoff to a future server-side session boundary.
+
+The handler is deliberately not wired into `atlasd`. It does not create a
+session, authenticate protected requests, enforce CSRF, trust proxy headers, or
+establish production authentication.
 
 ## Terminology
 
