@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "profile": "ISRAS-SD",
+  "version": "0.1.4",
+  "release_tag": "isras-v0.1.4",
+  "source_repository": "github.com/Iron-Signal-Systems/engineering-standards",
+  "source_commit": "c9345d6d731600df7bd4ba4a133c07265db55e5a",
+  "verification": {
+    "release_record": "PASS",
+    "signed_tag": "PASS",
+    "asset_acquisition": "PASS",
+    "asset_inventory": "PASS",
+    "pin_digests": "PASS",
+    "sha256_manifest": "PASS",
+    "sha512_manifest": "PASS",
+    "provenance": "PASS",
+    "execution_authorization": "GRANTED"
+  },
+  "artifacts": [
+    {
+      "kind": "sha256-manifest",
+      "name": "SHA256SUMS",
+      "size": 362,
+      "remote_size": 362,
+      "sha256": "95469f995bb14a9ab120de830a55706a233d85568ac6d38d65653c52c077fac4",
+      "sha512": "624c379ca36fd5e286ed4d4f5ce72c27838abdab43d7beb4dec5ceec2dd1e5032ec7b61903117f7b129fcfaab5ac0f878eace4f68567fa45a4a99372e4f627eb",
+      "sha256_manifest": "NOT PERFORMED",
+      "sha512_manifest": "NOT PERFORMED",
+      "provenance_binding": "NOT PERFORMED"
+    },
+    {
+      "kind": "sha512-manifest",
+      "name": "SHA512SUMS",
+      "size": 618,
+      "remote_size": 618,
+      "sha256": "89cc5ee521baa21d111b88aa8ebdb8301919e9977ef31f32a3eeb9fb8a617024",
+      "sha512": "609898ddd9f620032ac33c16afeb91269a253639205c0c3315f8df2c13d4a9485590b3fe48249ebc86815e1071d4b79f122f56c77930da992e4475c437a70124",
+      "sha256_manifest": "NOT PERFORMED",
+      "sha512_manifest": "NOT PERFORMED",
+      "provenance_binding": "NOT PERFORMED"
+    },
+    {
+      "kind": "contracts",
+      "name": "isras-contracts.tar.gz",
+      "size": 18820,
+      "remote_size": 18820,
+      "sha256": "af806d99012b0b91614ccbc1960bcc55a44d21b38b2177a06772fda988bab716",
+      "sha512": "9f17c52a23cd86167fa5cdc7a8cf8b32da4cd1214234cbcaa89b2e2242e46bb5589f2af3a2413c77335bd092088d4731902a02751c8ef6063bf32df6c669f07d",
+      "sha256_manifest": "PASS",
+      "sha512_manifest": "PASS",
+      "provenance_binding": "PASS"
+    },
+    {
+      "kind": "framework",
+      "name": "isras-project-framework.tar.gz",
+      "size": 38284,
+      "remote_size": 38284,
+      "sha256": "1807f409b3b531a7b37536e4c0f2c13553d6f6f2d64c187277330e346dca6bfc",
+      "sha512": "00a207d93fad84b9bf0f4ccb6256077608d3deb966aed3842a1fefbc8b3a4a238c1dea8fd483cd1c19359084a1176b46db17691a54c00043dcc1972a8946f292",
+      "sha256_manifest": "PASS",
+      "sha512_manifest": "PASS",
+      "provenance_binding": "PASS"
+    },
+    {
+      "kind": "validator",
+      "name": "isras-validator-linux-amd64",
+      "os": "linux",
+      "arch": "amd64",
+      "size": 3985556,
+      "remote_size": 3985556,
+      "sha256": "7c29109438d2ce3a20357148c0b98ef2055a9329de980080d7a65263fabaaee3",
+      "sha512": "cf74b9bbc8738edfc9161e9c31cb3f3e068f66a3cf456a94ab1f669ff097b202eb7e2ba3b994c912abca787318c43a2325b1e8d286a2ea1f2028e016f27ba23a",
+      "sha256_manifest": "PASS",
+      "sha512_manifest": "PASS",
+      "provenance_binding": "PASS"
+    },
+    {
+      "kind": "provenance",
+      "name": "provenance.json",
+      "size": 1855,
+      "remote_size": 1855,
+      "sha256": "2fe8900e02348db459e7e501ef7c2e2241fd4cd5df2b26e00de1aad60621b45f",
+      "sha512": "d14caf5c794a0fd78a99933d0fe4b62871b03edd0df98c38dd6e0265c7b10d1715d754731323e06a5846520141b3c8a7b8dc591797ba5c2329d1067048207b11",
+      "sha256_manifest": "PASS",
+      "sha512_manifest": "PASS",
+      "provenance_binding": "NOT PERFORMED"
+    }
+  ]
+}

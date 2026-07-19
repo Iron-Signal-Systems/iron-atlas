@@ -57,3 +57,10 @@ contractual service-level commitment.
 A successful parser or collection proves only that evidence was obtained and
 interpreted to the tested extent. It does not prove a device is healthy,
 secure, correctly configured, or synchronized with documentation.
+## ISRAS 0.1.4 adoption candidate
+
+Atlas is evaluating the exact published `isras-v0.1.4` release at source commit
+`c9345d6d731600df7bd4ba4a133c07265db55e5a`. The generated project pin and
+hosted workflow are a candidate until separate prospective acceptance. The
+previously recorded 1.0.1 boundary remains historical and no production or
+independent-review claim is added.

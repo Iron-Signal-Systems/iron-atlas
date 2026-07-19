@@ -32,3 +32,10 @@ floating `dev` branch.
 Compatibility is limited to environments, formats, integrations, and
 dependencies explicitly declared and validated by the applicable Iron Atlas
 phase boundary. Undeclared platforms and production readiness are not implied.
+## ISRAS 0.1.4 adoption candidate
+
+Atlas is evaluating the exact published `isras-v0.1.4` release at source commit
+`c9345d6d731600df7bd4ba4a133c07265db55e5a`. The generated project pin and
+hosted workflow are a candidate until separate prospective acceptance. The
+previously recorded 1.0.1 boundary remains historical and no production or
+independent-review claim is added.

@@ -1,86 +1,40 @@
 # Iron Atlas Repository Assurance Adoption
 
-Iron Atlas records adoption of the Iron Signal Repository Assurance Standard.
+## Current status
 
-## Exact standard identity
+Iron Atlas has a historical recorded ISRAS 1.0.1 baseline and an active ISRAS
+0.1.4 adoption candidate. The candidate is not formal adoption until a separate
+prospective acceptance record is merged.
 
-- Standard version: `1.0.1`
-- Signed release tag: `isras-v1.0.1`
-- Exact accepted commit: `c379417720faa595fa5cb89a1dfdb2259d6cb95e`
-- Standard repository: `Iron-Signal-Systems/engineering-standards`
-- Standard source-manifest SHA-256:
-  `90fd3eb3d19a0d4d846bedf8b9657454538e81d3cb14fd62e8775f9aa206c7c1`
-- Adoption date: `2026-07-16`
-- Profile: `go-documentation-generation`
+## Historical recorded baseline
 
-The signed tag and exact commit are authoritative. Iron Atlas does not adopt
-from the standards repository's floating `dev` branch.
-
-## Governing rule
-
-A change is complete only when its exact pushed commit can be reconstructed,
-validated, and evidenced from the canonical repository using declared
-environments and committed project-owned assets.
-
-## Native-first boundary
-
-Portable validation runs directly on approved hosts. Canonical and specialized
-validation may use native hosts or disposable virtual machines. Containers are
-optional and are not the sole validation path unless an accepted deployment
-model requires them.
-
-## Adoption status
-
+- Version: `1.0.1`
+- Signed tag: `isras-v1.0.1`
+- Exact commit: `c379417720faa595fa5cb89a1dfdb2259d6cb95e`
 - Adoption level: `RECORDED`
-- Required checks: observation mode
-- Direct pushes to `dev`: prohibited by policy
-- Independent human review: not claimed
-- Production readiness: not claimed
-- Security evaluation: not established by this adoption
+- Adoption date: `2026-07-16`
 
-Observation mode collects results without making the new ISRAS workflow a
-required repository rule.
+## Proposed exact standard identity
 
-## Template compatibility note
+- Version: `0.1.4`
+- Signed tag: `isras-v0.1.4`
+- Exact source commit: `c9345d6d731600df7bd4ba4a133c07265db55e5a`
+- Profile: `ISRAS-SD` with Go defaults
+- Candidate status: `SELF-VALIDATED; FORMAL ACCEPTANCE PENDING`
 
-The accepted v1.0.1 repository-assurance template carried the prior `1.0.0`
-value in its generated manifest. Iron Atlas deliberately records `1.0.1` while
-retaining the exact accepted v1.0.1 commit pin. The publisher-oriented generic
-support text was also replaced with an Iron Atlas-specific pre-alpha support
-policy.
+The exact signed release and six verified release assets are authority. Atlas
+does not follow a floating standards branch.
 
-## Pinned Go security tool
+## Preserved Atlas controls
 
-The `go-documentation-generation` profile requires Go vulnerability analysis. Iron Atlas pins `golang.org/x/vuln/cmd/govulncheck@v1.6.0` in `tools/go-tools.lock.json`, including the module and module-file checksums.
+ISRAS is an organization-wide assurance floor. Atlas retains every stronger
+project-specific control, including immutable historical phase gates, isolated
+predecessor revalidation, PostgreSQL security and concurrency testing,
+authentication and OIDC campaigns, parser and evidence validation, synchronized
+documentation, and canonical clean-clone acceptance.
 
-The bootstrap verifies the downloaded module identity before installation and verifies the installed binary's embedded package path, version, and checksum. Portable validation uses `.isras-go-tools/bin` instead of an ambient workstation installation.
+## Claim boundary
 
-`govulncheck` queries the current Go vulnerability database. “No vulnerabilities found” is a time-bounded observation for the tested source, scanner version, and database state; it is not proof that the repository is vulnerability-free.
-
-## Next maturity work
-
-Before advancing beyond `RECORDED`, Iron Atlas must separately review and
-register its accepted historical phase checkpoints, validate the pushed
-adoption commit from a clean clone, observe the portable workflow across
-approved systems, and define any repository-specific exceptions.
-
-## Fresh-clone bootstrap boundary
-
-Exact-commit fresh-clone validation provisions the pinned Python environment
-and `govulncheck` installation inside the disposable canonical clone before
-running portable validation. This prevents a developer workstation's ambient
-tools from satisfying the acceptance boundary and proves that the pushed
-repository contains the instructions needed to reproduce its validation
-environment.
-
-## Hosted Go toolchain security disposition
-
-The initial pull-request portable workflow used the runner-bundled Go 1.25.0
-toolchain. `govulncheck v1.6.0` correctly reported reachable vulnerabilities in
-that unpatched standard library, so the failure was treated as a real
-toolchain-security defect rather than waived.
-
-Iron Atlas now keeps its language level at `1.25.0` and pins
-`go1.26.5` as the preferred validation and build toolchain. The hosted
-workflow explicitly selects the same release. This aligns developer, clean
-clone, and hosted vulnerability analysis with the official patched Go release.
+Self-validation is not independent review. Standards adoption does not establish
+production readiness, complete vendor coverage, security certification, or
+acceptance of an Atlas product phase.

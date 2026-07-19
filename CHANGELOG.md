@@ -4,6 +4,9 @@
 
 ### Added
 
+- Added the canonical 1254 × 1254 Iron Atlas crest with governed digest, accessibility text, README rendering, and brand-asset boundaries.
+- Added an exact published ISRAS 0.1.4 adoption candidate using the official release initializer, pinned reusable workflow, project pin, release-artifact verification, and preserved Atlas-specific validation.
+
 - A pinned maintained YAML v4 node decoder, Atlas node-conversion boundary, multiline quoted-scalar fixture, hostile admission tests, explicit resource limits, and cancellation checks for the experimental FortiGate YAML adapter.
 - Upload-safe `fortigate-inspect -redact` summaries that omit local paths, device identity, FortiOS version, and finding details while retaining counts and bounded decoder positions.
 - Upload-safe structure diagnostics that report only public FortiOS section labels and aggregate layout counts while omitting private scalar values, unknown keys, and VDOM names.

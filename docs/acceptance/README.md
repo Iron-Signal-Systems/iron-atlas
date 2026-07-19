@@ -39,3 +39,7 @@ errata rather than by moving or rewriting an accepted tag.
 
 Operational infrastructure changes remain subject to independent two-person
 approval according to the change-management architecture.
+
+## Active candidates
+
+- [ISRAS 0.1.4 adoption candidate](ISRAS-0.1.4-ADOPTION-CANDIDATE.md) — candidate only; formal acceptance pending

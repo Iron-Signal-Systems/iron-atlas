@@ -40,3 +40,9 @@ Thumbs.db
 
 # Repository-local pinned Go assurance tools
 .isras-go-tools/
+
+# Published ISRAS validator runtime evidence
+/.local/isras/
+
+# ISRAS runtime validation evidence
+/.local/validation/
