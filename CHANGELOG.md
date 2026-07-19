@@ -4,6 +4,8 @@
 
 ### Added
 
+- Replaced the mandatory Iron Atlas roadmap with a preserved-history Phase 0–12 core sequence covering evidence protection, operating-system-based Cisco normalization, FortiGate, BloodHound identity context, cross-source intelligence, change decisions, interface completion, read-only collection, production recovery, and controlled-pilot acceptance.
+- Added a planned phase-and-gate map that preserves existing validators, defines contract, implementation, integration, and acceptance gates, and keeps optional integration modules outside core operational acceptance.
 - Added the canonical 1254 × 1254 Iron Atlas crest with governed digest, accessibility text, README rendering, and brand-asset boundaries.
 - Added an exact published ISRAS 0.1.4 adoption candidate using the official release initializer, pinned reusable workflow, project pin, release-artifact verification, and preserved Atlas-specific validation.
 

@@ -20,6 +20,7 @@
 9. [Solo-developer operating model](engineering/SOLO-DEVELOPER-OPERATING-MODEL.md)
 10. [Atlas primary-focus execution plan](roadmap/ATLAS-PRIMARY-FOCUS-EXECUTION-PLAN.md)
 11. [Implementation roadmap](roadmap/IMPLEMENTATION-ROADMAP.md)
+12. [Phase and gate plan](roadmap/PHASE-GATE-PLAN.md)
 
 ## Architecture
 
