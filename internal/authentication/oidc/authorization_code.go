@@ -508,6 +508,52 @@ func (f *AuthorizationCodeFlow) Complete(
 	return principal, nil
 }
 
+// Cancel atomically consumes one valid preauthentication transaction without
+// exchanging an authorization code. It is used when the provider returns a
+// bounded error callback or when callback issuer binding fails.
+func (f *AuthorizationCodeFlow) Cancel(
+	ctx context.Context,
+	state string,
+) error {
+	if f == nil || f.store == nil || f.now == nil {
+		return authentication.ErrAuthenticationUnavailable
+	}
+	if ctx == nil {
+		return authentication.ErrAuthenticationInvalid
+	}
+	if err := ctx.Err(); err != nil {
+		return authentication.ErrAuthenticationUnavailable
+	}
+	if err := validateRandomToken("state", state); err != nil {
+		return authentication.ErrAuthenticationInvalid
+	}
+
+	transaction, err := f.store.Consume(
+		ctx,
+		sha256.Sum256([]byte(state)),
+		f.now().UTC(),
+	)
+	if err != nil {
+		if errors.Is(err, ErrPreauthenticationUnavailable) ||
+			errors.Is(err, ErrPreauthenticationCapacity) {
+			return authentication.ErrAuthenticationUnavailable
+		}
+		return authentication.ErrAuthenticationInvalid
+	}
+	if transaction.RedirectURL != f.oauthConfig.RedirectURL {
+		return authentication.ErrAuthenticationInvalid
+	}
+	return nil
+}
+
+// IssuerURL returns the exact trusted issuer bound to this flow.
+func (f *AuthorizationCodeFlow) IssuerURL() string {
+	if f == nil || f.verifier == nil {
+		return ""
+	}
+	return f.verifier.issuerURL
+}
+
 func randomToken(source io.Reader) (string, error) {
 	raw := make([]byte, authorizationRandomTokenBytes)
 	if _, err := io.ReadFull(source, raw); err != nil {

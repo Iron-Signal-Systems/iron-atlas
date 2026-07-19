@@ -2,7 +2,7 @@
 
 ## Status
 
-Phase 1 Step 3 test contract integrated. Authentication foundation, governed resolver, and OIDC ID-token campaigns are merged; authorization-code and PKCE transaction tests are active.
+Phase 1 Step 3 test contract integrated. Authentication foundation, governed resolver, OIDC ID-token, and authorization-code with PKCE campaigns are merged; HTTP login and callback tests are active.
 
 These tests are required for the final executable candidate. This document does
 not claim that a production adapter or session implementation exists.
@@ -13,6 +13,32 @@ The merged foundation checkpoint adds executable tests for typed mode parsing, d
 
 These tests do not substitute for later provider-protocol, actor-resolution, authorization-code, session, CSRF, replay, logout, key-rotation, or trusted-proxy campaigns.
 
+
+## HTTP login and callback implementation campaign
+
+The active bounded campaign covers:
+
+- exact login and callback methods and paths;
+- rejection of login query parameters;
+- empty-body provider redirects;
+- secure host-only state-cookie attributes;
+- callback query and value bounds;
+- exact callback parameter cardinality;
+- duplicate cookie rejection;
+- unknown parameter rejection;
+- state mismatch before exchange;
+- constant-time state comparison;
+- exact optional issuer binding;
+- provider-error cancellation;
+- provider outage classification;
+- state, code, cookie, provider-message, and internal-error redaction;
+- exactly one concurrent verified-principal handoff; and
+- exact one-time cancellation.
+
+The campaign does not cover durable sessions, session cookies, protected
+requests, rotation, expiry, logout, revocation, CSRF, trusted proxies,
+production application wiring, audit persistence, or representative-provider
+compatibility.
 
 ## Test layers
 

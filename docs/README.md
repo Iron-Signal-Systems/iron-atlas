@@ -32,6 +32,7 @@
 - [Go PostgreSQL runtime and identity context](architecture/GO-POSTGRESQL-RUNTIME-AND-IDENTITY-CONTEXT.md)
 - [Trusted authentication and governed actor resolution](architecture/TRUSTED-AUTHENTICATION-AND-GOVERNED-ACTOR-RESOLUTION.md)
 - [OIDC authorization-code and PKCE transaction implementation](architecture/OIDC-AUTHORIZATION-CODE-AND-PKCE-TRANSACTION-IMPLEMENTATION.md)
+- [OIDC HTTP login and callback implementation](architecture/OIDC-HTTP-LOGIN-AND-CALLBACK-IMPLEMENTATION.md)
 - [Evidence ingestion and protection](architecture/EVIDENCE-INGESTION-AND-PROTECTION.md)
 - [Firewall semantic analysis](architecture/FIREWALL-CONFIGURATION-SEMANTIC-ANALYSIS.md)
 - [FortiGate YAML snapshot prototype](architecture/FORTIGATE-YAML-SNAPSHOT-PROTOTYPE.md)

@@ -21,6 +21,7 @@
 ## Candidate
 
 - Candidate implementation commit:
+- HTTP login and callback checkpoint:
 - Repository-complete evidence boundary commit:
 - Candidate Git archive SHA-256:
 - Toolchain requirements SHA-256:

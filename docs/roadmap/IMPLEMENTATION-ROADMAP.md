@@ -82,7 +82,7 @@ Historical Phase 0 validators and acceptance evidence remain unchanged.
 
 ## Phase 1 — PostgreSQL Foundation and Governed Identity
 
-**Status:** Steps 1 and 2 accepted; Step 3 trusted-authentication work and remaining production-foundation boundaries incomplete.
+**Status:** Steps 1 and 2 accepted; Step 3 HTTP login and callback is the active bounded trusted-authentication candidate, with sessions and remaining production-foundation boundaries incomplete.
 
 ### Accepted and active boundaries
 

@@ -42,3 +42,10 @@ A local phase gate is necessary but not sufficient for acceptance. The exact pus
   endpoint binding, bounded token exchange, replay, outage, race, concurrency,
   redaction, predecessor revalidation, and complete repository validation. It
   is not Step 3 acceptance.
+
+- `validate_phase1_step3_http_login_callback.sh` — fifth Phase 1 Step 3
+  implementation gate; verifies strict browser login and callback routes, secure
+  host-only state binding, exact callback cardinality, callback issuer binding,
+  provider-error cancellation, generic error classification, replay, race,
+  concurrency, redaction, the accepted authorization-code and PKCE predecessor,
+  and complete repository validation. It is not Step 3 acceptance.

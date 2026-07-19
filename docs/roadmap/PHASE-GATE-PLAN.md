@@ -134,6 +134,8 @@ Planned gates:
 - `validate_phase1_step3_integration.sh`
 - `validate_phase1_step3_acceptance.sh`
 
+The active implementation candidate is `validate_phase1_step3_http_login_callback.sh`. Later listed validators remain planned and are not created until their boundaries become active.
+
 The Step 3 integration boundary proves:
 
 ```text
