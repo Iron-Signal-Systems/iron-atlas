@@ -6,6 +6,9 @@
 
 ## Start Here
 
+- [Iron Atlas brand assets](branding/IRON-ATLAS-BRAND-ASSETS.md)
+- [ISRAS 0.1.4 adoption candidate](acceptance/ISRAS-0.1.4-ADOPTION-CANDIDATE.md)
+
 1. [Project mission](goals/PROJECT-MISSION.md)
 2. [Product vision and operating mindset](goals/PRODUCT-VISION-AND-OPERATING-MINDSET.md)
 3. [Target architecture](architecture/TARGET-ARCHITECTURE.md)

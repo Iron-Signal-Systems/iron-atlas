@@ -6,9 +6,13 @@
 .github/ISSUE_TEMPLATE/network-change.yml
 .github/ISSUE_TEMPLATE/security-hardening.yml
 .github/pull_request_template.md
+.github/workflows/isras-validation.yml
 .github/workflows/portable-validation.yml
 .github/workflows/validate.yml
 .gitignore
+.isras/adoption-verification.json
+.isras/check-go-format
+.isras/project.json
 CHANGELOG.md
 CONTRIBUTING.md
 FILE-MANIFEST.txt
@@ -20,6 +24,7 @@ REPOSITORY-ASSURANCE.json
 SECURITY.md
 SOURCE-SHA256SUMS.txt
 SUPPORT-AND-COMPATIBILITY.md
+assets/branding/iron-atlas-logo.png
 changes/README.md
 changes/completed/.gitkeep
 changes/emergency/.gitkeep
@@ -46,6 +51,7 @@ diagrams/source/curated/architecture/ARCH-001-iron-atlas-context.drawio
 diagrams/source/curated/architecture/ARCH-001-iron-atlas-context.md
 diagrams/source/generated/.gitkeep
 docs/README.md
+docs/acceptance/ISRAS-0.1.4-ADOPTION-CANDIDATE.md
 docs/acceptance/PHASE-0-ACCEPTANCE-RECORD-TEMPLATE.md
 docs/acceptance/PHASE-0-STEP-1-ACCEPTANCE-ERRATA.md
 docs/acceptance/PHASE-0-STEP-1-ACCEPTANCE-RECORD.md
@@ -87,6 +93,7 @@ docs/architecture/TOPOLOGY-AND-DRAWIO-GOVERNANCE.md
 docs/architecture/TRUSTED-AUTHENTICATION-AND-GOVERNED-ACTOR-RESOLUTION.md
 docs/architecture/VERIFICATION-VALIDATION-AND-ACCEPTANCE.md
 docs/architecture/ZABBIX-INTEGRATION-CONTRACT.md
+docs/branding/IRON-ATLAS-BRAND-ASSETS.md
 docs/decisions/ADR-0001-GO-FIRST-STANDARD-LIBRARY-BASELINE.md
 docs/decisions/ADR-0002-ZABBIX-AS-REPLACEABLE-CONSUMER.md
 docs/decisions/ADR-0003-RAW-EVIDENCE-OUTSIDE-GIT.md
@@ -314,4 +321,5 @@ validation/evidence/phase-1-step-2/local-phase-gate/20260715T154526Z-a56de3f9a98
 validation/evidence/phase-1-step-2/local-phase-gate/20260715T154526Z-a56de3f9a985/sha256sums.txt
 validation/evidence/phase-1-step-2/local-phase-gate/20260715T154526Z-a56de3f9a985/summary.txt
 validation/evidence/phase-1-step-2/local-phase-gate/20260715T154526Z-a56de3f9a985/validation.log
+validation/secret-allowlist.json
 validation/toolchain-requirements.json

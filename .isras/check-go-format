@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+set -Eeuo pipefail
+
+list_file="$(mktemp)"
+trap 'rm -f -- "$list_file"' EXIT
+git ls-files -z -- '*.go' >"$list_file"
+mapfile -d '' files <"$list_file"
+if ((${#files[@]} == 0)); then
+  exit 0
+fi
+
+output="$(gofmt -l -- "${files[@]}")"
+if [[ -n "$output" ]]; then
+  printf '%s\n' "$output" >&2
+  exit 1
+fi

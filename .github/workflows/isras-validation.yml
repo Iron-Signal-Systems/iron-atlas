@@ -1,0 +1,15 @@
+name: ISRAS Validation
+
+on:
+  pull_request:
+  push:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    uses: Iron-Signal-Systems/engineering-standards/.github/workflows/validate-project.yml@c9345d6d731600df7bd4ba4a133c07265db55e5a
+    permissions:
+      contents: read

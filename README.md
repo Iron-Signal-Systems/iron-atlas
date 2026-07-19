@@ -1,10 +1,15 @@
 # Iron Atlas
 
+<p align="center">
+  <img src="assets/branding/iron-atlas-logo.png" alt="Iron Atlas shield emblem with compass and network-circuit elements" width="520">
+</p>
+
 > An Iron Signal Systems project
 >
 > Built on purpose. Backed by discipline. Engineered to endure.
 >
 > Development status: Phase 1 Step 2 is accepted; Phase 1 Step 3 trusted-authentication work remains an active non-production candidate; infrastructure ingestion and intelligence capabilities are under active development; not ready for production use
+> Repository assurance: ISRAS 0.1.4 adoption and canonical Atlas branding are an active candidate; the previously recorded 1.0.1 boundary remains historical until separate acceptance.
 
 ## Product Vision
 
