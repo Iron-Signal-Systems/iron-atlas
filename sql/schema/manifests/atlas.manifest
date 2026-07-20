@@ -7,3 +7,4 @@ migrations/005_change_approvals.sql
 migrations/006_append_only_history.sql
 migrations/007_governed_actor_resolution.sql
 migrations/008_authenticated_session.sql
+migrations/009_authentication_assurance.sql

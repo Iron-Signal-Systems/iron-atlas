@@ -251,7 +251,8 @@ require(
 require(
     "docs/roadmap/IMPLEMENTATION-ROADMAP.md",
     [
-        "authenticated server-side session is the active bounded",
+        "authentication assurance is the active bounded trusted-authentication candidate",
+        "authenticated server-side session checkpoints are merged",
         "Provider-neutral authentication assurance",
         "phishing-resistant MFA",
         "RFC 6238 TOTP fallback",

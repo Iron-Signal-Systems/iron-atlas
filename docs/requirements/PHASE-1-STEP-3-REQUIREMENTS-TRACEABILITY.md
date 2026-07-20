@@ -2,7 +2,7 @@
 
 ## Status
 
-Phase 1 Step 3 contract integrated. Authentication foundation, governed actor resolution, OIDC ID-token verification, authorization-code with PKCE, and HTTP login and callback checkpoints are merged. The authenticated server-side session is the active bounded candidate; no session lifecycle, MFA enforcement, local TOTP, CSRF, trusted-proxy, or production authentication is accepted by this record.
+Phase 1 Step 3 contract integrated. Authentication foundation, governed actor resolution, OIDC ID-token verification, authorization-code with PKCE, HTTP login and callback, and authenticated server-side session checkpoints are merged. Authentication assurance is the active bounded candidate; no local TOTP, completed session lifecycle, CSRF, trusted-proxy, or production authentication is accepted by this record.
 
 ## Accepted predecessor
 
@@ -79,6 +79,14 @@ rotation, idle or absolute expiry, logout, administrative revocation, CSRF,
 trusted proxies, production application wiring, authentication audit
 persistence, representative-provider compatibility, or formal Step 3
 acceptance.
+
+## Authentication-assurance implementation status
+
+The active candidate partially implements `IA-AUTH-002`, `IA-AUTH-005`, `IA-AUTH-006`, `IA-AUTH-008`, `IA-AUTH-013`, `IA-AUTH-015`, `IA-AUTH-016`, `IA-AUTH-017`, and `IA-AUTH-018`.
+
+It proves bounded `acr`, `amr`, and `auth_time` normalization, duplicate and malformed assurance rejection, explicit versioned provider-MFA policy, role-sensitive phishing-resistant outcomes, maximum authentication age, generic additional-authentication responses, no session handoff for unsatisfied assurance, and exact policy-version and MFA enforcement in the server-side session boundary.
+
+It does not prove Atlas-local TOTP, QR enrollment, recovery codes, WebAuthn, session rotation, logout, administrative revocation workflow, CSRF, trusted proxies, production wiring, representative-provider compatibility, formal Step 3 acceptance, or production readiness.
 
 ## Authenticated-session implementation status
 

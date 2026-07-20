@@ -25,6 +25,10 @@ revalidate_http_checkpoint() {
     isolated_gate_revalidate         "$repo_root"         "6c912428a90b125f1b826729593e11ed914c12e9"         "tools/validation/phase-gates/validate_phase1_step3_http_login_callback.sh"
 }
 
+revalidate_session_checkpoint() {
+    isolated_gate_revalidate         "$repo_root"         "e4ae9de5a5757d1a53c04f0b17163919bc688b04"         "tools/validation/phase-gates/validate_phase1_step3_authenticated_session.sh"
+}
+
 run "go format check" bash -c 'test -z "$(gofmt -l cmd internal modules integrations)"'
 run "go module verification" go mod verify
 run "go vet" go vet ./...
@@ -49,6 +53,13 @@ else
 fi
 run "Phase 1 Step 3 authenticated-session static validation" python3 tools/validation/validate_phase1_step3_authenticated_session.py
 run "Phase 1 Step 3 authenticated-session regression" ./test-framework/authentication/test_phase1_step3_authenticated_session.sh
+if [[ "${IRON_ATLAS_SESSION_PREDECESSOR_ALREADY_VALIDATED:-0}" == "1" ]]; then
+    validation_skip         "Phase 1 Step 3 authenticated-session predecessor revalidation"         "already validated by the calling phase gate"
+else
+    run         "Phase 1 Step 3 authenticated-session predecessor revalidation"         revalidate_session_checkpoint
+fi
+run "Phase 1 Step 3 authentication-assurance static validation" python3 tools/validation/validate_phase1_step3_authentication_assurance.py
+run "Phase 1 Step 3 authentication-assurance regression" ./test-framework/authentication/test_phase1_step3_authentication_assurance.sh
 run "validation reporting static validation" python3 tools/validation/validate_validation_reporting.py
 run "validation reporting regression" ./test-framework/validation/test_validation_reporting.sh
 run "phase-gate exit propagation" ./test-framework/phase-gates/test_isolated_gate_revalidation.sh

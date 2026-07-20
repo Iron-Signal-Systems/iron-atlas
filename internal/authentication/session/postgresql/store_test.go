@@ -41,7 +41,10 @@ func createRequest() session.CreateRequest {
 			Subject:         "subject-123",
 			AuthenticatedAt: now.Add(-time.Minute),
 			Assurance: authentication.Assurance{
-				Methods: []string{"pwd", "otp"},
+				Methods:               []string{"pwd", "otp"},
+				MFAAuthenticated:      true,
+				MFAAuthenticatedAt:    now.Add(-time.Minute),
+				SecurityPolicyVersion: "phase-1-step-3-session-v1",
 			},
 		},
 		ActorID:               "actor-123",

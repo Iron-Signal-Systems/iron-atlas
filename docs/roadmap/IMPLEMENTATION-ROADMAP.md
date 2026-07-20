@@ -82,7 +82,7 @@ Historical Phase 0 validators and acceptance evidence remain unchanged.
 
 ## Phase 1 — PostgreSQL Foundation and Governed Identity
 
-**Status:** Steps 1 and 2 accepted; Step 3 authenticated server-side session is the active bounded trusted-authentication candidate. Authentication assurance, MFA policy, optional local TOTP, session lifecycle, CSRF, trusted proxies, production wiring, and remaining production-foundation boundaries are incomplete.
+**Status:** Steps 1 and 2 accepted; Step 3 authentication assurance is the active bounded trusted-authentication candidate. Authentication foundation, governed actor resolution, OIDC verification, Authorization Code with PKCE, HTTP login/callback, and authenticated server-side session checkpoints are merged. Local TOTP, session lifecycle, CSRF, trusted proxies, production wiring, and remaining production-foundation boundaries are incomplete.
 
 ### Accepted and active boundaries
 

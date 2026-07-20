@@ -4,6 +4,7 @@
 
 ### Added
 
+- Added the Phase 1 Step 3 authentication-assurance candidate with bounded OIDC `acr`, `amr`, and `auth_time` normalization, explicit provider-MFA and phishing-resistant policy, stale-authentication step-up, callback hardening, mandatory MFA and policy-version binding before session persistence, synchronized documentation, hostile tests, and an implementation phase gate.
 - Made the actionable `FINAL RESULT` the terminal output line for migrated validation commands, including the primary failing check and cause on failure.
 - Added meaningful validation failure reporting with primary-cause extraction, per-check logs, deduplicated cascades, skipped-dependent checks, and final report paths.
 - Added repository-managed, version-pinned `govulncheck` invoked through `go tool`, removing workstation PATH dependence.

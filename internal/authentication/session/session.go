@@ -67,6 +67,7 @@ type Config struct {
 	AbsoluteLifetime      time.Duration
 	SuccessLocation       string
 	SecurityPolicyVersion string
+	RequireMFA            bool
 }
 
 type Service struct {
@@ -78,6 +79,7 @@ type Service struct {
 	absoluteLifetime      time.Duration
 	successLocation       string
 	securityPolicyVersion string
+	requireMFA            bool
 }
 
 var _ authentication.Authenticator = (*Service)(nil)
@@ -118,6 +120,9 @@ func New(config Config) (*Service, error) {
 		config.SecurityPolicyVersion != strings.TrimSpace(config.SecurityPolicyVersion) {
 		return nil, errors.New("security policy version is required and must be normalized")
 	}
+	if !config.RequireMFA {
+		return nil, errors.New("authenticated sessions require MFA assurance enforcement")
+	}
 	location, err := safeLocalLocation(config.SuccessLocation)
 	if err != nil {
 		return nil, err
@@ -132,6 +137,7 @@ func New(config Config) (*Service, error) {
 		absoluteLifetime:      config.AbsoluteLifetime,
 		successLocation:       location,
 		securityPolicyVersion: config.SecurityPolicyVersion,
+		requireMFA:            config.RequireMFA,
 	}, nil
 }
 
@@ -150,18 +156,21 @@ func (s *Service) ServeVerifiedPrincipal(
 		return
 	}
 
+	now := s.now().UTC()
+	if principal.AuthenticatedAt.After(now.Add(2*time.Minute)) ||
+		principal.Assurance.SecurityPolicyVersion != s.securityPolicyVersion ||
+		(s.requireMFA && (!principal.Assurance.MFAAuthenticated ||
+			principal.Assurance.MFAAuthenticatedAt.IsZero() ||
+			principal.Assurance.MFAAuthenticatedAt.After(now.Add(2*time.Minute)))) {
+		writeFailure(writer, http.StatusUnauthorized, "authentication failed")
+		return
+	}
+
 	actor, err := s.resolver.Resolve(request.Context(), principal)
 	if err != nil {
 		writeAuthenticationError(writer, err)
 		return
 	}
-
-	now := s.now().UTC()
-	if principal.AuthenticatedAt.After(now.Add(2 * time.Minute)) {
-		writeFailure(writer, http.StatusUnauthorized, "authentication failed")
-		return
-	}
-	principal.Assurance.SecurityPolicyVersion = s.securityPolicyVersion
 
 	identifier, digest, err := generateIdentifier(s.random)
 	if err != nil {
@@ -259,8 +268,11 @@ func (r Record) Validate(now time.Time) error {
 		len(r.SecurityPolicyVersion) > 128 {
 		return errors.New("session security policy version is invalid")
 	}
-	if r.Principal.Assurance.SecurityPolicyVersion != "" &&
-		r.Principal.Assurance.SecurityPolicyVersion != r.SecurityPolicyVersion {
+	if !r.Principal.Assurance.MFAAuthenticated ||
+		r.Principal.Assurance.MFAAuthenticatedAt.IsZero() {
+		return errors.New("session MFA assurance is required")
+	}
+	if r.Principal.Assurance.SecurityPolicyVersion != r.SecurityPolicyVersion {
 		return errors.New("session security policy version is inconsistent")
 	}
 	return nil

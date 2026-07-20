@@ -73,6 +73,7 @@ type HTTPHandlerConfig struct {
 type HTTPHandler struct {
 	flow            BrowserAuthorizationFlow
 	verifiedHandler VerifiedPrincipalHandler
+	issuer          string
 	now             func() time.Time
 }
 
@@ -97,6 +98,7 @@ func NewHTTPHandler(config HTTPHandlerConfig) (*HTTPHandler, error) {
 	return &HTTPHandler{
 		flow:            config.Flow,
 		verifiedHandler: config.VerifiedHandler,
+		issuer:          issuer,
 		now:             now,
 	}, nil
 }
@@ -164,7 +166,7 @@ func (h *HTTPHandler) Callback(writer http.ResponseWriter, request *http.Request
 		writeBrowserFailure(writer, http.StatusUnauthorized, "authentication failed")
 		return
 	}
-	if callback.Issuer != "" && callback.Issuer != h.flow.IssuerURL() {
+	if callback.Issuer != "" && callback.Issuer != h.issuer {
 		if err := h.flow.Cancel(request.Context(), callback.State); err != nil {
 			writeAuthenticationError(writer, err)
 			return
@@ -239,12 +241,13 @@ func parseCallback(request *http.Request) (callbackValues, error) {
 	if err != nil {
 		return callbackValues{}, err
 	}
-	if _, _, err := optionalOne(
+	_, sessionStatePresent, err := optionalOne(
 		values,
 		"session_state",
 		maximumCallbackValue,
 		tokenValue,
-	); err != nil {
+	)
+	if err != nil {
 		return callbackValues{}, err
 	}
 	providerError, errorPresent, err := optionalOne(
@@ -256,24 +259,32 @@ func parseCallback(request *http.Request) (callbackValues, error) {
 	if err != nil {
 		return callbackValues{}, err
 	}
-	if _, _, err := optionalOne(
+	_, descriptionPresent, err := optionalOne(
 		values,
 		"error_description",
 		maximumProviderMessage,
 		textValue,
-	); err != nil {
+	)
+	if err != nil {
 		return callbackValues{}, err
 	}
-	if _, _, err := optionalOne(
+	_, errorURIPresent, err := optionalOne(
 		values,
 		"error_uri",
 		maximumProviderMessage,
 		textValue,
-	); err != nil {
+	)
+	if err != nil {
 		return callbackValues{}, err
 	}
 	if codePresent == errorPresent {
 		return callbackValues{}, errors.New("callback must contain exactly one result")
+	}
+	if codePresent && (descriptionPresent || errorURIPresent) {
+		return callbackValues{}, errors.New("provider error metadata requires an error result")
+	}
+	if errorPresent && sessionStatePresent {
+		return callbackValues{}, errors.New("session state is permitted only on successful callbacks")
 	}
 	return callbackValues{
 		State:         state,

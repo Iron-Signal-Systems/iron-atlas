@@ -182,8 +182,11 @@ func validateCreateRequest(request session.CreateRequest) error {
 		len(request.SecurityPolicyVersion) > 128 {
 		return errors.New("security policy version is invalid")
 	}
-	if request.Principal.Assurance.SecurityPolicyVersion != "" &&
-		request.Principal.Assurance.SecurityPolicyVersion != request.SecurityPolicyVersion {
+	if !request.Principal.Assurance.MFAAuthenticated ||
+		request.Principal.Assurance.MFAAuthenticatedAt.IsZero() {
+		return errors.New("session MFA assurance is required")
+	}
+	if request.Principal.Assurance.SecurityPolicyVersion != request.SecurityPolicyVersion {
 		return errors.New("principal and session security policy versions differ")
 	}
 	return nil

@@ -125,14 +125,15 @@ def assert_eq(actual, expected, name):
 def main():
     setup()
     count = sql("SELECT count(*) FROM atlas.schema_migration;").stdout.strip()
-    assert_eq(count, "8", "eight migrations recorded")
+    assert_eq(count, "9", "nine migrations recorded")
 
     session_digest = "decode(repeat('ab', 32), 'hex')"
     created_session = sql(
         "SELECT count(*) FROM atlas.create_authenticated_session("
         f"{session_digest}, 'dev', 'subject-remap', 'remap-source', "
-        "transaction_timestamp(), 1800, 28800, NULL, ARRAY[]::text[], "
-        "false, NULL, 'phase-1-step-3-session-v1');",
+        "transaction_timestamp(), 1800, 28800, "
+        "'urn:iron-atlas:assurance:provider-mfa', ARRAY['pwd','otp']::text[], "
+        "true, transaction_timestamp(), 'phase-1-step-3-session-v1');",
         user="atlas_application",
     ).stdout.strip()
     assert_eq(created_session, "1", "session created before identity remap")

@@ -80,6 +80,7 @@ func testPrincipal() authentication.Principal {
 				0,
 				time.UTC,
 			),
+			SecurityPolicyVersion: "phase-1-step-3-session-v1",
 		},
 	}
 }
@@ -103,6 +104,7 @@ func newTestService(t *testing.T, store *fakeStore, random []byte) *Service {
 		AbsoluteLifetime:      4 * time.Hour,
 		SuccessLocation:       "/",
 		SecurityPolicyVersion: "phase-1-step-3-session-v1",
+		RequireMFA:            true,
 	})
 	if err != nil {
 		t.Fatal(err)
@@ -393,6 +395,44 @@ func TestNewRejectsUnsafeConfiguration(t *testing.T) {
 		t.Run(name, func(t *testing.T) {
 			if _, err := New(config); err == nil {
 				t.Fatal("expected configuration rejection")
+			}
+		})
+	}
+}
+
+func TestVerifiedPrincipalRequiresSatisfiedMFAPolicy(t *testing.T) {
+	for name, mutate := range map[string]func(*authentication.Principal){
+		"missing MFA": func(principal *authentication.Principal) {
+			principal.Assurance.MFAAuthenticated = false
+			principal.Assurance.MFAAuthenticatedAt = time.Time{}
+		},
+		"wrong policy version": func(principal *authentication.Principal) {
+			principal.Assurance.SecurityPolicyVersion = "other-policy"
+		},
+		"future MFA time": func(principal *authentication.Principal) {
+			principal.Assurance.MFAAuthenticatedAt = time.Date(
+				2026, 7, 19, 20, 5, 0, 0, time.UTC,
+			)
+		},
+	} {
+		t.Run(name, func(t *testing.T) {
+			store := &fakeStore{}
+			service := newTestService(t, store, bytes.Repeat([]byte{0x42}, identifierBytes))
+			principal := testPrincipal()
+			mutate(&principal)
+			response := httptest.NewRecorder()
+			request := httptest.NewRequest(http.MethodGet, "https://atlas.example/auth/callback", nil)
+			service.ServeVerifiedPrincipal(response, request, principal)
+			if response.Code != http.StatusUnauthorized {
+				t.Fatalf("status = %d", response.Code)
+			}
+			if len(response.Result().Cookies()) != 0 {
+				t.Fatal("unsatisfied assurance emitted a session cookie")
+			}
+			store.mu.Lock()
+			defer store.mu.Unlock()
+			if len(store.created) != 0 {
+				t.Fatalf("created sessions = %d", len(store.created))
 			}
 		})
 	}
