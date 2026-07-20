@@ -66,3 +66,10 @@ A local phase gate is necessary but not sufficient for acceptance. The exact pus
   for unsatisfied assurance, exact session policy-version binding, callback
   metadata hardening, the authenticated-session predecessor, and complete
   repository validation. It is not Step 3 acceptance.
+
+- `validate_business_source_license_transition.sh` — repository licensing and
+  governance transition gate; verifies exact signed-base ancestry, prospective
+  BUSL-1.1 parameters, historical BSD preservation, machine-readable metadata,
+  trademark separation, the governed post-licensing alignment backlog, the
+  complete test framework, and repository synchronization. It does not alter
+  runtime behavior, provide legal advice, or establish production readiness.

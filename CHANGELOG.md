@@ -46,6 +46,9 @@
 
 ### Changed
 
+- Prospectively transitioned Iron Atlas from BSD 3-Clause to Business Source License 1.1 (`BUSL-1.1`) from the signed `cc93fdd` predecessor, with no Additional Use Grant, a 2030-07-18 Change Date, AGPLv3-only Change License, preserved historical BSD text, explicit trademark separation, machine-readable validation, and a governed post-licensing alignment backlog.
+- Corrected future authentication direction so Atlas consumes and enforces approved external-provider MFA assurance rather than implementing local password or TOTP credential ownership.
+
 - Replaced the FortiGate adapter's handwritten physical-line YAML grammar with maintained node decoding while preserving Atlas normalization, source-location, evidence, and snapshot contracts.
 - Added bounded layout detection for canonical fixtures, native direct CMDB sections, and native VDOM containers while retaining fail-closed rejection of unrelated YAML.
 - Extended the firewall reference graph with object-kind resolution, explicit built-ins, unresolved-versus-ambiguous classification, and normalized-reference limits.

@@ -29,6 +29,8 @@ revalidate_session_checkpoint() {
     isolated_gate_revalidate         "$repo_root"         "e4ae9de5a5757d1a53c04f0b17163919bc688b04"         "tools/validation/phase-gates/validate_phase1_step3_authenticated_session.sh"
 }
 
+run "Business Source License 1.1 static validation" python3 tools/validation/validate_licensing.py
+run "Business Source License 1.1 regression" ./test-framework/governance/test_business_source_license_transition.sh
 run "go format check" bash -c 'test -z "$(gofmt -l cmd internal modules integrations)"'
 run "go module verification" go mod verify
 run "go vet" go vet ./...
