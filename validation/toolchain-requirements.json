@@ -56,5 +56,16 @@
       "version": "v1.6.0",
       "invocation": "go tool govulncheck"
     }
-  ]
+  ],
+  "license": {
+    "name": "Business Source License 1.1",
+    "spdx_identifier": "BUSL-1.1",
+    "licensor": "John Wood",
+    "additional_use_grant": "None",
+    "change_date": "2030-07-18",
+    "change_license_name": "GNU Affero General Public License, Version 3 only",
+    "change_license_spdx_identifier": "AGPL-3.0-only",
+    "historical_license_spdx_identifier": "BSD-3-Clause",
+    "signed_transition_base": "cc93fdd2311ca188ad03b0bd94293156ff243973"
+  }
 }

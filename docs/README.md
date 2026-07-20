@@ -64,6 +64,14 @@
 - [Canonical clean-clone validation](operations/CANONICAL-CLEAN-CLONE-VALIDATION.md)
 - [Repository creation and first push](operations/REPOSITORY-CREATION-AND-FIRST-PUSH.md)
 
+## Governance and Licensing
+
+- [Licensing status](governance/LICENSING-STATUS.md)
+- [Licensing transition record](governance/LICENSING-TRANSITION-RECORD.md)
+- [Trademark and branding policy](governance/TRADEMARK-AND-BRANDING-POLICY.md)
+- [Post-licensing alignment backlog](governance/POST-LICENSING-ALIGNMENT-BACKLOG.md)
+- [Historical licensing records](records/licensing/README.md)
+
 ## Documentation Synchronization Rule
 
 A material change is not complete until the product statement, architecture, requirements, implementation, tests, validation, status, roadmap, limitations, and next-work statement describe the same repository state.

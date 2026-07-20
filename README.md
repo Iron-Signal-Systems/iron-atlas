@@ -10,6 +10,7 @@
 >
 > Development status: Phase 1 Step 2 is accepted; Phase 1 Step 3 trusted-authentication work remains an active non-production candidate; infrastructure ingestion and intelligence capabilities are under active development; not ready for production use
 > Repository assurance: ISRAS 0.1.4 adoption and canonical Atlas branding are an active candidate; the previously recorded 1.0.1 boundary remains historical until separate acceptance.
+> Repository license: Business Source License 1.1 (`BUSL-1.1`); non-production use is permitted, while production use before the applicable change event requires a separate commercial license.
 
 ## Product Vision
 
@@ -93,7 +94,7 @@ The accepted Phase 0 baseline contains an embedded HTML5 interface, module regis
 
 Accepted Phase 1 Steps 1 and 2 add governed PostgreSQL migrations, durable identity and authority records, database-enforced independent approval, append-only history, a least-privileged Go PostgreSQL runtime, transaction-local actor context, persistent change creation and approval, failure isolation, and readiness behavior.
 
-Phase 1 Step 3 trusted-authentication work remains incomplete and non-production. Authentication assurance is the active bounded candidate after the merged OIDC, login/callback, governed actor, and authenticated-session checkpoints. Local TOTP, completed session lifecycle, CSRF, trusted proxies, production wiring, and formal acceptance remain incomplete. Infrastructure evidence ingestion, normalization, correlation, query, and reporting capabilities are active development work and must not be represented as production-complete.
+Phase 1 Step 3 trusted-authentication work remains incomplete and non-production. The merged authentication-assurance checkpoint validates MFA evidence asserted by approved external OIDC providers before session creation. Atlas does not store local user passwords or TOTP seeds and is not intended to become a local credential or MFA provider. Completed session lifecycle, logout and administrative revocation, CSRF, trusted proxies, representative-provider compatibility, production wiring, and formal acceptance remain incomplete. Infrastructure evidence ingestion, normalization, correlation, query, and reporting capabilities are active development work and must not be represented as production-complete.
 
 FortiGate YAML snapshot ingestion is an active, self-validated,
 non-production evidence-adapter candidate. The current checkpoint processes a
@@ -172,7 +173,17 @@ The repository contains contracts, code, schemas, sanitized fixtures, redacted e
 
 ## License
 
-BSD 3-Clause. See [LICENSE](LICENSE).
+Iron Atlas is licensed under the **Business Source License 1.1**
+(`BUSL-1.1`). Non-production use is permitted. Because the Additional Use
+Grant is `None`, production use before the applicable change event requires a
+separate commercial license.
+
+Historical versions distributed at or before signed boundary
+`cc93fdd2311ca188ad03b0bd94293156ff243973` remain available under their
+applicable BSD 3-Clause terms.
+
+See [LICENSE](LICENSE), [licensing guidance](LICENSING.md), and
+[licensing status](docs/governance/LICENSING-STATUS.md).
 
 ## Authentication implementation checkpoint
 

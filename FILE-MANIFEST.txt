@@ -18,6 +18,7 @@ CONTRIBUTING.md
 FILE-MANIFEST.txt
 GLOSSARY.md
 LICENSE
+LICENSING.md
 Makefile
 README.md
 REPOSITORY-ASSURANCE.json
@@ -111,8 +112,14 @@ docs/engineering/secure-development-lifecycle.md
 docs/engineering/validation-environment-model.md
 docs/goals/PRODUCT-VISION-AND-OPERATING-MINDSET.md
 docs/goals/PROJECT-MISSION.md
+docs/governance/LICENSING-STATUS.md
+docs/governance/LICENSING-TRANSITION-RECORD.md
+docs/governance/POST-LICENSING-ALIGNMENT-BACKLOG.md
+docs/governance/TRADEMARK-AND-BRANDING-POLICY.md
 docs/operations/CANONICAL-CLEAN-CLONE-VALIDATION.md
 docs/operations/REPOSITORY-CREATION-AND-FIRST-PUSH.md
+docs/records/licensing/IRON-ATLAS-BSD-3-CLAUSE-BEFORE-BSL.txt
+docs/records/licensing/README.md
 docs/requirements/PHASE-1-STEP-3-REQUIREMENTS-TRACEABILITY.md
 docs/requirements/SYSTEM-REQUIREMENTS.md
 docs/roadmap/ATLAS-PRIMARY-FOCUS-EXECUTION-PLAN.md
@@ -253,6 +260,7 @@ test-framework/authentication/test_phase1_step3_oidc_authorization_code_pkce.sh
 test-framework/authentication/test_phase1_step3_oidc_id_token_verification.sh
 test-framework/database/run_disposable_postgres.sh
 test-framework/database/test_database.py
+test-framework/governance/test_business_source_license_transition.sh
 test-framework/phase-gates/test_isolated_gate_revalidation.sh
 test-framework/portability/test_portable_validation.sh
 test-framework/run_all.sh
@@ -293,6 +301,7 @@ tools/validation/checkpoints.json
 tools/validation/lib/isolated_gate_revalidation.sh
 tools/validation/lib/reporting.sh
 tools/validation/phase-gates/README.md
+tools/validation/phase-gates/validate_business_source_license_transition.sh
 tools/validation/phase-gates/validate_phase0_acceptance.sh
 tools/validation/phase-gates/validate_phase0_step1.sh
 tools/validation/phase-gates/validate_phase1_step1.sh
@@ -317,6 +326,7 @@ tools/validation/validate_current.sh
 tools/validation/validate_docs.py
 tools/validation/validate_fresh_clone.sh
 tools/validation/validate_go_postgresql_runtime.py
+tools/validation/validate_licensing.py
 tools/validation/validate_migrations.py
 tools/validation/validate_phase1_step3_authenticated_session.py
 tools/validation/validate_phase1_step3_authentication_assurance.py

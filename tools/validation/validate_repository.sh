@@ -20,7 +20,13 @@ check() {
 }
 
 required=(
-  README.md SECURITY.md docs/README.md
+  README.md LICENSE LICENSING.md SECURITY.md docs/README.md
+  docs/governance/LICENSING-STATUS.md
+  docs/governance/LICENSING-TRANSITION-RECORD.md
+  docs/governance/TRADEMARK-AND-BRANDING-POLICY.md
+  docs/governance/POST-LICENSING-ALIGNMENT-BACKLOG.md
+  docs/records/licensing/README.md
+  docs/records/licensing/IRON-ATLAS-BSD-3-CLAUSE-BEFORE-BSL.txt
   docs/architecture/TARGET-ARCHITECTURE.md
   docs/architecture/CHANGE-MANAGEMENT-AND-TWO-PERSON-CONTROL.md
   docs/architecture/POSTGRESQL-MIGRATION-AND-OWNERSHIP-MODEL.md
@@ -68,6 +74,7 @@ required=(
   tools/validation/validate_phase1_step3_oidc_id_token_verification.py
   tools/validation/validate_phase1_step3_oidc_authorization_code_pkce.py
   tools/validation/validate_phase1_step3_authentication_assurance.py
+  tools/validation/validate_licensing.py
   tools/validation/validate_portable_acceptance.py
   tools/validation/validate_committed_evidence.py
   tools/validation/validate_toolchain.py
@@ -81,6 +88,8 @@ required=(
   tools/validation/phase-gates/validate_phase1_step3_oidc_id_token_verification.sh
   tools/validation/phase-gates/validate_phase1_step3_oidc_authorization_code_pkce.sh
   tools/validation/phase-gates/validate_phase1_step3_authentication_assurance.sh
+  tools/validation/phase-gates/validate_business_source_license_transition.sh
+  test-framework/governance/test_business_source_license_transition.sh
   test-framework/authentication/test_phase1_step3_contract.sh
   test-framework/authentication/test_phase1_step3_authentication_foundation.sh
   test-framework/authentication/test_phase1_step3_governed_actor_resolution.sh
@@ -104,6 +113,7 @@ check "Phase 1 Step 3 governed actor resolution" python3 tools/validation/valida
 check "Phase 1 Step 3 OIDC ID-token verification" python3 tools/validation/validate_phase1_step3_oidc_id_token_verification.py
 check "Phase 1 Step 3 OIDC authorization-code and PKCE" python3 tools/validation/validate_phase1_step3_oidc_authorization_code_pkce.py
 check "Phase 1 Step 3 authentication assurance" python3 tools/validation/validate_phase1_step3_authentication_assurance.py
+check "Business Source License 1.1 transition" python3 tools/validation/validate_licensing.py
 check "portable acceptance static contract" python3 tools/validation/validate_portable_acceptance.py
 check "committed validation evidence" python3 tools/validation/validate_committed_evidence.py
 check "Draw.io XML" python3 -c 'import xml.etree.ElementTree as ET; ET.parse("diagrams/source/curated/architecture/ARCH-001-iron-atlas-context.drawio")'
