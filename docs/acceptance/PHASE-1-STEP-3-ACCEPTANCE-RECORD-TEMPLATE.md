@@ -150,3 +150,15 @@ claim.
 ## Exact Next Work
 
 State the next Phase 1 boundary without combining it into this acceptance.
+
+## Authentication assurance checkpoint evidence
+
+- Exact `acr`, `amr`, and `auth_time` normalization:
+- Versioned assurance policy:
+- Required MFA enforcement before session creation:
+- High-impact phishing-resistant policy behavior:
+- Stale-authentication step-up behavior:
+- Callback issuer and metadata hardening:
+- Unsatisfied-assurance no-cookie evidence:
+- Concurrent and hostile validation:
+- Explicit TOTP and production nonclaims:

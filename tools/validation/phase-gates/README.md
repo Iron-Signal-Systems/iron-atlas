@@ -58,3 +58,11 @@ A local phase gate is necessary but not sufficient for acceptance. The exact pus
   controlled routines, hostile and concurrent behavior, the accepted HTTP login
   and callback predecessor, and complete repository validation. It is not Step 3
   acceptance.
+
+- `validate_phase1_step3_authentication_assurance.sh` — seventh Phase 1
+  Step 3 implementation gate; verifies bounded OIDC `acr`, `amr`, and
+  `auth_time` normalization, explicit versioned MFA policy, role-sensitive
+  phishing-resistant outcomes, stale-authentication step-up, no session handoff
+  for unsatisfied assurance, exact session policy-version binding, callback
+  metadata hardening, the authenticated-session predecessor, and complete
+  repository validation. It is not Step 3 acceptance.

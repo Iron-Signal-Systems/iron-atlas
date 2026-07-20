@@ -625,3 +625,92 @@ func TestNewRejectsInsecureOrUnboundedConfiguration(t *testing.T) {
 		})
 	}
 }
+
+func TestVerifierNormalizesAssuranceClaims(t *testing.T) {
+	provider := newProviderEmulator(t)
+	verifier := provider.verifier(t)
+	authenticatedAt := provider.now.Add(-4 * time.Minute)
+	principal, err := verifier.Verify(
+		context.Background(),
+		provider.token(t, map[string]any{
+			"auth_time": authenticatedAt.Unix(),
+			"acr":       "urn:example:acr:mfa",
+			"amr":       []string{"pwd", "otp"},
+		}),
+		"0123456789abcdef0123456789abcdef",
+		"",
+	)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if principal.Assurance.Context != "urn:example:acr:mfa" {
+		t.Fatalf("assurance context = %q", principal.Assurance.Context)
+	}
+	if len(principal.Assurance.Methods) != 2 ||
+		principal.Assurance.Methods[0] != "pwd" ||
+		principal.Assurance.Methods[1] != "otp" {
+		t.Fatalf("assurance methods = %v", principal.Assurance.Methods)
+	}
+	if principal.Assurance.MFAAuthenticated ||
+		!principal.Assurance.MFAAuthenticatedAt.IsZero() {
+		t.Fatal("OIDC verifier must not infer Atlas MFA acceptance")
+	}
+}
+
+func TestVerifierRejectsMalformedAssuranceClaims(t *testing.T) {
+	provider := newProviderEmulator(t)
+	verifier := provider.verifier(t)
+	for name, overrides := range map[string]map[string]any{
+		"unnormalized context": {"acr": " urn:example:acr:mfa"},
+		"wrong amr shape":      {"amr": "pwd"},
+		"empty method":         {"amr": []string{"pwd", ""}},
+		"duplicate method":     {"amr": []string{"pwd", "pwd"}},
+		"too many methods": {
+			"amr": []string{
+				"m01", "m02", "m03", "m04", "m05", "m06", "m07", "m08", "m09",
+				"m10", "m11", "m12", "m13", "m14", "m15", "m16", "m17",
+			},
+		},
+	} {
+		t.Run(name, func(t *testing.T) {
+			_, err := verifier.Verify(
+				context.Background(),
+				provider.token(t, overrides),
+				"0123456789abcdef0123456789abcdef",
+				"",
+			)
+			if !errors.Is(err, authentication.ErrAuthenticationInvalid) {
+				t.Fatalf("error = %v", err)
+			}
+		})
+	}
+}
+
+func TestVerifierRejectsDuplicateAssuranceClaims(t *testing.T) {
+	provider := newProviderEmulator(t)
+	verifier := provider.verifier(t)
+	for name, duplicate := range map[string]string{
+		"acr": `"acr":"urn:one","acr":"urn:two"`,
+		"amr": `"amr":["pwd"],"amr":["otp"]`,
+	} {
+		t.Run(name, func(t *testing.T) {
+			payload := []byte(
+				`{"iss":"` + provider.server.URL + `",` +
+					`"sub":"subject-123","aud":"iron-atlas-test",` +
+					`"exp":` + fmt.Sprintf("%d", provider.now.Add(5*time.Minute).Unix()) + `,` +
+					`"iat":` + fmt.Sprintf("%d", provider.now.Add(-time.Minute).Unix()) + `,` +
+					`"nonce":"0123456789abcdef0123456789abcdef",` + duplicate + `}`,
+			)
+			raw := signedPayload(t, provider.key, provider.keyID, payload, jose.RS256)
+			_, err := verifier.Verify(
+				context.Background(),
+				raw,
+				"0123456789abcdef0123456789abcdef",
+				"",
+			)
+			if !errors.Is(err, authentication.ErrAuthenticationInvalid) {
+				t.Fatalf("error = %v", err)
+			}
+		})
+	}
+}

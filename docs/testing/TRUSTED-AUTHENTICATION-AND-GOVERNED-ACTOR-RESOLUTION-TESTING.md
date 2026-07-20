@@ -270,3 +270,9 @@ The campaign does not cover HTTP login or callback handlers, browser state
 cookies, durable restart-surviving transactions, authenticated sessions, CSRF,
 logout, trusted proxies, governed actor wiring, or production credential
 delivery.
+
+## Authentication-assurance implementation campaign
+
+The assurance candidate validates exact OIDC `acr`, `amr`, and `auth_time` normalization; duplicate, malformed, oversized, unknown, partial, and stale assurance; explicit method-set and context policy; role-sensitive phishing-resistant outcomes; policy-version binding; no session cookie or database handoff on failure; resolver outage; callback issuer immutability; conflicting callback metadata; and concurrent stateless evaluation.
+
+The campaign revalidates the authenticated-session predecessor from its exact signed commit and runs the complete repository, disposable PostgreSQL, race, vet, module, and vulnerability-analysis framework.

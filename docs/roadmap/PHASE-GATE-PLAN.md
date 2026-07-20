@@ -120,12 +120,12 @@ Preserve all existing checkpoint and acceptance validators:
 - `validate_phase1_step3_oidc_id_token_verification.sh`
 - `validate_phase1_step3_oidc_authorization_code_pkce.sh`
 - `validate_phase1_step3_http_login_callback.sh`
+- `validate_phase1_step3_authenticated_session.sh`
 
 ### Remaining trusted-authentication checkpoints
 
 Planned gates:
 
-- `validate_phase1_step3_authenticated_session.sh`
 - `validate_phase1_step3_authentication_assurance.sh`
 - `validate_phase1_step3_totp_enrollment_verification_recovery.sh`
 - `validate_phase1_step3_session_rotation_expiry_logout.sh`
@@ -136,7 +136,7 @@ Planned gates:
 - `validate_phase1_step3_integration.sh`
 - `validate_phase1_step3_acceptance.sh`
 
-The active implementation candidate is `validate_phase1_step3_authenticated_session.sh`. The assurance and TOTP names are roadmap commitments only; executable validators are not created until those boundaries become active. Later listed validators remain planned.
+The authenticated-session checkpoint is merged. The active implementation candidate is `validate_phase1_step3_authentication_assurance.sh`. The TOTP name remains a roadmap commitment only; its executable validator is not created until that boundary becomes active. Later listed validators remain planned.
 
 The Step 3 integration boundary proves:
 

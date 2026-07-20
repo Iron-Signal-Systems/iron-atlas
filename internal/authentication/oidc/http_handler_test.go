@@ -430,3 +430,53 @@ func assertClearedStateCookie(t *testing.T, response *httptest.ResponseRecorder)
 		t.Fatalf("cleared cookie lost security attributes: %#v", cookie)
 	}
 }
+
+func TestHTTPHandlerRetainsValidatedIssuer(t *testing.T) {
+	now := time.Date(2026, 7, 20, 20, 0, 0, 0, time.UTC)
+	state := testState(30)
+	flow := &fakeBrowserAuthorizationFlow{
+		issuer: testIssuer,
+		complete: func(context.Context, string, string) (authentication.Principal, error) {
+			return authentication.Principal{
+				ProviderID:      "provider-1",
+				Subject:         "subject-1",
+				AuthenticatedAt: now,
+			}, nil
+		},
+	}
+	receiver := &recordingPrincipalHandler{}
+	handler := newHTTPHandlerForTest(t, flow, receiver, now)
+	flow.issuer = "https://changed.example.test/oidc"
+
+	target := CallbackPath + "?state=" + url.QueryEscape(state) +
+		"&code=authorization-code&iss=" + url.QueryEscape(testIssuer)
+	request := httptest.NewRequest(http.MethodGet, target, nil)
+	request.AddCookie(&http.Cookie{Name: stateCookieName, Value: state})
+	response := httptest.NewRecorder()
+	handler.Handler().ServeHTTP(response, request)
+
+	if response.Code != http.StatusNoContent || receiver.count() != 1 {
+		t.Fatalf("status = %d verified principals = %d", response.Code, receiver.count())
+	}
+}
+
+func TestHTTPCallbackRejectsConflictingProviderMetadata(t *testing.T) {
+	state := testState(31)
+	flow := &fakeBrowserAuthorizationFlow{}
+	handler := newHTTPHandlerForTest(t, flow, &recordingPrincipalHandler{}, time.Now().UTC())
+	for name, query := range map[string]string{
+		"description on success": "state=" + state + "&code=code&error_description=private",
+		"error URI on success":   "state=" + state + "&code=code&error_uri=https%3A%2F%2Fprovider.example%2Ferror",
+		"session state on error": "state=" + state + "&error=access_denied&session_state=session",
+	} {
+		t.Run(name, func(t *testing.T) {
+			request := httptest.NewRequest(http.MethodGet, CallbackPath+"?"+query, nil)
+			request.AddCookie(&http.Cookie{Name: stateCookieName, Value: state})
+			response := httptest.NewRecorder()
+			handler.Handler().ServeHTTP(response, request)
+			if response.Code != http.StatusUnauthorized {
+				t.Fatalf("status = %d", response.Code)
+			}
+		})
+	}
+}

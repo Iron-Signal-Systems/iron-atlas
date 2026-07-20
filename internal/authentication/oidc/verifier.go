@@ -324,9 +324,11 @@ func (v *Verifier) Verify(
 	}
 
 	var claims struct {
-		AuthorizedParty    string          `json:"azp"`
-		NotBefore          json.RawMessage `json:"nbf"`
-		AuthenticationTime json.RawMessage `json:"auth_time"`
+		AuthorizedParty       string          `json:"azp"`
+		NotBefore             json.RawMessage `json:"nbf"`
+		AuthenticationTime    json.RawMessage `json:"auth_time"`
+		AuthenticationContext string          `json:"acr"`
+		AuthenticationMethods []string        `json:"amr"`
 	}
 	if err := token.Claims(&claims); err != nil {
 		return authentication.Principal{}, authentication.ErrAuthenticationInvalid
@@ -378,6 +380,14 @@ func (v *Verifier) Verify(
 		authenticatedAt = authTime
 	}
 
+	assurance, err := normalizedAssuranceClaims(
+		claims.AuthenticationContext,
+		claims.AuthenticationMethods,
+	)
+	if err != nil {
+		return authentication.Principal{}, authentication.ErrAuthenticationInvalid
+	}
+
 	if token.AccessTokenHash != "" {
 		if accessToken == "" ||
 			len(accessToken) > v.maxTokenBytes ||
@@ -390,11 +400,26 @@ func (v *Verifier) Verify(
 		ProviderID:      v.providerID,
 		Subject:         token.Subject,
 		AuthenticatedAt: authenticatedAt.UTC(),
+		Assurance:       assurance,
 	}
 	if err := principal.Validate(); err != nil {
 		return authentication.Principal{}, authentication.ErrAuthenticationInvalid
 	}
 	return principal, nil
+}
+
+func normalizedAssuranceClaims(
+	contextValue string,
+	methods []string,
+) (authentication.Assurance, error) {
+	assurance := authentication.Assurance{
+		Context: contextValue,
+		Methods: append([]string(nil), methods...),
+	}
+	if err := assurance.Validate(); err != nil {
+		return authentication.Assurance{}, err
+	}
+	return assurance, nil
 }
 
 func signingAlgorithms(values []string) (
@@ -519,7 +544,7 @@ func inspectJWT(raw string, allowed map[string]struct{}) error {
 		map[string]struct{}{
 			"iss": {}, "sub": {}, "aud": {}, "exp": {}, "iat": {},
 			"nbf": {}, "nonce": {}, "azp": {}, "auth_time": {},
-			"at_hash": {},
+			"acr": {}, "amr": {}, "at_hash": {},
 		},
 	); err != nil {
 		return err

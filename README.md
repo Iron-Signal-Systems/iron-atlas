@@ -93,7 +93,7 @@ The accepted Phase 0 baseline contains an embedded HTML5 interface, module regis
 
 Accepted Phase 1 Steps 1 and 2 add governed PostgreSQL migrations, durable identity and authority records, database-enforced independent approval, append-only history, a least-privileged Go PostgreSQL runtime, transaction-local actor context, persistent change creation and approval, failure isolation, and readiness behavior.
 
-Phase 1 Step 3 trusted-authentication work remains incomplete and non-production. Infrastructure evidence ingestion, normalization, correlation, query, and reporting capabilities are active development work and must not be represented as production-complete.
+Phase 1 Step 3 trusted-authentication work remains incomplete and non-production. Authentication assurance is the active bounded candidate after the merged OIDC, login/callback, governed actor, and authenticated-session checkpoints. Local TOTP, completed session lifecycle, CSRF, trusted proxies, production wiring, and formal acceptance remain incomplete. Infrastructure evidence ingestion, normalization, correlation, query, and reporting capabilities are active development work and must not be represented as production-complete.
 
 FortiGate YAML snapshot ingestion is an active, self-validated,
 non-production evidence-adapter candidate. The current checkpoint processes a
@@ -176,8 +176,9 @@ BSD 3-Clause. See [LICENSE](LICENSE).
 
 ## Authentication implementation checkpoint
 
-The current authentication foundation remains an implementation candidate and
-does not represent completed production authentication.
+The current authentication-assurance boundary remains an implementation candidate and
+does not represent completed production authentication. Verified provider identity must
+satisfy the versioned Atlas MFA policy before a server-side session may be created.
 
 - Unrestricted local development is selected explicitly with
   `IRON_ATLAS_AUTHENTICATION_MODE=development`.

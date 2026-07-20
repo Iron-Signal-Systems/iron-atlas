@@ -2,7 +2,7 @@
 
 ## Status
 
-Phase 1 Step 3 normative contract integrated. Authentication foundation, governed actor resolution, OIDC ID-token verification, authorization-code with PKCE, and HTTP login and callback checkpoints are merged; the authenticated server-side session is the active bounded implementation candidate.
+Phase 1 Step 3 normative contract integrated. Authentication foundation, governed actor resolution, OIDC ID-token verification, authorization-code with PKCE, HTTP login and callback, and authenticated server-side session checkpoints are merged; authentication assurance is the active bounded implementation candidate.
 
 This document defines the production-authentication and governed
 actor-resolution boundary. It does not claim that a production identity
@@ -104,6 +104,16 @@ refresh, bounded session-count and cleanup policy, rotation, logout,
 administrative revocation workflow, CSRF, trusted proxies, production wiring,
 audit persistence, MFA enforcement, and local TOTP remain separate successor
 boundaries.
+
+## Authentication assurance implementation checkpoint
+
+The active assurance checkpoint normalizes exact OIDC `acr`, `amr`, and `auth_time` evidence without treating the presence of those claims as successful MFA. A versioned Atlas policy evaluates exact accepted contexts and method sets, authentication age, and role-sensitive phishing-resistant requirements.
+
+Only a satisfied decision may reach authenticated-session creation. Unsatisfied, stale, ambiguous, or insufficient assurance produces no session cookie and no authenticated-session record. The session service independently requires MFA success and exact security-policy-version binding before persistence.
+
+The callback boundary also retains the exact issuer validated at construction and rejects conflicting provider error and session metadata.
+
+The assurance checkpoint remains deliberately unwired from `atlasd`. Local TOTP, QR enrollment, recovery codes, WebAuthn, session lifecycle completion, CSRF, trusted proxies, production wiring, and formal Step 3 acceptance remain successor boundaries.
 
 ## Authentication assurance and MFA roadmap
 
