@@ -2,7 +2,7 @@
 
 ## Status
 
-Phase 1 Step 3 normative contract integrated. Authentication foundation, governed actor resolution, OIDC ID-token verification, and authorization-code with PKCE checkpoints are merged; the HTTP login and callback boundary is the active bounded implementation candidate.
+Phase 1 Step 3 normative contract integrated. Authentication foundation, governed actor resolution, OIDC ID-token verification, authorization-code with PKCE, and HTTP login and callback checkpoints are merged; the authenticated server-side session is the active bounded implementation candidate.
 
 This document defines the production-authentication and governed
 actor-resolution boundary. It does not claim that a production identity
@@ -12,8 +12,8 @@ authentication implementation is accepted.
 The formally accepted predecessor is Phase 1 Step 2 under the immutable tag
 `phase-1-step-2-go-postgresql-runtime-and-identity-context-complete-v1`.
 
-The exact merged `dev` implementation base for the active authorization-code
-checkpoint is `36394c917a7c60350f229fc80df2066a0c132681`.
+The exact SSH-signed `dev` implementation base for the active authenticated-
+session checkpoint is `6c912428a90b125f1b826729593e11ed914c12e9`.
 
 ## Purpose
 
@@ -77,6 +77,52 @@ The active HTTP checkpoint adds:
 The handler is deliberately not wired into `atlasd`. It does not create a
 session, authenticate protected requests, enforce CSRF, trust proxy headers, or
 establish production authentication.
+
+## Authenticated server-side session implementation checkpoint
+
+The active session checkpoint adds:
+
+- one 32-byte cryptographically random opaque browser identifier;
+- a secure host-only `__Host-iron_atlas_session` cookie;
+- a narrow fixed local-path success redirect that rejects external and encoded-
+  separator forms;
+- SHA-256 digest-only PostgreSQL persistence;
+- controlled session creation and lookup routines with no direct application
+  table access;
+- provider, external-identity, and actor binding at creation and lookup;
+- durable provider and actor references that do not prevent a governed external-
+  identity remap;
+- fixed creation-time idle and absolute bounds;
+- protected-request authentication through the existing production
+  `Authenticator` seam;
+- current governed actor and role re-resolution on every request;
+- rejection when an external identity remaps to a different actor; and
+- normalized authentication-assurance and security-policy-version retention.
+
+The service remains deliberately unwired from `atlasd`. Sliding activity
+refresh, bounded session-count and cleanup policy, rotation, logout,
+administrative revocation workflow, CSRF, trusted proxies, production wiring,
+audit persistence, MFA enforcement, and local TOTP remain separate successor
+boundaries.
+
+## Authentication assurance and MFA roadmap
+
+Atlas shall primarily consume MFA assurance from the configured OIDC provider.
+The assurance checkpoint will normalize and govern `acr`, `amr`, `auth_time`,
+MFA age, role-sensitive policy, and step-up authentication without treating
+provider roles or groups as Atlas authority.
+
+Phishing-resistant WebAuthn, FIDO2, passkeys, or hardware security keys are the
+preferred high-impact authenticators. RFC 6238 TOTP is a supported compatibility
+fallback for Google Authenticator, 1Password, Aegis, FreeOTP, and similar
+applications.
+
+Atlas-local TOTP is a distinct planned gate. It must include encrypted
+shared-secret storage, enrollment proof, replay prevention, attempt and source
+rate limiting, recovery-code hashing and one-time use, reset separation of
+duties, encryption-key rotation, durable audit evidence, and fail-closed actor
+lifecycle behavior. SMS, security questions, and silent administrator bypass
+are not normal MFA or recovery mechanisms.
 
 ## Terminology
 

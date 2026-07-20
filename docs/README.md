@@ -33,6 +33,7 @@
 - [Trusted authentication and governed actor resolution](architecture/TRUSTED-AUTHENTICATION-AND-GOVERNED-ACTOR-RESOLUTION.md)
 - [OIDC authorization-code and PKCE transaction implementation](architecture/OIDC-AUTHORIZATION-CODE-AND-PKCE-TRANSACTION-IMPLEMENTATION.md)
 - [OIDC HTTP login and callback implementation](architecture/OIDC-HTTP-LOGIN-AND-CALLBACK-IMPLEMENTATION.md)
+- [Authenticated server-side session implementation](architecture/AUTHENTICATED-SERVER-SIDE-SESSION-IMPLEMENTATION.md)
 - [Evidence ingestion and protection](architecture/EVIDENCE-INGESTION-AND-PROTECTION.md)
 - [Firewall semantic analysis](architecture/FIREWALL-CONFIGURATION-SEMANTIC-ANALYSIS.md)
 - [FortiGate YAML snapshot prototype](architecture/FORTIGATE-YAML-SNAPSHOT-PROTOTYPE.md)
@@ -55,6 +56,7 @@
 
 - [System requirements](requirements/SYSTEM-REQUIREMENTS.md)
 - [Testing and adversarial validation model](testing/TESTING-AND-ADVERSARIAL-VALIDATION-MODEL.md)
+- [Validation failure reporting](testing/VALIDATION-FAILURE-REPORTING.md)
 - [Disposable PostgreSQL testing](testing/POSTGRESQL-DISPOSABLE-DATABASE-TESTING.md)
 - [Go PostgreSQL runtime integration testing](testing/GO-POSTGRESQL-RUNTIME-INTEGRATION-TESTING.md)
 - [Acceptance records](acceptance/README.md)

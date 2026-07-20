@@ -52,6 +52,34 @@ for command in req["utilities"]:
     if shutil.which(command) is None:
         errors.append(f"missing required utility: {command}")
 
+go_mod = (ROOT / "go.mod").read_text(encoding="utf-8")
+for tool in REQ.get("go_tools", []):
+    command = tool["command"]
+    package = tool["package"]
+    module = tool["module"]
+    required_version = tool["version"]
+
+    if package not in go_mod:
+        errors.append(
+            f"Go tool dependency is not registered in go.mod: {package}"
+        )
+
+    actual_version = output(
+        "go",
+        "list",
+        "-m",
+        "-f",
+        "{{.Version}}",
+        module,
+    ).strip()
+    if actual_version != required_version:
+        errors.append(
+            f"{command} module version {actual_version!r} "
+            f"does not equal required {required_version}"
+        )
+
+    output("go", "tool", command, "-version")
+
 if errors:
     for error in errors:
         print(f"FAIL: {error}", file=sys.stderr)

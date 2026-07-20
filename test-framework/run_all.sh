@@ -10,13 +10,19 @@ summary="$results_dir/latest-summary.txt"
 exec > >(tee "$log") 2>&1
 cd "$repo_root"
 
-pass=0
-fail=0
+source "$repo_root/tools/validation/lib/reporting.sh"
+source "$repo_root/tools/validation/lib/isolated_gate_revalidation.sh"
+
+run_id="$(date -u +%Y%m%dT%H%M%SZ)-$$"
+report_dir="$results_dir/validation-reporting/run-all-$run_id"
+validation_report_init "Iron Atlas complete test framework" "$report_dir"
+
 run() {
-  local name="$1"; shift
-  printf '\n== %s ==\n' "$name"
-  if "$@"; then printf 'PASS: %s\n' "$name"; pass=$((pass+1));
-  else printf 'FAIL: %s\n' "$name"; fail=$((fail+1)); fi
+    validation_run "$@" || true
+}
+
+revalidate_http_checkpoint() {
+    isolated_gate_revalidate         "$repo_root"         "6c912428a90b125f1b826729593e11ed914c12e9"         "tools/validation/phase-gates/validate_phase1_step3_http_login_callback.sh"
 }
 
 run "go format check" bash -c 'test -z "$(gofmt -l cmd internal modules integrations)"'
@@ -36,6 +42,15 @@ run "Phase 1 Step 3 OIDC ID-token verification static validation" python3 tools/
 run "Phase 1 Step 3 OIDC ID-token verification regression" ./test-framework/authentication/test_phase1_step3_oidc_id_token_verification.sh
 run "Phase 1 Step 3 OIDC authorization-code and PKCE static validation" python3 tools/validation/validate_phase1_step3_oidc_authorization_code_pkce.py
 run "Phase 1 Step 3 OIDC authorization-code and PKCE regression" ./test-framework/authentication/test_phase1_step3_oidc_authorization_code_pkce.sh
+if [[ "${IRON_ATLAS_HTTP_PREDECESSOR_ALREADY_VALIDATED:-0}" == "1" ]]; then
+    validation_skip         "Phase 1 Step 3 HTTP login and callback predecessor revalidation"         "already validated by the calling phase gate"
+else
+    run         "Phase 1 Step 3 HTTP login and callback predecessor revalidation"         revalidate_http_checkpoint
+fi
+run "Phase 1 Step 3 authenticated-session static validation" python3 tools/validation/validate_phase1_step3_authenticated_session.py
+run "Phase 1 Step 3 authenticated-session regression" ./test-framework/authentication/test_phase1_step3_authenticated_session.sh
+run "validation reporting static validation" python3 tools/validation/validate_validation_reporting.py
+run "validation reporting regression" ./test-framework/validation/test_validation_reporting.sh
 run "phase-gate exit propagation" ./test-framework/phase-gates/test_isolated_gate_revalidation.sh
 run "external toolchain validation" python3 tools/validation/validate_toolchain.py
 run "portable acceptance static validation" python3 tools/validation/validate_portable_acceptance.py
@@ -44,12 +59,9 @@ run "committed validation evidence" python3 tools/validation/validate_committed_
 run "disposable PostgreSQL tests" ./test-framework/database/run_disposable_postgres.sh
 run "repository validation" ./tools/validation/validate_repository.sh --skip-go --skip-database
 
-{
-  echo "PASS checks: $pass"
-  echo "FAIL checks: $fail"
-  if (( fail == 0 )); then echo "Correctness result: PASS"; else echo "Correctness result: FAIL"; fi
-  echo "Resource observation: RECORDED_BY_DATABASE_TEST"
-  echo "Performance thresholds: NOT_EVALUATED"
-} | tee "$summary"
+validation_note "Resource observation: RECORDED_BY_DATABASE_TEST"
+validation_note "Performance thresholds: NOT_EVALUATED"
 
-(( fail == 0 ))
+report_status=0
+validation_report_finish "$report_dir/final-report.txt" "$summary" || report_status=$?
+exit "$report_status"

@@ -37,7 +37,7 @@ check \
 
 check \
   "OIDC dependency vulnerability analysis" \
-  govulncheck ./internal/authentication/oidc
+  go tool govulncheck ./internal/authentication/oidc
 
 check \
   "OIDC ID-token phase-gate shell syntax" \

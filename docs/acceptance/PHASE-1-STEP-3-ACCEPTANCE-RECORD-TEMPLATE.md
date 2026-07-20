@@ -22,6 +22,9 @@
 
 - Candidate implementation commit:
 - HTTP login and callback checkpoint:
+- Authenticated server-side session checkpoint:
+- Authentication assurance and MFA checkpoint:
+- Local TOTP checkpoint, when included:
 - Repository-complete evidence boundary commit:
 - Candidate Git archive SHA-256:
 - Toolchain requirements SHA-256:
@@ -40,6 +43,8 @@
 - Immutable request-context identity:
 - Bounded server-side sessions:
 - Cookie security:
+- Authentication assurance and MFA policy:
+- Local TOTP enrollment and recovery policy, when included:
 - CSRF:
 - Trusted proxy:
 - Audit and redaction:
@@ -72,6 +77,10 @@
 - CSRF mechanism:
 - Origin policy:
 - Cleanup and resource bounds:
+- Authentication context and methods:
+- MFA age and step-up policy:
+- Preferred phishing-resistant authenticators:
+- TOTP compatibility and recovery, when included:
 
 ## Trusted Proxy Profile
 

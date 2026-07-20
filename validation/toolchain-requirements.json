@@ -47,5 +47,14 @@
   ],
   "disposable_test_environment": "test-framework/database/run_disposable_postgres.sh",
   "repository_secrets": "prohibited",
-  "non_repository_secrets": []
+  "non_repository_secrets": [],
+  "go_tools": [
+    {
+      "command": "govulncheck",
+      "package": "golang.org/x/vuln/cmd/govulncheck",
+      "module": "golang.org/x/vuln",
+      "version": "v1.6.0",
+      "invocation": "go tool govulncheck"
+    }
+  ]
 }

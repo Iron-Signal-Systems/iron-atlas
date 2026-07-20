@@ -36,7 +36,8 @@ type BrowserAuthorizationFlow interface {
 
 // VerifiedPrincipalHandler receives only a principal that completed the
 // authorization-code, PKCE, nonce, signature, issuer, and audience checks.
-// A later bounded package will use this seam to create a server-side session.
+// The authenticated-session candidate uses this seam to create bounded
+// server-side session state without exposing provider tokens to the browser.
 type VerifiedPrincipalHandler interface {
 	ServeVerifiedPrincipal(
 		http.ResponseWriter,

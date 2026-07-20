@@ -49,3 +49,12 @@ A local phase gate is necessary but not sufficient for acceptance. The exact pus
   provider-error cancellation, generic error classification, replay, race,
   concurrency, redaction, the accepted authorization-code and PKCE predecessor,
   and complete repository validation. It is not Step 3 acceptance.
+
+- `validate_phase1_step3_authenticated_session.sh` — sixth Phase 1 Step 3
+  implementation gate; verifies digest-only PostgreSQL session persistence,
+  secure opaque host-only cookies, bounded creation-time validity, protected-
+  request authentication, current governed actor re-resolution, actor-remapping
+  rejection, assurance metadata retention for future MFA, least-privileged
+  controlled routines, hostile and concurrent behavior, the accepted HTTP login
+  and callback predecessor, and complete repository validation. It is not Step 3
+  acceptance.

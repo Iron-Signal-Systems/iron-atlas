@@ -2,7 +2,7 @@
 
 ## Status
 
-Phase 1 Step 3 test contract integrated. Authentication foundation, governed resolver, OIDC ID-token, and authorization-code with PKCE campaigns are merged; HTTP login and callback tests are active.
+Phase 1 Step 3 test contract integrated. Authentication foundation, governed resolver, OIDC ID-token, authorization-code with PKCE, and HTTP login and callback campaigns are merged; authenticated-session tests are active.
 
 These tests are required for the final executable candidate. This document does
 not claim that a production adapter or session implementation exists.
@@ -39,6 +39,43 @@ The campaign does not cover durable sessions, session cookies, protected
 requests, rotation, expiry, logout, revocation, CSRF, trusted proxies,
 production application wiring, audit persistence, or representative-provider
 compatibility.
+
+## Authenticated-session implementation campaign
+
+The active bounded campaign covers:
+
+- secure host-only session-cookie attributes;
+- narrow fixed local-path redirect validation;
+- 32-byte cryptographic identifier generation and canonical base64url encoding;
+- SHA-256 digest-only persistence requests;
+- controlled PostgreSQL creation and lookup routines;
+- denial of direct application session-table access;
+- exact cookie cardinality and malformed-value rejection;
+- missing, unknown, expired, actor-mismatched, and outage behavior;
+- current governed actor and role re-resolution;
+- external-identity actor-remapping rejection;
+- normalized assurance metadata and policy-version retention;
+- concurrent lookups under the race detector; and
+- predecessor HTTP login and callback revalidation.
+
+The campaign does not cover sliding activity refresh, bounded session-count
+or cleanup policy, rotation, logout, administrative revocation workflow, CSRF,
+trusted proxies, production wiring,
+MFA enforcement, local TOTP, representative providers, or formal acceptance.
+
+## Authentication assurance and MFA successor campaigns
+
+The planned assurance campaign will test accepted and rejected `acr`, `amr`,
+`auth_time`, MFA-age, step-up, role-sensitive, missing, ambiguous, downgraded,
+and provider-outage state. No absent claim may be interpreted as successful
+MFA.
+
+The planned local TOTP campaign will test Google Authenticator, 1Password,
+Aegis, FreeOTP, and equivalent RFC 6238 clients through standard provisioning;
+encrypted secret storage; enrollment confirmation; time-window and replay
+behavior; rate limiting; concurrent verification; recovery-code one-time use;
+reset separation of duties; actor disablement; secret redaction; backup and
+restoration; and encryption-key rotation.
 
 ## Test layers
 
