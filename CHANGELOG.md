@@ -4,6 +4,12 @@
 
 ### Added
 
+- Made the actionable `FINAL RESULT` the terminal output line for migrated validation commands, including the primary failing check and cause on failure.
+- Added meaningful validation failure reporting with primary-cause extraction, per-check logs, deduplicated cascades, skipped-dependent checks, and final report paths.
+- Added repository-managed, version-pinned `govulncheck` invoked through `go tool`, removing workstation PATH dependence.
+- Revalidated the frozen HTTP login checkpoint from its exact signed predecessor commit instead of running historical assertions against successor documentation.
+- Added the Phase 1 Step 3 authenticated server-side session candidate with digest-only PostgreSQL persistence, secure opaque cookies, current governed actor re-resolution, assurance metadata for future MFA, hostile and race tests, synchronized documentation, and an implementation phase gate.
+
 - Added the Phase 1 Step 3 HTTP login and callback candidate with secure host-only browser state binding, exact callback parsing, issuer checks, provider-error cancellation, verified-principal handoff, hostile and race tests, synchronized documentation, and an implementation phase gate.
 - Replaced the mandatory Iron Atlas roadmap with a preserved-history Phase 0–12 core sequence covering evidence protection, operating-system-based Cisco normalization, FortiGate, BloodHound identity context, cross-source intelligence, change decisions, interface completion, read-only collection, production recovery, and controlled-pilot acceptance.
 - Added a planned phase-and-gate map that preserves existing validators, defines contract, implementation, integration, and acceptance gates, and keeps optional integration modules outside core operational acceptance.

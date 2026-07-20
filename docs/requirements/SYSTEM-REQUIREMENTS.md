@@ -54,6 +54,9 @@
 - `IA-AUTH-014`: Resolved actor identity shall remain immutable in server-side request context and transaction-local in PostgreSQL.
 - `IA-AUTH-015`: Provider, external-identity, actor, role-binding, and session changes shall have bounded invalidation behavior.
 - `IA-AUTH-016`: No adapter, provider claim, proxy, session, service, or administrator shall create an unrestricted execution context or propagate authority across boundaries.
+- `IA-AUTH-017`: Atlas shall normalize authentication assurance independently of provider roles and govern accepted `acr`, `amr`, `auth_time`, MFA age, role-sensitive policy, and step-up requirements without treating missing or ambiguous assurance as successful MFA.
+- `IA-AUTH-018`: Production authentication shall offer a phishing-resistant MFA option for high-impact authority. WebAuthn, FIDO2, passkeys, or hardware security keys are preferred; RFC 6238 TOTP may be supported as a compatible fallback.
+- `IA-AUTH-019`: Atlas-local TOTP, when implemented, shall use encrypted per-authenticator secrets, enrollment proof, replay and rate-limit controls, one-time recovery codes, governed reset, encryption-key rotation, durable audit evidence, and no silent administrator bypass.
 
 ## Change Management
 
@@ -90,6 +93,8 @@
 - `IA-VAL-009`: Security-sensitive candidates shall receive adversarial, fail-closed, secret-handling, recovery, and applicable concurrency testing.
 - `IA-VAL-010`: Multiple bounded workstreams may proceed in isolated branches or worktrees with no more than one active acceptance candidate per workstream.
 - `IA-VAL-011`: Adoption of external engineering standards or validators shall occur through a visible, reviewable project change and shall not silently alter Atlas.
+- `IA-VAL-012`: Top-level validation shall produce a meaningful final report containing the primary failure, command, exit status, cause, retained log path, additional unique failures, cascaded failures, and skipped dependent checks.
+- `IA-VAL-013`: The last line emitted by a top-level validation command shall be an actionable `FINAL RESULT` containing the result and, on failure, the primary failing check and extracted cause.
 
 ## Firewall
 

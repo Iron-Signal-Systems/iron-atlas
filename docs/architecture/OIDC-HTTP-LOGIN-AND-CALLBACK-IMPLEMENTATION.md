@@ -2,15 +2,16 @@
 
 ## Status
 
-Phase 1 Step 3 bounded implementation candidate.
+Phase 1 Step 3 merged bounded implementation predecessor.
 
 The OIDC discovery, ID-token verification, authorization-code exchange, state,
 nonce, and PKCE transaction components are merged predecessors. This checkpoint
 adds the browser-facing HTTP login and callback boundary and a verified-principal
 handoff seam.
 
-This checkpoint is not a durable authenticated-session implementation and is
-not formal Phase 1 Step 3 acceptance.
+The successor authenticated-session candidate now consumes this checkpoint's
+verified-principal seam. This HTTP checkpoint remains deliberately separate and
+is not formal Phase 1 Step 3 acceptance.
 
 ## Accepted working base
 

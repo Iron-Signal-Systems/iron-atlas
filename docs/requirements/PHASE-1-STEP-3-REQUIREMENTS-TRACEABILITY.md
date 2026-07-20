@@ -2,14 +2,14 @@
 
 ## Status
 
-Phase 1 Step 3 contract integrated. Authentication foundation, governed actor resolution, OIDC ID-token verification, and authorization-code with PKCE checkpoints are merged. The HTTP login and callback boundary is the active bounded candidate; no durable authenticated session, CSRF, trusted-proxy, or production authentication is accepted by this record.
+Phase 1 Step 3 contract integrated. Authentication foundation, governed actor resolution, OIDC ID-token verification, authorization-code with PKCE, and HTTP login and callback checkpoints are merged. The authenticated server-side session is the active bounded candidate; no session lifecycle, MFA enforcement, local TOTP, CSRF, trusted-proxy, or production authentication is accepted by this record.
 
 ## Accepted predecessor
 
 - Tag:
   `phase-1-step-2-go-postgresql-runtime-and-identity-context-complete-v1`
 - Active implementation base:
-  `36394c917a7c60350f229fc80df2066a0c132681`
+  `6c912428a90b125f1b826729593e11ed914c12e9`
 - Preserved invariant: authenticated actor context remains transaction-local in
   PostgreSQL and cannot leak across pooled connections.
 
@@ -33,6 +33,9 @@ Phase 1 Step 3 contract integrated. Authentication foundation, governed actor re
 | `IA-AUTH-014` | Immutable and transaction-local actor | Context and PostgreSQL | Step 2 regression |
 | `IA-AUTH-015` | Bounded lifecycle effects | Invalidation policy | Concurrent change tests |
 | `IA-AUTH-016` | No unrestricted context | Boundary enforcement | Confused-deputy tests |
+| `IA-AUTH-017` | Provider-neutral assurance and step-up | Assurance policy | Missing, ambiguous, downgrade, age, and step-up tests |
+| `IA-AUTH-018` | Phishing-resistant MFA option with TOTP fallback | Provider and authenticator policy | WebAuthn/FIDO2 and RFC 6238 compatibility tests |
+| `IA-AUTH-019` | Governed Atlas-local TOTP lifecycle | Encrypted authenticator service | Enrollment, replay, throttling, recovery, reset, and key-rotation tests |
 
 ## Existing governed schema
 
@@ -76,6 +79,32 @@ rotation, idle or absolute expiry, logout, administrative revocation, CSRF,
 trusted proxies, production application wiring, authentication audit
 persistence, representative-provider compatibility, or formal Step 3
 acceptance.
+
+## Authenticated-session implementation status
+
+The active candidate partially implements `IA-AUTH-002`, `IA-AUTH-005`,
+`IA-AUTH-006`, `IA-AUTH-008`, `IA-AUTH-010`, `IA-AUTH-013`, `IA-AUTH-015`, and
+`IA-AUTH-016`.
+
+It proves opaque cryptographic browser identifiers, SHA-256 digest-only
+persistence, controlled PostgreSQL creation and lookup, secure host-only cookie
+attributes, exact cookie cardinality, fixed idle and absolute validity bounds,
+current governed actor and role re-resolution, actor-remapping rejection,
+least-privileged table isolation, assurance metadata retention, generic failure
+classification, concurrent lookup, and database-outage behavior.
+
+It does not prove sliding activity refresh, bounded session-count or cleanup
+policy, session rotation, logout, administrative revocation workflow, CSRF,
+trusted proxies, production wiring,
+authentication audit persistence, MFA enforcement, local TOTP, representative-
+provider compatibility, or formal Step 3 acceptance.
+
+The planned successor checkpoints explicitly include authentication assurance
+and MFA policy followed by TOTP enrollment, verification, and recovery. The
+assurance gate governs provider-supplied `acr`, `amr`, `auth_time`, MFA age, and
+step-up policy. The local TOTP gate governs encrypted secrets, compatible
+applications, enrollment, replay prevention, throttling, recovery codes, reset,
+and audit evidence.
 
 ## Required hostile classes
 

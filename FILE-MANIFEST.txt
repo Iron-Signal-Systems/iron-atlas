@@ -62,6 +62,7 @@ docs/acceptance/PHASE-1-STEP-2-ACCEPTANCE-RECORD.md
 docs/acceptance/PHASE-1-STEP-3-ACCEPTANCE-RECORD-TEMPLATE.md
 docs/acceptance/README.md
 docs/acceptance/evidence/.gitkeep
+docs/architecture/AUTHENTICATED-SERVER-SIDE-SESSION-IMPLEMENTATION.md
 docs/architecture/BLOODHOUND-AND-IDENTITY-ATTACK-GRAPH-INTEGRATION.md
 docs/architecture/CHANGE-MANAGEMENT-AND-TWO-PERSON-CONTROL.md
 docs/architecture/CISCO-COLLECTION-PROFILE-CATALOG.md
@@ -120,6 +121,7 @@ docs/testing/GO-POSTGRESQL-RUNTIME-INTEGRATION-TESTING.md
 docs/testing/POSTGRESQL-DISPOSABLE-DATABASE-TESTING.md
 docs/testing/TESTING-AND-ADVERSARIAL-VALIDATION-MODEL.md
 docs/testing/TRUSTED-AUTHENTICATION-AND-GOVERNED-ACTOR-RESOLUTION-TESTING.md
+docs/testing/VALIDATION-FAILURE-REPORTING.md
 go.mod
 go.sum
 integrations/README.md
@@ -128,6 +130,7 @@ integrations/zabbix/sender.go
 integrations/zabbix/sender_test.go
 internal/app/app.go
 internal/app/app_test.go
+internal/authentication/assurance_test.go
 internal/authentication/authentication.go
 internal/authentication/authentication_test.go
 internal/authentication/oidc/authorization_code.go
@@ -140,6 +143,11 @@ internal/authentication/oidc/verifier_test.go
 internal/authentication/postgresql/resolver.go
 internal/authentication/postgresql/resolver_integration_test.go
 internal/authentication/postgresql/resolver_test.go
+internal/authentication/session/postgresql/store.go
+internal/authentication/session/postgresql/store_integration_test.go
+internal/authentication/session/postgresql/store_test.go
+internal/authentication/session/session.go
+internal/authentication/session/session_test.go
 internal/authz/authz.go
 internal/authz/authz_test.go
 internal/change/change.go
@@ -229,7 +237,9 @@ sql/schema/migrations/004_governed_changes.sql
 sql/schema/migrations/005_change_approvals.sql
 sql/schema/migrations/006_append_only_history.sql
 sql/schema/migrations/007_governed_actor_resolution.sql
+sql/schema/migrations/008_authenticated_session.sql
 test-framework/README.md
+test-framework/authentication/test_phase1_step3_authenticated_session.sh
 test-framework/authentication/test_phase1_step3_authentication_foundation.sh
 test-framework/authentication/test_phase1_step3_contract.sh
 test-framework/authentication/test_phase1_step3_governed_actor_resolution.sh
@@ -242,6 +252,7 @@ test-framework/phase-gates/test_isolated_gate_revalidation.sh
 test-framework/portability/test_portable_validation.sh
 test-framework/run_all.sh
 test-framework/test-results/.gitkeep
+test-framework/validation/test_validation_reporting.sh
 tools/database/apply_migrations.sh
 tools/environment/Bootstrap-GoTools.ps1
 tools/environment/Bootstrap-Tools.ps1
@@ -275,6 +286,7 @@ tools/validation/Validate-FreshClone.ps1
 tools/validation/Validate-Portable.ps1
 tools/validation/checkpoints.json
 tools/validation/lib/isolated_gate_revalidation.sh
+tools/validation/lib/reporting.sh
 tools/validation/phase-gates/README.md
 tools/validation/phase-gates/validate_phase0_acceptance.sh
 tools/validation/phase-gates/validate_phase0_step1.sh
@@ -282,6 +294,7 @@ tools/validation/phase-gates/validate_phase1_step1.sh
 tools/validation/phase-gates/validate_phase1_step1_acceptance.sh
 tools/validation/phase-gates/validate_phase1_step2.sh
 tools/validation/phase-gates/validate_phase1_step2_acceptance.sh
+tools/validation/phase-gates/validate_phase1_step3_authenticated_session.sh
 tools/validation/phase-gates/validate_phase1_step3_authentication_foundation.sh
 tools/validation/phase-gates/validate_phase1_step3_contract.sh
 tools/validation/phase-gates/validate_phase1_step3_governed_actor_resolution.sh
@@ -299,6 +312,7 @@ tools/validation/validate_docs.py
 tools/validation/validate_fresh_clone.sh
 tools/validation/validate_go_postgresql_runtime.py
 tools/validation/validate_migrations.py
+tools/validation/validate_phase1_step3_authenticated_session.py
 tools/validation/validate_phase1_step3_authentication_foundation.py
 tools/validation/validate_phase1_step3_contract.py
 tools/validation/validate_phase1_step3_governed_actor_resolution.py
@@ -311,6 +325,7 @@ tools/validation/validate_repository.sh
 tools/validation/validate_source_checksums.py
 tools/validation/validate_sql_static.py
 tools/validation/validate_toolchain.py
+tools/validation/validate_validation_reporting.py
 tools/validation/verify_canonical_clone.sh
 validation/README.md
 validation/evidence/README.md

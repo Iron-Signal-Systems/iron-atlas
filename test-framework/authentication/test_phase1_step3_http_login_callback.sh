@@ -29,7 +29,7 @@ check   "HTTP login and callback go vet"   go vet ./internal/authentication/oidc
 
 check   "HTTP login and callback dependency module verification"   go mod verify
 
-check   "HTTP login and callback dependency vulnerability analysis"   govulncheck ./internal/authentication/oidc
+check   "HTTP login and callback dependency vulnerability analysis"   go tool govulncheck ./internal/authentication/oidc
 
 check   "HTTP login and callback phase-gate shell syntax"   bash -n tools/validation/phase-gates/validate_phase1_step3_http_login_callback.sh
 

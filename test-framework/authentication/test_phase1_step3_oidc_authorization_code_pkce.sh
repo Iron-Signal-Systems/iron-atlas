@@ -41,7 +41,7 @@ check \
 
 check \
   "OIDC authorization-code dependency vulnerability analysis" \
-  govulncheck ./internal/authentication/oidc
+  go tool govulncheck ./internal/authentication/oidc
 
 check \
   "OIDC authorization-code phase-gate shell syntax" \

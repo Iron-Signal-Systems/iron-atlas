@@ -57,7 +57,9 @@ def setup():
       ('no-role', 'No Role Actor', 'HUMAN', 'ACTIVE', NULL),
       ('expired-role', 'Expired Role Actor', 'HUMAN', 'ACTIVE', NULL),
       ('inactive-role', 'Inactive Role Actor', 'HUMAN', 'ACTIVE', NULL),
-      ('unknown-role', 'Unknown Role Actor', 'HUMAN', 'ACTIVE', NULL)
+      ('unknown-role', 'Unknown Role Actor', 'HUMAN', 'ACTIVE', NULL),
+      ('remap-source', 'Remap Source Actor', 'HUMAN', 'ACTIVE', NULL),
+      ('remap-target', 'Remap Target Actor', 'HUMAN', 'ACTIVE', NULL)
     ON CONFLICT DO NOTHING;
 
     INSERT INTO atlas.external_identity(
@@ -71,7 +73,8 @@ def setup():
       ('expired-role', 'dev', 'subject-expired-role'),
       ('inactive-role', 'dev', 'subject-inactive-role'),
       ('unknown-role', 'dev', 'subject-unknown-role'),
-      ('unauthorized', 'inactive-provider', 'subject-inactive-provider')
+      ('unauthorized', 'inactive-provider', 'subject-inactive-provider'),
+      ('remap-source', 'dev', 'subject-remap')
     ON CONFLICT DO NOTHING;
 
     INSERT INTO atlas.role_definition(
@@ -122,7 +125,36 @@ def assert_eq(actual, expected, name):
 def main():
     setup()
     count = sql("SELECT count(*) FROM atlas.schema_migration;").stdout.strip()
-    assert_eq(count, "7", "seven migrations recorded")
+    assert_eq(count, "8", "eight migrations recorded")
+
+    session_digest = "decode(repeat('ab', 32), 'hex')"
+    created_session = sql(
+        "SELECT count(*) FROM atlas.create_authenticated_session("
+        f"{session_digest}, 'dev', 'subject-remap', 'remap-source', "
+        "transaction_timestamp(), 1800, 28800, NULL, ARRAY[]::text[], "
+        "false, NULL, 'phase-1-step-3-session-v1');",
+        user="atlas_application",
+    ).stdout.strip()
+    assert_eq(created_session, "1", "session created before identity remap")
+
+    active_session = sql(
+        "SELECT count(*) FROM atlas.authenticate_session("
+        f"{session_digest});",
+        user="atlas_application",
+    ).stdout.strip()
+    assert_eq(active_session, "1", "session authenticates before identity remap")
+
+    sql(
+        "SET ROLE atlas_schema_owner; "
+        "UPDATE atlas.external_identity SET actor_id='remap-target' "
+        "WHERE provider_id='dev' AND provider_subject='subject-remap';"
+    )
+    remapped_session = sql(
+        "SELECT count(*) FROM atlas.authenticate_session("
+        f"{session_digest});",
+        user="atlas_application",
+    ).stdout.strip()
+    assert_eq(remapped_session, "0", "identity remap invalidates existing session")
 
     resolved = sql(
         """

@@ -31,10 +31,20 @@ var (
 	ErrIdentityResolutionFailed  = errors.New("actor resolution failed")
 )
 
+type Assurance struct {
+	Context               string
+	Methods               []string
+	MFAAuthenticated      bool
+	MFAAuthenticatedAt    time.Time
+	SecurityPolicyVersion string
+}
+
 type Principal struct {
 	ProviderID      string
 	Subject         string
 	AuthenticatedAt time.Time
+	BoundActorID    string
+	Assurance       Assurance
 }
 
 type ResolvedIdentity struct {
@@ -304,6 +314,57 @@ func (m *Middleware) productionIdentity(
 	return identity, nil
 }
 
+func (a Assurance) Validate() error {
+	if a.Context != "" {
+		if a.Context != strings.TrimSpace(a.Context) {
+			return errors.New("authentication assurance context is not normalized")
+		}
+		if err := validateBoundedIdentifier(
+			"authentication assurance context",
+			a.Context,
+			256,
+		); err != nil {
+			return err
+		}
+	}
+	if len(a.Methods) > 16 {
+		return errors.New("authentication assurance has too many methods")
+	}
+	seen := make(map[string]struct{}, len(a.Methods))
+	for _, method := range a.Methods {
+		if method != strings.TrimSpace(method) {
+			return errors.New("authentication assurance method is not normalized")
+		}
+		if err := validateBoundedIdentifier(
+			"authentication assurance method",
+			method,
+			64,
+		); err != nil {
+			return err
+		}
+		if _, duplicate := seen[method]; duplicate {
+			return errors.New("authentication assurance method is duplicated")
+		}
+		seen[method] = struct{}{}
+	}
+	if a.MFAAuthenticated != !a.MFAAuthenticatedAt.IsZero() {
+		return errors.New("MFA assurance and authentication time are inconsistent")
+	}
+	if a.SecurityPolicyVersion != "" {
+		if a.SecurityPolicyVersion != strings.TrimSpace(a.SecurityPolicyVersion) {
+			return errors.New("authentication security policy version is not normalized")
+		}
+		if err := validateBoundedIdentifier(
+			"authentication security policy version",
+			a.SecurityPolicyVersion,
+			128,
+		); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
 func (p Principal) Validate() error {
 	if err := validateBoundedIdentifier("provider ID", p.ProviderID, 256); err != nil {
 		return err
@@ -313,6 +374,17 @@ func (p Principal) Validate() error {
 	}
 	if p.AuthenticatedAt.IsZero() {
 		return errors.New("authentication time is required")
+	}
+	if p.BoundActorID != "" {
+		if p.BoundActorID != strings.TrimSpace(p.BoundActorID) {
+			return errors.New("session-bound actor identifier is not normalized")
+		}
+		if err := validateBoundedIdentifier("session-bound actor ID", p.BoundActorID, 256); err != nil {
+			return err
+		}
+	}
+	if err := p.Assurance.Validate(); err != nil {
+		return err
 	}
 	return nil
 }
@@ -324,6 +396,9 @@ func (i ResolvedIdentity) Validate() error {
 	if err := validateActor(i.Actor); err != nil {
 		return err
 	}
+	if i.Principal.BoundActorID != "" && i.Principal.BoundActorID != i.Actor.ID {
+		return errors.New("session-bound actor does not match current governed actor")
+	}
 	return nil
 }
 
@@ -334,6 +409,7 @@ func ResolvedIdentityFromContext(
 	if !ok {
 		return ResolvedIdentity{}, false
 	}
+	identity.Principal = clonePrincipal(identity.Principal)
 	identity.Actor = cloneActor(identity.Actor)
 	return identity, true
 }
@@ -358,6 +434,7 @@ func withIdentity(
 	ctx context.Context,
 	identity ResolvedIdentity,
 ) context.Context {
+	identity.Principal = clonePrincipal(identity.Principal)
 	identity.Actor = cloneActor(identity.Actor)
 	return context.WithValue(ctx, identityContextKey{}, identity)
 }
@@ -470,6 +547,15 @@ func validateBoundedIdentifier(
 		return fmt.Errorf("%s contains a control character", name)
 	}
 	return nil
+}
+
+func clonePrincipal(principal Principal) Principal {
+	cloned := principal
+	cloned.Assurance.Methods = append(
+		[]string(nil),
+		principal.Assurance.Methods...,
+	)
+	return cloned
 }
 
 func cloneActor(actor authz.Actor) authz.Actor {
