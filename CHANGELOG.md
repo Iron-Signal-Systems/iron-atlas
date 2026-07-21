@@ -77,6 +77,7 @@
 
 ### Security
 
+- Upgraded the indirect `golang.org/x/text` dependency to `v0.39.0` to remediate `GO-2026-5970` reported by hosted vulnerability validation.
 - FortiGate YAML fails closed on oversized or excessive input, aliases, anchors, custom tags, duplicate keys, multiple documents, unsupported scalar forms, and normalized-record or finding limit violations.
 - Upload-safe semantic output uses fixed allowlists and fallback classifications so source-derived labels, names, values, paths, and finding details cannot be reflected into retained logs.
 
