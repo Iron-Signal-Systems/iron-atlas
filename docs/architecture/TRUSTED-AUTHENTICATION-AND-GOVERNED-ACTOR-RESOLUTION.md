@@ -2,7 +2,7 @@
 
 ## Status
 
-Phase 1 Step 3 normative contract integrated. Authentication foundation, governed actor resolution, OIDC ID-token verification, authorization-code with PKCE, HTTP login and callback, and authenticated server-side session checkpoints are merged; authentication assurance is the active bounded implementation candidate.
+Phase 1 Step 3 normative contract integrated. Authentication foundation, governed actor resolution, OIDC ID-token verification, authorization-code with PKCE, HTTP login and callback, authenticated server-side session, and authentication-assurance checkpoints are merged. Architecture and roadmap alignment is the active bounded documentation candidate; formal Step 3 acceptance remains future work.
 
 This document defines the production-authentication and governed
 actor-resolution boundary. It does not claim that a production identity
@@ -102,8 +102,8 @@ The active session checkpoint adds:
 The service remains deliberately unwired from `atlasd`. Sliding activity
 refresh, bounded session-count and cleanup policy, rotation, logout,
 administrative revocation workflow, CSRF, trusted proxies, production wiring,
-audit persistence, MFA enforcement, and local TOTP remain separate successor
-boundaries.
+audit persistence, completed lifecycle behavior, representative-provider
+compatibility, and production wiring remain separate successor boundaries.
 
 ## Authentication assurance implementation checkpoint
 
@@ -113,26 +113,24 @@ Only a satisfied decision may reach authenticated-session creation. Unsatisfied,
 
 The callback boundary also retains the exact issuer validated at construction and rejects conflicting provider error and session metadata.
 
-The assurance checkpoint remains deliberately unwired from `atlasd`. Local TOTP, QR enrollment, recovery codes, WebAuthn, session lifecycle completion, CSRF, trusted proxies, production wiring, and formal Step 3 acceptance remain successor boundaries.
+The assurance checkpoint remains deliberately unwired from `atlasd`. Provider-managed MFA compatibility, representative-provider validation, session lifecycle completion, logout and administrative revocation, CSRF, trusted proxies, emergency access governance, production wiring, and formal Step 3 acceptance remain successor boundaries.
 
 ## Authentication assurance and MFA roadmap
 
-Atlas shall primarily consume MFA assurance from the configured OIDC provider.
-The assurance checkpoint will normalize and govern `acr`, `amr`, `auth_time`,
-MFA age, role-sensitive policy, and step-up authentication without treating
-provider roles or groups as Atlas authority.
+User primary authentication and MFA occur at an approved external OIDC
+provider. Atlas normalizes and governs `acr`, `amr`, `auth_time`, MFA age,
+role-sensitive policy, and step-up authentication without treating provider
+roles or groups as Atlas authority.
 
 Phishing-resistant WebAuthn, FIDO2, passkeys, or hardware security keys are the
-preferred high-impact authenticators. RFC 6238 TOTP is a supported compatibility
-fallback for Google Authenticator, 1Password, Aegis, FreeOTP, and similar
-applications.
+preferred high-impact provider authenticators. Provider-managed RFC 6238 TOTP
+may be accepted only through an exact versioned Atlas assurance policy.
 
-Atlas-local TOTP is a distinct planned gate. It must include encrypted
-shared-secret storage, enrollment proof, replay prevention, attempt and source
-rate limiting, recovery-code hashing and one-time use, reset separation of
-duties, encryption-key rotation, durable audit evidence, and fail-closed actor
-lifecycle behavior. SMS, security questions, and silent administrator bypass
-are not normal MFA or recovery mechanisms.
+Atlas does not store user passwords or provider TOTP seeds, generate provider
+MFA QR codes, or implement ordinary local recovery codes. Representative
+provider compatibility, session lifecycle, CSRF, trusted proxy, production
+wiring, and governed emergency access remain successor gates. See
+`docs/security/MFA-AND-AUTHENTICATION-ASSURANCE-REQUIREMENTS.md`.
 
 ## Terminology
 

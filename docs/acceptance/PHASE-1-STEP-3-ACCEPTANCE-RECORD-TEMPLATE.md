@@ -24,7 +24,9 @@
 - HTTP login and callback checkpoint:
 - Authenticated server-side session checkpoint:
 - Authentication assurance and MFA checkpoint:
-- Local TOTP checkpoint, when included:
+- Representative-provider compatibility checkpoint:
+- Session lifecycle and revocation checkpoint:
+- Emergency and recovery access checkpoint:
 - Repository-complete evidence boundary commit:
 - Candidate Git archive SHA-256:
 - Toolchain requirements SHA-256:
@@ -44,7 +46,8 @@
 - Bounded server-side sessions:
 - Cookie security:
 - Authentication assurance and MFA policy:
-- Local TOTP enrollment and recovery policy, when included:
+- Provider-owned MFA assurance and compatibility:
+- Emergency and recovery access policy:
 - CSRF:
 - Trusted proxy:
 - Audit and redaction:
@@ -79,8 +82,9 @@
 - Cleanup and resource bounds:
 - Authentication context and methods:
 - MFA age and step-up policy:
-- Preferred phishing-resistant authenticators:
-- TOTP compatibility and recovery, when included:
+- Preferred phishing-resistant provider authenticators:
+- Provider-managed TOTP compatibility, when permitted:
+- Emergency and recovery access:
 
 ## Trusted Proxy Profile
 
@@ -161,4 +165,4 @@ State the next Phase 1 boundary without combining it into this acceptance.
 - Callback issuer and metadata hardening:
 - Unsatisfied-assurance no-cookie evidence:
 - Concurrent and hostile validation:
-- Explicit TOTP and production nonclaims:
+- Explicit provider compatibility and production nonclaims:

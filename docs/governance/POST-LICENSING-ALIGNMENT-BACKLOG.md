@@ -1,10 +1,11 @@
 # Post-Licensing Architecture and Roadmap Alignment Backlog
 
-> Status: Governed next-work register
+> Status: Implemented by architecture and roadmap alignment candidate
 >
-> This document records deferred discussion decisions. It does not implement
-> them and does not expand the Business Source License transition PR into a
-> runtime or architecture rewrite.
+> This document preserves the discussion-derived source requirements. The
+> normative implementation is recorded in the linked architecture, security,
+> roadmap, testing, acceptance, and governance artifacts. Runtime implementation
+> remains future bounded work.
 
 ## Sequence
 
@@ -139,3 +140,15 @@ bounded work for:
 6. production application wiring;
 7. emergency and recovery access controls; and
 8. formal Phase 1 Step 3 acceptance preparation.
+
+## Alignment implementation map
+
+- Authentication: `docs/security/MFA-AND-AUTHENTICATION-ASSURANCE-REQUIREMENTS.md`
+- Module containment: `docs/architecture/MODULE-RUNTIME-AND-FAILURE-CONTAINMENT-MODEL.md`
+- Scheduled ingestion: `docs/architecture/SCHEDULED-EVIDENCE-INGESTION-MODEL.md`
+- Freshness: `docs/architecture/MONITORING-ALERTING-AND-EVIDENCE-FRESHNESS-MODEL.md`
+- Atomic acceptance: `docs/architecture/EVIDENCE-CANDIDATE-AND-ATOMIC-ACCEPTANCE-MODEL.md`
+- IFI boundary: `docs/architecture/ATLAS-IFI-SNAPSHOT-INTEGRATION-CONTRACT.md`
+- Adversarial invariants: `docs/security/FAIL-CLOSED-AND-ADVERSARIAL-INVARIANT-MODEL.md`
+- Signed merge closure: `docs/governance/SIGNED-CANDIDATE-AND-POST-MERGE-BOUNDARY-MODEL.md`
+- Decision record: `docs/governance/ARCHITECTURE-AND-ROADMAP-ALIGNMENT-RECORD.md`

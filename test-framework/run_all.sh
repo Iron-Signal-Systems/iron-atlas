@@ -21,16 +21,17 @@ run() {
     validation_run "$@" || true
 }
 
-revalidate_http_checkpoint() {
-    isolated_gate_revalidate         "$repo_root"         "6c912428a90b125f1b826729593e11ed914c12e9"         "tools/validation/phase-gates/validate_phase1_step3_http_login_callback.sh"
-}
-
-revalidate_session_checkpoint() {
-    isolated_gate_revalidate         "$repo_root"         "e4ae9de5a5757d1a53c04f0b17163919bc688b04"         "tools/validation/phase-gates/validate_phase1_step3_authenticated_session.sh"
+revalidate_authentication_assurance_checkpoint() {
+    isolated_gate_revalidate \
+        "$repo_root" \
+        "cc93fdd2311ca188ad03b0bd94293156ff243973" \
+        "tools/validation/phase-gates/validate_phase1_step3_authentication_assurance.sh"
 }
 
 run "Business Source License 1.1 static validation" python3 tools/validation/validate_licensing.py
 run "Business Source License 1.1 regression" ./test-framework/governance/test_business_source_license_transition.sh
+run "architecture and roadmap alignment static validation" python3 tools/validation/validate_architecture_roadmap_alignment.py
+run "architecture and roadmap alignment regression" ./test-framework/governance/test_architecture_roadmap_alignment.sh
 run "go format check" bash -c 'test -z "$(gofmt -l cmd internal modules integrations)"'
 run "go module verification" go mod verify
 run "go vet" go vet ./...
@@ -38,30 +39,7 @@ run "go test" go test -race ./...
 run "migration static validation" python3 tools/validation/validate_migrations.py
 run "database security static validation" python3 tools/validation/validate_sql_static.py
 run "Go PostgreSQL runtime static validation" python3 tools/validation/validate_go_postgresql_runtime.py
-run "Phase 1 Step 3 contract static validation" python3 tools/validation/validate_phase1_step3_contract.py
-run "Phase 1 Step 3 contract regression" ./test-framework/authentication/test_phase1_step3_contract.sh
-run "Phase 1 Step 3 authentication foundation static validation" python3 tools/validation/validate_phase1_step3_authentication_foundation.py
-run "Phase 1 Step 3 authentication foundation regression" ./test-framework/authentication/test_phase1_step3_authentication_foundation.sh
-run "Phase 1 Step 3 governed actor resolution static validation" python3 tools/validation/validate_phase1_step3_governed_actor_resolution.py
-run "Phase 1 Step 3 governed actor resolution regression" ./test-framework/authentication/test_phase1_step3_governed_actor_resolution.sh
-run "Phase 1 Step 3 OIDC ID-token verification static validation" python3 tools/validation/validate_phase1_step3_oidc_id_token_verification.py
-run "Phase 1 Step 3 OIDC ID-token verification regression" ./test-framework/authentication/test_phase1_step3_oidc_id_token_verification.sh
-run "Phase 1 Step 3 OIDC authorization-code and PKCE static validation" python3 tools/validation/validate_phase1_step3_oidc_authorization_code_pkce.py
-run "Phase 1 Step 3 OIDC authorization-code and PKCE regression" ./test-framework/authentication/test_phase1_step3_oidc_authorization_code_pkce.sh
-if [[ "${IRON_ATLAS_HTTP_PREDECESSOR_ALREADY_VALIDATED:-0}" == "1" ]]; then
-    validation_skip         "Phase 1 Step 3 HTTP login and callback predecessor revalidation"         "already validated by the calling phase gate"
-else
-    run         "Phase 1 Step 3 HTTP login and callback predecessor revalidation"         revalidate_http_checkpoint
-fi
-run "Phase 1 Step 3 authenticated-session static validation" python3 tools/validation/validate_phase1_step3_authenticated_session.py
-run "Phase 1 Step 3 authenticated-session regression" ./test-framework/authentication/test_phase1_step3_authenticated_session.sh
-if [[ "${IRON_ATLAS_SESSION_PREDECESSOR_ALREADY_VALIDATED:-0}" == "1" ]]; then
-    validation_skip         "Phase 1 Step 3 authenticated-session predecessor revalidation"         "already validated by the calling phase gate"
-else
-    run         "Phase 1 Step 3 authenticated-session predecessor revalidation"         revalidate_session_checkpoint
-fi
-run "Phase 1 Step 3 authentication-assurance static validation" python3 tools/validation/validate_phase1_step3_authentication_assurance.py
-run "Phase 1 Step 3 authentication-assurance regression" ./test-framework/authentication/test_phase1_step3_authentication_assurance.sh
+run "Phase 1 Step 3 authentication-assurance checkpoint revalidation" revalidate_authentication_assurance_checkpoint
 run "validation reporting static validation" python3 tools/validation/validate_validation_reporting.py
 run "validation reporting regression" ./test-framework/validation/test_validation_reporting.sh
 run "phase-gate exit propagation" ./test-framework/phase-gates/test_isolated_gate_revalidation.sh

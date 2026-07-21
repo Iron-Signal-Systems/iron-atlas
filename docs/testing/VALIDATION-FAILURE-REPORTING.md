@@ -44,6 +44,16 @@ Every migrated top-level validation runner shall finish with:
 Dependent checks shall not run after a required predecessor fails merely to
 reproduce the same error through additional validation layers.
 
+## Nested terminal result precedence
+
+When a validation check executes another migrated validation runner, the caller
+shall prefer the nested runner's final `FINAL RESULT: FAIL` cause over earlier
+`ERROR:` or `FAIL:` lines in the nested log.
+
+This prevents intentional failure fixtures inside successful subordinate
+regression tests from being misidentified as the actual failure of the nested
+runner.
+
 ## Historical checkpoints
 
 Frozen historical validators run in an isolated clone at their exact

@@ -41,3 +41,11 @@ Record CPU, memory, I/O, database, evidence size, parser duration, command durat
 Applicable tests must run from a clean canonical repository clone. Test dependencies are either version-controlled, pinned and integrity-verifiable, or declared in `validation/toolchain-requirements.json`. Database tests create disposable clusters through repository scripts and do not depend on a workstation PostgreSQL service.
 
 Mutable local `latest` output is diagnostic. Any result deliberately retained for a phase or acceptance decision must be sanitized, checksummed, validated, and committed under `validation/evidence/`.
+
+## Architecture-alignment adversarial coverage
+
+Future implementation gates apply fail-closed testing across module containment, scheduled ingestion, freshness propagation, candidate validation, atomic acceptance, and Atlas–IFI snapshot import.
+
+Required cases include panic containment, cancellation, saturation, retry exhaustion, outage, stale/conflicting evidence, partial publication, concurrent acceptance, stale candidate rejection, unknown IFI signer, digest mismatch, wrong audience or scope, replay, oversized snapshots, and cross-source lineage.
+
+Authentication testing uses approved external-provider assurance, representative-provider compatibility, step-up, session lifecycle, CSRF, trusted proxy, emergency access, and no Atlas-local password or TOTP-secret ownership. Correctness remains separate from resource observations.

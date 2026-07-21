@@ -2,7 +2,7 @@
 
 ## Status
 
-Phase 1 Step 3 contract integrated. Authentication foundation, governed actor resolution, OIDC ID-token verification, authorization-code with PKCE, HTTP login and callback, and authenticated server-side session checkpoints are merged. Authentication assurance is the active bounded candidate; no local TOTP, completed session lifecycle, CSRF, trusted-proxy, or production authentication is accepted by this record.
+Phase 1 Step 3 contract integrated. Authentication foundation, governed actor resolution, OIDC ID-token verification, authorization-code with PKCE, HTTP login and callback, authenticated server-side session, and authentication-assurance checkpoints are merged. Architecture and roadmap alignment is the active bounded documentation candidate; completed session lifecycle, representative-provider compatibility, CSRF, trusted-proxy, emergency access, production wiring, and formal Step 3 acceptance remain incomplete.
 
 ## Accepted predecessor
 
@@ -34,8 +34,8 @@ Phase 1 Step 3 contract integrated. Authentication foundation, governed actor re
 | `IA-AUTH-015` | Bounded lifecycle effects | Invalidation policy | Concurrent change tests |
 | `IA-AUTH-016` | No unrestricted context | Boundary enforcement | Confused-deputy tests |
 | `IA-AUTH-017` | Provider-neutral assurance and step-up | Assurance policy | Missing, ambiguous, downgrade, age, and step-up tests |
-| `IA-AUTH-018` | Phishing-resistant MFA option with TOTP fallback | Provider and authenticator policy | WebAuthn/FIDO2 and RFC 6238 compatibility tests |
-| `IA-AUTH-019` | Governed Atlas-local TOTP lifecycle | Encrypted authenticator service | Enrollment, replay, throttling, recovery, reset, and key-rotation tests |
+| `IA-AUTH-018` | Provider-owned MFA with phishing-resistant high-impact policy | Versioned Atlas assurance policy over approved OIDC evidence | WebAuthn/FIDO2/passkey and provider-managed TOTP assurance tests |
+| `IA-AUTH-019` | Representative-provider compatibility and governed recovery boundary | Versioned provider profiles, session policy, and emergency-access contract | Representative-provider compatibility, step-up, outage, revocation, and break-glass tests |
 
 ## Existing governed schema
 
@@ -86,7 +86,7 @@ The active candidate partially implements `IA-AUTH-002`, `IA-AUTH-005`, `IA-AUTH
 
 It proves bounded `acr`, `amr`, and `auth_time` normalization, duplicate and malformed assurance rejection, explicit versioned provider-MFA policy, role-sensitive phishing-resistant outcomes, maximum authentication age, generic additional-authentication responses, no session handoff for unsatisfied assurance, and exact policy-version and MFA enforcement in the server-side session boundary.
 
-It does not prove Atlas-local TOTP, QR enrollment, recovery codes, WebAuthn, session rotation, logout, administrative revocation workflow, CSRF, trusted proxies, production wiring, representative-provider compatibility, formal Step 3 acceptance, or production readiness.
+It does not prove representative-provider compatibility, provider-hosted WebAuthn or TOTP behavior, session rotation, logout, administrative revocation workflow, CSRF, trusted proxies, emergency access, production wiring, formal Step 3 acceptance, or production readiness.
 
 ## Authenticated-session implementation status
 
@@ -104,15 +104,15 @@ classification, concurrent lookup, and database-outage behavior.
 It does not prove sliding activity refresh, bounded session-count or cleanup
 policy, session rotation, logout, administrative revocation workflow, CSRF,
 trusted proxies, production wiring,
-authentication audit persistence, MFA enforcement, local TOTP, representative-
+authentication audit persistence, completed assurance integration, representative-
 provider compatibility, or formal Step 3 acceptance.
 
-The planned successor checkpoints explicitly include authentication assurance
-and MFA policy followed by TOTP enrollment, verification, and recovery. The
-assurance gate governs provider-supplied `acr`, `amr`, `auth_time`, MFA age, and
-step-up policy. The local TOTP gate governs encrypted secrets, compatible
-applications, enrollment, replay prevention, throttling, recovery codes, reset,
-and audit evidence.
+The authentication-assurance checkpoint governs provider-supplied `acr`,
+`amr`, `auth_time`, MFA age, phishing-resistant policy, and step-up behavior.
+Successor checkpoints cover representative-provider compatibility, session
+lifecycle, logout and administrative revocation, CSRF, trusted proxies,
+production wiring, and governed emergency access. Atlas does not own user
+passwords, provider TOTP seeds, QR enrollment, or ordinary recovery codes.
 
 ## Required hostile classes
 

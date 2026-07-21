@@ -57,6 +57,16 @@ validation__extract_cause() {
     local cause
 
     cause="$(
+        grep '^FINAL RESULT: FAIL — ' "$log" | tail -n 1 || true
+    )"
+    if [[ -n "$cause" ]]; then
+        cause="${cause#FINAL RESULT: FAIL — }"
+        cause="${cause#* — }"
+        printf '%s\n' "$cause"
+        return 0
+    fi
+
+    cause="$(
         awk '
             /^[[:space:]]*$/ { next }
             /^== .* ==$/ { next }

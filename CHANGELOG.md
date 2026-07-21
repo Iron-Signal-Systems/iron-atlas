@@ -4,6 +4,9 @@
 
 ### Added
 
+- Added the architecture and roadmap alignment candidate defining module runtime failure containment, scheduled evidence ingestion, monitoring and freshness, immutable candidates and atomic acceptance, signed purpose-limited Atlas–IFI snapshots, fail-closed adversarial invariants, external-provider MFA requirements, and signed candidate/post-merge repository trust.
+- Added an alignment record preserving historical Phase 0, Phase 1 Steps 1 and 2, and existing Step 3 checkpoints without relabeling them as formal acceptance.
+
 - Added the Phase 1 Step 3 authentication-assurance candidate with bounded OIDC `acr`, `amr`, and `auth_time` normalization, explicit provider-MFA and phishing-resistant policy, stale-authentication step-up, callback hardening, mandatory MFA and policy-version binding before session persistence, synchronized documentation, hostile tests, and an implementation phase gate.
 - Made the actionable `FINAL RESULT` the terminal output line for migrated validation commands, including the primary failing check and cause on failure.
 - Added meaningful validation failure reporting with primary-cause extraction, per-check logs, deduplicated cascades, skipped-dependent checks, and final report paths.
@@ -46,6 +49,9 @@
 
 ### Changed
 
+- Removed Atlas-local password, TOTP-secret, QR-enrollment, and ordinary recovery-code ownership from the required authentication roadmap; successor work now begins with representative provider compatibility followed by session lifecycle, CSRF, trusted proxy, production wiring, governed emergency access, integration, and formal Step 3 acceptance.
+- Synchronized README, architecture, requirements, testing, roadmap, gates, acceptance, governance, and validation around the signed BUSL boundary.
+
 - Prospectively transitioned Iron Atlas from BSD 3-Clause to Business Source License 1.1 (`BUSL-1.1`) from the signed `cc93fdd` predecessor, with no Additional Use Grant, a 2030-07-18 Change Date, AGPLv3-only Change License, preserved historical BSD text, explicit trademark separation, machine-readable validation, and a governed post-licensing alignment backlog.
 - Corrected future authentication direction so Atlas consumes and enforces approved external-provider MFA assurance rather than implementing local password or TOTP credential ownership.
 
@@ -86,6 +92,8 @@
 - Recorded the exact candidate commit, deterministic Git archive hash, validation evidence, limitations, security assumptions, temporary single-maintainer development exception, and exact Phase 1 Step 2 work.
 
 ### Fixed
+
+- Corrected nested validation cause extraction so a subordinate runner's terminal `FINAL RESULT: FAIL` takes precedence over earlier intentional error fixtures, and synchronized reporting validation with exact authentication-assurance checkpoint revalidation.
 
 - Repaired confirmed Fortinet-generated invalid YAML adjacent multi-value fragments and restricted literal object-name keys while leaving ordinary valid YAML unchanged and broader malformed YAML fail-closed.
 - Repaired admission of native FortiGate YAML backups whose root does not use the prototype's synthetic `global` or `vdom` wrapper.

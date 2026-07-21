@@ -3,6 +3,14 @@ set -Eeuo pipefail
 
 repo_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 cd "$repo_root"
+source "$repo_root/tools/validation/lib/isolated_gate_revalidation.sh"
+
+revalidate_authentication_assurance_checkpoint() {
+  isolated_gate_revalidate \
+    "$repo_root" \
+    "cc93fdd2311ca188ad03b0bd94293156ff243973" \
+    "tools/validation/phase-gates/validate_phase1_step3_authentication_assurance.sh"
+}
 
 skip_go=false
 skip_database=false
@@ -34,6 +42,15 @@ required=(
   docs/architecture/GO-POSTGRESQL-RUNTIME-AND-IDENTITY-CONTEXT.md
   docs/architecture/TRUSTED-AUTHENTICATION-AND-GOVERNED-ACTOR-RESOLUTION.md
   docs/architecture/AUTHENTICATION-ASSURANCE-IMPLEMENTATION.md
+  docs/architecture/MODULE-RUNTIME-AND-FAILURE-CONTAINMENT-MODEL.md
+  docs/architecture/SCHEDULED-EVIDENCE-INGESTION-MODEL.md
+  docs/architecture/MONITORING-ALERTING-AND-EVIDENCE-FRESHNESS-MODEL.md
+  docs/architecture/EVIDENCE-CANDIDATE-AND-ATOMIC-ACCEPTANCE-MODEL.md
+  docs/architecture/ATLAS-IFI-SNAPSHOT-INTEGRATION-CONTRACT.md
+  docs/security/FAIL-CLOSED-AND-ADVERSARIAL-INVARIANT-MODEL.md
+  docs/security/MFA-AND-AUTHENTICATION-ASSURANCE-REQUIREMENTS.md
+  docs/governance/SIGNED-CANDIDATE-AND-POST-MERGE-BOUNDARY-MODEL.md
+  docs/governance/ARCHITECTURE-AND-ROADMAP-ALIGNMENT-RECORD.md
   docs/architecture/PORTABLE-VALIDATION-AND-CANONICAL-REPOSITORY-ACCEPTANCE.md
   docs/decisions/ADR-0004-PGX-POSTGRESQL-RUNTIME-DRIVER.md
   docs/decisions/ADR-0005-CANONICAL-REPOSITORY-REPRODUCIBILITY.md
@@ -75,6 +92,7 @@ required=(
   tools/validation/validate_phase1_step3_oidc_authorization_code_pkce.py
   tools/validation/validate_phase1_step3_authentication_assurance.py
   tools/validation/validate_licensing.py
+  tools/validation/validate_architecture_roadmap_alignment.py
   tools/validation/validate_portable_acceptance.py
   tools/validation/validate_committed_evidence.py
   tools/validation/validate_toolchain.py
@@ -89,7 +107,9 @@ required=(
   tools/validation/phase-gates/validate_phase1_step3_oidc_authorization_code_pkce.sh
   tools/validation/phase-gates/validate_phase1_step3_authentication_assurance.sh
   tools/validation/phase-gates/validate_business_source_license_transition.sh
+  tools/validation/phase-gates/validate_architecture_roadmap_alignment.sh
   test-framework/governance/test_business_source_license_transition.sh
+  test-framework/governance/test_architecture_roadmap_alignment.sh
   test-framework/authentication/test_phase1_step3_contract.sh
   test-framework/authentication/test_phase1_step3_authentication_foundation.sh
   test-framework/authentication/test_phase1_step3_governed_actor_resolution.sh
@@ -107,13 +127,9 @@ check "Markdown links" python3 tools/validation/validate_docs.py
 check "migration contract" python3 tools/validation/validate_migrations.py
 check "database security static contract" python3 tools/validation/validate_sql_static.py
 check "Go PostgreSQL runtime static contract" python3 tools/validation/validate_go_postgresql_runtime.py
-check "Phase 1 Step 3 contract" python3 tools/validation/validate_phase1_step3_contract.py
-check "Phase 1 Step 3 authentication foundation" python3 tools/validation/validate_phase1_step3_authentication_foundation.py
-check "Phase 1 Step 3 governed actor resolution" python3 tools/validation/validate_phase1_step3_governed_actor_resolution.py
-check "Phase 1 Step 3 OIDC ID-token verification" python3 tools/validation/validate_phase1_step3_oidc_id_token_verification.py
-check "Phase 1 Step 3 OIDC authorization-code and PKCE" python3 tools/validation/validate_phase1_step3_oidc_authorization_code_pkce.py
-check "Phase 1 Step 3 authentication assurance" python3 tools/validation/validate_phase1_step3_authentication_assurance.py
+check "Phase 1 Step 3 authentication-assurance checkpoint revalidation" revalidate_authentication_assurance_checkpoint
 check "Business Source License 1.1 transition" python3 tools/validation/validate_licensing.py
+check "architecture and roadmap alignment" python3 tools/validation/validate_architecture_roadmap_alignment.py
 check "portable acceptance static contract" python3 tools/validation/validate_portable_acceptance.py
 check "committed validation evidence" python3 tools/validation/validate_committed_evidence.py
 check "Draw.io XML" python3 -c 'import xml.etree.ElementTree as ET; ET.parse("diagrams/source/curated/architecture/ARCH-001-iron-atlas-context.drawio")'
