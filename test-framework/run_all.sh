@@ -32,6 +32,8 @@ run "Business Source License 1.1 static validation" python3 tools/validation/val
 run "Business Source License 1.1 regression" ./test-framework/governance/test_business_source_license_transition.sh
 run "architecture and roadmap alignment static validation" python3 tools/validation/validate_architecture_roadmap_alignment.py
 run "architecture and roadmap alignment regression" ./test-framework/governance/test_architecture_roadmap_alignment.sh
+run "provider-neutral assurance-evidence static validation" python3 tools/validation/validate_phase1_step3_provider_neutral_assurance_evidence.py
+run "provider-neutral assurance-evidence regression" ./test-framework/authentication/test_phase1_step3_provider_neutral_assurance_evidence.sh
 run "go format check" bash -c 'test -z "$(gofmt -l cmd internal modules integrations)"'
 run "go module verification" go mod verify
 run "go vet" go vet ./...

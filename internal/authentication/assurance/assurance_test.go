@@ -58,7 +58,7 @@ func TestPolicyAcceptsExplicitProviderMFA(t *testing.T) {
 	actor := authz.Actor{ID: "actor-123", Roles: []authz.Role{authz.RoleNetworkTech}}
 	for name, principal := range map[string]authentication.Principal{
 		"accepted context":    testPrincipal(now, "urn:example:acr:mfa", "pwd"),
-		"accepted method set": testPrincipal(now, "", "otp", "pwd", "provider-extra"),
+		"accepted method set": testPrincipal(now, "", "otp", "pwd"),
 	} {
 		t.Run(name, func(t *testing.T) {
 			decision := testPolicy(t).Evaluate(principal, actor, now)
@@ -329,5 +329,23 @@ func TestServiceConcurrentEvaluation(t *testing.T) {
 	}
 	if downstream.count() != attempts {
 		t.Fatalf("downstream calls = %d", downstream.count())
+	}
+}
+
+func TestPolicyRejectsUngovernedAdditionalMethod(t *testing.T) {
+	now := time.Date(2026, 7, 21, 15, 0, 0, 0, time.UTC)
+	actor := authz.Actor{ID: "actor-123", Roles: []authz.Role{authz.RoleNetworkTech}}
+	principal := testPrincipal(
+		now,
+		"",
+		"pwd",
+		"otp",
+		"provider-extra",
+	)
+
+	decision := testPolicy(t).Evaluate(principal, actor, now)
+	if decision.Outcome != OutcomeAdditionalAuthenticationRequired ||
+		decision.ReasonCode != ReasonMFARequired {
+		t.Fatalf("decision = %#v", decision)
 	}
 }

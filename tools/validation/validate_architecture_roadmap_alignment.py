@@ -118,9 +118,11 @@ check(
     and BOUNDARY in files["backlog"],
 )
 check(
-    "roadmap records accepted alignment and next checkpoint",
+    "roadmap records accepted alignment and active provider-neutral checkpoint",
     BOUNDARY in files["roadmap"]
-    and "representative-provider compatibility is the next planned bounded"
+    and "provider-neutral assurance evidence is the active bounded"
+    in norm(files["roadmap"])
+    and "representative-provider compatibility remains a future evidence-backed"
     in norm(files["roadmap"]),
 )
 check(
@@ -133,9 +135,11 @@ check(
     "validate_phase1_step3_authentication_assurance.sh" in files["gates"],
 )
 check(
-    "phase gate plan identifies provider compatibility next",
-    "validate_phase1_step3_representative_provider_compatibility.sh"
+    "phase gate plan identifies active provider-neutral checkpoint",
+    "validate_phase1_step3_provider_neutral_assurance_evidence.sh"
     in files["gates"]
+    and "representative-provider compatibility remains planned"
+    in norm(files["gates"])
     and BOUNDARY in files["gates"],
 )
 check(

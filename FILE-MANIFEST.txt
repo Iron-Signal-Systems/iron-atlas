@@ -94,6 +94,7 @@ docs/architecture/POSTGRESQL-DATABASE-SECURITY-BOUNDARY.md
 docs/architecture/POSTGRESQL-GOVERNED-ACTOR-RESOLUTION-IMPLEMENTATION.md
 docs/architecture/POSTGRESQL-MIGRATION-AND-OWNERSHIP-MODEL.md
 docs/architecture/PROJECT-AND-PORTFOLIO-TRACKING.md
+docs/architecture/PROVIDER-NEUTRAL-OIDC-ASSURANCE-EVIDENCE.md
 docs/architecture/QUERY-REACHABILITY-AND-CHANGE-IMPACT-MODEL.md
 docs/architecture/RBAC-ROLE-AND-AUTHORITY-CATALOG.md
 docs/architecture/SCHEDULED-EVIDENCE-INGESTION-MODEL.md
@@ -136,6 +137,7 @@ docs/security/FAIL-CLOSED-AND-ADVERSARIAL-INVARIANT-MODEL.md
 docs/security/MFA-AND-AUTHENTICATION-ASSURANCE-REQUIREMENTS.md
 docs/testing/GO-POSTGRESQL-RUNTIME-INTEGRATION-TESTING.md
 docs/testing/POSTGRESQL-DISPOSABLE-DATABASE-TESTING.md
+docs/testing/PROVIDER-NEUTRAL-OIDC-ASSURANCE-EVIDENCE-TESTING.md
 docs/testing/TESTING-AND-ADVERSARIAL-VALIDATION-MODEL.md
 docs/testing/TRUSTED-AUTHENTICATION-AND-GOVERNED-ACTOR-RESOLUTION-TESTING.md
 docs/testing/VALIDATION-FAILURE-REPORTING.md
@@ -267,6 +269,7 @@ test-framework/authentication/test_phase1_step3_governed_actor_resolution.sh
 test-framework/authentication/test_phase1_step3_http_login_callback.sh
 test-framework/authentication/test_phase1_step3_oidc_authorization_code_pkce.sh
 test-framework/authentication/test_phase1_step3_oidc_id_token_verification.sh
+test-framework/authentication/test_phase1_step3_provider_neutral_assurance_evidence.sh
 test-framework/database/run_disposable_postgres.sh
 test-framework/database/test_database.py
 test-framework/governance/test_architecture_roadmap_alignment.sh
@@ -327,6 +330,7 @@ tools/validation/phase-gates/validate_phase1_step3_governed_actor_resolution.sh
 tools/validation/phase-gates/validate_phase1_step3_http_login_callback.sh
 tools/validation/phase-gates/validate_phase1_step3_oidc_authorization_code_pkce.sh
 tools/validation/phase-gates/validate_phase1_step3_oidc_id_token_verification.sh
+tools/validation/phase-gates/validate_phase1_step3_provider_neutral_assurance_evidence.sh
 tools/validation/record_validation_evidence.sh
 tools/validation/redact_validation_text.py
 tools/validation/regenerate_manifests.py
@@ -348,6 +352,7 @@ tools/validation/validate_phase1_step3_governed_actor_resolution.py
 tools/validation/validate_phase1_step3_http_login_callback.py
 tools/validation/validate_phase1_step3_oidc_authorization_code_pkce.py
 tools/validation/validate_phase1_step3_oidc_id_token_verification.py
+tools/validation/validate_phase1_step3_provider_neutral_assurance_evidence.py
 tools/validation/validate_portable.sh
 tools/validation/validate_portable_acceptance.py
 tools/validation/validate_repository.sh

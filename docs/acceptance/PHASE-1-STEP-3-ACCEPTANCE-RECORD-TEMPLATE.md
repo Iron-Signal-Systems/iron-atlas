@@ -24,6 +24,7 @@
 - HTTP login and callback checkpoint:
 - Authenticated server-side session checkpoint:
 - Authentication assurance and MFA checkpoint:
+- Provider-neutral assurance-evidence checkpoint:
 - Representative-provider compatibility checkpoint:
 - Session lifecycle and revocation checkpoint:
 - Emergency and recovery access checkpoint:
@@ -166,3 +167,14 @@ State the next Phase 1 boundary without combining it into this acceptance.
 - Unsatisfied-assurance no-cookie evidence:
 - Concurrent and hostile validation:
 - Explicit provider compatibility and production nonclaims:
+
+## Provider-neutral assurance-evidence checkpoint
+
+- Exact signed implementation base:
+- Atlas-controlled provider-emulator evidence:
+- Successful-login-without-MFA result:
+- `acr` or `amr` without `auth_time` rejection:
+- Exact method-set enforcement:
+- Unknown and additional method rejection:
+- Stale-authentication step-up result:
+- Named-provider compatibility explicitly not claimed:
