@@ -100,6 +100,10 @@ the latest Step 3 implementation chain is revalidated at
 `cc93fdd2311ca188ad03b0bd94293156ff243973`. Historical validators are not weakened to accept
 successor claims.
 
+The architecture and roadmap alignment is accepted at signed boundary
+`12569192da89a1a34f4ebfe107c4d02c60cbdb09`. The next planned trusted-authentication implementation gate is
+`validate_phase1_step3_representative_provider_compatibility.sh`.
+
 ---
 
 ## Phase 0 — Repository and Executable Baseline

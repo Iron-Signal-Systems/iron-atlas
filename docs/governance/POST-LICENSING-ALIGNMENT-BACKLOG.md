@@ -1,6 +1,6 @@
 # Post-Licensing Architecture and Roadmap Alignment Backlog
 
-> Status: Implemented by architecture and roadmap alignment candidate
+> Status: Implemented and accepted by architecture and roadmap alignment boundary `12569192da89a1a34f4ebfe107c4d02c60cbdb09`
 >
 > This document preserves the discussion-derived source requirements. The
 > normative implementation is recorded in the linked architecture, security,

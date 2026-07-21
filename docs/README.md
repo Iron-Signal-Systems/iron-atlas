@@ -2,7 +2,7 @@
 
 > Owner: Iron Signal Systems
 >
-> Status: Active non-production development; accepted and candidate boundaries are described in the roadmap and acceptance records
+> Status: Active non-production development; architecture and roadmap alignment is accepted at signed boundary `12569192da89a1a34f4ebfe107c4d02c60cbdb09`; representative-provider compatibility is the next planned bounded Phase 1 Step 3 checkpoint
 
 ## Start Here
 

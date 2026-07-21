@@ -49,6 +49,8 @@
 
 ### Changed
 
+- Accepted the architecture and roadmap alignment as a documentation and governance boundary at signed commit `12569192da89a1a34f4ebfe107c4d02c60cbdb09`, with PR #17, merge commit `5de9e1f5f9770f12b56a046dc735b769cc842a02`, and successful validate, Portable validation, and ISRAS hosted runs recorded in the alignment evidence.
+
 - Removed Atlas-local password, TOTP-secret, QR-enrollment, and ordinary recovery-code ownership from the required authentication roadmap; successor work now begins with representative provider compatibility followed by session lifecycle, CSRF, trusted proxy, production wiring, governed emergency access, integration, and formal Step 3 acceptance.
 - Synchronized README, architecture, requirements, testing, roadmap, gates, acceptance, governance, and validation around the signed BUSL boundary.
 

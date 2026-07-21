@@ -2,7 +2,9 @@
 
 ## Status
 
-Implementation candidate based on signed BUSL boundary:
+Accepted documentation and governance boundary.
+
+The alignment was implemented from the signed BUSL boundary:
 
 ```text
 a0ab1ad19cf48ba11d97b3a9e87acd7b68e1eb60
@@ -12,6 +14,33 @@ establish SSH-signed post-merge validation boundary for Business Source License 
 ## Decision
 
 This alignment converts the post-licensing discussion register into normative architecture, security, authentication, roadmap, gate, testing, acceptance, and repository-governance direction without changing runtime code or database schema.
+
+## Acceptance chain
+
+| Boundary | Exact evidence |
+|---|---|
+| Signed implementation base | `a0ab1ad19cf48ba11d97b3a9e87acd7b68e1eb60` |
+| SSH-signed candidate | `7bc37a94cfaff76976cb0bcc742a838df4564ca2` |
+| Pull request | `#17` — align Atlas architecture authentication and roadmap |
+| GitHub merge commit | `5de9e1f5f9770f12b56a046dc735b769cc842a02` |
+| SSH-signed post-merge boundary | `12569192da89a1a34f4ebfe107c4d02c60cbdb09` |
+
+PR #17 merged into `dev` on 2026-07-21 at 00:56:27 UTC.
+
+## Hosted signed-boundary validation
+
+All required hosted workflows ran against the exact signed boundary
+`12569192da89a1a34f4ebfe107c4d02c60cbdb09` beginning at 2026-07-21 01:08:11 UTC:
+
+| Workflow | Run ID | Event | Conclusion |
+|---|---:|---|---|
+| `validate` | `29792297812` | `push` | `success` |
+| `Portable validation` | `29792297864` | `push` | `success` |
+| `ISRAS Validation` | `29792298042` | `push` | `success` |
+
+This evidence closes the architecture and roadmap alignment as an accepted
+documentation and governance boundary. It does not accept runtime
+implementation or a product phase.
 
 ## Historical preservation
 
@@ -27,7 +56,7 @@ Atlas relies on approved external OIDC providers for primary authentication and 
 
 ## Architecture artifacts
 
-This candidate adds module runtime/failure containment, scheduled ingestion, evidence freshness, atomic acceptance, Atlas–IFI signed snapshot integration, fail-closed adversarial invariants, provider-owned MFA requirements, and signed candidate/post-merge trust governance.
+This accepted alignment adds module runtime/failure containment, scheduled ingestion, evidence freshness, atomic acceptance, Atlas–IFI signed snapshot integration, fail-closed adversarial invariants, provider-owned MFA requirements, and signed candidate/post-merge trust governance.
 
 ## Phase 1 Step 3 successor order
 
