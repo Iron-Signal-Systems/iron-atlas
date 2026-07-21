@@ -73,3 +73,5 @@ A local phase gate is necessary but not sufficient for acceptance. The exact pus
   trademark separation, the governed post-licensing alignment backlog, the
   complete test framework, and repository synchronization. It does not alter
   runtime behavior, provide legal advice, or establish production readiness.
+
+- `validate_architecture_roadmap_alignment.sh` — documentation and governance alignment gate based on the signed BUSL boundary. It verifies historical phase preservation, external-provider MFA direction, module containment, scheduled ingestion, freshness, atomic acceptance, Atlas–IFI separation, adversarial invariants, signed post-merge governance, the complete test framework, and repository synchronization. It does not alter runtime code or schema and is not formal Phase 1 Step 3 or Phase 2 acceptance.

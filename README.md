@@ -8,7 +8,7 @@
 >
 > Built on purpose. Backed by discipline. Engineered to endure.
 >
-> Development status: Phase 1 Step 2 is accepted; Phase 1 Step 3 trusted-authentication work remains an active non-production candidate; infrastructure ingestion and intelligence capabilities are under active development; not ready for production use
+> Development status: Phase 1 Step 2 is accepted; Phase 1 Step 3 authentication assurance is merged as a non-production implementation checkpoint; architecture and roadmap alignment is the active bounded candidate; infrastructure ingestion and intelligence capabilities remain under active development; not ready for production use
 > Repository assurance: ISRAS 0.1.4 adoption and canonical Atlas branding are an active candidate; the previously recorded 1.0.1 boundary remains historical until separate acceptance.
 > Repository license: Business Source License 1.1 (`BUSL-1.1`); non-production use is permitted, while production use before the applicable change event requires a separate commercial license.
 
@@ -164,6 +164,12 @@ Start with:
 - [Solo-developer operating model](docs/engineering/SOLO-DEVELOPER-OPERATING-MODEL.md)
 - [Atlas primary-focus execution plan](docs/roadmap/ATLAS-PRIMARY-FOCUS-EXECUTION-PLAN.md)
 - [Phased implementation roadmap](docs/roadmap/IMPLEMENTATION-ROADMAP.md)
+- [Module runtime and failure containment](docs/architecture/MODULE-RUNTIME-AND-FAILURE-CONTAINMENT-MODEL.md)
+- [Scheduled evidence ingestion](docs/architecture/SCHEDULED-EVIDENCE-INGESTION-MODEL.md)
+- [Evidence freshness](docs/architecture/MONITORING-ALERTING-AND-EVIDENCE-FRESHNESS-MODEL.md)
+- [Atomic evidence acceptance](docs/architecture/EVIDENCE-CANDIDATE-AND-ATOMIC-ACCEPTANCE-MODEL.md)
+- [Atlas–IFI snapshot integration](docs/architecture/ATLAS-IFI-SNAPSHOT-INTEGRATION-CONTRACT.md)
+- [MFA and authentication assurance](docs/security/MFA-AND-AUTHENTICATION-ASSURANCE-REQUIREMENTS.md)
 
 ## Security Boundary
 

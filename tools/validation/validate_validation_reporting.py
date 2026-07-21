@@ -53,7 +53,8 @@ run_all = require(
     [
         'source "$repo_root/tools/validation/lib/reporting.sh"',
         "isolated_gate_revalidate",
-        "IRON_ATLAS_HTTP_PREDECESSOR_ALREADY_VALIDATED",
+        "revalidate_authentication_assurance_checkpoint",
+        "cc93fdd2311ca188ad03b0bd94293156ff243973",
         "validation_report_finish",
         "validation reporting static validation",
         "validation reporting regression",
@@ -96,6 +97,8 @@ require(
     [
         "ERROR: exact root cause",
         "Exit status: 7",
+        "FAIL: exact nested cause",
+        "nested runner",
         "SKIPPED DEPENDENT CHECKS",
         "FINAL RESULT: PASS",
     ],
@@ -151,6 +154,7 @@ require(
         "Skipped dependent checks",
         "repository-managed Go tools",
         "isolated clone",
+        "Nested terminal result precedence",
     ],
 )
 

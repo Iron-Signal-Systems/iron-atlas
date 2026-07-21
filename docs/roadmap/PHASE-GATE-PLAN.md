@@ -93,6 +93,13 @@ validate_module_<name>_acceptance.sh
 
 Historical gate names remain unchanged.
 
+When successor documentation intentionally changes roadmap direction, frozen
+checkpoint validators that assert the historical wording are re-run in an
+isolated clone at their exact accepted or signed checkpoint. For this alignment,
+the latest Step 3 implementation chain is revalidated at
+`cc93fdd2311ca188ad03b0bd94293156ff243973`. Historical validators are not weakened to accept
+successor claims.
+
 ---
 
 ## Phase 0 — Repository and Executable Baseline
@@ -121,22 +128,22 @@ Preserve all existing checkpoint and acceptance validators:
 - `validate_phase1_step3_oidc_authorization_code_pkce.sh`
 - `validate_phase1_step3_http_login_callback.sh`
 - `validate_phase1_step3_authenticated_session.sh`
+- `validate_phase1_step3_authentication_assurance.sh`
 
 ### Remaining trusted-authentication checkpoints
 
 Planned gates:
 
-- `validate_phase1_step3_authentication_assurance.sh`
-- `validate_phase1_step3_totp_enrollment_verification_recovery.sh`
+- `validate_phase1_step3_representative_provider_compatibility.sh`
 - `validate_phase1_step3_session_rotation_expiry_logout.sh`
 - `validate_phase1_step3_csrf_protection.sh`
 - `validate_phase1_step3_trusted_proxy_boundary.sh`
 - `validate_phase1_step3_production_authenticator_wiring.sh`
-- `validate_phase1_step3_representative_provider_compatibility.sh`
+- `validate_phase1_step3_emergency_and_recovery_access.sh`
 - `validate_phase1_step3_integration.sh`
 - `validate_phase1_step3_acceptance.sh`
 
-The authenticated-session checkpoint is merged. The active implementation candidate is `validate_phase1_step3_authentication_assurance.sh`. The TOTP name remains a roadmap commitment only; its executable validator is not created until that boundary becomes active. Later listed validators remain planned.
+The authentication-assurance checkpoint is merged and remains an implementation checkpoint rather than formal Step 3 acceptance. Atlas relies on approved external OIDC providers for primary authentication and MFA; no Atlas-local TOTP gate is planned. The listed representative-provider, session-lifecycle, CSRF, trusted-proxy, production-wiring, emergency-access, integration, and acceptance validators remain planned.
 
 The Step 3 integration boundary proves:
 

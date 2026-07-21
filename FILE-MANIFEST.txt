@@ -63,6 +63,7 @@ docs/acceptance/PHASE-1-STEP-2-ACCEPTANCE-RECORD.md
 docs/acceptance/PHASE-1-STEP-3-ACCEPTANCE-RECORD-TEMPLATE.md
 docs/acceptance/README.md
 docs/acceptance/evidence/.gitkeep
+docs/architecture/ATLAS-IFI-SNAPSHOT-INTEGRATION-CONTRACT.md
 docs/architecture/AUTHENTICATED-SERVER-SIDE-SESSION-IMPLEMENTATION.md
 docs/architecture/AUTHENTICATION-ASSURANCE-IMPLEMENTATION.md
 docs/architecture/BLOODHOUND-AND-IDENTITY-ATTACK-GRAPH-INTEGRATION.md
@@ -72,6 +73,7 @@ docs/architecture/CISCO-EVIDENCE-COLLECTION-AND-PREVENTIVE-HEALTH.md
 docs/architecture/CISCO-NPS-RADIUS-SERVICE-AUTHENTICATION.md
 docs/architecture/CISCO-TRUNK-AND-ENDPOINT-ATTRIBUTION.md
 docs/architecture/DATA-AND-RECORD-MODEL.md
+docs/architecture/EVIDENCE-CANDIDATE-AND-ATOMIC-ACCEPTANCE-MODEL.md
 docs/architecture/EVIDENCE-INGESTION-AND-PROTECTION.md
 docs/architecture/EXTERNAL-SYSTEM-INDEPENDENT-TELEMETRY.md
 docs/architecture/FIREWALL-CONFIGURATION-SEMANTIC-ANALYSIS.md
@@ -81,6 +83,8 @@ docs/architecture/GO-POSTGRESQL-RUNTIME-AND-IDENTITY-CONTEXT.md
 docs/architecture/HTML5-INTERFACE-AND-ROLE-WORKSPACES.md
 docs/architecture/MINIMAL-ARCH-LINUX-DEPLOYMENT.md
 docs/architecture/MODULARITY-AND-DEPENDENCY-DIRECTION.md
+docs/architecture/MODULE-RUNTIME-AND-FAILURE-CONTAINMENT-MODEL.md
+docs/architecture/MONITORING-ALERTING-AND-EVIDENCE-FRESHNESS-MODEL.md
 docs/architecture/OIDC-AUTHORIZATION-CODE-AND-PKCE-TRANSACTION-IMPLEMENTATION.md
 docs/architecture/OIDC-HTTP-LOGIN-AND-CALLBACK-IMPLEMENTATION.md
 docs/architecture/OIDC-ID-TOKEN-VERIFICATION-IMPLEMENTATION.md
@@ -92,6 +96,7 @@ docs/architecture/POSTGRESQL-MIGRATION-AND-OWNERSHIP-MODEL.md
 docs/architecture/PROJECT-AND-PORTFOLIO-TRACKING.md
 docs/architecture/QUERY-REACHABILITY-AND-CHANGE-IMPACT-MODEL.md
 docs/architecture/RBAC-ROLE-AND-AUTHORITY-CATALOG.md
+docs/architecture/SCHEDULED-EVIDENCE-INGESTION-MODEL.md
 docs/architecture/TARGET-ARCHITECTURE.md
 docs/architecture/TOPOLOGY-AND-DRAWIO-GOVERNANCE.md
 docs/architecture/TRUSTED-AUTHENTICATION-AND-GOVERNED-ACTOR-RESOLUTION.md
@@ -112,9 +117,11 @@ docs/engineering/secure-development-lifecycle.md
 docs/engineering/validation-environment-model.md
 docs/goals/PRODUCT-VISION-AND-OPERATING-MINDSET.md
 docs/goals/PROJECT-MISSION.md
+docs/governance/ARCHITECTURE-AND-ROADMAP-ALIGNMENT-RECORD.md
 docs/governance/LICENSING-STATUS.md
 docs/governance/LICENSING-TRANSITION-RECORD.md
 docs/governance/POST-LICENSING-ALIGNMENT-BACKLOG.md
+docs/governance/SIGNED-CANDIDATE-AND-POST-MERGE-BOUNDARY-MODEL.md
 docs/governance/TRADEMARK-AND-BRANDING-POLICY.md
 docs/operations/CANONICAL-CLEAN-CLONE-VALIDATION.md
 docs/operations/REPOSITORY-CREATION-AND-FIRST-PUSH.md
@@ -125,6 +132,8 @@ docs/requirements/SYSTEM-REQUIREMENTS.md
 docs/roadmap/ATLAS-PRIMARY-FOCUS-EXECUTION-PLAN.md
 docs/roadmap/IMPLEMENTATION-ROADMAP.md
 docs/roadmap/PHASE-GATE-PLAN.md
+docs/security/FAIL-CLOSED-AND-ADVERSARIAL-INVARIANT-MODEL.md
+docs/security/MFA-AND-AUTHENTICATION-ASSURANCE-REQUIREMENTS.md
 docs/testing/GO-POSTGRESQL-RUNTIME-INTEGRATION-TESTING.md
 docs/testing/POSTGRESQL-DISPOSABLE-DATABASE-TESTING.md
 docs/testing/TESTING-AND-ADVERSARIAL-VALIDATION-MODEL.md
@@ -260,6 +269,7 @@ test-framework/authentication/test_phase1_step3_oidc_authorization_code_pkce.sh
 test-framework/authentication/test_phase1_step3_oidc_id_token_verification.sh
 test-framework/database/run_disposable_postgres.sh
 test-framework/database/test_database.py
+test-framework/governance/test_architecture_roadmap_alignment.sh
 test-framework/governance/test_business_source_license_transition.sh
 test-framework/phase-gates/test_isolated_gate_revalidation.sh
 test-framework/portability/test_portable_validation.sh
@@ -301,6 +311,7 @@ tools/validation/checkpoints.json
 tools/validation/lib/isolated_gate_revalidation.sh
 tools/validation/lib/reporting.sh
 tools/validation/phase-gates/README.md
+tools/validation/phase-gates/validate_architecture_roadmap_alignment.sh
 tools/validation/phase-gates/validate_business_source_license_transition.sh
 tools/validation/phase-gates/validate_phase0_acceptance.sh
 tools/validation/phase-gates/validate_phase0_step1.sh
@@ -319,6 +330,7 @@ tools/validation/phase-gates/validate_phase1_step3_oidc_id_token_verification.sh
 tools/validation/record_validation_evidence.sh
 tools/validation/redact_validation_text.py
 tools/validation/regenerate_manifests.py
+tools/validation/validate_architecture_roadmap_alignment.py
 tools/validation/validate_canonical.sh
 tools/validation/validate_checkpoint.sh
 tools/validation/validate_committed_evidence.py

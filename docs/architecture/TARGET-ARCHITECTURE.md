@@ -212,3 +212,9 @@ External systems retain responsibility for their mature operational functions. A
 - Atlas does not silently modify infrastructure.
 - Future writes require a separately accepted, previewable, attributable, bounded, approval-aware, and validated boundary.
 - Passing self-validation does not create independent review.
+
+## Alignment contracts
+
+The target architecture requires bounded module runtime ownership and failure containment; scheduled evidence ingestion with overlap control; separate health, readiness, and freshness; immutable candidates and atomic acceptance; signed purpose-limited Atlas–IFI snapshots with no shared database or credentials; fail-closed adversarial invariants; approved external-provider MFA without Atlas-local passwords or TOTP seeds; and SSH-signed candidate and post-merge repository boundaries.
+
+The normative contracts are indexed in `docs/README.md`.

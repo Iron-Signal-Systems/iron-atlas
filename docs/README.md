@@ -52,6 +52,11 @@
 - [Minimal Arch Linux deployment](architecture/MINIMAL-ARCH-LINUX-DEPLOYMENT.md)
 - [Verification, validation, and acceptance](architecture/VERIFICATION-VALIDATION-AND-ACCEPTANCE.md)
 - [Portable validation and canonical repository acceptance](architecture/PORTABLE-VALIDATION-AND-CANONICAL-REPOSITORY-ACCEPTANCE.md)
+- [Module runtime and failure containment](architecture/MODULE-RUNTIME-AND-FAILURE-CONTAINMENT-MODEL.md)
+- [Scheduled evidence ingestion](architecture/SCHEDULED-EVIDENCE-INGESTION-MODEL.md)
+- [Monitoring, alerting, and evidence freshness](architecture/MONITORING-ALERTING-AND-EVIDENCE-FRESHNESS-MODEL.md)
+- [Evidence candidate and atomic acceptance](architecture/EVIDENCE-CANDIDATE-AND-ATOMIC-ACCEPTANCE-MODEL.md)
+- [Atlas–IFI snapshot integration](architecture/ATLAS-IFI-SNAPSHOT-INTEGRATION-CONTRACT.md)
 
 ## Requirements, Testing, and Operations
 
@@ -60,6 +65,8 @@
 - [Validation failure reporting](testing/VALIDATION-FAILURE-REPORTING.md)
 - [Disposable PostgreSQL testing](testing/POSTGRESQL-DISPOSABLE-DATABASE-TESTING.md)
 - [Go PostgreSQL runtime integration testing](testing/GO-POSTGRESQL-RUNTIME-INTEGRATION-TESTING.md)
+- [Fail-closed and adversarial invariants](security/FAIL-CLOSED-AND-ADVERSARIAL-INVARIANT-MODEL.md)
+- [MFA and authentication-assurance requirements](security/MFA-AND-AUTHENTICATION-ASSURANCE-REQUIREMENTS.md)
 - [Acceptance records](acceptance/README.md)
 - [Canonical clean-clone validation](operations/CANONICAL-CLEAN-CLONE-VALIDATION.md)
 - [Repository creation and first push](operations/REPOSITORY-CREATION-AND-FIRST-PUSH.md)
@@ -70,6 +77,8 @@
 - [Licensing transition record](governance/LICENSING-TRANSITION-RECORD.md)
 - [Trademark and branding policy](governance/TRADEMARK-AND-BRANDING-POLICY.md)
 - [Post-licensing alignment backlog](governance/POST-LICENSING-ALIGNMENT-BACKLOG.md)
+- [Architecture and roadmap alignment record](governance/ARCHITECTURE-AND-ROADMAP-ALIGNMENT-RECORD.md)
+- [Signed candidate and post-merge boundary model](governance/SIGNED-CANDIDATE-AND-POST-MERGE-BOUNDARY-MODEL.md)
 - [Historical licensing records](records/licensing/README.md)
 
 ## Documentation Synchronization Rule
