@@ -2,7 +2,7 @@
 
 ## Status
 
-Phase 1 Step 3 contract integrated. Authentication foundation, governed actor resolution, OIDC ID-token verification, authorization-code with PKCE, HTTP login and callback, authenticated server-side session, and authentication-assurance checkpoints are merged. Architecture and roadmap alignment is the active bounded documentation candidate; completed session lifecycle, representative-provider compatibility, CSRF, trusted-proxy, emergency access, production wiring, and formal Step 3 acceptance remain incomplete.
+Phase 1 Step 3 contract integrated. Authentication foundation, governed actor resolution, OIDC ID-token verification, authorization-code with PKCE, HTTP login and callback, authenticated server-side session, and authentication-assurance checkpoints are merged. Architecture and roadmap alignment is accepted; provider-neutral assurance evidence is the active bounded implementation candidate. Completed session lifecycle, representative-provider compatibility, CSRF, trusted-proxy, emergency access, production wiring, and formal Step 3 acceptance remain incomplete.
 
 ## Accepted predecessor
 
@@ -87,6 +87,20 @@ The active candidate partially implements `IA-AUTH-002`, `IA-AUTH-005`, `IA-AUTH
 It proves bounded `acr`, `amr`, and `auth_time` normalization, duplicate and malformed assurance rejection, explicit versioned provider-MFA policy, role-sensitive phishing-resistant outcomes, maximum authentication age, generic additional-authentication responses, no session handoff for unsatisfied assurance, and exact policy-version and MFA enforcement in the server-side session boundary.
 
 It does not prove representative-provider compatibility, provider-hosted WebAuthn or TOTP behavior, session rotation, logout, administrative revocation workflow, CSRF, trusted proxies, emergency access, production wiring, formal Step 3 acceptance, or production readiness.
+
+
+## Provider-neutral assurance-evidence implementation status
+
+The active candidate further implements `IA-AUTH-002`, `IA-AUTH-013`,
+`IA-AUTH-017`, and `IA-AUTH-018` using Atlas-controlled evidence only.
+
+It proves that successful provider login alone does not establish MFA, rejects
+`acr` or `amr` without explicit `auth_time`, and requires exact configured
+method sets rather than accepting ungoverned additional methods.
+
+It does not establish compatibility with a named provider, live hosted MFA,
+provider-specific claim semantics, formal Step 3 acceptance, or production
+readiness.
 
 ## Authenticated-session implementation status
 

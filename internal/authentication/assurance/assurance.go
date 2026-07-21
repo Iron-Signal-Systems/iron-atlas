@@ -425,6 +425,9 @@ func contextAccepted(value string, accepted map[string]struct{}) bool {
 
 func methodSetAccepted(methods map[string]struct{}, accepted []map[string]struct{}) bool {
 	for _, required := range accepted {
+		if len(methods) != len(required) {
+			continue
+		}
 		matched := true
 		for method := range required {
 			if _, ok := methods[method]; !ok {

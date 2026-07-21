@@ -101,8 +101,8 @@ the latest Step 3 implementation chain is revalidated at
 successor claims.
 
 The architecture and roadmap alignment is accepted at signed boundary
-`12569192da89a1a34f4ebfe107c4d02c60cbdb09`. The next planned trusted-authentication implementation gate is
-`validate_phase1_step3_representative_provider_compatibility.sh`.
+`12569192da89a1a34f4ebfe107c4d02c60cbdb09`. The active trusted-authentication implementation gate is
+`validate_phase1_step3_provider_neutral_assurance_evidence.sh`. Representative-provider compatibility remains planned until controlled provider evidence exists.
 
 ---
 
@@ -134,6 +134,10 @@ Preserve all existing checkpoint and acceptance validators:
 - `validate_phase1_step3_authenticated_session.sh`
 - `validate_phase1_step3_authentication_assurance.sh`
 
+Active bounded implementation gate:
+
+- `validate_phase1_step3_provider_neutral_assurance_evidence.sh`
+
 ### Remaining trusted-authentication checkpoints
 
 Planned gates:
@@ -147,7 +151,7 @@ Planned gates:
 - `validate_phase1_step3_integration.sh`
 - `validate_phase1_step3_acceptance.sh`
 
-The authentication-assurance checkpoint is merged and remains an implementation checkpoint rather than formal Step 3 acceptance. Atlas relies on approved external OIDC providers for primary authentication and MFA; no Atlas-local TOTP gate is planned. The listed representative-provider, session-lifecycle, CSRF, trusted-proxy, production-wiring, emergency-access, integration, and acceptance validators remain planned.
+The authentication-assurance checkpoint is merged and remains an implementation checkpoint rather than formal Step 3 acceptance. The provider-neutral assurance-evidence gate is active and uses only Atlas-controlled synthetic evidence. Atlas relies on approved external OIDC providers for primary authentication and MFA; no Atlas-local TOTP gate is planned. Representative-provider compatibility remains planned until controlled provider evidence exists. The listed session-lifecycle, CSRF, trusted-proxy, production-wiring, emergency-access, integration, and acceptance validators remain planned.
 
 The Step 3 integration boundary proves:
 

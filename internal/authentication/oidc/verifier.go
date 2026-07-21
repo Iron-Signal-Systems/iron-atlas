@@ -380,6 +380,14 @@ func (v *Verifier) Verify(
 		authenticatedAt = authTime
 	}
 
+	// A successful provider login is not evidence of MFA. Assurance claims are
+	// accepted only when the same verified token supplies explicit auth_time.
+	if !present &&
+		(claims.AuthenticationContext != "" ||
+			len(claims.AuthenticationMethods) != 0) {
+		return authentication.Principal{}, authentication.ErrAuthenticationInvalid
+	}
+
 	assurance, err := normalizedAssuranceClaims(
 		claims.AuthenticationContext,
 		claims.AuthenticationMethods,

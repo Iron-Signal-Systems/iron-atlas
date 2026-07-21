@@ -75,3 +75,10 @@ A local phase gate is necessary but not sufficient for acceptance. The exact pus
   runtime behavior, provide legal advice, or establish production readiness.
 
 - `validate_architecture_roadmap_alignment.sh` — documentation and governance alignment gate based on the signed BUSL boundary. It verifies historical phase preservation, external-provider MFA direction, module containment, scheduled ingestion, freshness, atomic acceptance, Atlas–IFI separation, adversarial invariants, signed post-merge governance, the complete test framework, and repository synchronization. It does not alter runtime code or schema and is not formal Phase 1 Step 3 or Phase 2 acceptance.
+
+## Provider-neutral assurance-evidence implementation
+
+`validate_phase1_step3_provider_neutral_assurance_evidence.sh` validates the
+Atlas-controlled synthetic assurance-evidence candidate from signed base
+`2347d21f779768f40496a93cb1d9140cc3b6e0ce`. It does not claim named-provider
+compatibility, formal Phase 1 Step 3 acceptance, or production readiness.

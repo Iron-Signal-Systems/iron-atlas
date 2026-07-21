@@ -714,3 +714,73 @@ func TestVerifierRejectsDuplicateAssuranceClaims(t *testing.T) {
 		})
 	}
 }
+
+func TestVerifierDoesNotInferMFAFromSuccessfulLogin(t *testing.T) {
+	provider := newProviderEmulator(t)
+	verifier := provider.verifier(t)
+
+	principal, err := verifier.Verify(
+		context.Background(),
+		provider.token(t, nil),
+		"0123456789abcdef0123456789abcdef",
+		"",
+	)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if principal.Assurance.Context != "" ||
+		len(principal.Assurance.Methods) != 0 ||
+		principal.Assurance.MFAAuthenticated {
+		t.Fatalf("successful login manufactured assurance: %#v", principal.Assurance)
+	}
+}
+
+func TestVerifierRequiresAuthenticationTimeForAssuranceEvidence(t *testing.T) {
+	provider := newProviderEmulator(t)
+	verifier := provider.verifier(t)
+
+	for name, claims := range map[string]map[string]any{
+		"acr only": {
+			"acr": "urn:iron-atlas:test:mfa",
+		},
+		"amr only": {
+			"amr": []string{"pwd", "otp"},
+		},
+		"acr and amr": {
+			"acr": "urn:iron-atlas:test:mfa",
+			"amr": []string{"pwd", "otp"},
+		},
+	} {
+		t.Run(name, func(t *testing.T) {
+			_, err := verifier.Verify(
+				context.Background(),
+				provider.token(t, claims),
+				"0123456789abcdef0123456789abcdef",
+				"",
+			)
+			if !errors.Is(err, authentication.ErrAuthenticationInvalid) {
+				t.Fatalf("error = %v", err)
+			}
+		})
+	}
+
+	authenticatedAt := provider.now.Add(-2 * time.Minute)
+	principal, err := verifier.Verify(
+		context.Background(),
+		provider.token(t, map[string]any{
+			"acr":       "urn:iron-atlas:test:mfa",
+			"amr":       []string{"pwd", "otp"},
+			"auth_time": authenticatedAt.Unix(),
+		}),
+		"0123456789abcdef0123456789abcdef",
+		"",
+	)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if principal.Assurance.Context != "urn:iron-atlas:test:mfa" ||
+		len(principal.Assurance.Methods) != 2 ||
+		!principal.AuthenticatedAt.Equal(authenticatedAt) {
+		t.Fatalf("unexpected assurance evidence: %#v", principal)
+	}
+}

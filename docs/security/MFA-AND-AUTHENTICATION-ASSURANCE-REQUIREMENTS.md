@@ -2,7 +2,7 @@
 
 ## Status
 
-Normative Phase 1 Step 3 alignment candidate. This document corrects future direction without changing the merged authentication-assurance implementation.
+Normative Phase 1 Step 3 requirements. Architecture alignment is accepted; the provider-neutral assurance-evidence implementation candidate is active and remains non-production.
 
 ## Authority boundary
 
@@ -30,6 +30,17 @@ The result is satisfied, additional authentication required, phishing-resistant 
 ## MFA policy
 
 Atlas policy declares exact accepted contexts and method sets. It requires production MFA, maximum authentication age, phishing-resistant authentication for governed high-impact roles or actions, downgrade prevention, exact policy-version binding, unknown-method rejection, and step-up that creates no stronger session until reauthentication succeeds.
+
+
+## Provider-neutral assurance-evidence checkpoint
+
+The active checkpoint uses only Atlas-controlled synthetic evidence. A
+successful provider login is not MFA proof. Atlas rejects `acr` or `amr` unless
+the same verified token includes explicit bounded `auth_time`, and accepted
+method sets match exactly without ungoverned additional methods.
+
+This checkpoint does not establish compatibility with any named provider.
+Provider-specific semantics remain future evidence-backed work.
 
 WebAuthn, FIDO2, passkeys, or hardware security keys are preferred phishing-resistant provider methods. Provider-managed RFC 6238 TOTP may be accepted only when an exact versioned policy permits it.
 

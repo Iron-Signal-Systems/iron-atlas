@@ -82,7 +82,7 @@ Historical Phase 0 validators and acceptance evidence remain unchanged.
 
 ## Phase 1 — PostgreSQL Foundation and Governed Identity
 
-**Status:** Steps 1 and 2 accepted. Authentication foundation, governed actor resolution, OIDC verification, Authorization Code with PKCE, HTTP login/callback, authenticated server-side session, and authentication assurance are merged implementation checkpoints. Authentication assurance remains an implementation checkpoint, not formal Step 3 acceptance. Architecture and roadmap alignment is accepted as a documentation and governance boundary at `12569192da89a1a34f4ebfe107c4d02c60cbdb09`. Representative-provider compatibility is the next planned bounded Step 3 implementation checkpoint; session lifecycle, CSRF, trusted proxies, emergency access, production wiring, and remaining production-foundation boundaries are incomplete.
+**Status:** Steps 1 and 2 accepted. Authentication foundation, governed actor resolution, OIDC verification, Authorization Code with PKCE, HTTP login/callback, authenticated server-side session, and authentication assurance are merged implementation checkpoints. Authentication assurance remains an implementation checkpoint, not formal Step 3 acceptance. Architecture and roadmap alignment is accepted as a documentation and governance boundary at `12569192da89a1a34f4ebfe107c4d02c60cbdb09`. Provider-neutral assurance evidence is the active bounded Step 3 implementation checkpoint. Representative-provider compatibility remains a future evidence-backed checkpoint; session lifecycle, CSRF, trusted proxies, emergency access, production wiring, and remaining production-foundation boundaries are incomplete.
 
 ### Accepted and active boundaries
 
@@ -103,6 +103,7 @@ Historical Phase 0 validators and acceptance evidence remain unchanged.
 - Governed actor resolution
 - Bounded sessions, cookies, CSRF, logout, administrative revocation, and trusted proxies
 - Provider-neutral authentication assurance over approved external OIDC MFA
+- Provider-neutral OIDC assurance evidence from Atlas-controlled synthetic fixtures
 - Representative-provider compatibility and governed emergency access
 - Credential delivery and rotation
 - PostgreSQL TLS
