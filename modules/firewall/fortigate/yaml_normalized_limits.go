@@ -3,7 +3,7 @@ package fortigate
 import (
 	"errors"
 
-	"github.com/Iron-Signal-Systems/iron-atlas/modules/firewall/snapshot"
+	"github.com/Iron-Signal-Systems/atlas/modules/firewall/snapshot"
 )
 
 func validateNormalizedSnapshotLimits(value *snapshot.FirewallSnapshot, limits yamlDecodeLimits) error {

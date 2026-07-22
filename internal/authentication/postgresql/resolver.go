@@ -8,9 +8,9 @@ import (
 
 	"github.com/jackc/pgx/v5"
 
-	"github.com/Iron-Signal-Systems/iron-atlas/internal/authentication"
-	"github.com/Iron-Signal-Systems/iron-atlas/internal/authz"
-	database "github.com/Iron-Signal-Systems/iron-atlas/internal/database/postgresql"
+	"github.com/Iron-Signal-Systems/atlas/internal/authentication"
+	"github.com/Iron-Signal-Systems/atlas/internal/authz"
+	database "github.com/Iron-Signal-Systems/atlas/internal/database/postgresql"
 )
 
 type queryRower interface {

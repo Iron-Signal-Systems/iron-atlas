@@ -33,7 +33,7 @@ The verifier refuses to test a commit other than the exact current canonical `de
 ## New Box
 
 ```bash
-git clone https://github.com/Iron-Signal-Systems/iron-atlas.git
+git clone https://github.com/Iron-Signal-Systems/atlas.git
 cd iron-atlas
 git switch dev
 python3 tools/validation/validate_toolchain.py

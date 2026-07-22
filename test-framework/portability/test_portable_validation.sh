@@ -32,7 +32,7 @@ check "validation transcript credential redaction" bash -c '
 
 mkdir -p "$tmp/evidence/run"
 cat > "$tmp/evidence/run/metadata.json" <<'JSON'
-{"schema_version":1,"boundary":"test","repository":"https://github.com/Iron-Signal-Systems/iron-atlas.git","commit":"0000000000000000000000000000000000000000","branch":"dev","timestamp_utc":"2026-07-15T00:00:00Z","command":["true"],"exit_code":0,"source":"test"}
+{"schema_version":1,"boundary":"test","repository":"https://github.com/Iron-Signal-Systems/atlas.git","commit":"0000000000000000000000000000000000000000","branch":"dev","timestamp_utc":"2026-07-15T00:00:00Z","command":["true"],"exit_code":0,"source":"test"}
 JSON
 printf 'environment\n' > "$tmp/evidence/run/environment.txt"
 printf 'PASS: test\n' > "$tmp/evidence/run/validation.log"

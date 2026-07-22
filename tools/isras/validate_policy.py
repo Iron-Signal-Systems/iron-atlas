@@ -90,8 +90,8 @@ def validate_template_manifest(repo_root: Path) -> list[str]:
         return []
     text = path.read_text(encoding="utf-8")
     replacements = {
-        "Iron-Signal-Systems/iron-atlas": "Iron-Signal-Systems/example",
-        "git@github.com:Iron-Signal-Systems/iron-atlas.git": "git@github.com:Iron-Signal-Systems/example.git",
+        "Iron-Signal-Systems/atlas": "Iron-Signal-Systems/example",
+        "git@github.com:Iron-Signal-Systems/atlas.git": "git@github.com:Iron-Signal-Systems/example.git",
         "dev": "dev",
         "main": "main",
         "go-documentation-generation": "general",

@@ -12,11 +12,11 @@ import (
 	"strings"
 	"time"
 
-	"github.com/Iron-Signal-Systems/iron-atlas/internal/authentication"
-	"github.com/Iron-Signal-Systems/iron-atlas/internal/authz"
-	"github.com/Iron-Signal-Systems/iron-atlas/internal/change"
-	"github.com/Iron-Signal-Systems/iron-atlas/internal/health"
-	"github.com/Iron-Signal-Systems/iron-atlas/internal/modules"
+	"github.com/Iron-Signal-Systems/atlas/internal/authentication"
+	"github.com/Iron-Signal-Systems/atlas/internal/authz"
+	"github.com/Iron-Signal-Systems/atlas/internal/change"
+	"github.com/Iron-Signal-Systems/atlas/internal/health"
+	"github.com/Iron-Signal-Systems/atlas/internal/modules"
 )
 
 type Dependencies struct {

@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "project": {
-    "repository": "github.com/Iron-Signal-Systems/iron-atlas"
+    "repository": "github.com/Iron-Signal-Systems/atlas"
   },
   "standard": {
     "profile": "ISRAS-SD",

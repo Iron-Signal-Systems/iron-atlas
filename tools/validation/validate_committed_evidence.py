@@ -20,6 +20,10 @@ secret_patterns = [
     re.compile(r"-----BEGIN [^-]*PRIVATE KEY-----"),
     re.compile(r"(?im)^authorization:\s*(?:bearer|basic)\s+\S+"),
 ]
+canonical_repositories = {
+    "https://github.com/Iron-Signal-Systems/atlas.git",
+    "https://github.com/Iron-Signal-Systems/iron-atlas.git",
+}
 
 for metadata in base.rglob("metadata.json") if base.exists() else []:
     runs += 1
@@ -38,7 +42,7 @@ for metadata in base.rglob("metadata.json") if base.exists() else []:
             errors.append(f"{metadata}: missing field {key}")
     if not re.fullmatch(r"[0-9a-f]{40}", str(data.get("commit", ""))):
         errors.append(f"{metadata}: commit must be a full SHA-1")
-    if data.get("repository") != "https://github.com/Iron-Signal-Systems/iron-atlas.git":
+    if data.get("repository") not in canonical_repositories:
         errors.append(f"{metadata}: noncanonical repository")
     sums = run / "sha256sums.txt"
     if sums.is_file():

@@ -8,8 +8,8 @@
     "commit": "c379417720faa595fa5cb89a1dfdb2259d6cb95e",
     "definition": "The organization-wide repository reproducibility, validation, historical verification, evidence, acceptance, release, deployment verification, recovery, and maintenance standard for Iron Signal Systems."
   },
-  "repository": "Iron-Signal-Systems/iron-atlas",
-  "canonical_origin": "git@github.com:Iron-Signal-Systems/iron-atlas.git",
+  "repository": "Iron-Signal-Systems/atlas",
+  "canonical_origin": "git@github.com:Iron-Signal-Systems/atlas.git",
   "branches": {
     "development": "dev",
     "release": "main"

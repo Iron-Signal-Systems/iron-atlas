@@ -5,7 +5,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/Iron-Signal-Systems/iron-atlas/modules/firewall/snapshot"
+	"github.com/Iron-Signal-Systems/atlas/modules/firewall/snapshot"
 )
 
 func (n *normalizer) parseInterfaces(vdom *YAMLNode, scope snapshot.ObjectScope, basePath string) {

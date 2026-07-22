@@ -12,8 +12,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/Iron-Signal-Systems/iron-atlas/internal/authentication"
-	"github.com/Iron-Signal-Systems/iron-atlas/internal/authz"
+	"github.com/Iron-Signal-Systems/atlas/internal/authentication"
+	"github.com/Iron-Signal-Systems/atlas/internal/authz"
 )
 
 type fakeStore struct {

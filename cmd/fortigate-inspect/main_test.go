@@ -5,8 +5,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/Iron-Signal-Systems/iron-atlas/modules/firewall/fortigate"
-	"github.com/Iron-Signal-Systems/iron-atlas/modules/firewall/snapshot"
+	"github.com/Iron-Signal-Systems/atlas/modules/firewall/fortigate"
+	"github.com/Iron-Signal-Systems/atlas/modules/firewall/snapshot"
 )
 
 func TestRedactedSummaryOmitsIdentityVersionAndFindingDetails(t *testing.T) {

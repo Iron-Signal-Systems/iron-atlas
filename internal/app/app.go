@@ -11,14 +11,14 @@ import (
 	"strings"
 	"time"
 
-	"github.com/Iron-Signal-Systems/iron-atlas/internal/authentication"
-	"github.com/Iron-Signal-Systems/iron-atlas/internal/authz"
-	"github.com/Iron-Signal-Systems/iron-atlas/internal/change"
-	changepostgresql "github.com/Iron-Signal-Systems/iron-atlas/internal/change/postgresql"
-	database "github.com/Iron-Signal-Systems/iron-atlas/internal/database/postgresql"
-	"github.com/Iron-Signal-Systems/iron-atlas/internal/health"
-	"github.com/Iron-Signal-Systems/iron-atlas/internal/httpui"
-	"github.com/Iron-Signal-Systems/iron-atlas/internal/modules"
+	"github.com/Iron-Signal-Systems/atlas/internal/authentication"
+	"github.com/Iron-Signal-Systems/atlas/internal/authz"
+	"github.com/Iron-Signal-Systems/atlas/internal/change"
+	changepostgresql "github.com/Iron-Signal-Systems/atlas/internal/change/postgresql"
+	database "github.com/Iron-Signal-Systems/atlas/internal/database/postgresql"
+	"github.com/Iron-Signal-Systems/atlas/internal/health"
+	"github.com/Iron-Signal-Systems/atlas/internal/httpui"
+	"github.com/Iron-Signal-Systems/atlas/internal/modules"
 )
 
 const (

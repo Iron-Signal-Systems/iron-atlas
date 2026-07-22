@@ -3,7 +3,7 @@ package trunk
 import (
 	"strings"
 
-	"github.com/Iron-Signal-Systems/iron-atlas/modules/network/cisco/common"
+	"github.com/Iron-Signal-Systems/atlas/modules/network/cisco/common"
 )
 
 func Classify(iface common.Interface) common.Classification {

@@ -11,7 +11,7 @@ import (
 	"unicode"
 	"unicode/utf8"
 
-	"github.com/Iron-Signal-Systems/iron-atlas/internal/authz"
+	"github.com/Iron-Signal-Systems/atlas/internal/authz"
 )
 
 type Mode string

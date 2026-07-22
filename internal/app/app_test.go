@@ -3,7 +3,7 @@ package app
 import (
 	"testing"
 
-	"github.com/Iron-Signal-Systems/iron-atlas/internal/authentication"
+	"github.com/Iron-Signal-Systems/atlas/internal/authentication"
 )
 
 func clearAuthenticationEnvironment(t *testing.T) {

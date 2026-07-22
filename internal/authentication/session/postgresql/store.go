@@ -11,8 +11,8 @@ import (
 	"github.com/jackc/pgx/v5/pgconn"
 	"github.com/jackc/pgx/v5/pgtype"
 
-	"github.com/Iron-Signal-Systems/iron-atlas/internal/authentication/session"
-	database "github.com/Iron-Signal-Systems/iron-atlas/internal/database/postgresql"
+	"github.com/Iron-Signal-Systems/atlas/internal/authentication/session"
+	database "github.com/Iron-Signal-Systems/atlas/internal/database/postgresql"
 )
 
 type queryRower interface {

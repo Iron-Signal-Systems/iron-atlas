@@ -8,7 +8,7 @@ import (
 	"io"
 	"strings"
 
-	"github.com/Iron-Signal-Systems/iron-atlas/internal/ingest"
+	"github.com/Iron-Signal-Systems/atlas/internal/ingest"
 )
 
 type Node struct {

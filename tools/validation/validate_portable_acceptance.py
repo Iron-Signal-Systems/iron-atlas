@@ -22,7 +22,7 @@ for name in required:
     if not (root/name).is_file(): errors.append(f"missing portability artifact: {name}")
 try:
     req=json.loads((root/"validation/toolchain-requirements.json").read_text())
-    if req.get("canonical_repository") != "https://github.com/Iron-Signal-Systems/iron-atlas.git":
+    if req.get("canonical_repository") != "https://github.com/Iron-Signal-Systems/atlas.git":
         errors.append("toolchain contract has noncanonical repository")
 except Exception as exc:
     errors.append(f"invalid toolchain requirements: {exc}")

@@ -9,8 +9,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/Iron-Signal-Systems/iron-atlas/internal/authentication"
-	"github.com/Iron-Signal-Systems/iron-atlas/internal/authz"
+	"github.com/Iron-Signal-Systems/atlas/internal/authentication"
+	"github.com/Iron-Signal-Systems/atlas/internal/authz"
 )
 
 const testPolicyVersion = "phase-1-step-3-assurance-v1"

@@ -8,8 +8,8 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/Iron-Signal-Systems/iron-atlas/internal/ingest"
-	"github.com/Iron-Signal-Systems/iron-atlas/modules/firewall/snapshot"
+	"github.com/Iron-Signal-Systems/atlas/internal/ingest"
+	"github.com/Iron-Signal-Systems/atlas/modules/firewall/snapshot"
 )
 
 type YAMLParser struct{}
