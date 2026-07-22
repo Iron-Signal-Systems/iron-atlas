@@ -7,7 +7,17 @@ from typing import Any
 
 SHA=re.compile(r'^[0-9a-f]{64}$'); IDENT=re.compile(r'^[a-z0-9][a-z0-9._-]+$')
 JWT=re.compile(r'(?<![A-Za-z0-9_-])[A-Za-z0-9_-]{16,}\.[A-Za-z0-9_-]{16,}\.[A-Za-z0-9_-]{16,}(?![A-Za-z0-9_-])')
-PRIVATE=('-----BEGIN PRIVATE KEY-----','-----BEGIN RSA PRIVATE KEY-----','-----BEGIN EC PRIVATE KEY-----','-----BEGIN OPENSSH PRIVATE KEY-----')
+PEM_DASHES = "-" * 5
+PRIVATE_KEY_LABELS = (
+    ("PRIVATE", "KEY"),
+    ("RSA", "PRIVATE", "KEY"),
+    ("EC", "PRIVATE", "KEY"),
+    ("OPENSSH", "PRIVATE", "KEY"),
+)
+PRIVATE = tuple(
+    f"{PEM_DASHES}BEGIN {' '.join(parts)}{PEM_DASHES}"
+    for parts in PRIVATE_KEY_LABELS
+)
 FORBIDDEN={'password','client_secret','client_assertion','client_id','access_token','refresh_token','id_token','authorization_code','code_verifier','cookie','set_cookie','session_cookie','private_key','totp_seed','recovery_code','sub','sid','jti','email','preferred_username','username','name','given_name','family_name','phone_number'}
 TOP={'schema_version','bundle_id','evidence_class','claim_status','compatibility_claim','provider','capture','endpoints','artifacts','scenarios','redaction','nonclaims'}
 PROVIDER={'label','software','version','configuration_sha256'}; CAPTURE={'captured_at','environment','tool','tool_version','sanitized','raw_artifacts_committed'}

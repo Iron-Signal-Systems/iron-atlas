@@ -26,10 +26,47 @@ PY
 for spec in 'compat compatibility-claim' 'raw raw-artifacts' 'secret credential-key' 'jwt jwt-shaped' 'traversal path-traversal' 'digest digest-mismatch' 'duplicate duplicate-scenario' 'interpret interpreted-policy' 'disagree claims-disagreement'; do set -- $spec; d="$(case_copy "$2")"; mutate "$d/bundle.json" "$1"; expect_fail "$2" "$d/bundle.json"; done
 d="$(case_copy private-key)"; python3 - "$d/bundle.json" "$d/artifacts/claims-no-assurance.sanitized.json" <<'PY'
 import hashlib,json,sys
-b,a=sys.argv[1:]; x=json.load(open(a)); x['note']='-----BEGIN PRIVATE KEY-----'; open(a,'w').write(json.dumps(x,indent=2,sort_keys=True)+'\n'); d=json.load(open(b)); h=hashlib.sha256(open(a,'rb').read()).hexdigest()
+b,a=sys.argv[1:]
+x=json.load(open(a))
+dashes='-' * 5
+x['note']=f"{dashes}BEGIN {' '.join(('PRIVATE','KEY'))}{dashes}"
+open(a,'w').write(json.dumps(x,indent=2,sort_keys=True)+'\n')
+d=json.load(open(b))
+h=hashlib.sha256(open(a,'rb').read()).hexdigest()
 for r in d['artifacts']:
  if r['path']=='artifacts/claims-no-assurance.sanitized.json': r['sha256']=h
 open(b,'w').write(json.dumps(d,indent=2,sort_keys=True)+'\n')
 PY
 expect_fail private-key "$d/bundle.json"
+python3 - <<'PY'
+from pathlib import Path
+import subprocess
+
+dashes = '-' * 5
+labels = (
+    ('PRIVATE', 'KEY'),
+    ('RSA', 'PRIVATE', 'KEY'),
+    ('EC', 'PRIVATE', 'KEY'),
+    ('OPENSSH', 'PRIVATE', 'KEY'),
+)
+markers = tuple(f"{dashes}BEGIN {' '.join(parts)}{dashes}" for parts in labels)
+text_suffixes = {'.go', '.json', '.md', '.py', '.sh', '.txt', '.yaml', '.yml'}
+findings = []
+for raw in subprocess.check_output(['git', 'ls-files', '-z']).split(b'\0'):
+    if not raw:
+        continue
+    path = Path(raw.decode())
+    if path.suffix.lower() not in text_suffixes:
+        continue
+    try:
+        text = path.read_text(encoding='utf-8')
+    except UnicodeDecodeError:
+        continue
+    for marker in markers:
+        if marker in text:
+            findings.append(str(path))
+if findings:
+    raise SystemExit('FAIL: complete private-key armor marker committed in: ' + ', '.join(sorted(set(findings))))
+print('PASS: no complete private-key armor markers committed')
+PY
 printf 'PASS: representative-provider evidence foundation regression\n'
