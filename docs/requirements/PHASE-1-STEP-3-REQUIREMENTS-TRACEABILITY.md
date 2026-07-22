@@ -2,7 +2,7 @@
 
 ## Status
 
-Phase 1 Step 3 contract integrated. Authentication foundation, governed actor resolution, OIDC ID-token verification, authorization-code with PKCE, HTTP login and callback, authenticated server-side session, and authentication-assurance checkpoints are merged. Architecture and roadmap alignment is accepted; provider-neutral assurance evidence is the active bounded implementation candidate. Completed session lifecycle, representative-provider compatibility, CSRF, trusted-proxy, emergency access, production wiring, and formal Step 3 acceptance remain incomplete.
+Phase 1 Step 3 contract integrated. Authentication foundation, governed actor resolution, OIDC ID-token verification, authorization-code with PKCE, HTTP login and callback, authenticated server-side session, authentication assurance, and provider-neutral assurance evidence are merged. Representative-provider evidence foundation is the active bounded implementation candidate. Completed session lifecycle, representative-provider compatibility, CSRF, trusted-proxy, emergency access, production wiring, and formal Step 3 acceptance remain incomplete.
 
 ## Accepted predecessor
 
@@ -100,6 +100,23 @@ method sets rather than accepting ungoverned additional methods.
 
 It does not establish compatibility with a named provider, live hosted MFA,
 provider-specific claim semantics, formal Step 3 acceptance, or production
+readiness.
+
+## Representative-provider evidence-foundation implementation status
+
+The active candidate further implements the evidence portion of `IA-AUTH-004`,
+`IA-AUTH-013`, `IA-AUTH-017`, and `IA-AUTH-019` without asserting provider
+compatibility.
+
+It defines strict observation-only bundles for synthetic or controlled-sanitized
+evidence, exact provider version and configuration identity, literal `acr`,
+`amr`, and `auth_time` preservation, digest and path binding, deterministic
+validation, explicit limitations, and rejection of raw tokens, credentials,
+private keys, cookies, and unredacted identities.
+
+It does not install or contact a provider, establish provider-specific claim
+semantics, create a compatibility profile, prove hosted MFA behavior, complete
+session lifecycle, or establish formal Step 3 acceptance or production
 readiness.
 
 ## Authenticated-session implementation status

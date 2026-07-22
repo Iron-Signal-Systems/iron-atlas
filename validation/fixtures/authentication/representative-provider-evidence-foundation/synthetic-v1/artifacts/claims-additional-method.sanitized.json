@@ -1,0 +1,9 @@
+{
+  "acr": "urn:iron-atlas:test:mfa",
+  "amr": [
+    "pwd",
+    "otp",
+    "provider-extra"
+  ],
+  "auth_time": 1760000200
+}

@@ -12,6 +12,20 @@ revalidate_authentication_assurance_checkpoint() {
     "tools/validation/phase-gates/validate_phase1_step3_authentication_assurance.sh"
 }
 
+revalidate_architecture_alignment_static_checkpoint() {
+  isolated_python_validator_revalidate \
+    "$repo_root" \
+    "2347d21f779768f40496a93cb1d9140cc3b6e0ce" \
+    "tools/validation/validate_architecture_roadmap_alignment.py"
+}
+
+revalidate_provider_neutral_static_checkpoint() {
+  isolated_python_validator_revalidate \
+    "$repo_root" \
+    "e7824049852855f15d26686600fc42802b8a38ff" \
+    "tools/validation/validate_phase1_step3_provider_neutral_assurance_evidence.py"
+}
+
 skip_go=false
 skip_database=false
 for arg in "$@"; do
@@ -43,6 +57,7 @@ required=(
   docs/architecture/TRUSTED-AUTHENTICATION-AND-GOVERNED-ACTOR-RESOLUTION.md
   docs/architecture/AUTHENTICATION-ASSURANCE-IMPLEMENTATION.md
   docs/architecture/PROVIDER-NEUTRAL-OIDC-ASSURANCE-EVIDENCE.md
+  docs/architecture/REPRESENTATIVE-PROVIDER-EVIDENCE-FOUNDATION.md
   docs/architecture/MODULE-RUNTIME-AND-FAILURE-CONTAINMENT-MODEL.md
   docs/architecture/SCHEDULED-EVIDENCE-INGESTION-MODEL.md
   docs/architecture/MONITORING-ALERTING-AND-EVIDENCE-FRESHNESS-MODEL.md
@@ -62,10 +77,14 @@ required=(
   docs/testing/GO-POSTGRESQL-RUNTIME-INTEGRATION-TESTING.md
   docs/testing/TRUSTED-AUTHENTICATION-AND-GOVERNED-ACTOR-RESOLUTION-TESTING.md
   docs/testing/PROVIDER-NEUTRAL-OIDC-ASSURANCE-EVIDENCE-TESTING.md
+  docs/testing/REPRESENTATIVE-PROVIDER-EVIDENCE-FOUNDATION-TESTING.md
   docs/requirements/PHASE-1-STEP-3-REQUIREMENTS-TRACEABILITY.md
   docs/acceptance/PHASE-1-STEP-3-ACCEPTANCE-RECORD-TEMPLATE.md
   docs/operations/CANONICAL-CLEAN-CLONE-VALIDATION.md
   validation/toolchain-requirements.json
+  validation/schemas/representative-provider-evidence-bundle.schema.json
+  validation/fixtures/authentication/representative-provider-evidence-foundation/synthetic-v1/README.md
+  validation/fixtures/authentication/representative-provider-evidence-foundation/synthetic-v1/bundle.json
   validation/evidence/README.md
   cmd/atlasd/main.go internal/change/change.go
   internal/authentication/authentication.go
@@ -94,6 +113,8 @@ required=(
   tools/validation/validate_phase1_step3_oidc_authorization_code_pkce.py
   tools/validation/validate_phase1_step3_authentication_assurance.py
   tools/validation/validate_phase1_step3_provider_neutral_assurance_evidence.py
+  tools/validation/validate_representative_provider_evidence_bundle.py
+  tools/validation/validate_phase1_step3_representative_provider_evidence_foundation.py
   tools/validation/validate_licensing.py
   tools/validation/validate_architecture_roadmap_alignment.py
   tools/validation/validate_portable_acceptance.py
@@ -110,6 +131,7 @@ required=(
   tools/validation/phase-gates/validate_phase1_step3_oidc_authorization_code_pkce.sh
   tools/validation/phase-gates/validate_phase1_step3_authentication_assurance.sh
   tools/validation/phase-gates/validate_phase1_step3_provider_neutral_assurance_evidence.sh
+  tools/validation/phase-gates/validate_phase1_step3_representative_provider_evidence_foundation.sh
   tools/validation/phase-gates/validate_business_source_license_transition.sh
   tools/validation/phase-gates/validate_architecture_roadmap_alignment.sh
   test-framework/governance/test_business_source_license_transition.sh
@@ -121,6 +143,7 @@ required=(
   test-framework/authentication/test_phase1_step3_oidc_authorization_code_pkce.sh
   test-framework/authentication/test_phase1_step3_authentication_assurance.sh
   test-framework/authentication/test_phase1_step3_provider_neutral_assurance_evidence.sh
+  test-framework/authentication/test_phase1_step3_representative_provider_evidence_foundation.sh
   test-framework/phase-gates/test_isolated_gate_revalidation.sh
   test-framework/portability/test_portable_validation.sh
 )
@@ -134,8 +157,9 @@ check "database security static contract" python3 tools/validation/validate_sql_
 check "Go PostgreSQL runtime static contract" python3 tools/validation/validate_go_postgresql_runtime.py
 check "Phase 1 Step 3 authentication-assurance checkpoint revalidation" revalidate_authentication_assurance_checkpoint
 check "Business Source License 1.1 transition" python3 tools/validation/validate_licensing.py
-check "architecture and roadmap alignment" python3 tools/validation/validate_architecture_roadmap_alignment.py
-check "provider-neutral assurance evidence" python3 tools/validation/validate_phase1_step3_provider_neutral_assurance_evidence.py
+check "architecture and roadmap alignment exact-boundary static revalidation" revalidate_architecture_alignment_static_checkpoint
+check "provider-neutral assurance-evidence exact-boundary static revalidation" revalidate_provider_neutral_static_checkpoint
+check "representative-provider evidence foundation" python3 tools/validation/validate_phase1_step3_representative_provider_evidence_foundation.py
 check "portable acceptance static contract" python3 tools/validation/validate_portable_acceptance.py
 check "committed validation evidence" python3 tools/validation/validate_committed_evidence.py
 check "Draw.io XML" python3 -c 'import xml.etree.ElementTree as ET; ET.parse("diagrams/source/curated/architecture/ARCH-001-iron-atlas-context.drawio")'

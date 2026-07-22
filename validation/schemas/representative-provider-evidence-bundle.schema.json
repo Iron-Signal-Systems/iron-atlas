@@ -1,0 +1,252 @@
+{
+  "$id": "https://iron-signal.example.invalid/schemas/representative-provider-evidence-bundle-v1.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "artifacts": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "kind": {
+            "enum": [
+              "discovery-document",
+              "jwks-document",
+              "literal-assurance-claims",
+              "sanitized-observation"
+            ]
+          },
+          "path": {
+            "type": "string"
+          },
+          "sha256": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          }
+        },
+        "required": [
+          "path",
+          "kind",
+          "sha256"
+        ],
+        "type": "object"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "bundle_id": {
+      "pattern": "^[a-z0-9][a-z0-9._-]+$",
+      "type": "string"
+    },
+    "capture": {
+      "additionalProperties": false,
+      "properties": {
+        "captured_at": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "environment": {
+          "const": "disposable"
+        },
+        "raw_artifacts_committed": {
+          "const": false
+        },
+        "sanitized": {
+          "const": true
+        },
+        "tool": {
+          "type": "string"
+        },
+        "tool_version": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "captured_at",
+        "environment",
+        "tool",
+        "tool_version",
+        "sanitized",
+        "raw_artifacts_committed"
+      ],
+      "type": "object"
+    },
+    "claim_status": {
+      "const": "observation-only"
+    },
+    "compatibility_claim": {
+      "const": false
+    },
+    "endpoints": {
+      "additionalProperties": false,
+      "properties": {
+        "discovery_artifact": {
+          "type": "string"
+        },
+        "issuer": {
+          "pattern": "^https://",
+          "type": "string"
+        },
+        "jwks_artifact": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "issuer",
+        "discovery_artifact",
+        "jwks_artifact"
+      ],
+      "type": "object"
+    },
+    "evidence_class": {
+      "enum": [
+        "synthetic",
+        "controlled-sanitized"
+      ]
+    },
+    "nonclaims": {
+      "items": {
+        "type": "string"
+      },
+      "minItems": 4,
+      "type": "array"
+    },
+    "provider": {
+      "additionalProperties": false,
+      "properties": {
+        "configuration_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "software": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "label",
+        "software",
+        "version",
+        "configuration_sha256"
+      ],
+      "type": "object"
+    },
+    "redaction": {
+      "additionalProperties": false,
+      "properties": {
+        "notes": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "prohibited_material_absent": {
+          "const": true
+        },
+        "review_status": {
+          "enum": [
+            "synthetic",
+            "reviewed"
+          ]
+        }
+      },
+      "required": [
+        "prohibited_material_absent",
+        "review_status",
+        "notes"
+      ],
+      "type": "object"
+    },
+    "scenarios": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "authentication_succeeded": {
+            "type": "boolean"
+          },
+          "claims_artifact": {
+            "type": "string"
+          },
+          "limitations": {
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1,
+            "type": "array"
+          },
+          "literal_claims": {
+            "additionalProperties": false,
+            "properties": {
+              "acr": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "amr": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "auth_time": {
+                "minimum": 0,
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "acr",
+              "amr",
+              "auth_time"
+            ],
+            "type": "object"
+          },
+          "purpose": {
+            "type": "string"
+          },
+          "scenario_id": {
+            "pattern": "^[a-z0-9][a-z0-9._-]+$",
+            "type": "string"
+          }
+        },
+        "required": [
+          "scenario_id",
+          "purpose",
+          "authentication_succeeded",
+          "literal_claims",
+          "claims_artifact",
+          "limitations"
+        ],
+        "type": "object"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "schema_version": {
+      "const": 1
+    }
+  },
+  "required": [
+    "schema_version",
+    "bundle_id",
+    "evidence_class",
+    "claim_status",
+    "compatibility_claim",
+    "provider",
+    "capture",
+    "endpoints",
+    "artifacts",
+    "scenarios",
+    "redaction",
+    "nonclaims"
+  ],
+  "title": "Iron Atlas representative-provider evidence bundle",
+  "type": "object"
+}

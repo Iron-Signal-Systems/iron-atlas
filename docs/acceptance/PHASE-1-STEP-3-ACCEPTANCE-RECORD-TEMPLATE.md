@@ -25,6 +25,7 @@
 - Authenticated server-side session checkpoint:
 - Authentication assurance and MFA checkpoint:
 - Provider-neutral assurance-evidence checkpoint:
+- Representative-provider evidence-foundation checkpoint:
 - Representative-provider compatibility checkpoint:
 - Session lifecycle and revocation checkpoint:
 - Emergency and recovery access checkpoint:
@@ -178,3 +179,16 @@ State the next Phase 1 boundary without combining it into this acceptance.
 - Unknown and additional method rejection:
 - Stale-authentication step-up result:
 - Named-provider compatibility explicitly not claimed:
+
+## Representative-provider evidence-foundation checkpoint
+
+- Exact signed provider-neutral predecessor:
+- Evidence schema and validator version:
+- Synthetic fixture result:
+- Controlled provider software, version, and configuration digest:
+- Sanitization and review status:
+- Discovery and JWKS artifact digests:
+- Literal `acr`, `amr`, and `auth_time` observations:
+- Secret, identity, JWT, private-key, and path-traversal rejection:
+- Deterministic validation result:
+- Compatibility claim explicitly false:

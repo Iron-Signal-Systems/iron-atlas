@@ -1,0 +1,8 @@
+{
+  "acr": "urn:iron-atlas:test:phishing-resistant",
+  "amr": [
+    "pwd",
+    "hwk"
+  ],
+  "auth_time": 1760000100
+}

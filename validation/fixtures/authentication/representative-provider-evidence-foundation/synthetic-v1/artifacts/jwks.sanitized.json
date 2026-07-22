@@ -1,0 +1,12 @@
+{
+  "keys": [
+    {
+      "alg": "RS256",
+      "e": "AQAB",
+      "kid": "synthetic-key-1",
+      "kty": "RSA",
+      "n": "synthetic-public-modulus-not-for-cryptographic-use",
+      "use": "sig"
+    }
+  ]
+}

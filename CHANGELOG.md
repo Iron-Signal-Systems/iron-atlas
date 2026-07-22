@@ -4,6 +4,7 @@
 
 ### Added
 
+- Added the representative-provider evidence-foundation candidate with strict observation-only sanitized bundles, provider and configuration identity, literal `acr`/`amr`/`auth_time` preservation, digest and path binding, deterministic validation, hostile secret and identity rejection, exact predecessor revalidation, and no compatibility claim.
 - Added the provider-neutral OIDC assurance-evidence candidate using Atlas-controlled synthetic claims, explicit `auth_time` correlation for `acr` and `amr`, exact governed method sets, hostile tests, synchronized documentation, and a bounded implementation gate.
 - Added the architecture and roadmap alignment candidate defining module runtime failure containment, scheduled evidence ingestion, monitoring and freshness, immutable candidates and atomic acceptance, signed purpose-limited Atlas–IFI snapshots, fail-closed adversarial invariants, external-provider MFA requirements, and signed candidate/post-merge repository trust.
 - Added an alignment record preserving historical Phase 0, Phase 1 Steps 1 and 2, and existing Step 3 checkpoints without relabeling them as formal acceptance.
@@ -77,6 +78,7 @@
 
 ### Security
 
+- Replaced complete PEM private-key armor literals in representative-provider hostile tests with runtime-constructed markers, preserving rejection coverage without committing scanner-triggering key material.
 - Upgraded the indirect `golang.org/x/text` dependency to `v0.39.0` to remediate `GO-2026-5970` reported by hosted vulnerability validation.
 - FortiGate YAML fails closed on oversized or excessive input, aliases, anchors, custom tags, duplicate keys, multiple documents, unsupported scalar forms, and normalized-record or finding limit violations.
 - Upload-safe semantic output uses fixed allowlists and fallback classifications so source-derived labels, names, values, paths, and finding details cannot be reflected into retained logs.
@@ -97,6 +99,7 @@
 
 ### Fixed
 
+- Isolated historical architecture-alignment and provider-neutral status validators at their exact predecessor commits so successor checkpoint wording no longer creates false validation failures.
 - Corrected nested validation cause extraction so a subordinate runner's terminal `FINAL RESULT: FAIL` takes precedence over earlier intentional error fixtures, and synchronized reporting validation with exact authentication-assurance checkpoint revalidation.
 
 - Repaired confirmed Fortinet-generated invalid YAML adjacent multi-value fragments and restricted literal object-name keys while leaving ordinary valid YAML unchanged and broader malformed YAML fail-closed.
