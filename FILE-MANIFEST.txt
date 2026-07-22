@@ -97,6 +97,7 @@ docs/architecture/PROJECT-AND-PORTFOLIO-TRACKING.md
 docs/architecture/PROVIDER-NEUTRAL-OIDC-ASSURANCE-EVIDENCE.md
 docs/architecture/QUERY-REACHABILITY-AND-CHANGE-IMPACT-MODEL.md
 docs/architecture/RBAC-ROLE-AND-AUTHORITY-CATALOG.md
+docs/architecture/REPRESENTATIVE-PROVIDER-EVIDENCE-FOUNDATION.md
 docs/architecture/SCHEDULED-EVIDENCE-INGESTION-MODEL.md
 docs/architecture/TARGET-ARCHITECTURE.md
 docs/architecture/TOPOLOGY-AND-DRAWIO-GOVERNANCE.md
@@ -138,6 +139,7 @@ docs/security/MFA-AND-AUTHENTICATION-ASSURANCE-REQUIREMENTS.md
 docs/testing/GO-POSTGRESQL-RUNTIME-INTEGRATION-TESTING.md
 docs/testing/POSTGRESQL-DISPOSABLE-DATABASE-TESTING.md
 docs/testing/PROVIDER-NEUTRAL-OIDC-ASSURANCE-EVIDENCE-TESTING.md
+docs/testing/REPRESENTATIVE-PROVIDER-EVIDENCE-FOUNDATION-TESTING.md
 docs/testing/TESTING-AND-ADVERSARIAL-VALIDATION-MODEL.md
 docs/testing/TRUSTED-AUTHENTICATION-AND-GOVERNED-ACTOR-RESOLUTION-TESTING.md
 docs/testing/VALIDATION-FAILURE-REPORTING.md
@@ -270,6 +272,7 @@ test-framework/authentication/test_phase1_step3_http_login_callback.sh
 test-framework/authentication/test_phase1_step3_oidc_authorization_code_pkce.sh
 test-framework/authentication/test_phase1_step3_oidc_id_token_verification.sh
 test-framework/authentication/test_phase1_step3_provider_neutral_assurance_evidence.sh
+test-framework/authentication/test_phase1_step3_representative_provider_evidence_foundation.sh
 test-framework/database/run_disposable_postgres.sh
 test-framework/database/test_database.py
 test-framework/governance/test_architecture_roadmap_alignment.sh
@@ -331,6 +334,7 @@ tools/validation/phase-gates/validate_phase1_step3_http_login_callback.sh
 tools/validation/phase-gates/validate_phase1_step3_oidc_authorization_code_pkce.sh
 tools/validation/phase-gates/validate_phase1_step3_oidc_id_token_verification.sh
 tools/validation/phase-gates/validate_phase1_step3_provider_neutral_assurance_evidence.sh
+tools/validation/phase-gates/validate_phase1_step3_representative_provider_evidence_foundation.sh
 tools/validation/record_validation_evidence.sh
 tools/validation/redact_validation_text.py
 tools/validation/regenerate_manifests.py
@@ -353,9 +357,11 @@ tools/validation/validate_phase1_step3_http_login_callback.py
 tools/validation/validate_phase1_step3_oidc_authorization_code_pkce.py
 tools/validation/validate_phase1_step3_oidc_id_token_verification.py
 tools/validation/validate_phase1_step3_provider_neutral_assurance_evidence.py
+tools/validation/validate_phase1_step3_representative_provider_evidence_foundation.py
 tools/validation/validate_portable.sh
 tools/validation/validate_portable_acceptance.py
 tools/validation/validate_repository.sh
+tools/validation/validate_representative_provider_evidence_bundle.py
 tools/validation/validate_source_checksums.py
 tools/validation/validate_sql_static.py
 tools/validation/validate_toolchain.py
@@ -378,5 +384,15 @@ validation/evidence/phase-1-step-2/local-phase-gate/20260715T154526Z-a56de3f9a98
 validation/evidence/phase-1-step-2/local-phase-gate/20260715T154526Z-a56de3f9a985/sha256sums.txt
 validation/evidence/phase-1-step-2/local-phase-gate/20260715T154526Z-a56de3f9a985/summary.txt
 validation/evidence/phase-1-step-2/local-phase-gate/20260715T154526Z-a56de3f9a985/validation.log
+validation/fixtures/authentication/representative-provider-evidence-foundation/synthetic-v1/README.md
+validation/fixtures/authentication/representative-provider-evidence-foundation/synthetic-v1/artifacts/claims-acr-without-auth-time.sanitized.json
+validation/fixtures/authentication/representative-provider-evidence-foundation/synthetic-v1/artifacts/claims-additional-method.sanitized.json
+validation/fixtures/authentication/representative-provider-evidence-foundation/synthetic-v1/artifacts/claims-no-assurance.sanitized.json
+validation/fixtures/authentication/representative-provider-evidence-foundation/synthetic-v1/artifacts/claims-pwd-hwk.sanitized.json
+validation/fixtures/authentication/representative-provider-evidence-foundation/synthetic-v1/artifacts/claims-pwd-otp.sanitized.json
+validation/fixtures/authentication/representative-provider-evidence-foundation/synthetic-v1/artifacts/discovery.sanitized.json
+validation/fixtures/authentication/representative-provider-evidence-foundation/synthetic-v1/artifacts/jwks.sanitized.json
+validation/fixtures/authentication/representative-provider-evidence-foundation/synthetic-v1/bundle.json
+validation/schemas/representative-provider-evidence-bundle.schema.json
 validation/secret-allowlist.json
 validation/toolchain-requirements.json

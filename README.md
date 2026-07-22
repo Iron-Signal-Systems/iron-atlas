@@ -8,7 +8,7 @@
 >
 > Built on purpose. Backed by discipline. Engineered to endure.
 >
-> Development status: Phase 1 Step 2 is accepted; Phase 1 Step 3 authentication assurance is merged as a non-production implementation checkpoint; architecture and roadmap alignment is accepted at signed boundary `12569192da89a1a34f4ebfe107c4d02c60cbdb09`; the provider-neutral assurance-evidence checkpoint is active; representative-provider compatibility remains future evidence-backed work; infrastructure ingestion and intelligence capabilities remain under active development; not ready for production use
+> Development status: Phase 1 Step 2 is accepted; Phase 1 Step 3 authentication assurance and provider-neutral assurance evidence are merged non-production implementation checkpoints; the representative-provider evidence foundation is active from signed boundary `e7824049852855f15d26686600fc42802b8a38ff`; representative-provider compatibility remains future evidence-backed work; infrastructure ingestion and intelligence capabilities remain under active development; not ready for production use
 > Repository assurance: ISRAS 0.1.4 adoption and canonical Atlas branding are an active candidate; the previously recorded 1.0.1 boundary remains historical until separate acceptance.
 > Repository license: Business Source License 1.1 (`BUSL-1.1`); non-production use is permitted, while production use before the applicable change event requires a separate commercial license.
 
@@ -94,7 +94,7 @@ The accepted Phase 0 baseline contains an embedded HTML5 interface, module regis
 
 Accepted Phase 1 Steps 1 and 2 add governed PostgreSQL migrations, durable identity and authority records, database-enforced independent approval, append-only history, a least-privileged Go PostgreSQL runtime, transaction-local actor context, persistent change creation and approval, failure isolation, and readiness behavior.
 
-Phase 1 Step 3 trusted-authentication work remains incomplete and non-production. The active provider-neutral assurance-evidence checkpoint uses only Atlas-controlled synthetic claims, rejects `acr` or `amr` without explicit `auth_time`, and requires exact governed method sets. Atlas does not store local user passwords or TOTP seeds and is not intended to become a local credential or MFA provider. Representative-provider compatibility remains future evidence-backed work; completed session lifecycle, logout and administrative revocation, CSRF, trusted proxies, production wiring, and formal acceptance remain incomplete. Infrastructure evidence ingestion, normalization, correlation, query, and reporting capabilities are active development work and must not be represented as production-complete.
+Phase 1 Step 3 trusted-authentication work remains incomplete and non-production. The merged provider-neutral assurance-evidence checkpoint uses only Atlas-controlled synthetic claims, rejects `acr` or `amr` without explicit `auth_time`, and requires exact governed method sets. The active representative-provider evidence foundation adds strict observation-only sanitized bundles, digest and path binding, literal claim preservation, and secret rejection without asserting compatibility. Atlas does not store local user passwords or TOTP seeds and is not intended to become a local credential or MFA provider. Representative-provider compatibility remains future evidence-backed work; completed session lifecycle, logout and administrative revocation, CSRF, trusted proxies, production wiring, and formal acceptance remain incomplete. Infrastructure evidence ingestion, normalization, correlation, query, and reporting capabilities are active development work and must not be represented as production-complete.
 
 FortiGate YAML snapshot ingestion is an active, self-validated,
 non-production evidence-adapter candidate. The current checkpoint processes a
@@ -171,6 +171,7 @@ Start with:
 - [Atlas–IFI snapshot integration](docs/architecture/ATLAS-IFI-SNAPSHOT-INTEGRATION-CONTRACT.md)
 - [MFA and authentication assurance](docs/security/MFA-AND-AUTHENTICATION-ASSURANCE-REQUIREMENTS.md)
 - [Provider-neutral OIDC assurance evidence](docs/architecture/PROVIDER-NEUTRAL-OIDC-ASSURANCE-EVIDENCE.md)
+- [Representative-provider evidence foundation](docs/architecture/REPRESENTATIVE-PROVIDER-EVIDENCE-FOUNDATION.md)
 
 ## Security Boundary
 

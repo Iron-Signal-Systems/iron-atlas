@@ -101,8 +101,9 @@ the latest Step 3 implementation chain is revalidated at
 successor claims.
 
 The architecture and roadmap alignment is accepted at signed boundary
-`12569192da89a1a34f4ebfe107c4d02c60cbdb09`. The active trusted-authentication implementation gate is
-`validate_phase1_step3_provider_neutral_assurance_evidence.sh`. Representative-provider compatibility remains planned until controlled provider evidence exists.
+`12569192da89a1a34f4ebfe107c4d02c60cbdb09`. Provider-neutral assurance evidence is preserved at signed boundary
+`e7824049852855f15d26686600fc42802b8a38ff`. The active trusted-authentication implementation gate is
+`validate_phase1_step3_representative_provider_evidence_foundation.sh`. Representative-provider compatibility remains planned until controlled, sanitized provider evidence exists.
 
 ---
 
@@ -133,10 +134,11 @@ Preserve all existing checkpoint and acceptance validators:
 - `validate_phase1_step3_http_login_callback.sh`
 - `validate_phase1_step3_authenticated_session.sh`
 - `validate_phase1_step3_authentication_assurance.sh`
+- `validate_phase1_step3_provider_neutral_assurance_evidence.sh`
 
 Active bounded implementation gate:
 
-- `validate_phase1_step3_provider_neutral_assurance_evidence.sh`
+- `validate_phase1_step3_representative_provider_evidence_foundation.sh`
 
 ### Remaining trusted-authentication checkpoints
 
@@ -151,7 +153,7 @@ Planned gates:
 - `validate_phase1_step3_integration.sh`
 - `validate_phase1_step3_acceptance.sh`
 
-The authentication-assurance checkpoint is merged and remains an implementation checkpoint rather than formal Step 3 acceptance. The provider-neutral assurance-evidence gate is active and uses only Atlas-controlled synthetic evidence. Atlas relies on approved external OIDC providers for primary authentication and MFA; no Atlas-local TOTP gate is planned. Representative-provider compatibility remains planned until controlled provider evidence exists. The listed session-lifecycle, CSRF, trusted-proxy, production-wiring, emergency-access, integration, and acceptance validators remain planned.
+The authentication-assurance and provider-neutral assurance-evidence checkpoints are merged and remain implementation checkpoints rather than formal Step 3 acceptance. The representative-provider evidence-foundation gate is active and validates only sanitized observation bundles and their controls. Atlas relies on approved external OIDC providers for primary authentication and MFA; no Atlas-local TOTP gate is planned. Representative-provider compatibility remains planned until controlled provider evidence exists and is reviewed. The listed session-lifecycle, CSRF, trusted-proxy, production-wiring, emergency-access, integration, and acceptance validators remain planned.
 
 The Step 3 integration boundary proves:
 

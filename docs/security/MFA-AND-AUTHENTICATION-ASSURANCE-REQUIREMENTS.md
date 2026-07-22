@@ -2,7 +2,7 @@
 
 ## Status
 
-Normative Phase 1 Step 3 requirements. Architecture alignment is accepted; the provider-neutral assurance-evidence implementation candidate is active and remains non-production.
+Normative Phase 1 Step 3 requirements. Provider-neutral assurance evidence is merged; the representative-provider evidence foundation is active and remains non-production.
 
 ## Authority boundary
 
@@ -43,6 +43,10 @@ This checkpoint does not establish compatibility with any named provider.
 Provider-specific semantics remain future evidence-backed work.
 
 WebAuthn, FIDO2, passkeys, or hardware security keys are preferred phishing-resistant provider methods. Provider-managed RFC 6238 TOTP may be accepted only when an exact versioned policy permits it.
+
+## Representative-provider evidence foundation
+
+Before any compatibility claim, Atlas records controlled provider observations in strict, sanitized, observation-only bundles. Each bundle identifies the exact provider software, version, configuration digest, disposable capture environment, literal `acr`, `amr`, and `auth_time`, digest-bound artifacts, limitations, and redaction status. Raw tokens, cookies, authorization codes, credentials, private keys, and unredacted identities are prohibited from Git. Evidence metadata does not grant semantic meaning to a provider claim.
 
 ## Representative-provider compatibility
 

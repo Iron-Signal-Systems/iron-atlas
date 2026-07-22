@@ -28,12 +28,42 @@ revalidate_authentication_assurance_checkpoint() {
         "tools/validation/phase-gates/validate_phase1_step3_authentication_assurance.sh"
 }
 
+revalidate_architecture_alignment_static_checkpoint() {
+    isolated_python_validator_revalidate \
+        "$repo_root" \
+        "2347d21f779768f40496a93cb1d9140cc3b6e0ce" \
+        "tools/validation/validate_architecture_roadmap_alignment.py"
+}
+
+revalidate_architecture_alignment_regression_checkpoint() {
+    isolated_gate_revalidate \
+        "$repo_root" \
+        "2347d21f779768f40496a93cb1d9140cc3b6e0ce" \
+        "test-framework/governance/test_architecture_roadmap_alignment.sh"
+}
+
+revalidate_provider_neutral_static_checkpoint() {
+    isolated_python_validator_revalidate \
+        "$repo_root" \
+        "e7824049852855f15d26686600fc42802b8a38ff" \
+        "tools/validation/validate_phase1_step3_provider_neutral_assurance_evidence.py"
+}
+
+revalidate_provider_neutral_regression_checkpoint() {
+    isolated_gate_revalidate \
+        "$repo_root" \
+        "e7824049852855f15d26686600fc42802b8a38ff" \
+        "test-framework/authentication/test_phase1_step3_provider_neutral_assurance_evidence.sh"
+}
+
 run "Business Source License 1.1 static validation" python3 tools/validation/validate_licensing.py
 run "Business Source License 1.1 regression" ./test-framework/governance/test_business_source_license_transition.sh
-run "architecture and roadmap alignment static validation" python3 tools/validation/validate_architecture_roadmap_alignment.py
-run "architecture and roadmap alignment regression" ./test-framework/governance/test_architecture_roadmap_alignment.sh
-run "provider-neutral assurance-evidence static validation" python3 tools/validation/validate_phase1_step3_provider_neutral_assurance_evidence.py
-run "provider-neutral assurance-evidence regression" ./test-framework/authentication/test_phase1_step3_provider_neutral_assurance_evidence.sh
+run "architecture and roadmap alignment exact-boundary static revalidation" revalidate_architecture_alignment_static_checkpoint
+run "architecture and roadmap alignment exact-boundary regression" revalidate_architecture_alignment_regression_checkpoint
+run "provider-neutral assurance-evidence exact-boundary static revalidation" revalidate_provider_neutral_static_checkpoint
+run "provider-neutral assurance-evidence exact-boundary regression" revalidate_provider_neutral_regression_checkpoint
+run "representative-provider evidence-foundation static validation" python3 tools/validation/validate_phase1_step3_representative_provider_evidence_foundation.py
+run "representative-provider evidence-foundation regression" ./test-framework/authentication/test_phase1_step3_representative_provider_evidence_foundation.sh
 run "go format check" bash -c 'test -z "$(gofmt -l cmd internal modules integrations)"'
 run "go module verification" go mod verify
 run "go vet" go vet ./...

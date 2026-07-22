@@ -21,7 +21,7 @@ check() {
 work="$(mktemp -d)"
 trap 'rm -rf "$work"' EXIT
 source_repo="$work/source"
-mkdir -p "$source_repo/tools/validation/phase-gates"
+mkdir -p "$source_repo/tools/validation/phase-gates" "$source_repo/tools/validation/static"
 git -C "$source_repo" init --quiet
 git -C "$source_repo" config user.name "Iron Atlas Gate Test"
 git -C "$source_repo" config user.email "gate-test@example.invalid"
@@ -34,6 +34,12 @@ cat > "$source_repo/tools/validation/phase-gates/fail.sh" <<'FAIL'
 #!/usr/bin/env bash
 exit 23
 FAIL
+cat > "$source_repo/tools/validation/static/pass.py" <<'PY_PASS'
+raise SystemExit(0)
+PY_PASS
+cat > "$source_repo/tools/validation/static/fail.py" <<'PY_FAIL'
+raise SystemExit(29)
+PY_FAIL
 chmod +x \
     "$source_repo/tools/validation/phase-gates/pass.sh" \
     "$source_repo/tools/validation/phase-gates/fail.sh"
@@ -71,6 +77,38 @@ missing_validator_is_rejected() {
 check \
     "missing isolated predecessor validator returns failure" \
     missing_validator_is_rejected
+
+
+check \
+    "successful isolated Python validator returns success" \
+    isolated_python_validator_revalidate \
+        "$source_repo" \
+        "$commit" \
+        tools/validation/static/pass.py
+
+failing_python_validator_is_rejected() {
+    if isolated_python_validator_revalidate \
+        "$source_repo" \
+        "$commit" \
+        tools/validation/static/fail.py; then
+        return 1
+    fi
+}
+check \
+    "failing isolated Python validator returns failure" \
+    failing_python_validator_is_rejected
+
+python_parent_traversal_is_rejected() {
+    if isolated_python_validator_revalidate \
+        "$source_repo" \
+        "$commit" \
+        ../outside.py; then
+        return 1
+    fi
+}
+check \
+    "isolated Python validator rejects parent traversal" \
+    python_parent_traversal_is_rejected
 
 printf '\nPASS checks: %d\n' "$pass"
 printf 'FAIL checks: %d\n' "$fail"

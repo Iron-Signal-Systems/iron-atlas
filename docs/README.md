@@ -2,7 +2,7 @@
 
 > Owner: Iron Signal Systems
 >
-> Status: Active non-production development; architecture and roadmap alignment is accepted at signed boundary `12569192da89a1a34f4ebfe107c4d02c60cbdb09`; provider-neutral assurance evidence is the active bounded Phase 1 Step 3 checkpoint; representative-provider compatibility remains future evidence-backed work
+> Status: Active non-production development; provider-neutral assurance evidence is merged at signed boundary `e7824049852855f15d26686600fc42802b8a38ff`; representative-provider evidence foundation is the active bounded Phase 1 Step 3 checkpoint; representative-provider compatibility remains future evidence-backed work
 
 ## Start Here
 
@@ -36,6 +36,7 @@
 - [Authenticated server-side session implementation](architecture/AUTHENTICATED-SERVER-SIDE-SESSION-IMPLEMENTATION.md)
 - [Authentication assurance implementation](architecture/AUTHENTICATION-ASSURANCE-IMPLEMENTATION.md)
 - [Provider-neutral OIDC assurance evidence](architecture/PROVIDER-NEUTRAL-OIDC-ASSURANCE-EVIDENCE.md)
+- [Representative-provider evidence foundation](architecture/REPRESENTATIVE-PROVIDER-EVIDENCE-FOUNDATION.md)
 - [Evidence ingestion and protection](architecture/EVIDENCE-INGESTION-AND-PROTECTION.md)
 - [Firewall semantic analysis](architecture/FIREWALL-CONFIGURATION-SEMANTIC-ANALYSIS.md)
 - [FortiGate YAML snapshot prototype](architecture/FORTIGATE-YAML-SNAPSHOT-PROTOTYPE.md)
@@ -69,6 +70,7 @@
 - [Fail-closed and adversarial invariants](security/FAIL-CLOSED-AND-ADVERSARIAL-INVARIANT-MODEL.md)
 - [MFA and authentication-assurance requirements](security/MFA-AND-AUTHENTICATION-ASSURANCE-REQUIREMENTS.md)
 - [Provider-neutral assurance-evidence testing](testing/PROVIDER-NEUTRAL-OIDC-ASSURANCE-EVIDENCE-TESTING.md)
+- [Representative-provider evidence-foundation testing](testing/REPRESENTATIVE-PROVIDER-EVIDENCE-FOUNDATION-TESTING.md)
 - [Acceptance records](acceptance/README.md)
 - [Canonical clean-clone validation](operations/CANONICAL-CLEAN-CLONE-VALIDATION.md)
 - [Repository creation and first push](operations/REPOSITORY-CREATION-AND-FIRST-PUSH.md)

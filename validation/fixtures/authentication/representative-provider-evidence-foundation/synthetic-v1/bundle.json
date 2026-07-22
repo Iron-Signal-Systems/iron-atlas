@@ -1,0 +1,159 @@
+{
+  "artifacts": [
+    {
+      "kind": "discovery-document",
+      "path": "artifacts/discovery.sanitized.json",
+      "sha256": "089b4d89bc9cb3613d14c664f0f215778fba84efd7291c126884822883a3e610"
+    },
+    {
+      "kind": "jwks-document",
+      "path": "artifacts/jwks.sanitized.json",
+      "sha256": "96c1ec9132e06440f91993aae5e61731c07b06b0c66263a5b15d6a4bf3ea2ea1"
+    },
+    {
+      "kind": "literal-assurance-claims",
+      "path": "artifacts/claims-no-assurance.sanitized.json",
+      "sha256": "2fdd0e53e2e44c2319829eb3e3ad8afd6f74a3b3027c9328055fb97258523b3c"
+    },
+    {
+      "kind": "literal-assurance-claims",
+      "path": "artifacts/claims-pwd-otp.sanitized.json",
+      "sha256": "6686e33c2dcfb31666a0e5f2ce2dd406a9c68aad78b36987a1145b953bc0c0c6"
+    },
+    {
+      "kind": "literal-assurance-claims",
+      "path": "artifacts/claims-pwd-hwk.sanitized.json",
+      "sha256": "08a8ac6f9d09aa06d8893eb834230144b99bc1fa4cad79aa4ba1011a42a5ad0d"
+    },
+    {
+      "kind": "literal-assurance-claims",
+      "path": "artifacts/claims-acr-without-auth-time.sanitized.json",
+      "sha256": "538b582c58b23cf749c1131326436fe6f1ec7b23840737cfdcb0b1ac0d35f733"
+    },
+    {
+      "kind": "literal-assurance-claims",
+      "path": "artifacts/claims-additional-method.sanitized.json",
+      "sha256": "ac5cd20d1bf448d7f0aa782e1b5fa02b6a5f6532c7cb7fba37b7d6953920d454"
+    }
+  ],
+  "bundle_id": "synthetic-representative-provider-evidence-foundation-v1",
+  "capture": {
+    "captured_at": "2026-07-21T00:00:00Z",
+    "environment": "disposable",
+    "raw_artifacts_committed": false,
+    "sanitized": true,
+    "tool": "iron-atlas-offline-provider-evidence-contract",
+    "tool_version": "1"
+  },
+  "claim_status": "observation-only",
+  "compatibility_claim": false,
+  "endpoints": {
+    "discovery_artifact": "artifacts/discovery.sanitized.json",
+    "issuer": "https://provider.example.invalid",
+    "jwks_artifact": "artifacts/jwks.sanitized.json"
+  },
+  "evidence_class": "synthetic",
+  "nonclaims": [
+    "This is not a compatibility claim.",
+    "This is not production readiness.",
+    "This makes no provider-semantic inference.",
+    "No raw tokens or secrets are committed."
+  ],
+  "provider": {
+    "configuration_sha256": "aa9b043ba042a154e21d720970f84f0904b3d4da7ea1d182020cb746cdfb657b",
+    "label": "synthetic-controlled-provider",
+    "software": "synthetic-oidc-emulator",
+    "version": "test-v1"
+  },
+  "redaction": {
+    "notes": [
+      "No raw JWT, authorization code, cookie, credential, personal identity, or private key is present."
+    ],
+    "prohibited_material_absent": true,
+    "review_status": "synthetic"
+  },
+  "scenarios": [
+    {
+      "authentication_succeeded": true,
+      "claims_artifact": "artifacts/claims-no-assurance.sanitized.json",
+      "limitations": [
+        "Synthetic observation only.",
+        "No MFA conclusion is encoded."
+      ],
+      "literal_claims": {
+        "acr": null,
+        "amr": [],
+        "auth_time": null
+      },
+      "purpose": "Preserve successful login separately from assurance evidence.",
+      "scenario_id": "no-assurance"
+    },
+    {
+      "authentication_succeeded": true,
+      "claims_artifact": "artifacts/claims-pwd-otp.sanitized.json",
+      "limitations": [
+        "Synthetic values are not provider interoperability evidence."
+      ],
+      "literal_claims": {
+        "acr": "urn:iron-atlas:test:mfa",
+        "amr": [
+          "pwd",
+          "otp"
+        ],
+        "auth_time": 1760000000
+      },
+      "purpose": "Preserve exact literal provider claim values without semantic inference.",
+      "scenario_id": "pwd-otp"
+    },
+    {
+      "authentication_succeeded": true,
+      "claims_artifact": "artifacts/claims-pwd-hwk.sanitized.json",
+      "limitations": [
+        "No phishing-resistant compatibility claim is encoded."
+      ],
+      "literal_claims": {
+        "acr": "urn:iron-atlas:test:phishing-resistant",
+        "amr": [
+          "pwd",
+          "hwk"
+        ],
+        "auth_time": 1760000100
+      },
+      "purpose": "Preserve a distinct exact method set for later evidence-backed review.",
+      "scenario_id": "pwd-hwk"
+    },
+    {
+      "authentication_succeeded": true,
+      "claims_artifact": "artifacts/claims-acr-without-auth-time.sanitized.json",
+      "limitations": [
+        "Atlas policy evaluation occurs outside this evidence bundle."
+      ],
+      "literal_claims": {
+        "acr": "urn:iron-atlas:test:mfa",
+        "amr": [],
+        "auth_time": null
+      },
+      "purpose": "Retain a fail-closed negative observation without interpreting provider semantics.",
+      "scenario_id": "acr-without-auth-time"
+    },
+    {
+      "authentication_succeeded": true,
+      "claims_artifact": "artifacts/claims-additional-method.sanitized.json",
+      "limitations": [
+        "The bundle does not classify the method as stronger or acceptable."
+      ],
+      "literal_claims": {
+        "acr": "urn:iron-atlas:test:mfa",
+        "amr": [
+          "pwd",
+          "otp",
+          "provider-extra"
+        ],
+        "auth_time": 1760000200
+      },
+      "purpose": "Retain an additional literal method for exact-policy review.",
+      "scenario_id": "additional-method"
+    }
+  ],
+  "schema_version": 1
+}
