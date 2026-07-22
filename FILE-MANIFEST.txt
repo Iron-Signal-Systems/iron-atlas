@@ -38,7 +38,7 @@ cmd/fortigate-inspect/main_test.go
 cmd/fortigate-inspect/semantic_quality.go
 configs/devices/cisco-switches.example.json
 configs/iron-atlas-postgresql.env.example
-configs/iron-atlas.example.json
+configs/atlas.example.json
 deployment/arch/PACKAGES.txt
 deployment/arch/README.md
 deployment/systemd/iron-atlas.env.example

@@ -43,7 +43,7 @@ database-test:
 
 build:
 	mkdir -p build
-	CGO_ENABLED=0 go build -trimpath -ldflags='-s -w' -o build/iron-atlas ./cmd/atlasd
+	CGO_ENABLED=0 go build -trimpath -ldflags='-s -w' -o build/atlas ./cmd/atlasd
 	CGO_ENABLED=0 go build -trimpath -ldflags='-s -w' -o build/atlasctl ./cmd/atlasctl
 
 clean:

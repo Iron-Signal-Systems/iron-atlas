@@ -35,11 +35,11 @@ type Config struct {
 }
 
 func ConfigFromEnvironment() (Config, error) {
-	listen := strings.TrimSpace(os.Getenv("IRON_ATLAS_LISTEN"))
+	listen := strings.TrimSpace(os.Getenv("atlas_LISTEN"))
 	if listen == "" {
 		listen = "127.0.0.1:8080"
 	}
-	store := strings.ToLower(strings.TrimSpace(os.Getenv("IRON_ATLAS_CHANGE_STORE")))
+	store := strings.ToLower(strings.TrimSpace(os.Getenv("atlas_CHANGE_STORE")))
 	if store == "" {
 		store = ChangeStoreMemory
 	}
@@ -52,11 +52,11 @@ func ConfigFromEnvironment() (Config, error) {
 		return Config{}, err
 	}
 
-	maxConns, err := envInt32("IRON_ATLAS_DATABASE_MAX_CONNECTIONS", 8)
+	maxConns, err := envInt32("atlas_DATABASE_MAX_CONNECTIONS", 8)
 	if err != nil {
 		return Config{}, err
 	}
-	minConns, err := envInt32("IRON_ATLAS_DATABASE_MIN_CONNECTIONS", 0)
+	minConns, err := envInt32("atlas_DATABASE_MIN_CONNECTIONS", 0)
 	if err != nil {
 		return Config{}, err
 	}
@@ -67,8 +67,8 @@ func ConfigFromEnvironment() (Config, error) {
 		ChangeStore:        store,
 		StartupTimeout:     10 * time.Second,
 		Database: database.Config{
-			URL:               strings.TrimSpace(os.Getenv("IRON_ATLAS_DATABASE_URL")),
-			ApplicationName:   "iron-atlas",
+			URL:               strings.TrimSpace(os.Getenv("atlas_DATABASE_URL")),
+			ApplicationName:   "atlas",
 			MaxConnections:    maxConns,
 			MinConnections:    minConns,
 			ConnectTimeout:    5 * time.Second,
@@ -82,8 +82,8 @@ func ConfigFromEnvironment() (Config, error) {
 	}
 	if store == ChangeStorePostgreSQL && cfg.Database.URL == "" {
 		return Config{}, errors.New(
-			"IRON_ATLAS_DATABASE_URL is required when " +
-				"IRON_ATLAS_CHANGE_STORE=postgresql",
+			"atlas_DATABASE_URL is required when " +
+				"atlas_CHANGE_STORE=postgresql",
 		)
 	}
 	return cfg, nil
@@ -93,16 +93,16 @@ func authenticationModeFromEnvironment(
 	store string,
 ) (authentication.Mode, error) {
 	if legacy := strings.TrimSpace(
-		os.Getenv("IRON_ATLAS_DEV_IDENTITY"),
+		os.Getenv("atlas_DEV_IDENTITY"),
 	); legacy != "" {
 		return "", errors.New(
-			"IRON_ATLAS_DEV_IDENTITY is no longer supported; use " +
-				"IRON_ATLAS_AUTHENTICATION_MODE=development or production",
+			"atlas_DEV_IDENTITY is no longer supported; use " +
+				"atlas_AUTHENTICATION_MODE=development or production",
 		)
 	}
 
 	raw := strings.TrimSpace(
-		os.Getenv("IRON_ATLAS_AUTHENTICATION_MODE"),
+		os.Getenv("atlas_AUTHENTICATION_MODE"),
 	)
 	if raw == "" {
 		if store == ChangeStoreMemory {
@@ -113,7 +113,7 @@ func authenticationModeFromEnvironment(
 	mode, err := authentication.ParseMode(raw)
 	if err != nil {
 		return "", fmt.Errorf(
-			"IRON_ATLAS_AUTHENTICATION_MODE: %w",
+			"atlas_AUTHENTICATION_MODE: %w",
 			err,
 		)
 	}
