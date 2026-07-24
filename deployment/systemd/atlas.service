@@ -7,9 +7,9 @@ Wants=network-online.target
 Type=simple
 User=atlas
 Group=atlas
-Environment=atlas_LISTEN=127.0.0.1:8080
-Environment=atlas_DEV_IDENTITY=false
-Environment=atlas_CHANGE_STORE=memory
+Environment=IRON_ATLAS_LISTEN=127.0.0.1:8080
+Environment=IRON_ATLAS_DEV_IDENTITY=false
+Environment=IRON_ATLAS_CHANGE_STORE=memory
 EnvironmentFile=-/etc/atlas/atlas.env
 ExecStart=/usr/local/bin/atlas
 Restart=on-failure
