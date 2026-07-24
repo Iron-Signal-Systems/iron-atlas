@@ -11,9 +11,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/Iron-Signal-Systems/iron-atlas/internal/authentication"
-	"github.com/Iron-Signal-Systems/iron-atlas/internal/authentication/session"
-	database "github.com/Iron-Signal-Systems/iron-atlas/internal/database/postgresql"
+	"github.com/Iron-Signal-Systems/atlas/internal/authentication"
+	"github.com/Iron-Signal-Systems/atlas/internal/authentication/session"
+	database "github.com/Iron-Signal-Systems/atlas/internal/database/postgresql"
 )
 
 func integrationStore(t *testing.T) (*Store, *database.Pool, func()) {

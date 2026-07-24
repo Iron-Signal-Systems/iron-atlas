@@ -9,8 +9,8 @@ import (
 	"github.com/jackc/pgx/v5"
 	"github.com/jackc/pgx/v5/pgtype"
 
-	"github.com/Iron-Signal-Systems/iron-atlas/internal/authentication"
-	"github.com/Iron-Signal-Systems/iron-atlas/internal/authentication/session"
+	"github.com/Iron-Signal-Systems/atlas/internal/authentication"
+	"github.com/Iron-Signal-Systems/atlas/internal/authentication/session"
 )
 
 type fakeQuerier struct {

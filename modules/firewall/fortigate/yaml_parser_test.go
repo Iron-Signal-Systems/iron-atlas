@@ -6,7 +6,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/Iron-Signal-Systems/iron-atlas/modules/firewall/snapshot"
+	"github.com/Iron-Signal-Systems/atlas/modules/firewall/snapshot"
 )
 
 func TestParseYAMLDocumentPreservesFortiGateHierarchy(t *testing.T) {

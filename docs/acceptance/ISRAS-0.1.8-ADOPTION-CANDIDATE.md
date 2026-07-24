@@ -41,6 +41,16 @@ release-bound signer inventory. The older 0.1.4 pin correctly rejects commits
 signed by that rotated key. Atlas must upgrade explicitly; it does not alter its
 own allowed-signer inventory or weaken exact principal and fingerprint checks.
 
+## Canonical repository identity prerequisite
+
+The candidate also incorporates the two already signed commits that transition
+the active repository identity from `Iron-Signal-Systems/iron-atlas` to
+`Iron-Signal-Systems/atlas`. Hosted portable validation checks the canonical
+origin from `REPOSITORY-ASSURANCE.json`; retaining the former active identity
+would make the 0.1.8 candidate non-reproducible in the renamed GitHub
+repository. Historical evidence keeps the former identity where it describes
+the repository that was actually validated.
+
 ## Historical boundary
 
 The merged 0.1.4 candidate remains reconstructable and unaccepted. The

@@ -11,7 +11,7 @@ import (
 
 	"golang.org/x/oauth2"
 
-	"github.com/Iron-Signal-Systems/iron-atlas/internal/authentication"
+	"github.com/Iron-Signal-Systems/atlas/internal/authentication"
 )
 
 func TestAuthorizationCodeFlowCancelConsumesStateExactlyOnce(t *testing.T) {

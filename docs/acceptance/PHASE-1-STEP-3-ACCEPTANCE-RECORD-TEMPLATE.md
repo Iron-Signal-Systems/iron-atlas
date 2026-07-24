@@ -4,8 +4,8 @@
 
 - Decision:
 - Product: Iron Atlas
-- Repository: `Iron-Signal-Systems/iron-atlas`
-- Canonical repository: `https://github.com/Iron-Signal-Systems/iron-atlas.git`
+- Repository: `Iron-Signal-Systems/atlas`
+- Canonical repository: `https://github.com/Iron-Signal-Systems/atlas.git`
 - Branch: `dev`
 - Acceptance date:
 - Accepted tag:

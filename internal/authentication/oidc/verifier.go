@@ -20,7 +20,7 @@ import (
 
 	coreoidc "github.com/coreos/go-oidc/v3/oidc"
 
-	"github.com/Iron-Signal-Systems/iron-atlas/internal/authentication"
+	"github.com/Iron-Signal-Systems/atlas/internal/authentication"
 )
 
 const (

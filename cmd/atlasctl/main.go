@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/Iron-Signal-Systems/iron-atlas/internal/config"
+	"github.com/Iron-Signal-Systems/atlas/internal/config"
 )
 
 func main() {

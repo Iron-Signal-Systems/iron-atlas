@@ -15,7 +15,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/Iron-Signal-Systems/iron-atlas/internal/authentication"
+	"github.com/Iron-Signal-Systems/atlas/internal/authentication"
 )
 
 const testIssuer = "https://identity.example.test/oidc"

@@ -6,7 +6,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/Iron-Signal-Systems/iron-atlas/internal/authz"
+	"github.com/Iron-Signal-Systems/atlas/internal/authz"
 )
 
 func TestAssuranceValidation(t *testing.T) {

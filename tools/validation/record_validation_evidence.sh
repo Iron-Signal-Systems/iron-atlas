@@ -2,7 +2,7 @@
 set -Eeuo pipefail
 
 repo_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
-canonical_repository="https://github.com/Iron-Signal-Systems/iron-atlas.git"
+canonical_repository="https://github.com/Iron-Signal-Systems/atlas.git"
 
 usage() {
   echo "usage: $0 BOUNDARY COMMAND [ARG ...]" >&2

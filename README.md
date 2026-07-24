@@ -1,7 +1,7 @@
-# Iron Atlas
+# Atlas
 
 <p align="center">
-  <img src="assets/branding/iron-atlas-logo.png" alt="Iron Atlas shield emblem with compass and network-circuit elements" width="520">
+  <img src="assets/branding/atlas-logo.png" alt="Atlas shield emblem with compass and network-circuit elements" width="520">
 </p>
 
 > An Iron Signal Systems project
@@ -14,7 +14,7 @@
 
 ## Product Vision
 
-**Iron Atlas is an evidence-driven network and security intelligence platform built to give Network Operations Teams, Security Operations Teams, operational leaders, and change authorities fast, defensible answers about the environment.**
+**Atlas is an evidence-driven network and security intelligence platform built to give Network Operations Teams, Security Operations Teams, operational leaders, and change authorities fast, defensible answers about the environment.**
 
 Atlas ingests configuration, operational, diagnostic, monitoring, logging, security, and documentation evidence from infrastructure and supporting systems. It correlates that evidence across vendors and technologies to explain infrastructure identity, topology, VLANs, subnets, CIDRs, routing, reachability, security controls, exposure, dependencies, risk, and change impact without forcing users to reconstruct the answer across dozens of interfaces.
 
@@ -181,7 +181,7 @@ The repository contains contracts, code, schemas, sanitized fixtures, redacted e
 
 ## License
 
-Iron Atlas is licensed under the **Business Source License 1.1**
+Atlas is licensed under the **Business Source License 1.1**
 (`BUSL-1.1`). Non-production use is permitted. Because the Additional Use
 Grant is `None`, production use before the applicable change event requires a
 separate commercial license.
