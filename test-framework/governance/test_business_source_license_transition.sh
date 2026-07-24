@@ -36,6 +36,10 @@ check \
     grep -Fqx "Additional Use Grant: None" LICENSE
 
 check \
+    "current licensed work is Atlas" \
+    grep -Fqx "Licensed Work: Atlas" LICENSE
+
+check \
     "historical BSD record remains exact" \
     python3 - <<'PY'
 from pathlib import Path

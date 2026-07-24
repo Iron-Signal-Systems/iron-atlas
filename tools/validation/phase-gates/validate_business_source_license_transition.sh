@@ -12,7 +12,7 @@ report_dir="$results_root/business-source-license-transition-$run_id"
 latest_report="$results_root/business-source-license-transition-latest-report.txt"
 
 validation_report_init \
-  "Iron Atlas Business Source License 1.1 transition" \
+  "Atlas Business Source License 1.1 transition" \
   "$report_dir"
 
 blocked=""
