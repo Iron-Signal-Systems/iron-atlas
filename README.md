@@ -9,7 +9,7 @@
 > Built on purpose. Backed by discipline. Engineered to endure.
 >
 > Development status: Phase 1 Step 2 is accepted; Phase 1 Step 3 authentication assurance and provider-neutral assurance evidence are merged non-production implementation checkpoints; the representative-provider evidence foundation is active from signed boundary `e7824049852855f15d26686600fc42802b8a38ff`; representative-provider compatibility remains future evidence-backed work; infrastructure ingestion and intelligence capabilities remain under active development; not ready for production use
-> Repository assurance: Published ISRAS 0.1.8 is the active signer-rotation adoption candidate; formal adoption requires exact candidate, clean-clone, hosted-evidence, and separate signed acceptance boundaries. The merged but unaccepted 0.1.4 candidate and previously recorded 1.0.1 boundary remain historical.
+> Repository assurance: Published ISRAS 0.1.8 is formally adopted at the exact signed and evidence-bound acceptance boundary. The merged but unaccepted 0.1.4 candidate and previously recorded 1.0.1 boundary remain historical.
 > Repository license: Business Source License 1.1 (`BUSL-1.1`); non-production use is permitted, while production use before the applicable change event requires a separate commercial license.
 
 ## Product Vision

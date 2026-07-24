@@ -40,10 +40,16 @@ errata rather than by moving or rewriting an accepted tag.
 Operational infrastructure changes remain subject to independent two-person
 approval according to the change-management architecture.
 
+## Accepted repository-assurance boundaries
+
+- [ISRAS 0.1.8 adoption acceptance](ISRAS-0.1.8-ADOPTION-ACCEPTANCE.md) —
+  exact signed candidate, canonical clean clone, hosted Atlas validation, and
+  digest-bound hosted ISRAS evidence
+
 ## Active candidates
 
 - [ISRAS 0.1.8 adoption candidate](ISRAS-0.1.8-ADOPTION-CANDIDATE.md) —
-  signer-rotation candidate; hosted validation and formal acceptance pending
+  accepted by the separate 0.1.8 adoption acceptance record
 
 ## Historical unaccepted candidates
 

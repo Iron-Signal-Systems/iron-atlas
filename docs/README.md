@@ -7,6 +7,7 @@
 ## Start Here
 
 - [Iron Atlas brand assets](branding/IRON-ATLAS-BRAND-ASSETS.md)
+- [ISRAS 0.1.8 adoption acceptance](acceptance/ISRAS-0.1.8-ADOPTION-ACCEPTANCE.md)
 - [ISRAS 0.1.8 adoption candidate](acceptance/ISRAS-0.1.8-ADOPTION-CANDIDATE.md)
 - [Historical ISRAS 0.1.4 adoption candidate](acceptance/ISRAS-0.1.4-ADOPTION-CANDIDATE.md)
 

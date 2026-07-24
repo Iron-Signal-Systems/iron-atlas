@@ -4,6 +4,11 @@
 
 ### Added
 
+- Formally adopted the exact published ISRAS 0.1.8 `ISRAS-SD` Go profile at
+  signed candidate `d7398968d1e900854345e0114c221e1f4e70deee`, with canonical
+  clean-clone validation, successful hosted Atlas and pinned ISRAS workflows,
+  and retained digest-bound ISRAS evidence.
+
 - Added the published ISRAS 0.1.8 signer-rotation adoption candidate, exact
   six-asset release verification, immutable hosted workflow, direct governed
   `govulncheck` command, preserved 0.1.4 candidate history, and explicit
