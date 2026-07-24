@@ -42,4 +42,10 @@ approval according to the change-management architecture.
 
 ## Active candidates
 
-- [ISRAS 0.1.4 adoption candidate](ISRAS-0.1.4-ADOPTION-CANDIDATE.md) — candidate only; formal acceptance pending
+- [ISRAS 0.1.8 adoption candidate](ISRAS-0.1.8-ADOPTION-CANDIDATE.md) —
+  signer-rotation candidate; hosted validation and formal acceptance pending
+
+## Historical unaccepted candidates
+
+- [ISRAS 0.1.4 adoption candidate](ISRAS-0.1.4-ADOPTION-CANDIDATE.md) —
+  merged, unaccepted, and superseded by the 0.1.8 candidate

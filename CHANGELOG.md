@@ -4,6 +4,11 @@
 
 ### Added
 
+- Added the published ISRAS 0.1.8 signer-rotation adoption candidate, exact
+  six-asset release verification, immutable hosted workflow, direct governed
+  `govulncheck` command, preserved 0.1.4 candidate history, and explicit
+  clean-clone, hosted-evidence, and separate-acceptance requirements.
+
 - Added the representative-provider evidence-foundation candidate with strict observation-only sanitized bundles, provider and configuration identity, literal `acr`/`amr`/`auth_time` preservation, digest and path binding, deterministic validation, hostile secret and identity rejection, exact predecessor revalidation, and no compatibility claim.
 - Added the provider-neutral OIDC assurance-evidence candidate using Atlas-controlled synthetic claims, explicit `auth_time` correlation for `acr` and `amr`, exact governed method sets, hostile tests, synchronized documentation, and a bounded implementation gate.
 - Added the architecture and roadmap alignment candidate defining module runtime failure containment, scheduled evidence ingestion, monitoring and freshness, immutable candidates and atomic acceptance, signed purpose-limited Atlas–IFI snapshots, fail-closed adversarial invariants, external-provider MFA requirements, and signed candidate/post-merge repository trust.

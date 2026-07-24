@@ -53,6 +53,7 @@ diagrams/source/curated/architecture/ARCH-001-iron-atlas-context.md
 diagrams/source/generated/.gitkeep
 docs/README.md
 docs/acceptance/ISRAS-0.1.4-ADOPTION-CANDIDATE.md
+docs/acceptance/ISRAS-0.1.8-ADOPTION-CANDIDATE.md
 docs/acceptance/PHASE-0-ACCEPTANCE-RECORD-TEMPLATE.md
 docs/acceptance/PHASE-0-STEP-1-ACCEPTANCE-ERRATA.md
 docs/acceptance/PHASE-0-STEP-1-ACCEPTANCE-RECORD.md
