@@ -80,7 +80,7 @@ requirements_text = text("validation/toolchain-requirements.json")
 required_license_fragments = [
     "Business Source License 1.1",
     "Licensor: John Wood",
-    "Licensed Work: Iron Atlas",
+    "Licensed Work: Atlas",
     "Additional Use Grant: None",
     "Change Date: 2030-07-18",
     "Change License: GNU Affero General Public License, Version 3 only",
@@ -136,7 +136,7 @@ check(
     "does not revoke" in status or "does not revoke" in transition,
 )
 check(
-    "trademark policy reserves Iron Atlas branding",
+    "trademark policy preserves historical Iron Atlas branding terms",
     "Iron Atlas" in trademark and "does not grant rights" in trademark,
 )
 check(

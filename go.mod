@@ -1,4 +1,4 @@
-module github.com/Iron-Signal-Systems/iron-atlas
+module github.com/Iron-Signal-Systems/atlas
 
 go 1.25.0
 

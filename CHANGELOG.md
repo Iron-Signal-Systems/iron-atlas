@@ -4,6 +4,16 @@
 
 ### Added
 
+- Formally adopted the exact published ISRAS 0.1.8 `ISRAS-SD` Go profile at
+  signed candidate `d7398968d1e900854345e0114c221e1f4e70deee`, with canonical
+  clean-clone validation, successful hosted Atlas and pinned ISRAS workflows,
+  and retained digest-bound ISRAS evidence.
+
+- Added the published ISRAS 0.1.8 signer-rotation adoption candidate, exact
+  six-asset release verification, immutable hosted workflow, direct governed
+  `govulncheck` command, preserved 0.1.4 candidate history, and explicit
+  clean-clone, hosted-evidence, and separate-acceptance requirements.
+
 - Added the representative-provider evidence-foundation candidate with strict observation-only sanitized bundles, provider and configuration identity, literal `acr`/`amr`/`auth_time` preservation, digest and path binding, deterministic validation, hostile secret and identity rejection, exact predecessor revalidation, and no compatibility claim.
 - Added the provider-neutral OIDC assurance-evidence candidate using Atlas-controlled synthetic claims, explicit `auth_time` correlation for `acr` and `amr`, exact governed method sets, hostile tests, synchronized documentation, and a bounded implementation gate.
 - Added the architecture and roadmap alignment candidate defining module runtime failure containment, scheduled evidence ingestion, monitoring and freshness, immutable candidates and atomic acceptance, signed purpose-limited Atlas–IFI snapshots, fail-closed adversarial invariants, external-provider MFA requirements, and signed candidate/post-merge repository trust.
@@ -17,9 +27,9 @@
 - Added the Phase 1 Step 3 authenticated server-side session candidate with digest-only PostgreSQL persistence, secure opaque cookies, current governed actor re-resolution, assurance metadata for future MFA, hostile and race tests, synchronized documentation, and an implementation phase gate.
 
 - Added the Phase 1 Step 3 HTTP login and callback candidate with secure host-only browser state binding, exact callback parsing, issuer checks, provider-error cancellation, verified-principal handoff, hostile and race tests, synchronized documentation, and an implementation phase gate.
-- Replaced the mandatory Iron Atlas roadmap with a preserved-history Phase 0–12 core sequence covering evidence protection, operating-system-based Cisco normalization, FortiGate, BloodHound identity context, cross-source intelligence, change decisions, interface completion, read-only collection, production recovery, and controlled-pilot acceptance.
+- Replaced the mandatory Atlas roadmap with a preserved-history Phase 0–12 core sequence covering evidence protection, operating-system-based Cisco normalization, FortiGate, BloodHound identity context, cross-source intelligence, change decisions, interface completion, read-only collection, production recovery, and controlled-pilot acceptance.
 - Added a planned phase-and-gate map that preserves existing validators, defines contract, implementation, integration, and acceptance gates, and keeps optional integration modules outside core operational acceptance.
-- Added the canonical 1254 × 1254 Iron Atlas crest with governed digest, accessibility text, README rendering, and brand-asset boundaries.
+- Added the canonical 1254 × 1254 Atlas crest with governed digest, accessibility text, README rendering, and brand-asset boundaries.
 - Added an exact published ISRAS 0.1.4 adoption candidate using the official release initializer, pinned reusable workflow, project pin, release-artifact verification, and preserved Atlas-specific validation.
 
 - A pinned maintained YAML v4 node decoder, Atlas node-conversion boundary, multiline quoted-scalar fixture, hostile admission tests, explicit resource limits, and cancellation checks for the experimental FortiGate YAML adapter.
@@ -51,12 +61,16 @@
 
 ### Changed
 
+- Preserved the established `IRON_ATLAS_*` deployment environment contract
+  during the repository and service identity transition; repository renaming
+  does not silently rename operator configuration.
+
 - Accepted the architecture and roadmap alignment as a documentation and governance boundary at signed commit `12569192da89a1a34f4ebfe107c4d02c60cbdb09`, with PR #17, merge commit `5de9e1f5f9770f12b56a046dc735b769cc842a02`, and successful validate, Portable validation, and ISRAS hosted runs recorded in the alignment evidence.
 
 - Removed Atlas-local password, TOTP-secret, QR-enrollment, and ordinary recovery-code ownership from the required authentication roadmap; successor work now begins with provider-neutral assurance evidence, followed by evidence-backed representative-provider compatibility, session lifecycle, CSRF, trusted proxy, production wiring, governed emergency access, integration, and formal Step 3 acceptance.
 - Synchronized README, architecture, requirements, testing, roadmap, gates, acceptance, governance, and validation around the signed BUSL boundary.
 
-- Prospectively transitioned Iron Atlas from BSD 3-Clause to Business Source License 1.1 (`BUSL-1.1`) from the signed `cc93fdd` predecessor, with no Additional Use Grant, a 2030-07-18 Change Date, AGPLv3-only Change License, preserved historical BSD text, explicit trademark separation, machine-readable validation, and a governed post-licensing alignment backlog.
+- Prospectively transitioned Atlas from BSD 3-Clause to Business Source License 1.1 (`BUSL-1.1`) from the signed `cc93fdd` predecessor, with no Additional Use Grant, a 2030-07-18 Change Date, AGPLv3-only Change License, preserved historical BSD text, explicit trademark separation, machine-readable validation, and a governed post-licensing alignment backlog.
 - Corrected future authentication direction so Atlas consumes and enforces approved external-provider MFA assurance rather than implementing local password or TOTP credential ownership.
 
 - Replaced the FortiGate adapter's handwritten physical-line YAML grammar with maintained node decoding while preserving Atlas normalization, source-location, evidence, and snapshot contracts.
@@ -111,7 +125,7 @@
 
 ## Phase 0
 
-- Initial Iron Atlas repository architecture.
+- Initial Atlas repository architecture.
 - Go HTML5 service candidate.
 - Independent change-approval implementation and tests.
 - Initial firewall and Cisco parser boundaries.

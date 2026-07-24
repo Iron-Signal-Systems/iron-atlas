@@ -4,7 +4,22 @@
 
 No implementation step may be accepted unless a clean clone from the canonical GitHub repository can execute its applicable validation using only version-controlled project artifacts, declared and verifiable external toolchain requirements, disposable test environments, and explicitly supplied non-repository secrets.
 
-The canonical repository is `https://github.com/Iron-Signal-Systems/iron-atlas.git`; the active development branch is `dev`.
+The canonical repository is `https://github.com/Iron-Signal-Systems/atlas.git`; the active development branch is `dev`.
+
+## Repository Identity Transition
+
+Active source, assurance metadata, validation tooling, operational instructions,
+and future acceptance evidence use the canonical Atlas repository identity.
+Completed acceptance records and retained evidence that identify
+`Iron-Signal-Systems/iron-atlas` remain unchanged because they describe the
+identity validated when that evidence was captured. Rewriting those artifacts
+would break their historical meaning and could invalidate recorded checksums.
+
+The committed-evidence validator accepts only the former and current canonical
+repository URLs. New evidence must identify
+`https://github.com/Iron-Signal-Systems/atlas.git`. This transition does not
+rename the Iron Atlas product, executables, service units, branding assets, or
+synthetic test namespaces, and it does not establish formal acceptance.
 
 ## Accepted Application
 

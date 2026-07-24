@@ -162,7 +162,7 @@ check "provider-neutral assurance-evidence exact-boundary static revalidation" r
 check "representative-provider evidence foundation" python3 tools/validation/validate_phase1_step3_representative_provider_evidence_foundation.py
 check "portable acceptance static contract" python3 tools/validation/validate_portable_acceptance.py
 check "committed validation evidence" python3 tools/validation/validate_committed_evidence.py
-check "Draw.io XML" python3 -c 'import xml.etree.ElementTree as ET; ET.parse("diagrams/source/curated/architecture/ARCH-001-iron-atlas-context.drawio")'
+check "Draw.io XML" python3 -c 'import xml.etree.ElementTree as ET; ET.parse("diagrams/source/curated/architecture/ARCH-001-atlas-context.drawio")'
 check "source SHA-256 records" python3 tools/validation/validate_source_checksums.py
 check "file manifest synchronized" python3 - <<'PY'
 from pathlib import Path

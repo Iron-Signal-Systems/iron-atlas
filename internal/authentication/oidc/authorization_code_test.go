@@ -19,7 +19,7 @@ import (
 
 	jose "github.com/go-jose/go-jose/v4"
 
-	"github.com/Iron-Signal-Systems/iron-atlas/internal/authentication"
+	"github.com/Iron-Signal-Systems/atlas/internal/authentication"
 )
 
 const (

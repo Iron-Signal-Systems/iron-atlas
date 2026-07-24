@@ -2,9 +2,11 @@
 
 ## Current status
 
-Iron Atlas has a historical recorded ISRAS 1.0.1 baseline and an active ISRAS
-0.1.4 adoption candidate. The candidate is not formal adoption until a separate
-prospective acceptance record is merged.
+Atlas formally adopts ISRAS 0.1.8 at the exact signed, canonical-clean-clone,
+hosted-validation, and digest-bound evidence boundary recorded in the
+[adoption acceptance](../acceptance/ISRAS-0.1.8-ADOPTION-ACCEPTANCE.md). The
+historical ISRAS 1.0.1 recorded baseline and merged but unaccepted 0.1.4
+candidate remain reconstructable.
 
 ## Historical recorded baseline
 
@@ -14,16 +16,20 @@ prospective acceptance record is merged.
 - Adoption level: `RECORDED`
 - Adoption date: `2026-07-16`
 
-## Proposed exact standard identity
+## Adopted exact standard identity
 
-- Version: `0.1.4`
-- Signed tag: `isras-v0.1.4`
-- Exact source commit: `c9345d6d731600df7bd4ba4a133c07265db55e5a`
+- Version: `0.1.8`
+- Signed tag: `isras-v0.1.8`
+- Exact source commit: `0aed6ceb1db8558cb66cd81a7b6c84f2751b231e`
 - Profile: `ISRAS-SD` with Go defaults
-- Candidate status: `SELF-VALIDATED; FORMAL ACCEPTANCE PENDING`
+- Adoption status: `FORMALLY ACCEPTED`
 
 The exact signed release and six verified release assets are authority. Atlas
 does not follow a floating standards branch.
+
+The 0.1.4 candidate remains historical, reconstructable, and unaccepted. The
+0.1.8 candidate adds the current governed signing key without weakening exact
+release-bound principal and fingerprint verification.
 
 ## Preserved Atlas controls
 

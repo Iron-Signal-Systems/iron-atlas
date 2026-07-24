@@ -5,7 +5,7 @@
 - Product: Iron Atlas
 - Repository: `iron-atlas`
 - Organization: `Iron-Signal-Systems`
-- Canonical URL after creation: `https://github.com/Iron-Signal-Systems/iron-atlas`
+- Canonical URL after creation: `https://github.com/Iron-Signal-Systems/atlas`
 - Active development branch: `dev`
 
 ## Create the Empty Repository
@@ -22,7 +22,7 @@ git checkout -b dev
 git add .
 git diff --cached --check
 git commit -m "establish Iron Atlas phase 0 foundation"
-git remote add origin git@github.com:Iron-Signal-Systems/iron-atlas.git
+git remote add origin git@github.com:Iron-Signal-Systems/atlas.git
 git push -u origin dev
 ```
 

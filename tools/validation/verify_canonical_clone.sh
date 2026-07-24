@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -Eeuo pipefail
 
-canonical_repository="https://github.com/Iron-Signal-Systems/iron-atlas.git"
+canonical_repository="https://github.com/Iron-Signal-Systems/atlas.git"
 canonical_branch="dev"
 
 usage() {

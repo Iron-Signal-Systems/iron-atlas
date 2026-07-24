@@ -6,7 +6,7 @@ import (
 	"sync"
 	"testing"
 
-	"github.com/Iron-Signal-Systems/iron-atlas/internal/authz"
+	"github.com/Iron-Signal-Systems/atlas/internal/authz"
 )
 
 func TestRequesterCannotApproveOwnChange(t *testing.T) {

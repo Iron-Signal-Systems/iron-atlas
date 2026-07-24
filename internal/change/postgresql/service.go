@@ -8,9 +8,9 @@ import (
 
 	"github.com/jackc/pgx/v5"
 
-	"github.com/Iron-Signal-Systems/iron-atlas/internal/authz"
-	"github.com/Iron-Signal-Systems/iron-atlas/internal/change"
-	database "github.com/Iron-Signal-Systems/iron-atlas/internal/database/postgresql"
+	"github.com/Iron-Signal-Systems/atlas/internal/authz"
+	"github.com/Iron-Signal-Systems/atlas/internal/change"
+	database "github.com/Iron-Signal-Systems/atlas/internal/database/postgresql"
 )
 
 // Service persists governed changes through the accepted PostgreSQL function

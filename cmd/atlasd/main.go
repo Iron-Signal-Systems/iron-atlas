@@ -10,7 +10,7 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/Iron-Signal-Systems/iron-atlas/internal/app"
+	"github.com/Iron-Signal-Systems/atlas/internal/app"
 )
 
 func main() {

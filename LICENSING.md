@@ -1,6 +1,6 @@
-# Iron Atlas Licensing
+# Atlas Licensing
 
-Iron Atlas is source-available software licensed under the
+Atlas is source-available software licensed under the
 [Business Source License 1.1](LICENSE), SPDX identifier `BUSL-1.1`.
 
 This file is an operational summary. The `LICENSE` file controls if this
@@ -42,13 +42,13 @@ text is retained at
 ## Third-party components
 
 Dependencies, tools, fixtures, protocols, and other third-party material retain
-their own applicable licenses and notices. The Iron Atlas license does not
+their own applicable licenses and notices. The Atlas license does not
 replace a third party's license.
 
 ## Trademarks and branding
 
 The software license does not grant rights to the Iron Signal Systems name,
-Iron Atlas name, crest, logos, taglines, or other source-identifying branding.
+Atlas name, crest, logos, taglines, or other source-identifying branding.
 See `docs/governance/TRADEMARK-AND-BRANDING-POLICY.md`.
 
 ## Commercial licensing

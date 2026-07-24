@@ -1,6 +1,6 @@
 # Security Policy
 
-Iron Atlas is pre-alpha and is not ready for production use. No production
+Atlas is pre-alpha and is not ready for production use. No production
 support or security service-level commitment is claimed.
 
 ## Repository assurance baseline

@@ -3,7 +3,7 @@ package trunk
 import (
 	"testing"
 
-	"github.com/Iron-Signal-Systems/iron-atlas/modules/network/cisco/common"
+	"github.com/Iron-Signal-Systems/atlas/modules/network/cisco/common"
 )
 
 func TestTrunkExcludedFromEndpointAttribution(t *testing.T) {

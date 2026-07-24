@@ -35,7 +35,7 @@ chmod +x test-framework/run_all.sh
 ./tools/validation/validate_portable.sh
 ```
 
-Run the applicable Iron Atlas phase gate for bounded implementation or
+Run the applicable Atlas phase gate for bounded implementation or
 acceptance work.
 
 On Windows, the ISRAS portable entrypoint is:

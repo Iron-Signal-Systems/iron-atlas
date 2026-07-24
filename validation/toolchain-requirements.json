@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "project": "Iron Atlas",
-  "canonical_repository": "https://github.com/Iron-Signal-Systems/iron-atlas.git",
+  "canonical_repository": "https://github.com/Iron-Signal-Systems/atlas.git",
   "canonical_branch": "dev",
   "requirements": {
     "bash": {

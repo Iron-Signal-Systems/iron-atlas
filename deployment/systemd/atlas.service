@@ -5,13 +5,13 @@ Wants=network-online.target
 
 [Service]
 Type=simple
-User=iron-atlas
-Group=iron-atlas
+User=atlas
+Group=atlas
 Environment=IRON_ATLAS_LISTEN=127.0.0.1:8080
 Environment=IRON_ATLAS_DEV_IDENTITY=false
 Environment=IRON_ATLAS_CHANGE_STORE=memory
-EnvironmentFile=-/etc/iron-atlas/iron-atlas.env
-ExecStart=/usr/local/bin/iron-atlas
+EnvironmentFile=-/etc/atlas/atlas.env
+ExecStart=/usr/local/bin/atlas
 Restart=on-failure
 RestartSec=5s
 NoNewPrivileges=yes
@@ -26,8 +26,8 @@ RestrictSUIDSGID=yes
 LockPersonality=yes
 MemoryDenyWriteExecute=yes
 RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
-ReadWritePaths=/var/lib/iron-atlas
-StateDirectory=iron-atlas
+ReadWritePaths=/var/lib/atlas
+StateDirectory=atlas
 UMask=0077
 
 [Install]
