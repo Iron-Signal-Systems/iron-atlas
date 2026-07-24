@@ -81,3 +81,11 @@ This decision establishes self-governed repository-assurance adoption. It does
 not claim independent certification, production readiness, complete vendor
 coverage, security accreditation, or completion or acceptance of any Atlas
 product phase.
+
+## Post-merge signing boundary
+
+GitHub's merge operation produced merge commit `414c0c258dc32631d7e7363fa544dc2d01da8985`
+without an SSH signature. That commit is retained as historical merge
+topology, but it is not an ISRAS acceptance boundary. The signed commit
+carrying this amendment is the authoritative post-merge `dev` boundary and is
+the commit validated by the hosted ISRAS workflow after this change.
